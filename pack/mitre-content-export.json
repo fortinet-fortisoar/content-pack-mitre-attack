@@ -3789,7 +3789,24 @@
                   {
                     "type": "grid",
                     "config": {
-                      "wid": "c40a244c-c2ca-4b97-a0d7-c30b4aa76839"
+                      "wid": "c40a244c-c2ca-4b97-a0d7-c30b4aa76839",
+                      "module": "mitre_groups",
+                      "columns": [
+                        "mitreId",
+                        "name",
+                        "aliases",
+                        "description"
+                      ],
+                      "expandableCol": [],
+                      "relationshipField": [],
+                      "checkboxStatus": false,
+                      "actionButtons": [],
+                      "query": {
+                        "sort": [],
+                        "limit": 30,
+                        "logic": "AND",
+                        "filters": []
+                      }
                     }
                   }
                 ],
@@ -3965,13 +3982,35 @@
                 "widgets": [
                   {
                     "type": "grid",
-                    "config": []
+                    "config": {
+                      "wid": "746c2060-f5dd-42a8-873f-308c16e180e0",
+                      "module": "mitre_mitigations",
+                      "columns": [
+                        "mitreId",
+                        "name",
+                        "description"
+                      ],
+                      "expandableCol": [],
+                      "relationshipField": [],
+                      "checkboxStatus": false,
+                      "actionButtons": [],
+                      "query": {
+                        "sort": [],
+                        "limit": 30,
+                        "logic": "AND",
+                        "filters": []
+                      }
+                    }
                   }
-                ]
+                ],
+                "style": "col-lg-12"
               }
-            ]
+            ],
+            "wid": "7c7bbd1e-7e0d-40d4-aeb1-d374ae6541e2",
+            "_collapsed": false
           }
-        ]
+        ],
+        "wid": "b2696c64-20c6-4509-a6c2-8adb752e4e23"
       },
       "uuid": "modules-mitre_mitigations-list"
     },
@@ -4172,10 +4211,12 @@
                       "sectionText": "<p style=\"text-align: justify;\">Software is a generic term for custom or commercial code, operating system utilities, open-source software, or other tools used to conduct behavior modeled in ATT&amp;CK. Some instances of software have multiple names associated with the same instance due to various organizations tracking the same set of software by different names. The team makes a best effort to track overlaps between names based on publicly reported associations, which are designated as &ldquo;Associated Software&rdquo; on each page (formerly labeled &ldquo;Aliases&rdquo;), because we believe these overlaps are useful for analyst awareness.<\/p>\n<p style=\"text-align: justify;\">Software entries include publicly reported technique use or capability to use a technique and may be mapped to Groups who have been reported to use that Software. The information provided does not represent all possible technique use by a piece of Software, but rather a subset that is available solely through open source reporting.<\/p>\n<ul>\n<li class=\"mb-4\" style=\"text-align: justify;\">Tool - Commercial, open-source, built-in, or publicly available software that could be used by a defender, pen tester, red teamer, or an adversary. This category includes both software that generally is not found on an enterprise system as well as software generally available as part of an operating system that is already present in an environment. Examples include PsExec, Metasploit, Mimikatz, as well as Windows utilities such as Net, netstat, Tasklist, etc.<\/li>\n<li class=\"mb-4\" style=\"text-align: justify;\">Malware - Commercial, custom closed source, or open source software intended to be used for malicious purposes by adversaries. Examples include PlugX, CHOPSTICK, etc.<\/li>\n<\/ul>"
                     }
                   }
-                ]
+                ],
+                "style": "col-lg-12"
               }
             ],
-            "wid": "87390db3-ed66-44b7-ac75-a4d2247c1c77"
+            "wid": "87390db3-ed66-44b7-ac75-a4d2247c1c77",
+            "_collapsed": false
           },
           {
             "columns": [
@@ -4184,7 +4225,24 @@
                   {
                     "type": "grid",
                     "config": {
-                      "wid": "0417619e-54e5-4cc5-bf08-2c04642f0a73"
+                      "wid": "0417619e-54e5-4cc5-bf08-2c04642f0a73",
+                      "module": "mitre_software",
+                      "columns": [
+                        "mitreId",
+                        "name",
+                        "aliases",
+                        "description"
+                      ],
+                      "expandableCol": [],
+                      "relationshipField": [],
+                      "checkboxStatus": false,
+                      "actionButtons": [],
+                      "query": {
+                        "sort": [],
+                        "limit": 30,
+                        "logic": "AND",
+                        "filters": []
+                      }
                     }
                   }
                 ],
@@ -4392,13 +4450,35 @@
                 "widgets": [
                   {
                     "type": "grid",
-                    "config": []
+                    "config": {
+                      "wid": "3332b58a-bc4c-4c94-a81b-5ab1b65b6bbe",
+                      "module": "mitre_sub_techniques",
+                      "columns": [
+                        "mitreId",
+                        "name",
+                        "description"
+                      ],
+                      "expandableCol": [],
+                      "relationshipField": [],
+                      "checkboxStatus": false,
+                      "actionButtons": [],
+                      "query": {
+                        "sort": [],
+                        "limit": 30,
+                        "logic": "AND",
+                        "filters": []
+                      }
+                    }
                   }
-                ]
+                ],
+                "style": "col-lg-12"
               }
-            ]
+            ],
+            "wid": "6453203a-c5fc-4689-8ad7-0f0da37f35e6",
+            "_collapsed": false
           }
-        ]
+        ],
+        "wid": "0733aa80-4c5b-4919-8532-ce0aad43e048"
       },
       "uuid": "modules-mitre_sub_techniques-list"
     },
@@ -4574,13 +4654,35 @@
                 "widgets": [
                   {
                     "type": "grid",
-                    "config": []
+                    "config": {
+                      "wid": "c767a042-3f1f-40ac-a20f-12088d80e2fb",
+                      "module": "mitre_tactics",
+                      "columns": [
+                        "mitreId",
+                        "name",
+                        "description"
+                      ],
+                      "expandableCol": [],
+                      "relationshipField": [],
+                      "checkboxStatus": false,
+                      "actionButtons": [],
+                      "query": {
+                        "sort": [],
+                        "limit": 30,
+                        "logic": "AND",
+                        "filters": []
+                      }
+                    }
                   }
-                ]
+                ],
+                "style": "col-lg-12"
               }
-            ]
+            ],
+            "wid": "8b24169c-8e75-448c-8f38-81b4fee0e4e0",
+            "_collapsed": false
           }
-        ]
+        ],
+        "wid": "926c972a-c123-4262-81d2-555fd9a239da"
       },
       "uuid": "modules-mitre_tactics-list"
     },
@@ -4900,460 +5002,482 @@
                 "widgets": [
                   {
                     "type": "grid",
-                    "config": []
+                    "config": {
+                      "wid": "45a87654-a678-45ae-9fcd-9e72de2ea394",
+                      "module": "mitre_techniques",
+                      "columns": [
+                        "mitreId",
+                        "name",
+                        "description"
+                      ],
+                      "expandableCol": [],
+                      "relationshipField": [],
+                      "checkboxStatus": false,
+                      "actionButtons": [],
+                      "query": {
+                        "sort": [],
+                        "limit": 30,
+                        "logic": "AND",
+                        "filters": []
+                      }
+                    }
                   }
-                ]
+                ],
+                "style": "col-lg-12"
               }
-            ]
+            ],
+            "wid": "f56c2c7a-485d-4200-8809-050d5ced0253",
+            "_collapsed": false
           }
-        ]
+        ],
+        "wid": "65b7f13a-776c-459d-8ab4-02ae65ed25d5"
       },
       "uuid": "modules-mitre_techniques-list"
     },
     {
-        "@context": "\/api\/3\/contexts\/SystemViewTemplate",
-        "@type": "SystemViewTemplate",
-        "type": "app",
-        "config": {
-            "navigation": [
-                {
-                    "title": "Dashboard",
-                    "icon": "icon icon-dashboard",
-                    "require": {
-                        "module": "dashboard",
-                        "action": "read"
-                    },
-                    "state": {
-                        "name": "main.dashboard",
-                        "parameters": []
-                    },
-                    "editMode": false
+      "@context": "\/api\/3\/contexts\/SystemViewTemplate",
+      "@type": "SystemViewTemplate",
+      "type": "app",
+      "config": {
+        "navigation": [
+          {
+            "title": "Dashboard",
+            "icon": "icon icon-dashboard",
+            "require": {
+              "module": "dashboard",
+              "action": "read"
+            },
+            "state": {
+              "name": "main.dashboard",
+              "parameters": []
+            },
+            "editMode": false
+          },
+          {
+            "title": "Queue Management",
+            "icon": "icon icon-queue-management",
+            "require": {
+              "module": "system_assigned_queues",
+              "action": "read"
+            },
+            "state": {
+              "name": "main.queues"
+            },
+            "editMode": false
+          },
+          {
+            "title": "Incident Response",
+            "icon": "icon icon-incident-response",
+            "items": [
+              {
+                "title": "Alerts",
+                "icon": "icon icon-alert",
+                "require": {
+                  "module": "alerts",
+                  "action": "read"
                 },
-                {
-                    "title": "Queue Management",
-                    "icon": "icon icon-queue-management",
-                    "require": {
-                        "module": "system_assigned_queues",
-                        "action": "read"
-                    },
-                    "state": {
-                        "name": "main.queues"
-                    },
-                    "editMode": false
+                "state": {
+                  "name": "main.modules.list",
+                  "parameters": {
+                    "module": "alerts"
+                  }
                 },
-                {
-                    "title": "Incident Response",
-                    "icon": "icon icon-incident-response",
-                    "items": [
-                        {
-                            "title": "Alerts",
-                            "icon": "icon icon-alert",
-                            "require": {
-                                "module": "alerts",
-                                "action": "read"
-                            },
-                            "state": {
-                                "name": "main.modules.list",
-                                "parameters": {
-                                    "module": "alerts"
-                                }
-                            },
-                            "editMode": false
-                        },
-                        {
-                            "title": "Incidents",
-                            "icon": "icon icon-incidents",
-                            "require": {
-                                "module": "incidents",
-                                "action": "read"
-                            },
-                            "state": {
-                                "name": "main.modules.list",
-                                "parameters": {
-                                    "module": "incidents"
-                                }
-                            },
-                            "editMode": false
-                        },
-                        {
-                            "title": "Tasks",
-                            "require": {
-                                "module": "tasks",
-                                "action": "read"
-                            },
-                            "state": {
-                                "name": "main.modules.list",
-                                "parameters": {
-                                    "module": "tasks"
-                                }
-                            },
-                            "editMode": false,
-                            "icon": "icon icon-tasks"
-                        },
-                        {
-                            "title": "Indicators",
-                            "icon": "icon icon-indicators",
-                            "require": {
-                                "module": "indicators",
-                                "action": "read"
-                            },
-                            "state": {
-                                "name": "main.modules.list",
-                                "parameters": {
-                                    "module": "indicators"
-                                }
-                            },
-                            "editMode": false
-                        },
-                        {
-                            "title": "Emails",
-                            "require": {
-                                "module": "emails",
-                                "action": "read"
-                            },
-                            "state": {
-                                "name": "main.modules.list",
-                                "parameters": {
-                                    "module": "emails"
-                                }
-                            },
-                            "icon": "icon icon-send-email",
-                            "editMode": false
-                        },
-                        {
-                            "title": "MITRE ATT&CK Techniques",
-                            "require": {
-                                "module": "mitreattack",
-                                "action": "read"
-                            },
-                            "state": {
-                                "name": "main.modules.list",
-                                "parameters": {
-                                    "module": "mitreattack"
-                                }
-                            },
-                            "icon": "icon icon-dashboard",
-                            "editMode": false
-                        },
-                        {
-                            "title": "War Rooms",
-                            "require": {
-                                "module": "warrooms",
-                                "action": "read"
-                            },
-                            "state": {
-                                "name": "main.modules.list",
-                                "parameters": {
-                                    "module": "warrooms"
-                                }
-                            },
-                            "icon": "icon icon-war-room",
-                            "editMode": false
-                        }
-                    ],
-                    "editMode": false
+                "editMode": false
+              },
+              {
+                "title": "Incidents",
+                "icon": "icon icon-incidents",
+                "require": {
+                  "module": "incidents",
+                  "action": "read"
                 },
-                {
-                    "title": "Vulnerability Management",
-                    "icon": "icon icon-vulnerability-management",
-                    "items": [
-                        {
-                            "title": "Vulnerabilities",
-                            "icon": "icon icon-vulnerability",
-                            "require": {
-                                "module": "vulnerabilities",
-                                "action": "read"
-                            },
-                            "state": {
-                                "name": "main.modules.list",
-                                "parameters": {
-                                    "module": "vulnerabilities"
-                                }
-                            },
-                            "editMode": false
-                        },
-                        {
-                            "title": "Assets",
-                            "icon": "icon icon-assets",
-                            "require": {
-                                "module": "assets",
-                                "action": "read"
-                            },
-                            "state": {
-                                "name": "main.modules.list",
-                                "parameters": {
-                                    "module": "assets"
-                                }
-                            },
-                            "editMode": false
-                        },
-                        {
-                            "title": "Scans",
-                            "icon": "icon icon-scans",
-                            "require": {
-                                "module": "scans",
-                                "action": "read"
-                            },
-                            "state": {
-                                "name": "main.modules.list",
-                                "parameters": {
-                                    "module": "scans"
-                                }
-                            },
-                            "editMode": false
-                        }
-                    ],
-                    "editMode": false
+                "state": {
+                  "name": "main.modules.list",
+                  "parameters": {
+                    "module": "incidents"
+                  }
                 },
-                {
-                    "title": "Automation",
-                    "icon": "icon icon-automation",
-                    "items": [
-                        {
-                            "title": "Playbooks",
-                            "icon": "icon icon-playbooks",
-                            "require": {
-                                "module": "workflows",
-                                "action": "read"
-                            },
-                            "state": {
-                                "name": "main.workflow"
-                            },
-                            "editMode": false
-                        },
-                        {
-                            "title": "Connectors",
-                            "icon": "icon icon-connectors",
-                            "require": {
-                                "module": "connectors",
-                                "action": "read"
-                            },
-                            "state": {
-                                "name": "main.connectors"
-                            },
-                            "editMode": false
-                        },
-                        {
-                            "title": "Schedules",
-                            "require": {
-                                "module": "schedules",
-                                "action": "read"
-                            },
-                            "state": {
-                                "name": "main.schedules"
-                            },
-                            "icon": "icon icon-schedules",
-                            "editMode": false
-                        },
-                        {
-                            "title": "SLA Templates",
-                            "require": {
-                                "module": "sla_template",
-                                "action": "read"
-                            },
-                            "state": {
-                                "name": "main.modules.list",
-                                "parameters": {
-                                    "module": "sla_template"
-                                }
-                            },
-                            "icon": "fa fa-clock-o",
-                            "editMode": false
-                        }
-                    ],
-                    "editMode": false
+                "editMode": false
+              },
+              {
+                "title": "Tasks",
+                "require": {
+                  "module": "tasks",
+                  "action": "read"
                 },
-                {
-                    "title": "Resources",
-                    "icon": "icon icon-resources",
-                    "items": [
-                        {
-                            "title": "Attachments",
-                            "icon": "icon icon-attachments",
-                            "require": {
-                                "module": "attachments",
-                                "action": "read"
-                            },
-                            "state": {
-                                "name": "main.modules.list",
-                                "parameters": {
-                                    "module": "attachments"
-                                }
-                            },
-                            "editMode": false
-                        },
-                        {
-                            "title": "Email Templates",
-                            "require": {
-                                "module": "email_templates",
-                                "action": "read"
-                            },
-                            "state": {
-                                "name": "main.modules.list",
-                                "parameters": {
-                                    "module": "email_templates"
-                                }
-                            },
-                            "editMode": false,
-                            "icon": "icon icon-email-templates"
-                        }
-                    ],
-                    "editMode": false
+                "state": {
+                  "name": "main.modules.list",
+                  "parameters": {
+                    "module": "tasks"
+                  }
                 },
-                {
-                    "title": "Reports",
-                    "icon": "icon icon-reports",
-                    "require": {
-                        "module": "reporting",
-                        "action": "read"
-                    },
-                    "state": {
-                        "name": "main.reporting",
-                        "parameters": []
-                    },
-                    "editMode": false
+                "editMode": false,
+                "icon": "icon icon-tasks"
+              },
+              {
+                "title": "Indicators",
+                "icon": "icon icon-indicators",
+                "require": {
+                  "module": "indicators",
+                  "action": "read"
                 },
-                {
-                    "title": "Widget Library",
-                    "icon": "icon icon-widget",
-                    "require": {
-                        "module": "widgets",
-                        "action": "read"
-                    },
-                    "state": {
-                        "name": "main.widgets",
-                        "parameters": []
-                    },
-                    "editMode": false
+                "state": {
+                  "name": "main.modules.list",
+                  "parameters": {
+                    "module": "indicators"
+                  }
                 },
-                {
-                    "title": "Help",
-                    "state": {
-                        "name": "main.pages",
-                        "parameters": {
-                            "module": "help"
-                        }
-                    },
-                    "openInNewTab": true,
-                    "url": "https:\/\/docs.fortinet.com\/product\/fortisoar",
-                    "icon": "icon icon-help",
-                    "editMode": false
+                "editMode": false
+              },
+              {
+                "title": "Emails",
+                "require": {
+                  "module": "emails",
+                  "action": "read"
                 },
-                {
-                    "title": "Mitre ATT&CK",
-                    "icon": "fa fa-qrcode",
-                    "items": [
-                        {
-                            "title": "Groups",
-                            "require": {
-                                "module": "mitre_groups",
-                                "action": "read"
-                            },
-                            "state": {
-                                "name": "main.modules.list",
-                                "parameters": {
-                                    "module": "mitre_groups"
-                                }
-                            },
-                            "icon": "fa fa-none",
-                            "editMode": false
-                        },
-                        {
-                            "title": "Tactics",
-                            "require": {
-                                "module": "mitre_tactics",
-                                "action": "read"
-                            },
-                            "state": {
-                                "name": "main.modules.list",
-                                "parameters": {
-                                    "module": "mitre_tactics"
-                                }
-                            },
-                            "icon": "fa fa-none",
-                            "editMode": false
-                        },
-                        {
-                            "title": "Techniques",
-                            "require": {
-                                "module": "mitre_techniques",
-                                "action": "read"
-                            },
-                            "state": {
-                                "name": "main.modules.list",
-                                "parameters": {
-                                    "module": "mitre_techniques"
-                                }
-                            },
-                            "icon": "fa fa-none",
-                            "editMode": false
-                        },
-                        {
-                            "title": "Sub-techniques",
-                            "require": {
-                                "module": "mitre_sub_techniques",
-                                "action": "read"
-                            },
-                            "state": {
-                                "name": "main.modules.list",
-                                "parameters": {
-                                    "module": "mitre_sub_techniques"
-                                }
-                            },
-                            "icon": "fa fa-none",
-                            "editMode": false
-                        },
-                        {
-                            "title": "Mitigations",
-                            "require": {
-                                "module": "mitre_mitigations",
-                                "action": "read"
-                            },
-                            "state": {
-                                "name": "main.modules.list",
-                                "parameters": {
-                                    "module": "mitre_mitigations"
-                                }
-                            },
-                            "icon": "fa fa-none",
-                            "editMode": false
-                        },
-                        {
-                            "title": "Software",
-                            "require": {
-                                "module": "mitre_software",
-                                "action": "read"
-                            },
-                            "state": {
-                                "name": "main.modules.list",
-                                "parameters": {
-                                    "module": "mitre_software"
-                                }
-                            },
-                            "icon": "fa fa-none",
-                            "editMode": false
-                        }
-                    ],
-                    "editMode": false
+                "state": {
+                  "name": "main.modules.list",
+                  "parameters": {
+                    "module": "emails"
+                  }
                 },
-                {
-                    "title": "Threat Feeds",
-                    "require": {
-                        "module": "threat_feeds",
-                        "action": "read"
-                    },
-                    "state": {
-                        "name": "main.modules.list",
-                        "parameters": {
-                            "module": "threat_feeds"
-                        }
-                    },
-                    "icon": "fa fa-inbox",
-                    "editMode": false
-                }
-            ]
-        },
-        "uuid": "app"
+                "icon": "icon icon-send-email",
+                "editMode": false
+              },
+              {
+                "title": "MITRE ATT&CK Techniques",
+                "require": {
+                  "module": "mitreattack",
+                  "action": "read"
+                },
+                "state": {
+                  "name": "main.modules.list",
+                  "parameters": {
+                    "module": "mitreattack"
+                  }
+                },
+                "icon": "icon icon-dashboard",
+                "editMode": false
+              },
+              {
+                "title": "War Rooms",
+                "require": {
+                  "module": "warrooms",
+                  "action": "read"
+                },
+                "state": {
+                  "name": "main.modules.list",
+                  "parameters": {
+                    "module": "warrooms"
+                  }
+                },
+                "icon": "icon icon-war-room",
+                "editMode": false
+              }
+            ],
+            "editMode": false
+          },
+          {
+            "title": "Vulnerability Management",
+            "icon": "icon icon-vulnerability-management",
+            "items": [
+              {
+                "title": "Vulnerabilities",
+                "icon": "icon icon-vulnerability",
+                "require": {
+                  "module": "vulnerabilities",
+                  "action": "read"
+                },
+                "state": {
+                  "name": "main.modules.list",
+                  "parameters": {
+                    "module": "vulnerabilities"
+                  }
+                },
+                "editMode": false
+              },
+              {
+                "title": "Assets",
+                "icon": "icon icon-assets",
+                "require": {
+                  "module": "assets",
+                  "action": "read"
+                },
+                "state": {
+                  "name": "main.modules.list",
+                  "parameters": {
+                    "module": "assets"
+                  }
+                },
+                "editMode": false
+              },
+              {
+                "title": "Scans",
+                "icon": "icon icon-scans",
+                "require": {
+                  "module": "scans",
+                  "action": "read"
+                },
+                "state": {
+                  "name": "main.modules.list",
+                  "parameters": {
+                    "module": "scans"
+                  }
+                },
+                "editMode": false
+              }
+            ],
+            "editMode": false
+          },
+          {
+            "title": "Automation",
+            "icon": "icon icon-automation",
+            "items": [
+              {
+                "title": "Playbooks",
+                "icon": "icon icon-playbooks",
+                "require": {
+                  "module": "workflows",
+                  "action": "read"
+                },
+                "state": {
+                  "name": "main.workflow"
+                },
+                "editMode": false
+              },
+              {
+                "title": "Connectors",
+                "icon": "icon icon-connectors",
+                "require": {
+                  "module": "connectors",
+                  "action": "read"
+                },
+                "state": {
+                  "name": "main.connectors"
+                },
+                "editMode": false
+              },
+              {
+                "title": "Schedules",
+                "require": {
+                  "module": "schedules",
+                  "action": "read"
+                },
+                "state": {
+                  "name": "main.schedules"
+                },
+                "icon": "icon icon-schedules",
+                "editMode": false
+              },
+              {
+                "title": "SLA Templates",
+                "require": {
+                  "module": "sla_template",
+                  "action": "read"
+                },
+                "state": {
+                  "name": "main.modules.list",
+                  "parameters": {
+                    "module": "sla_template"
+                  }
+                },
+                "icon": "fa fa-clock-o",
+                "editMode": false
+              }
+            ],
+            "editMode": false
+          },
+          {
+            "title": "Resources",
+            "icon": "icon icon-resources",
+            "items": [
+              {
+                "title": "Attachments",
+                "icon": "icon icon-attachments",
+                "require": {
+                  "module": "attachments",
+                  "action": "read"
+                },
+                "state": {
+                  "name": "main.modules.list",
+                  "parameters": {
+                    "module": "attachments"
+                  }
+                },
+                "editMode": false
+              },
+              {
+                "title": "Email Templates",
+                "require": {
+                  "module": "email_templates",
+                  "action": "read"
+                },
+                "state": {
+                  "name": "main.modules.list",
+                  "parameters": {
+                    "module": "email_templates"
+                  }
+                },
+                "editMode": false,
+                "icon": "icon icon-email-templates"
+              }
+            ],
+            "editMode": false
+          },
+          {
+            "title": "Reports",
+            "icon": "icon icon-reports",
+            "require": {
+              "module": "reporting",
+              "action": "read"
+            },
+            "state": {
+              "name": "main.reporting",
+              "parameters": []
+            },
+            "editMode": false
+          },
+          {
+            "title": "Widget Library",
+            "icon": "icon icon-widget",
+            "require": {
+              "module": "widgets",
+              "action": "read"
+            },
+            "state": {
+              "name": "main.widgets",
+              "parameters": []
+            },
+            "editMode": false
+          },
+          {
+            "title": "Help",
+            "state": {
+              "name": "main.pages",
+              "parameters": {
+                "module": "help"
+              }
+            },
+            "openInNewTab": true,
+            "url": "https:\/\/docs.fortinet.com\/product\/fortisoar",
+            "icon": "icon icon-help",
+            "editMode": false
+          },
+          {
+            "title": "Mitre ATT&CK",
+            "icon": "fa fa-qrcode",
+            "items": [
+              {
+                "title": "Groups",
+                "require": {
+                  "module": "mitre_groups",
+                  "action": "read"
+                },
+                "state": {
+                  "name": "main.modules.list",
+                  "parameters": {
+                    "module": "mitre_groups"
+                  }
+                },
+                "icon": "fa fa-none",
+                "editMode": false
+              },
+              {
+                "title": "Tactics",
+                "require": {
+                  "module": "mitre_tactics",
+                  "action": "read"
+                },
+                "state": {
+                  "name": "main.modules.list",
+                  "parameters": {
+                    "module": "mitre_tactics"
+                  }
+                },
+                "icon": "fa fa-none",
+                "editMode": false
+              },
+              {
+                "title": "Techniques",
+                "require": {
+                  "module": "mitre_techniques",
+                  "action": "read"
+                },
+                "state": {
+                  "name": "main.modules.list",
+                  "parameters": {
+                    "module": "mitre_techniques"
+                  }
+                },
+                "icon": "fa fa-none",
+                "editMode": false
+              },
+              {
+                "title": "Sub-techniques",
+                "require": {
+                  "module": "mitre_sub_techniques",
+                  "action": "read"
+                },
+                "state": {
+                  "name": "main.modules.list",
+                  "parameters": {
+                    "module": "mitre_sub_techniques"
+                  }
+                },
+                "icon": "fa fa-none",
+                "editMode": false
+              },
+              {
+                "title": "Mitigations",
+                "require": {
+                  "module": "mitre_mitigations",
+                  "action": "read"
+                },
+                "state": {
+                  "name": "main.modules.list",
+                  "parameters": {
+                    "module": "mitre_mitigations"
+                  }
+                },
+                "icon": "fa fa-none",
+                "editMode": false
+              },
+              {
+                "title": "Software",
+                "require": {
+                  "module": "mitre_software",
+                  "action": "read"
+                },
+                "state": {
+                  "name": "main.modules.list",
+                  "parameters": {
+                    "module": "mitre_software"
+                  }
+                },
+                "icon": "fa fa-none",
+                "editMode": false
+              }
+            ],
+            "editMode": false
+          },
+          {
+            "title": "Threat Feeds",
+            "require": {
+              "module": "threat_feeds",
+              "action": "read"
+            },
+            "state": {
+              "name": "main.modules.list",
+              "parameters": {
+                "module": "threat_feeds"
+              }
+            },
+            "icon": "fa fa-inbox",
+            "editMode": false
+          }
+        ]
+      },
+      "uuid": "app"
     }
   ],
   "views": [],
