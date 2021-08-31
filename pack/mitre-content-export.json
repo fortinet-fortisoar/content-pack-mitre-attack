@@ -38131,42 +38131,16 @@
           "rpm_name": "cyops-connector-mitre-attack-2.0.0",
           "configurations": [
               {
-                  "id": 10,
-                  "config_id": "6b0abffa-7944-4495-838e-ff2e79507486",
-                  "status": 1,
-                  "name": "config1",
-                  "default": false,
-                  "config": [],
-                  "remote_status": [],
-                  "health_status": [],
-                  "connector": 17,
-                  "agent": "8eaba3eff26fcef7d6b479714fc8699a",
-                  "teams": []
-              },
-              {
                   "id": 11,
                   "config_id": "d65ed600-207f-40f4-9931-1ba137e214d8",
                   "status": 1,
-                  "name": "config2",
+                  "name": "Sample Configuration",
                   "default": true,
                   "config": {
-                      "ics_json": "",
-                      "mobile_json": "",
-                      "upload_json": true,
-                      "enterprise_json": {
-                          "id": "0ef79671-ef00-4fc7-b3ff-e1e6ad3e100e",
-                          "@id": "\/api\/3\/files\/0ef79671-ef00-4fc7-b3ff-e1e6ad3e100e",
-                          "size": 25218129,
-                          "uuid": "0ef79671-ef00-4fc7-b3ff-e1e6ad3e100e",
-                          "@type": "File",
-                          "@context": "\/api\/3\/contexts\/File",
-                          "assignee": "",
-                          "filename": "enterprise-attack.json",
-                          "metadata": [],
-                          "mimeType": "application\/json",
-                          "thumbnail": null,
-                          "uploadDate": 1629215408
-                      }
+                      "matrices": [
+                          "Enterprise"
+                      ],
+                      "upload_json": false
                   },
                   "remote_status": [],
                   "health_status": [],
@@ -38227,6 +38201,23 @@
                               "steps": [
                                   {
                                       "@type": "WorkflowStep",
+                                      "name": "Configuration",
+                                      "description": null,
+                                      "arguments": {
+                                          "data": "[{\"result\": \"Mapping complete\"}]",
+                                          "matrices": [
+                                              "Enterprise"
+                                          ]
+                                      },
+                                      "status": null,
+                                      "top": "165",
+                                      "left": "125",
+                                      "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+                                      "uuid": "aaaf3a87-ccef-4d50-a04d-c9d2037ad76b",
+                                      "id": 825
+                                  },
+                                  {
+                                      "@type": "WorkflowStep",
                                       "name": "Start",
                                       "description": null,
                                       "arguments": {
@@ -38243,23 +38234,6 @@
                                       "stepType": "\/api\/3\/workflow_step_types\/b348f017-9a94-471f-87f8-ce88b6a7ad62",
                                       "uuid": "5d15222a-4645-47bd-bfb4-653dfb8e365e",
                                       "id": 826
-                                  },
-                                  {
-                                      "@type": "WorkflowStep",
-                                      "name": "Configuration",
-                                      "description": null,
-                                      "arguments": {
-                                          "data": "[{\"result\": \"Mapping complete\"}]",
-                                          "matrices": [
-                                              "Enterprise"
-                                          ]
-                                      },
-                                      "status": null,
-                                      "top": "165",
-                                      "left": "125",
-                                      "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-                                      "uuid": "aaaf3a87-ccef-4d50-a04d-c9d2037ad76b",
-                                      "id": 825
                                   },
                                   {
                                       "@type": "WorkflowStep",
@@ -38315,7 +38289,7 @@
                               "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
                               "createDate": 1629215369,
                               "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-                              "modifyDate": 1629356468,
+                              "modifyDate": 1630323739,
                               "owners": [],
                               "isPrivate": false
                           },
@@ -38331,11 +38305,46 @@
                               "remoteExecutableFlag": false,
                               "parameters": [],
                               "synchronous": false,
-                              "lastModifyDate": 1629356469,
+                              "lastModifyDate": 1630323739,
                               "collection": "\/api\/3\/workflow_collections\/d65ed600-207f-40f4-9931-1ba137e214d8",
                               "versions": [],
                               "triggerStep": "\/api\/3\/workflow_steps\/21ede6f7-2ac3-4d3a-bf6d-57b0997b6d05",
                               "steps": [
+                                  {
+                                      "@type": "WorkflowStep",
+                                      "name": "Fetch",
+                                      "description": null,
+                                      "arguments": {
+                                          "arguments": [],
+                                          "apply_async": false,
+                                          "step_variables": [],
+                                          "workflowReference": "\/api\/3\/workflows\/669ed8e6-5ba5-44a3-9beb-ab4a824b2b74"
+                                      },
+                                      "status": null,
+                                      "top": "165",
+                                      "left": "125",
+                                      "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+                                      "uuid": "8a5c2ae7-b5a7-4474-9094-2246700cd774",
+                                      "id": 828
+                                  },
+                                  {
+                                      "@type": "WorkflowStep",
+                                      "name": "Start",
+                                      "description": null,
+                                      "arguments": {
+                                          "step_variables": {
+                                              "input": {
+                                                  "params": []
+                                              }
+                                          }
+                                      },
+                                      "status": null,
+                                      "top": "30",
+                                      "left": "125",
+                                      "stepType": "\/api\/3\/workflow_step_types\/b348f017-9a94-471f-87f8-ce88b6a7ad62",
+                                      "uuid": "21ede6f7-2ac3-4d3a-bf6d-57b0997b6d05",
+                                      "id": 829
+                                  },
                                   {
                                       "@type": "WorkflowStep",
                                       "name": "Create Record",
@@ -38366,53 +38375,9 @@
                                       "stepType": "\/api\/3\/workflow_step_types\/2597053c-e718-44b4-8394-4d40fe26d357",
                                       "uuid": "035c2695-c0ca-459a-bfaf-8d074b98aa4d",
                                       "id": 830
-                                  },
-                                  {
-                                      "@type": "WorkflowStep",
-                                      "name": "Start",
-                                      "description": null,
-                                      "arguments": {
-                                          "step_variables": {
-                                              "input": {
-                                                  "params": []
-                                              }
-                                          }
-                                      },
-                                      "status": null,
-                                      "top": "30",
-                                      "left": "125",
-                                      "stepType": "\/api\/3\/workflow_step_types\/b348f017-9a94-471f-87f8-ce88b6a7ad62",
-                                      "uuid": "21ede6f7-2ac3-4d3a-bf6d-57b0997b6d05",
-                                      "id": 829
-                                  },
-                                  {
-                                      "@type": "WorkflowStep",
-                                      "name": "Fetch",
-                                      "description": null,
-                                      "arguments": {
-                                          "arguments": [],
-                                          "apply_async": false,
-                                          "step_variables": [],
-                                          "workflowReference": "\/api\/3\/workflows\/669ed8e6-5ba5-44a3-9beb-ab4a824b2b74"
-                                      },
-                                      "status": null,
-                                      "top": "165",
-                                      "left": "125",
-                                      "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-                                      "uuid": "8a5c2ae7-b5a7-4474-9094-2246700cd774",
-                                      "id": 828
                                   }
                               ],
                               "routes": [
-                                  {
-                                      "@type": "WorkflowRoute",
-                                      "name": "Start -> Fetch",
-                                      "targetStep": "\/api\/3\/workflow_steps\/8a5c2ae7-b5a7-4474-9094-2246700cd774",
-                                      "sourceStep": "\/api\/3\/workflow_steps\/21ede6f7-2ac3-4d3a-bf6d-57b0997b6d05",
-                                      "label": null,
-                                      "isExecuted": false,
-                                      "uuid": "3afb4d4a-8cbf-4f82-afb4-9ca215f24817"
-                                  },
                                   {
                                       "@type": "WorkflowRoute",
                                       "name": "Fetch -> Create Record",
@@ -38421,6 +38386,15 @@
                                       "label": null,
                                       "isExecuted": false,
                                       "uuid": "6abcad43-d826-4e5a-baea-b34b6c59db1b"
+                                  },
+                                  {
+                                      "@type": "WorkflowRoute",
+                                      "name": "Start -> Fetch",
+                                      "targetStep": "\/api\/3\/workflow_steps\/8a5c2ae7-b5a7-4474-9094-2246700cd774",
+                                      "sourceStep": "\/api\/3\/workflow_steps\/21ede6f7-2ac3-4d3a-bf6d-57b0997b6d05",
+                                      "label": null,
+                                      "isExecuted": false,
+                                      "uuid": "3afb4d4a-8cbf-4f82-afb4-9ca215f24817"
                                   }
                               ],
                               "priority": "\/api\/3\/picklists\/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
@@ -38434,7 +38408,7 @@
                               "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
                               "createDate": 1629215369,
                               "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-                              "modifyDate": 1629356468,
+                              "modifyDate": 1630323739,
                               "owners": [],
                               "isPrivate": false
                           },
@@ -38455,40 +38429,6 @@
                               "versions": [],
                               "triggerStep": "\/api\/3\/workflow_steps\/59bb5a29-1c22-44b3-a2e8-4f754df394b7",
                               "steps": [
-                                  {
-                                      "@type": "WorkflowStep",
-                                      "name": "Get MITRE Data",
-                                      "description": null,
-                                      "arguments": {
-                                          "name": "MITRE ATT&CK",
-                                          "config": "d65ed600-207f-40f4-9931-1ba137e214d8",
-                                          "params": {
-                                              "modules": [
-                                                  "Tactics",
-                                                  "Groups",
-                                                  "Techniques",
-                                                  "Subtechniques",
-                                                  "Mitigations",
-                                                  "Software"
-                                              ],
-                                              "matrices": "{{vars.input.params.matrices}}",
-                                              "upload_json": false,
-                                              "force_ingestion": false
-                                          },
-                                          "version": "2.0.0",
-                                          "connector": "mitre-attack",
-                                          "operation": "get_mitre_data",
-                                          "operationTitle": "Get MITRE Data",
-                                          "pickFromTenant": false,
-                                          "step_variables": []
-                                      },
-                                      "status": null,
-                                      "top": "165",
-                                      "left": "125",
-                                      "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-                                      "uuid": "275534fb-fdd7-485d-bdcf-70077755e5a7",
-                                      "id": 832
-                                  },
                                   {
                                       "@type": "WorkflowStep",
                                       "name": "Start",
@@ -38634,6 +38574,40 @@
                                       "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
                                       "uuid": "59bb5a29-1c22-44b3-a2e8-4f754df394b7",
                                       "id": 831
+                                  },
+                                  {
+                                      "@type": "WorkflowStep",
+                                      "name": "Get MITRE Data",
+                                      "description": null,
+                                      "arguments": {
+                                          "name": "MITRE ATT&CK",
+                                          "config": "d65ed600-207f-40f4-9931-1ba137e214d8",
+                                          "params": {
+                                              "modules": [
+                                                  "Tactics",
+                                                  "Groups",
+                                                  "Techniques",
+                                                  "Subtechniques",
+                                                  "Mitigations",
+                                                  "Software"
+                                              ],
+                                              "matrices": "{{vars.input.params.matrices}}",
+                                              "upload_json": false,
+                                              "force_ingestion": false
+                                          },
+                                          "version": "2.0.0",
+                                          "connector": "mitre-attack",
+                                          "operation": "get_mitre_data",
+                                          "operationTitle": "Get MITRE Data",
+                                          "pickFromTenant": false,
+                                          "step_variables": []
+                                      },
+                                      "status": null,
+                                      "top": "165",
+                                      "left": "125",
+                                      "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+                                      "uuid": "275534fb-fdd7-485d-bdcf-70077755e5a7",
+                                      "id": 832
                                   }
                               ],
                               "routes": [
@@ -38658,7 +38632,7 @@
                               "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
                               "createDate": 1629215369,
                               "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-                              "modifyDate": 1629356468,
+                              "modifyDate": 1630323739,
                               "owners": [],
                               "isPrivate": false
                           }
