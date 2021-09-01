@@ -38152,25 +38152,68 @@
           "dataImports": [
               {
                   "id": 2,
-                  "name": "d65ed600-207f-40f4-9931-1ba137e214d8",
-                  "description": "Metadata for d65ed600-207f-40f4-9931-1ba137e214d8",
+                  "name": "Ingestion_mitre-attack_Sample Configuration_d65ed600-207f-40f4-9931-1ba137e214d8",
+                  "description": "Metadata for Ingestion_mitre-attack_Sample Configuration_d65ed600-207f-40f4-9931-1ba137e214d8",
                   "status": null,
                   "created_by": "3451141c-bac6-467c-8d72-85e0fab569ce",
                   "modified_by": "3451141c-bac6-467c-8d72-85e0fab569ce",
-                  "owners": [
-                      "public"
-                  ],
+                  "owners": [],
                   "sample_data": [],
                   "data_mapping": [],
                   "playbooks": [],
                   "created_at": "2021-08-17T18:55:49.174635Z",
-                  "modified_at": "2021-08-17T18:55:49.174671Z",
+                  "modified_at": "2021-09-01T14:11:48.755685Z",
                   "metadata": {
-                      "scheduleId": "",
-                      "scheduleName": "",
-                      "scheduleStatus": false
+                      "scheduleId": "gAAAAABhL4ok3N7XaG5kELfoxrbtHmYzPJ5Bm4uDY-27aHXNnttZa6QV_PBpIJSF44o2Bxd6L3yA1xHEHuF_DdgVcwJqDhW2nw==",
+                      "scheduleName": "Ingestion_mitre-attack_Sample Configuration_d65ed600-207f-40f4-9931-1ba137e214d8",
+                      "scheduleStatus": true
                   },
-                  "configuration": "d65ed600-207f-40f4-9931-1ba137e214d8"
+                  "configuration": "d65ed600-207f-40f4-9931-1ba137e214d8",
+                  "schedule": {
+                      "id": "gAAAAABhL4pGHzHDl4jgEWOfbjcU5YB9SnWPZhbgKI4F0CkIhyMiSH-Rbf76a6RSDrSHEdFWvHbDNN-eh-hVM34UYL4OuqGq7Q==",
+                      "crontab": {
+                          "id": 8,
+                          "minute": "0",
+                          "hour": "0",
+                          "day_of_week": "7",
+                          "day_of_month": "*",
+                          "month_of_year": "*",
+                          "timezone": "UTC"
+                      },
+                      "interval": null,
+                      "name": "Ingestion_mitre-attack_Sample Configuration_d65ed600-207f-40f4-9931-1ba137e214d8",
+                      "task": "workflow.tasks.periodic_task",
+                      "args": "[]",
+                      "kwargs": {
+                          "exit_if_running": false,
+                          "wf_iri": "\/api\/3\/workflows\/581d740c-1aa5-410a-b5a5-0e6aef527fec",
+                          "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
+                          "name": "Ingestion_mitre-attack_Sample Configuration_d65ed600-207f-40f4-9931-1ba137e214d8",
+                          "description": "Ingestion_mitre-attack_Sample Configuration_d65ed600-207f-40f4-9931-1ba137e214d8",
+                          "auth": {
+                              "auth_method": "CS HMAC"
+                          },
+                          "referenceid": null,
+                          "schedule_entry_name": "Ingestion_mitre-attack_Sample Configuration_d65ed600-207f-40f4-9931-1ba137e214d8",
+                          "schedule_id": "bc14ae79-2890-4f7d-afaf-57b0fe231741"
+                      },
+                      "queue": null,
+                      "exchange": null,
+                      "routing_key": null,
+                      "headers": "{}",
+                      "priority": 3,
+                      "expires": null,
+                      "expire_seconds": null,
+                      "one_off": false,
+                      "start_time": null,
+                      "enabled": true,
+                      "last_run_at": null,
+                      "total_run_count": 0,
+                      "date_changed": "2021-09-01T14:11:48.394143Z",
+                      "description": "Ingestion_mitre-attack_Sample Configuration_d65ed600-207f-40f4-9931-1ba137e214d8",
+                      "solar": null,
+                      "clocked": null
+                  }
               }
           ],
           "ingestionPlaybooks": {
@@ -38289,7 +38332,7 @@
                               "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
                               "createDate": 1629215369,
                               "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-                              "modifyDate": 1630323739,
+                              "modifyDate": 1630505481,
                               "owners": [],
                               "isPrivate": false
                           },
@@ -38305,7 +38348,7 @@
                               "remoteExecutableFlag": false,
                               "parameters": [],
                               "synchronous": false,
-                              "lastModifyDate": 1630323739,
+                              "lastModifyDate": 1630505480,
                               "collection": "\/api\/3\/workflow_collections\/d65ed600-207f-40f4-9931-1ba137e214d8",
                               "versions": [],
                               "triggerStep": "\/api\/3\/workflow_steps\/21ede6f7-2ac3-4d3a-bf6d-57b0997b6d05",
@@ -38408,7 +38451,7 @@
                               "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
                               "createDate": 1629215369,
                               "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-                              "modifyDate": 1630323739,
+                              "modifyDate": 1630505481,
                               "owners": [],
                               "isPrivate": false
                           },
@@ -38632,9 +38675,56 @@
                               "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
                               "createDate": 1629215369,
                               "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-                              "modifyDate": 1630323739,
+                              "modifyDate": 1630505481,
                               "owners": [],
-                              "isPrivate": false
+                              "isPrivate": false,
+                              "schedules": [
+                                  {
+                                      "id": "gAAAAABhL4pFM5jd7-vJpgMER9M59hjnAU1AmQdwfTHgYEpFP1HTFi2Tw54GR7PAenkubLeK03I9abfEZJ-e8GXhidUlc7dHhg==",
+                                      "crontab": {
+                                          "id": 8,
+                                          "minute": "0",
+                                          "hour": "0",
+                                          "day_of_week": "7",
+                                          "day_of_month": "*",
+                                          "month_of_year": "*",
+                                          "timezone": "UTC"
+                                      },
+                                      "interval": null,
+                                      "name": "Ingestion_mitre-attack_Sample Configuration_d65ed600-207f-40f4-9931-1ba137e214d8",
+                                      "task": "workflow.tasks.periodic_task",
+                                      "args": "[]",
+                                      "kwargs": {
+                                          "exit_if_running": false,
+                                          "wf_iri": "\/api\/3\/workflows\/581d740c-1aa5-410a-b5a5-0e6aef527fec",
+                                          "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
+                                          "name": "Ingestion_mitre-attack_Sample Configuration_d65ed600-207f-40f4-9931-1ba137e214d8",
+                                          "description": "Ingestion_mitre-attack_Sample Configuration_d65ed600-207f-40f4-9931-1ba137e214d8",
+                                          "auth": {
+                                              "auth_method": "CS HMAC"
+                                          },
+                                          "referenceid": null,
+                                          "schedule_entry_name": "Ingestion_mitre-attack_Sample Configuration_d65ed600-207f-40f4-9931-1ba137e214d8",
+                                          "schedule_id": "bc14ae79-2890-4f7d-afaf-57b0fe231741"
+                                      },
+                                      "queue": null,
+                                      "exchange": null,
+                                      "routing_key": null,
+                                      "headers": "{}",
+                                      "priority": 3,
+                                      "expires": null,
+                                      "expire_seconds": null,
+                                      "one_off": false,
+                                      "start_time": null,
+                                      "enabled": true,
+                                      "last_run_at": null,
+                                      "total_run_count": 0,
+                                      "date_changed": "2021-09-01T14:11:48.394143Z",
+                                      "description": "Ingestion_mitre-attack_Sample Configuration_d65ed600-207f-40f4-9931-1ba137e214d8",
+                                      "solar": null,
+                                      "clocked": null
+                                  }
+                              ]
                           }
                       ],
                       "image": null,
