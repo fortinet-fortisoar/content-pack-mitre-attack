@@ -15586,7 +15586,9 @@
         "wid": "65b7f13a-776c-459d-8ab4-02ae65ed25d5"
       },
       "uuid": "modules-mitre_techniques-list"
-    },
+    }
+  ],
+  "views": [
     {
       "@context": "\/api\/3\/contexts\/SystemViewTemplate",
       "@type": "SystemViewTemplate",
@@ -16033,7 +16035,6 @@
       "uuid": "app"
     }
   ],
-  "views": [],
   "roles": [
     {
       "@context": "\/api\/3\/contexts\/Role",
