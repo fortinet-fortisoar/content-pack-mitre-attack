@@ -2423,50 +2423,6 @@
           }
         },
         {
-          "@id": "\/api\/3\/attribute_metadatas\/eb3d1f2e-4135-4554-8a42-454f364dfbbd",
-          "@type": "AttributeMetadata",
-          "type": "mitreattack",
-          "name": "mitrelink",
-          "length": 0,
-          "orderIndex": 28,
-          "formType": "manyToMany",
-          "dataSource": {
-            "model": "mitreattack"
-          },
-          "searchable": false,
-          "peerReplicable": true,
-          "system": false,
-          "encrypted": false,
-          "gridColumn": false,
-          "collection": true,
-          "inversedField": "alertlink",
-          "ownsRelationship": true,
-          "validation": {
-            "_enableRange": false,
-            "required": false,
-            "minlength": 0,
-            "maxlength": -1
-          },
-          "bulkAction": [],
-          "dataSourceFilters": [],
-          "defaultValue": null,
-          "tooltip": "",
-          "visibility": true,
-          "htmlEscape": false,
-          "orphanRemoval": false,
-          "readable": true,
-          "writeable": true,
-          "identifier": false,
-          "unique": false,
-          "recommend": false,
-          "sattrib": "\/api\/3\/staging_model_metadatas\/9a5f8c83-332a-4dee-9550-4bfb6bd0c212",
-          "uuid": "eb3d1f2e-4135-4554-8a42-454f364dfbbd",
-          "displayName": "{{ mitrelink }}",
-          "descriptions": {
-            "singular": "ATT&CK Techniques"
-          }
-        },
-        {
           "@id": "\/api\/3\/attribute_metadatas\/722a9766-a069-46e7-a074-127b1250f022",
           "@type": "AttributeMetadata",
           "type": "string",
