@@ -9184,50 +9184,6 @@
           }
         },
         {
-          "@id": "\/api\/3\/attribute_metadatas\/c3f59524-c62d-41e4-839a-c021fab12e47",
-          "@type": "AttributeMetadata",
-          "type": "mitreattack",
-          "name": "mitreincidentlink",
-          "length": 0,
-          "orderIndex": 11,
-          "formType": "manyToMany",
-          "dataSource": {
-            "model": "mitreattack"
-          },
-          "searchable": false,
-          "peerReplicable": true,
-          "system": false,
-          "encrypted": false,
-          "gridColumn": false,
-          "collection": true,
-          "inversedField": "incidentlink",
-          "ownsRelationship": true,
-          "validation": {
-            "_enableRange": false,
-            "maxlength": 10485761,
-            "minlength": 0,
-            "required": false
-          },
-          "bulkAction": [],
-          "dataSourceFilters": [],
-          "defaultValue": null,
-          "tooltip": "",
-          "visibility": true,
-          "htmlEscape": false,
-          "orphanRemoval": null,
-          "readable": true,
-          "writeable": true,
-          "identifier": false,
-          "unique": false,
-          "recommend": false,
-          "sattrib": "\/api\/3\/staging_model_metadatas\/0c9dd816-b1e1-432f-9454-458ecbed1c46",
-          "uuid": "c3f59524-c62d-41e4-839a-c021fab12e47",
-          "displayName": "{{ mitreincidentlink }}",
-          "descriptions": {
-            "singular": "ATT&CK Techniques"
-          }
-        },
-        {
           "@id": "\/api\/3\/attribute_metadatas\/d8184953-bd76-45f1-93be-f6a542597885",
           "@type": "AttributeMetadata",
           "type": "integer",
