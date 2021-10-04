@@ -102,8 +102,8 @@ The MITRE ATT&amp;CK content pack includes new lookup fields for MITRE ATT&amp;C
 
 1. To create MITRE ATT&amp;CK Tactics and Groups for the Alerts module, click **Settings** \&gt; **Application Editor** \&gt; **Modules**.
 2. On the Modules page, select the **Alerts** module, and click the **Fields Editor** tab. To add the new &#39;Groups&#39; lookup field, click **+** and set its properties as shown in the following screenshot:
-   ![](docs/screenshots/screenshot_1.png)
-3. Add the new &#39;Tactics&#39; lookup field, click **+** and set its properties as shown in the following screenshot: ![](docs/screenshots/screenshot_2.png)
+   ![](screenshots/screenshot_1.png)
+3. Add the new &#39;Tactics&#39; lookup field, click **+** and set its properties as shown in the following screenshot: ![](screenshots/screenshot_2.png)
 
 ### **Use Case Workflow**
 
@@ -120,22 +120,22 @@ Hunt playbooks are designed to provide a basic structure and usable examples for
 
 #### Screenshots of &#39;Hunt&#39; Playbooks used in user cases
 
-![](docs/screenshots/screenshot_3.png) Screenshot from the &quot;Deobfuscate/Decode Files or Information (T1140)&quot; Hunt playbook. This playbook demonstrates the use of Certutil or copy /b to deobfuscate data/files.
+![](screenshots/screenshot_3.png) Screenshot from the &quot;Deobfuscate/Decode Files or Information (T1140)&quot; Hunt playbook. This playbook demonstrates the use of Certutil or copy /b to deobfuscate data/files.
 
-![](docs/screenshots/screenshot_4.png) Screenshot from the &quot;Hidden Files and Directories (T1564.001)&quot; Hunt playbook. This playbook hunts for attrib.exe, which is used to hide files.
+![](screenshots/screenshot_4.png) Screenshot from the &quot;Hidden Files and Directories (T1564.001)&quot; Hunt playbook. This playbook hunts for attrib.exe, which is used to hide files.
 
-![](docs/screenshots/screenshot_5.png) Screenshot from the &quot;Link ATT&amp;CK technique to Alert&quot; playbook. This playbook links the &#39;Alert&#39; records that were created as a result of Hunt playbooks to their related MITRE ATT&amp;CK techniques and subtechniques.
+![](screenshots/screenshot_5.png) Screenshot from the &quot;Link ATT&amp;CK technique to Alert&quot; playbook. This playbook links the &#39;Alert&#39; records that were created as a result of Hunt playbooks to their related MITRE ATT&amp;CK techniques and subtechniques.
 
 ### **Setting up the Navigation View**
 
 The content pack doesn&#39;t include the navigation view that contains the new MITRE modules by default. This is due to navigation view imports overwriting the view altogether. After you import the content pack the new modules still need to be added to the navigation view. Following is a set of screenshots which describes this process.
 
-![](docs/screenshots/screenshot_6.png)
+![](screenshots/screenshot_6.png)
 
  Adding all the MITRE modules as a group will put them in a dropdown folder of their own.
 
- ![](docs/screenshots/screenshot_7.png)
+ ![](screenshots/screenshot_7.png)
 
 You can change the name and icon of the folder as well as the individual names and icons of the module pages if you prefer.
 
- ![](docs/screenshots/screenshot_8.png)
+ ![](screenshots/screenshot_8.png)
