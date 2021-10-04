@@ -1,0 +1,69 @@
+{
+    "@context": "\/api\/3\/contexts\/SystemViewTemplate",
+    "@type": "SystemViewTemplate",
+    "type": "rows",
+    "config": {
+        "rows": [
+            {
+                "columns": [
+                    {
+                        "widgets": [
+                            {
+                                "type": "sectionHeader",
+                                "config": {
+                                    "wid": "555de8e1-c4a1-4dbc-b2dc-7b64d30aa8b2",
+                                    "query": {
+                                        "filters": [],
+                                        "sort": [],
+                                        "limit": 10
+                                    },
+                                    "editorType": "html",
+                                    "sectionText": "<p style=\"text-align: justify;\">Groups are sets of related intrusion activity that are tracked by a common name in the security community. Analysts track clusters of activities using various analytic methodologies and terms such as threat groups, activity groups, threat actors, intrusion sets, and campaigns. Some groups have multiple names associated with similar activities due to various organizations tracking similar activities by different names. Organizations' group definitions may partially overlap with groups designated by other organizations and may disagree on specific activity.<br \/><br \/><\/p>\n<p style=\"text-align: justify;\">For the purposes of the Group pages, the MITRE ATT&amp;CK team uses the term Group to refer to any of the above designations for a cluster of adversary activity. The team makes a best effort to track overlaps between names based on publicly reported associations, which are designated as &ldquo;Associated Groups&rdquo; on each page (formerly labeled &ldquo;Aliases&rdquo;), because we believe these overlaps are useful for analyst awareness. We do not represent these names as exact overlaps and encourage analysts to do additional research.<br \/><br \/><\/p>\n<p style=\"text-align: justify;\">Groups are mapped to publicly reported technique use and original references are included. The information provided does not represent all possible technique use by Groups, but rather a subset that is available solely through open source reporting. Groups are also mapped to reported Software used, and technique use for that Software is tracked separately on each Software page.<\/p>"
+                                }
+                            }
+                        ],
+                        "style": "col-lg-12"
+                    }
+                ],
+                "wid": "5e1fca9d-c933-4d40-8f1e-8df5144474bf",
+                "_collapsed": false
+            },
+            {
+                "columns": [
+                    {
+                        "widgets": [
+                            {
+                                "type": "grid",
+                                "config": {
+                                    "wid": "c40a244c-c2ca-4b97-a0d7-c30b4aa76839",
+                                    "module": "mitre_groups",
+                                    "columns": [
+                                        "mitreId",
+                                        "name",
+                                        "aliases",
+                                        "description"
+                                    ],
+                                    "expandableCol": [],
+                                    "relationshipField": [],
+                                    "checkboxStatus": false,
+                                    "actionButtons": [],
+                                    "query": {
+                                        "sort": [],
+                                        "limit": 30,
+                                        "logic": "AND",
+                                        "filters": []
+                                    }
+                                }
+                            }
+                        ],
+                        "style": "col-lg-12"
+                    }
+                ],
+                "wid": "083798b8-4933-46ff-930e-372eec5854a7",
+                "_collapsed": false
+            }
+        ],
+        "wid": "81b2d662-2113-416b-ae01-a8deae6c94e2"
+    },
+    "uuid": "modules-mitre_groups-list"
+}

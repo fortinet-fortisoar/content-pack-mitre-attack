@@ -1,0 +1,44 @@
+{
+    "@context": "\/api\/3\/contexts\/SystemViewTemplate",
+    "@type": "SystemViewTemplate",
+    "type": "rows",
+    "config": {
+        "rows": [
+            {
+                "columns": [
+                    {
+                        "widgets": [
+                            {
+                                "type": "grid",
+                                "config": {
+                                    "wid": "c767a042-3f1f-40ac-a20f-12088d80e2fb",
+                                    "module": "mitre_tactics",
+                                    "columns": [
+                                        "mitreId",
+                                        "name",
+                                        "description"
+                                    ],
+                                    "expandableCol": [],
+                                    "relationshipField": [],
+                                    "checkboxStatus": false,
+                                    "actionButtons": [],
+                                    "query": {
+                                        "sort": [],
+                                        "limit": 30,
+                                        "logic": "AND",
+                                        "filters": []
+                                    }
+                                }
+                            }
+                        ],
+                        "style": "col-lg-12"
+                    }
+                ],
+                "wid": "8b24169c-8e75-448c-8f38-81b4fee0e4e0",
+                "_collapsed": false
+            }
+        ],
+        "wid": "926c972a-c123-4262-81d2-555fd9a239da"
+    },
+    "uuid": "modules-mitre_tactics-list"
+}

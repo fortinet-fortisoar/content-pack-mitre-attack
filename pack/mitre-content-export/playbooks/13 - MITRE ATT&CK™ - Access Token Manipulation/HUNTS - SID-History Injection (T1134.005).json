@@ -1,0 +1,781 @@
+{
+    "@type": "Workflow",
+    "triggerLimit": null,
+    "name": "HUNTS - SID-History Injection (T1134.005)",
+    "aliasName": null,
+    "tag": "ATT&CK, SID-History_Injection, Privilege_Escalation",
+    "description": "Hunts for SID-History injection via mimikatz and other tools. Also hunts for SID-History added to accounts (success and failure). Adding SID-History may allow for escalated privileges if SID filtering is not enabled.",
+    "isActive": false,
+    "debug": false,
+    "singleRecordExecution": false,
+    "remoteExecutableFlag": false,
+    "parameters": [
+        "sourceIP",
+        "destinationIP",
+        "processname",
+        "processID",
+        "processGUID",
+        "parentprocessname",
+        "parentprocessGUID",
+        "accountname",
+        "computername",
+        "commandline",
+        "sourcetool"
+    ],
+    "synchronous": false,
+    "lastModifyDate": 1633085062,
+    "collection": "\/api\/3\/workflow_collections\/00eb74ce-83cd-4f54-8539-3f038909e0f2",
+    "versions": [],
+    "triggerStep": "\/api\/3\/workflow_steps\/28f12e30-0b93-4f60-a694-2639fc193d70",
+    "steps": [
+        {
+            "@type": "WorkflowStep",
+            "name": "Set Splunk hunt times",
+            "description": null,
+            "arguments": {
+                "splunkHuntEnd": "{% if vars.input.records[0].huntEnd %}latest={{vars.input.records[0].huntEnd}}{% endif %}",
+                "splunkHuntStart": "earliest={{vars.input.records[0].huntStart}}"
+            },
+            "status": null,
+            "top": "60",
+            "left": "600",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "uuid": "fc2f42e4-54e9-476d-bdc6-33199df7d9aa",
+            "id": 4467
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Deduplicate Comments",
+            "description": null,
+            "arguments": {
+                "arguments": {
+                    "hunt_iri": "{{vars.input.records[0]['@id']}}"
+                },
+                "step_variables": [],
+                "workflowReference": "\/api\/3\/workflows\/3fd311be-a1c6-41c7-99a3-8794b33d8f8a"
+            },
+            "status": null,
+            "top": "205",
+            "left": "1760",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "uuid": "65bc700e-7b47-4da5-b2c3-90fc60c0a24c",
+            "id": 4468
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Splunk query for sid history addition",
+            "description": null,
+            "arguments": {
+                "name": "Splunk",
+                "config": "55bf97af-75c2-45ca-ae75-f4d27220cc52",
+                "params": {
+                    "query": "index=wineventlog (EventCode=4765 OR EventCode=4766) {{vars.splunkHuntStart}} {{vars.splunkHuntEnd}} | table host Account_Name Account_Domain ComputerName source _time",
+                    "additional_search_args": "{\"a\":\"B\"}"
+                },
+                "version": "1.4.0",
+                "connector": "splunk",
+                "operation": "invoke_search",
+                "operationTitle": "Invoke Search",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "20",
+            "left": "912",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "uuid": "ae83f45f-6f80-4b88-a6e9-3748d50e3dd4",
+            "id": 4469
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Select SIEM",
+            "description": null,
+            "arguments": {
+                "conditions": [
+                    {
+                        "option": "Elasticsearch",
+                        "step_iri": "\/api\/3\/workflow_steps\/2e4f9021-9572-4ca8-8d78-96644b06fa5a",
+                        "condition": "{{ vars.input.params.siem.itemValue == \"Elastic\" }}"
+                    },
+                    {
+                        "option": "Splunk",
+                        "step_iri": "\/api\/3\/workflow_steps\/fc2f42e4-54e9-476d-bdc6-33199df7d9aa",
+                        "condition": "{{ vars.input.params.siem.itemValue == \"Splunk\" }}"
+                    }
+                ]
+            },
+            "status": null,
+            "top": "191",
+            "left": "280",
+            "stepType": "\/api\/3\/workflow_step_types\/12254cf5-5db7-4b1a-8cb1-3af081924b28",
+            "uuid": "2602b83b-a777-4341-9a6f-feecf3b50f78",
+            "id": 4470
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Set Elastic hunt times",
+            "description": null,
+            "arguments": {
+                "elasticHuntEnd": "{% if vars.input.records[0].huntEnd %} {{ arrow.get(vars.input.records[0].huntEnd).format('YYYY-MM-DDTHH:mm:ss.SSSSSSSSSZ') }} {% else %} now {% endif %}",
+                "elasticHuntStart": "{{ arrow.get(vars.input.records[0].huntStart).format('YYYY-MM-DDTHH:mm:ss.SSSSSSSSSZ') }}"
+            },
+            "status": null,
+            "top": "330",
+            "left": "600",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "uuid": "2e4f9021-9572-4ca8-8d78-96644b06fa5a",
+            "id": 4471
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Elastic query for sid history addition",
+            "description": "{{data.hits.hits[0]._source.event_id}}",
+            "arguments": {
+                "name": "ElasticSearch",
+                "config": "8d03a01d-1cef-40a8-992a-63d8de2b339f",
+                "params": {
+                    "index": "wineventlog*",
+                    "query": "@timestamp:{ {{vars.elasticHuntStart}} TO {{vars.elasticHuntEnd}} } AND (event_id:\"4765\" OR event_id: \"4766\")",
+                    "run_as_user": ""
+                },
+                "version": "2.2.0",
+                "connector": "elasticsearch",
+                "operation": "execute_lucene_query",
+                "operationTitle": "Execute Lucene Query",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "260",
+            "left": "913",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "uuid": "5cadc9a7-64d1-4fe1-b021-5a7d03f09b9f",
+            "id": 4472
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Create and Link Alert1",
+            "description": null,
+            "arguments": {
+                "for_each": {
+                    "item": "{{vars.steps.Get_Results_1.data.results}}",
+                    "condition": ""
+                },
+                "arguments": {
+                    "MD5": "{{vars.item.MD5}}",
+                    "url": "",
+                    "source": "{{vars.item.EventChannel}}",
+                    "comment": "SIEM query identified potential SID-History Injection (Mimikatz) originating from {{vars.item.process}} on {{vars.item.host}} at {{vars.item.UtcTime}}.",
+                    "huntIRI": "{{vars.input.records[0]['@id']}}",
+                    "service": "",
+                    "filePath": "{{vars.item.Image}}",
+                    "hostName": "{{vars.item.host}}",
+                    "sourceIP": "null",
+                    "userName": "{{vars.item.User}}",
+                    "alertName": "ATT&CK-SID-History Injection-{{vars.item.process}} attempted to inject a new SID into a user's permissions settings",
+                    "epochTime": "{{ arrow.get(vars.item.UtcTime).timestamp }}",
+                    "eventName": "",
+                    "eventTime": "{{vars.item.UtcTime}}",
+                    "processID": "{{vars.item.ProcessId}}",
+                    "technique": "SID-History Injection (Mimikatz)",
+                    "sourceData": "{{vars.item}}",
+                    "sourceTool": "{{vars.item.vendor_product}}",
+                    "commandline": "{{vars.item.CommandLine}}",
+                    "description": "An attempt to execute Mimikatz with command line arguments indicative of Mimikatz's AddSid module was observed. SID-History manipulation allows an adversary to escalate their privileges and impersonate privileged user groups. The host where this command was executed should be investigated. Additionally, the command line arguments associated with this alert should be analyzed to determine the intent of the attacker.",
+                    "processGUID": "{{vars.item.ProcessGuid}}",
+                    "processName": "{{vars.item.process_exec}}",
+                    "registryKey": "",
+                    "sourceImage": "",
+                    "targetImage": "",
+                    "computerName": "{{vars.item.Computer}}",
+                    "destinationIP": "null",
+                    "mitre_tech_id": "T1178",
+                    "parentProcess": "{{vars.item.ParentImage}}",
+                    "scheduledTask": "",
+                    "bitstransferid": "",
+                    "parentProcessID": "{{vars.item.ParentProcessId}}",
+                    "bytestransferred": "",
+                    "registryKeyValue": "",
+                    "parentCommandLine": "{{vars.item.ParentCommandLine}}",
+                    "decodedCommandLine": ""
+                },
+                "apply_async": false,
+                "step_variables": [],
+                "workflowReference": "\/api\/3\/workflows\/bf7d418b-7ff3-44c1-b473-90d0a03c4641"
+            },
+            "status": null,
+            "top": "100",
+            "left": "1454",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "uuid": "a9a5746c-c33d-4141-98e9-6f1ee05d11dc",
+            "id": 4473
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Get Results 1",
+            "description": null,
+            "arguments": {
+                "name": "Splunk",
+                "config": "55bf97af-75c2-45ca-ae75-f4d27220cc52",
+                "params": {
+                    "sid": "{'value': \"{{vars.steps.Splunk_query_for_Sysmon_mimikatz_commands.data.sid}}\"}",
+                    "additional_args": "{\"a\":\"B\"}"
+                },
+                "version": "1.4.0",
+                "do_until": {
+                    "delay": "20",
+                    "retries": "30",
+                    "condition": "{{\"results\" in vars.result.data}}"
+                },
+                "connector": "splunk",
+                "operation": "get_results",
+                "operationTitle": "Get Results for a Search",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "100",
+            "left": "1180",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "uuid": "c5eafa7a-dd56-4508-9299-0d5b6639d53b",
+            "id": 4474
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Get Results 2",
+            "description": null,
+            "arguments": {
+                "name": "Splunk",
+                "config": "55bf97af-75c2-45ca-ae75-f4d27220cc52",
+                "params": {
+                    "sid": "{'value': \"{{vars.steps.Splunk_query_for_sid_history_addition.data.sid}}\"}",
+                    "additional_args": "{\"a\":\"B\"}"
+                },
+                "version": "1.4.0",
+                "do_until": {
+                    "delay": "20",
+                    "retries": "30",
+                    "condition": "{{\"results\" in vars.result.data}}"
+                },
+                "connector": "splunk",
+                "operation": "get_results",
+                "operationTitle": "Get Results for a Search",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "20",
+            "left": "1180",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "uuid": "9f81c613-d897-4598-ae10-baa681291780",
+            "id": 4475
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Create and Link Elastic Alert",
+            "description": null,
+            "arguments": {
+                "for_each": {
+                    "item": "{{vars.steps.Elastic_query_for_sid_history_addition.data.hits.hits}}",
+                    "condition": ""
+                },
+                "arguments": {
+                    "MD5": "",
+                    "url": "",
+                    "source": "{{ vars.item._source.source_name}}",
+                    "comment": "SIEM query identified potential SID-History Injection via Active Directory originating from {{ vars.item._source.event_data.Account_Name[0] }}, targeting {{ vars.item._source.event_data.Account_Name[1] }} on {{ vars.item._source.computer_name}} at {{vars.item._source['@timestamp']}}.",
+                    "huntIRI": "{{vars.input.records[0]['@id']}}",
+                    "service": "",
+                    "filePath": "",
+                    "hostName": "{{ vars.item._source.computer_name}}",
+                    "sourceIP": "null",
+                    "userName": "{{ vars.item._source.event_data.Account_Name[0] }}",
+                    "alertName": "",
+                    "epochTime": "{{arrow.get(vars.item._source['@timestamp']).timestamp}}",
+                    "eventName": "",
+                    "eventTime": "{{vars.item._source['@timestamp']}}",
+                    "processID": "",
+                    "technique": "SID-History Injection (SID-History Added)",
+                    "sourceData": "{{vars.item}}",
+                    "sourceTool": "{{ vars.item._source.source_name}}",
+                    "commandline": "",
+                    "description": "Windows Event Logs have detected an attempt to modify SID-History within Active Directory. SID-History manipulation allows an adversary to escalate their privileges and impersonate privileged user groups. The host where this log was generated should be investigated.",
+                    "processGUID": "",
+                    "processName": "",
+                    "registryKey": "",
+                    "sourceImage": "",
+                    "targetImage": "",
+                    "computerName": "{{ vars.item._source.computer_name}}",
+                    "destinationIP": "null",
+                    "mitre_tech_id": "T1178",
+                    "parentProcess": "",
+                    "scheduledTask": "",
+                    "bitstransferid": "",
+                    "parentProcessID": "",
+                    "bytestransferred": "",
+                    "registryKeyValue": "",
+                    "parentCommandLine": "",
+                    "decodedCommandLine": ""
+                },
+                "apply_async": false,
+                "step_variables": [],
+                "workflowReference": "\/api\/3\/workflows\/bf7d418b-7ff3-44c1-b473-90d0a03c4641"
+            },
+            "status": null,
+            "top": "260",
+            "left": "1460",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "uuid": "b3f9965d-7451-4d23-b93d-6d5615a45762",
+            "id": 4476
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Hunt for SID History",
+            "description": null,
+            "arguments": {
+                "route": "1a2ab68e-e34f-43b5-9c8b-df354f1b2675",
+                "title": "T1134.005 - Hunt for SID-History Injection",
+                "resources": [
+                    "hunt"
+                ],
+                "inputVariables": [
+                    {
+                        "name": "siem",
+                        "type": "picklists",
+                        "label": "SIEM",
+                        "title": "Picklist",
+                        "usable": true,
+                        "_ignore": false,
+                        "tooltip": "Choose your SIEM",
+                        "dataType": "picklist",
+                        "formType": "picklist",
+                        "required": true,
+                        "_expanded": true,
+                        "collection": false,
+                        "dataSource": {
+                            "model": "picklists",
+                            "query": {
+                                "sort": [
+                                    {
+                                        "field": "orderIndex",
+                                        "direction": "ASC"
+                                    }
+                                ],
+                                "logic": "AND",
+                                "filters": [
+                                    {
+                                        "field": "listName__name",
+                                        "value": "SIEMs",
+                                        "operator": "eq"
+                                    }
+                                ]
+                            },
+                            "displayConditions": {
+                                "876c1483-416b-4d2f-8138-15769ae16d5c": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "bcebcab1-3f93-468a-9f3f-91e5c511a0b5": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                }
+                            }
+                        },
+                        "searchable": false,
+                        "templateUrl": "app\/components\/form\/fields\/typeahead.html",
+                        "_nameTouched": true,
+                        "defaultValue": {
+                            "id": 280,
+                            "@id": "\/api\/3\/picklists\/876c1483-416b-4d2f-8138-15769ae16d5c",
+                            "icon": null,
+                            "@type": "Picklist",
+                            "color": null,
+                            "display": "Elastic",
+                            "listName": "\/api\/3\/picklist_names\/98830189-afff-40e6-bed1-94012551dc67",
+                            "itemValue": "Elastic",
+                            "orderIndex": 1
+                        },
+                        "useModuleField": false,
+                        "displayTemplate": "{{ itemValue }}",
+                        "allowedEncryption": false,
+                        "allowedGridColumn": true,
+                        "useRecordFieldDefault": false
+                    }
+                ],
+                "step_variables": {
+                    "input": {
+                        "params": {
+                            "siem": "{{vars.request.data[\"siem\"]}}",
+                            "sourceIP": "{{ vars.sourceIP }}",
+                            "processID": "{{ vars.processID }}",
+                            "sourcetool": "{{ vars.sourcetool }}",
+                            "accountname": "{{ vars.accountname }}",
+                            "commandline": "{{ vars.commandline }}",
+                            "processGUID": "{{ vars.processGUID }}",
+                            "processname": "{{ vars.processname }}",
+                            "computername": "{{ vars.computername }}",
+                            "destinationIP": "{{ vars.destinationIP }}",
+                            "parentprocessGUID": "{{ vars.parentprocessGUID }}",
+                            "parentprocessname": "{{ vars.parentprocessname }}"
+                        },
+                        "records": "{{vars.input.records}}"
+                    }
+                },
+                "_promptexpanded": true,
+                "displayConditions": {
+                    "hunt": {
+                        "sort": [],
+                        "limit": 30,
+                        "logic": "AND",
+                        "filters": []
+                    },
+                    "alerts": {
+                        "sort": [],
+                        "limit": 30,
+                        "logic": "AND",
+                        "filters": []
+                    }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": false,
+                "singleRecordExecution": false
+            },
+            "status": null,
+            "top": "190",
+            "left": "11",
+            "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+            "uuid": "28f12e30-0b93-4f60-a694-2639fc193d70",
+            "id": 4477
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Splunk query for Sysmon mimikatz commands",
+            "description": null,
+            "arguments": {
+                "name": "Splunk",
+                "config": "55bf97af-75c2-45ca-ae75-f4d27220cc52",
+                "params": {
+                    "query": "index=sysmon EventCode=1 {{vars.splunkHuntStart}} {{vars.splunkHuntEnd}} (CommandLine=\"*misc::addsid*\" OR CommandLine=\"*sid::*\") | table host Image MD5 ParentImage User CommandLine process_exec vendor_product TimeCreated ParentProcessId ProcessId ParentCommandLine ProcessGuid UtcTime EventChannel Computer",
+                    "exec_mode": "",
+                    "auto_cancel": "",
+                    "latest_time": "",
+                    "earliest_time": "",
+                    "additional_search_args": "{\"a\":\"B\"}"
+                },
+                "version": "1.5.0",
+                "connector": "splunk",
+                "operation": "invoke_search",
+                "operationTitle": "Invoke Search",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "100",
+            "left": "910",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "uuid": "201e0663-00ec-47c8-adba-b6489940c4df",
+            "id": 4478
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Create and Link Elastic Alert 2",
+            "description": null,
+            "arguments": {
+                "for_each": {
+                    "item": "{{vars.steps.Elastic_query_for_Sysmon_mimikatz_commands.data.hits.hits}}",
+                    "condition": ""
+                },
+                "arguments": {
+                    "MD5": "{{vars.item._source.event_data.Hashes.split(\"MD5=\")[1].split(',')[0]}}",
+                    "url": "",
+                    "source": "{{vars.item._source.source_name}}",
+                    "comment": "SIEM query identified potential SID-History Injection (Mimikatz) originating from {{vars.item._source.image_path.split(\"\\\\\")[-1]}} on {{vars.item._source.beat.hostname}} at {{vars.item._source.event_data.UtcTime}}.",
+                    "huntIRI": "{{vars.input.records[0]['@id']}}",
+                    "service": "",
+                    "filePath": "{{vars.item._source.image_path}}",
+                    "hostName": "{{vars.item._source.beat.hostname}}",
+                    "sourceIP": "null",
+                    "userName": "{{vars.item._source.username}}",
+                    "alertName": "ATT&CK-SID-History Injection-Mimikatz command line arguments observed",
+                    "epochTime": "{{arrow.get(vars.item._source.event_data.UtcTime).timestamp}}",
+                    "eventName": "",
+                    "eventTime": "{{vars.item._source.event_data.UtcTime}}",
+                    "processID": "{{vars.item._source.event_data.ProcessId}}",
+                    "technique": "SID-History Injection (Mimikatz)",
+                    "sourceData": "{{vars.item}}",
+                    "sourceTool": "{{vars.item._source.source_name}}",
+                    "commandline": "{{vars.item._source.event_data.CommandLine}}",
+                    "description": "An attempt to execute Mimikatz with command line arguments indicative of Mimikatz's AddSid module was observed. SID-History manipulation allows an adversary to escalate their privileges and impersonate privileged user groups. The host where this command was executed should be investigated. Additionally, the command line arguments associated with this alert should be analyzed to determine the intent of the attacker.",
+                    "processGUID": "{{vars.item._source.event_data.ProcessGuid}}",
+                    "processName": "{{vars.item._source.image_path.split(\"\\\\\")[-1]}}",
+                    "registryKey": "",
+                    "sourceImage": "",
+                    "targetImage": "",
+                    "computerName": "{{vars.item._source.computer_name}}",
+                    "destinationIP": "null",
+                    "mitre_tech_id": "T1178",
+                    "parentProcess": "{{vars.item._source.parent_image_path}}",
+                    "scheduledTask": "",
+                    "bitstransferid": "",
+                    "parentProcessID": "{{vars.item._source.event_data.ParentProcessId}}",
+                    "bytestransferred": "",
+                    "registryKeyValue": "",
+                    "parentCommandLine": "{{vars.item._source.event_data.ParentCommandLine}}",
+                    "decodedCommandLine": ""
+                },
+                "apply_async": false,
+                "step_variables": [],
+                "workflowReference": "\/api\/3\/workflows\/bf7d418b-7ff3-44c1-b473-90d0a03c4641"
+            },
+            "status": null,
+            "top": "340",
+            "left": "1460",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "uuid": "39e43830-5b15-453b-bbc1-280b22a52d15",
+            "id": 4479
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Create and Link Alert2",
+            "description": null,
+            "arguments": {
+                "for_each": {
+                    "item": "{{vars.steps.Get_Results_2.data.results}}",
+                    "condition": ""
+                },
+                "arguments": {
+                    "MD5": "{{vars.item.MD5}}",
+                    "url": "",
+                    "source": "{{vars.item.source}}",
+                    "comment": "SIEM query identified potential SID-History Injection via Active Directory originating from {{vars.item.Account_Name[0]}}, targeting {{vars.item.Account_Name[1]}} on {{vars.item.host}} at {{arrow.get(vars.item._time).to('utc')}}.",
+                    "huntIRI": "{{vars.input.records[0]['@id']}}",
+                    "service": "",
+                    "filePath": "{{vars.item.Image}}",
+                    "hostName": "{{vars.item.host}}",
+                    "sourceIP": "null",
+                    "userName": "{{vars.item.Account_Name[0]}}",
+                    "alertName": "ATT&CK-SID-History Injection-{{vars.item.Account_Name[1]}}'s SID was injected into {{vars.item.Account_Name[0]}}",
+                    "epochTime": "{{ arrow.get(vars.item._time).timestamp }}",
+                    "eventName": "",
+                    "eventTime": "{{arrow.get(vars.item._time).to('utc')}}",
+                    "processID": "{{vars.item.ProcessId}}",
+                    "technique": "SID-History Injection (SID-History Added)",
+                    "sourceData": "{{vars.item}}",
+                    "sourceTool": "{{vars.item.source}}",
+                    "commandline": "{{vars.item.CommandLine}}",
+                    "description": "Windows Event Logs have detected an attempt to modify SID-History within Active Directory. SID-History manipulation allows an adversary to escalate their privileges and impersonate privileged user groups. The host where this log was generated should be investigated.",
+                    "processGUID": "{{vars.item.ProcessGuid}}",
+                    "processName": "{{vars.item.process}}",
+                    "registryKey": "",
+                    "sourceImage": "",
+                    "targetImage": "",
+                    "computerName": "{{vars.item.Computer}}",
+                    "destinationIP": "null",
+                    "mitre_tech_id": "T1178",
+                    "parentProcess": "{{vars.item.ParentImage}}",
+                    "scheduledTask": "",
+                    "bitstransferid": "",
+                    "parentProcessID": "{{vars.item.ParentProcessId}}",
+                    "bytestransferred": "",
+                    "registryKeyValue": "",
+                    "parentCommandLine": "{{vars.item.ParentCommandLine}}",
+                    "decodedCommandLine": ""
+                },
+                "apply_async": false,
+                "step_variables": [],
+                "workflowReference": "\/api\/3\/workflows\/bf7d418b-7ff3-44c1-b473-90d0a03c4641"
+            },
+            "status": null,
+            "top": "20",
+            "left": "1453",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "uuid": "ccb55ec4-63c6-4ef0-9d44-7274d8fda3e3",
+            "id": 4480
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Elastic query for Sysmon mimikatz commands",
+            "description": null,
+            "arguments": {
+                "name": "ElasticSearch",
+                "config": "8d03a01d-1cef-40a8-992a-63d8de2b339f",
+                "params": {
+                    "index": "logstash-beats-*",
+                    "query": "@timestamp:{ {{vars.elasticHuntStart}} TO {{vars.elasticHuntEnd}} } AND event_id:1 AND (event_data.CommandLine:\"*misc\\:\\:addsid*\" OR event_data.CommandLine:\"*sid\\:\\:*\")",
+                    "run_as_user": ""
+                },
+                "version": "2.2.0",
+                "connector": "elasticsearch",
+                "operation": "execute_lucene_query",
+                "operationTitle": "Execute Lucene Query",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "340",
+            "left": "912",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "uuid": "a231fde3-8548-48e5-a9e7-a1f723423b1a",
+            "id": 4481
+        }
+    ],
+    "routes": [
+        {
+            "@type": "WorkflowRoute",
+            "name": "Get Results for Sysmon Regsvr32 DLL Load -> Copy  of Create Splunk Alert",
+            "targetStep": "\/api\/3\/workflow_steps\/ccb55ec4-63c6-4ef0-9d44-7274d8fda3e3",
+            "sourceStep": "\/api\/3\/workflow_steps\/9f81c613-d897-4598-ae10-baa681291780",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "82b32849-ad12-4981-a5f0-3fa3c154f901"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Set Splunk hunt times -> Splunk query for Sysmon mimikatz commands",
+            "targetStep": "\/api\/3\/workflow_steps\/201e0663-00ec-47c8-adba-b6489940c4df",
+            "sourceStep": "\/api\/3\/workflow_steps\/fc2f42e4-54e9-476d-bdc6-33199df7d9aa",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "d8c6729c-d72b-4621-9e01-239008a3be6b"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Set Elastic hunt times -> Elastic query for Sysmon mimikatz commands",
+            "targetStep": "\/api\/3\/workflow_steps\/a231fde3-8548-48e5-a9e7-a1f723423b1a",
+            "sourceStep": "\/api\/3\/workflow_steps\/2e4f9021-9572-4ca8-8d78-96644b06fa5a",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "19082468-09fe-4812-a559-00702e03a5dd"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Select SIEM -> Set Elastic hunt times",
+            "targetStep": "\/api\/3\/workflow_steps\/2e4f9021-9572-4ca8-8d78-96644b06fa5a",
+            "sourceStep": "\/api\/3\/workflow_steps\/2602b83b-a777-4341-9a6f-feecf3b50f78",
+            "label": "Elasticsearch",
+            "isExecuted": false,
+            "uuid": "a7c48d6b-4e78-4928-a6a8-3031f1cdac8a"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Create and Link Elastic Alert -> Deduplicate Comments",
+            "targetStep": "\/api\/3\/workflow_steps\/65bc700e-7b47-4da5-b2c3-90fc60c0a24c",
+            "sourceStep": "\/api\/3\/workflow_steps\/b3f9965d-7451-4d23-b93d-6d5615a45762",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "14b67a7f-a818-4fb0-b680-ed5e5ae1034c"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Elastic query for Sysmon mimikatz commands -> Copy  of Create and Link Alert1",
+            "targetStep": "\/api\/3\/workflow_steps\/39e43830-5b15-453b-bbc1-280b22a52d15",
+            "sourceStep": "\/api\/3\/workflow_steps\/a231fde3-8548-48e5-a9e7-a1f723423b1a",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "cfa5f4bf-d857-4e39-92cb-84a755bcb0c5"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Copy  of Create and Link Alert1 -> Deduplicate Comments",
+            "targetStep": "\/api\/3\/workflow_steps\/65bc700e-7b47-4da5-b2c3-90fc60c0a24c",
+            "sourceStep": "\/api\/3\/workflow_steps\/39e43830-5b15-453b-bbc1-280b22a52d15",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "0b969664-c35b-4f25-9c97-83350b09af68"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Set Elastic hunt times -> a",
+            "targetStep": "\/api\/3\/workflow_steps\/5cadc9a7-64d1-4fe1-b021-5a7d03f09b9f",
+            "sourceStep": "\/api\/3\/workflow_steps\/2e4f9021-9572-4ca8-8d78-96644b06fa5a",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "7e7a16e1-7d10-4932-a86d-f9cf223ae7e6"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Splunk query for Sysmon CMSTP -> Get Results for Sysmon CMSTP",
+            "targetStep": "\/api\/3\/workflow_steps\/c5eafa7a-dd56-4508-9299-0d5b6639d53b",
+            "sourceStep": "\/api\/3\/workflow_steps\/201e0663-00ec-47c8-adba-b6489940c4df",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "51e7567a-06f6-4b2b-ab9b-4c0cb55a6b38"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Create and Link Alert2 -> Deduplicate Comments",
+            "targetStep": "\/api\/3\/workflow_steps\/65bc700e-7b47-4da5-b2c3-90fc60c0a24c",
+            "sourceStep": "\/api\/3\/workflow_steps\/ccb55ec4-63c6-4ef0-9d44-7274d8fda3e3",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "c3515927-46b2-4c6c-bb93-3a14fd137e9e"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Select SIEM -> Set Splunk hunt times",
+            "targetStep": "\/api\/3\/workflow_steps\/fc2f42e4-54e9-476d-bdc6-33199df7d9aa",
+            "sourceStep": "\/api\/3\/workflow_steps\/2602b83b-a777-4341-9a6f-feecf3b50f78",
+            "label": "Splunk",
+            "isExecuted": false,
+            "uuid": "e723b00f-5a1f-4d72-89f0-4cc5f742b5be"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Splunk query for Regsvr32 DLL Load -> Copy  of Get Results for Sysmon Regsvr32 Child",
+            "targetStep": "\/api\/3\/workflow_steps\/9f81c613-d897-4598-ae10-baa681291780",
+            "sourceStep": "\/api\/3\/workflow_steps\/ae83f45f-6f80-4b88-a6e9-3748d50e3dd4",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "7a6a2a87-bd70-4359-b79e-8de7f73efa31"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Create and Link Alert1 -> Deduplicate Comments",
+            "targetStep": "\/api\/3\/workflow_steps\/65bc700e-7b47-4da5-b2c3-90fc60c0a24c",
+            "sourceStep": "\/api\/3\/workflow_steps\/a9a5746c-c33d-4141-98e9-6f1ee05d11dc",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "7a4f3c2a-e85e-4bda-81e3-3a1a76ed5d58"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Get Results for Sysmon Regsvr32 Child -> Create Splunk Alert",
+            "targetStep": "\/api\/3\/workflow_steps\/a9a5746c-c33d-4141-98e9-6f1ee05d11dc",
+            "sourceStep": "\/api\/3\/workflow_steps\/c5eafa7a-dd56-4508-9299-0d5b6639d53b",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "1a4e4fe3-c7fd-4dc8-bc37-446932657bff"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Elastic query for sid history addition -> Copy 1 of Create and Link Alert3",
+            "targetStep": "\/api\/3\/workflow_steps\/b3f9965d-7451-4d23-b93d-6d5615a45762",
+            "sourceStep": "\/api\/3\/workflow_steps\/5cadc9a7-64d1-4fe1-b021-5a7d03f09b9f",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "b9abc459-1a48-4dc3-bcaa-027e53f4d1a2"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Set Splunk hunt times -> Splunk query for sid history addition",
+            "targetStep": "\/api\/3\/workflow_steps\/ae83f45f-6f80-4b88-a6e9-3748d50e3dd4",
+            "sourceStep": "\/api\/3\/workflow_steps\/fc2f42e4-54e9-476d-bdc6-33199df7d9aa",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "7b5510cb-8668-41db-ae0a-6f998891ba06"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Hunt for SID History -> Select SIEM",
+            "targetStep": "\/api\/3\/workflow_steps\/2602b83b-a777-4341-9a6f-feecf3b50f78",
+            "sourceStep": "\/api\/3\/workflow_steps\/28f12e30-0b93-4f60-a694-2639fc193d70",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "a21f514f-3c8d-4deb-9a98-201b4d9d9620"
+        }
+    ],
+    "priority": null,
+    "uuid": "dd57649d-15ed-4e75-a1b5-96789161fec4",
+    "recordTags": [],
+    "id": 1171,
+    "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
+    "createDate": 1633085062,
+    "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
+    "modifyDate": 1633085062,
+    "owners": [],
+    "isPrivate": false
+}

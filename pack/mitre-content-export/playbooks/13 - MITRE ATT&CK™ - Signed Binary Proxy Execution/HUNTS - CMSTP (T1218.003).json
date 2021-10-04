@@ -1,0 +1,518 @@
+{
+    "@type": "Workflow",
+    "triggerLimit": null,
+    "name": "HUNTS - CMSTP (T1218.003)",
+    "aliasName": null,
+    "tag": "ATT&CK, CMSTP, Execution",
+    "description": "Identifies processes spawned by CMSTP.exe",
+    "isActive": false,
+    "debug": false,
+    "singleRecordExecution": false,
+    "remoteExecutableFlag": false,
+    "parameters": [
+        "sourceIP",
+        "destinationIP",
+        "processname",
+        "processID",
+        "processGUID",
+        "parentprocessname",
+        "parentprocessGUID",
+        "accountname",
+        "computername",
+        "commandline",
+        "sourcetool"
+    ],
+    "synchronous": false,
+    "lastModifyDate": 1633085062,
+    "collection": "\/api\/3\/workflow_collections\/270b47ed-fc8b-4539-898d-3db2f929c777",
+    "versions": [],
+    "triggerStep": "\/api\/3\/workflow_steps\/54a101c0-2a90-40d3-bb93-6eec2070b3d4",
+    "steps": [
+        {
+            "@type": "WorkflowStep",
+            "name": "Hunt for CMSTP",
+            "description": null,
+            "arguments": {
+                "route": "9bbb0f1e-b7e3-4511-85e1-92002a772b14",
+                "title": "T1218.003 - Hunt for CMSTP",
+                "resources": [
+                    "hunt"
+                ],
+                "inputVariables": [
+                    {
+                        "name": "siem",
+                        "type": "picklists",
+                        "label": "SIEM",
+                        "title": "Picklist",
+                        "usable": true,
+                        "tooltip": "Choose your SIEM",
+                        "dataType": "picklist",
+                        "formType": "picklist",
+                        "required": true,
+                        "_expanded": true,
+                        "mmdUpdate": true,
+                        "collection": false,
+                        "dataSource": {
+                            "model": "picklists",
+                            "query": {
+                                "sort": [
+                                    {
+                                        "field": "orderIndex",
+                                        "direction": "ASC"
+                                    }
+                                ],
+                                "logic": "AND",
+                                "filters": [
+                                    {
+                                        "field": "listName__name",
+                                        "value": "SIEMs",
+                                        "operator": "eq"
+                                    }
+                                ]
+                            },
+                            "displayConditions": {
+                                "876c1483-416b-4d2f-8138-15769ae16d5c": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "bcebcab1-3f93-468a-9f3f-91e5c511a0b5": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                }
+                            }
+                        },
+                        "searchable": false,
+                        "templateUrl": "app\/components\/form\/fields\/typeahead.html",
+                        "_nameTouched": true,
+                        "defaultValue": {
+                            "id": 280,
+                            "@id": "\/api\/3\/picklists\/876c1483-416b-4d2f-8138-15769ae16d5c",
+                            "icon": null,
+                            "@type": "Picklist",
+                            "color": null,
+                            "display": "Elastic",
+                            "listName": "\/api\/3\/picklist_names\/98830189-afff-40e6-bed1-94012551dc67",
+                            "itemValue": "Elastic",
+                            "orderIndex": 1
+                        },
+                        "displayTemplate": "{{ itemValue }}",
+                        "lengthConstraint": false,
+                        "allowedEncryption": false,
+                        "allowedGridColumn": true,
+                        "useRecordFieldDefault": false
+                    }
+                ],
+                "step_variables": {
+                    "input": {
+                        "params": {
+                            "siem": "{{vars.request.data[\"siem\"]}}",
+                            "sourceIP": "{{ vars.sourceIP }}",
+                            "processID": "{{ vars.processID }}",
+                            "sourcetool": "{{ vars.sourcetool }}",
+                            "accountname": "{{ vars.accountname }}",
+                            "commandline": "{{ vars.commandline }}",
+                            "processGUID": "{{ vars.processGUID }}",
+                            "processname": "{{ vars.processname }}",
+                            "computername": "{{ vars.computername }}",
+                            "destinationIP": "{{ vars.destinationIP }}",
+                            "parentprocessGUID": "{{ vars.parentprocessGUID }}",
+                            "parentprocessname": "{{ vars.parentprocessname }}"
+                        },
+                        "records": "{{vars.input.records}}"
+                    }
+                },
+                "_promptexpanded": true,
+                "displayConditions": {
+                    "hunt": {
+                        "sort": [],
+                        "limit": 30,
+                        "logic": "AND",
+                        "filters": []
+                    }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": false,
+                "singleRecordExecution": false
+            },
+            "status": null,
+            "top": "308",
+            "left": "20",
+            "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+            "uuid": "54a101c0-2a90-40d3-bb93-6eec2070b3d4",
+            "id": 4821
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Elastic Query for Sysmon CMSTP",
+            "description": null,
+            "arguments": {
+                "name": "ElasticSearch",
+                "config": "8d03a01d-1cef-40a8-992a-63d8de2b339f",
+                "params": {
+                    "index": "logstash-beats-*",
+                    "query": "event_type:sysmon AND event_id:\"1\" AND @timestamp:{ {{vars.elasticHuntStart}} TO {{vars.elasticHuntEnd}} } AND (parent_image_path:\"C:\\\\Windows\\\\System32\\\\cmstp.exe\" OR parent_image_path:\"C:\\\\Windows\\\\SysWOW64\\\\cmstp.exe\")",
+                    "run_as_user": ""
+                },
+                "version": "2.2.0",
+                "connector": "elasticsearch",
+                "operation": "execute_lucene_query",
+                "operationTitle": "Execute Lucene Query",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "460",
+            "left": "888",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "uuid": "14b909d4-5d53-438d-830a-13358bbdede5",
+            "id": 4822
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Splunk query for Sysmon CMSTP",
+            "description": null,
+            "arguments": {
+                "name": "Splunk",
+                "config": "55bf97af-75c2-45ca-ae75-f4d27220cc52",
+                "params": {
+                    "query": "index=\"sysmon\" EventCode=1 {{vars.splunkHuntStart}} {{vars.splunkHuntEnd}} (ParentImage=\"C:\\\\Windows\\\\System32\\\\cmstp.exe\" OR ParentImage=\"C:\\\\Windows\\\\SysWOW64\\\\cmstp.exe\") | table host Image MD5 ParentImage User CommandLine process_exec vendor_product TimeCreated ParentProcessId ProcessId ParentCommandLine ProcessGuid UtcTime EventChannel Computer",
+                    "exec_mode": "",
+                    "auto_cancel": "",
+                    "latest_time": "",
+                    "earliest_time": "",
+                    "additional_search_args": "{\"a\":\"B\"}"
+                },
+                "version": "1.5.0",
+                "connector": "splunk",
+                "operation": "invoke_search",
+                "operationTitle": "Invoke Search",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "160",
+            "left": "880",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "uuid": "ddf9b99e-9ad1-47f0-96aa-4725e5b5e157",
+            "id": 4823
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Create and Link Splunk Alert",
+            "description": null,
+            "arguments": {
+                "for_each": {
+                    "item": "{{vars.steps.Get_Results_for_Sysmon_CMSTP.data.results}}",
+                    "condition": ""
+                },
+                "arguments": {
+                    "MD5": "{{vars.item.MD5}}",
+                    "url": "",
+                    "source": "{{vars.item.EventChannel}}",
+                    "comment": "SIEM query identified CMSTP.exe spawning potentially non-standard child process {{vars.item.process_exec}} on {{vars.item.host}} at {{vars.item.UtcTime}}.",
+                    "huntIRI": "{{vars.input.records[0]['@id']}}",
+                    "service": "",
+                    "filePath": "{{vars.item.Image}}",
+                    "hostName": "{{vars.item.host}}",
+                    "sourceIP": "",
+                    "userName": "{{vars.item.User}}",
+                    "alertName": "ATT&CK-CMSTP-{{vars.item.process_exec}} spawned",
+                    "epochTime": "{{ arrow.get(vars.item.UtcTime).timestamp }}",
+                    "eventName": "",
+                    "eventTime": "{{vars.item.UtcTime}}",
+                    "processID": "{{vars.item.ProcessId}}",
+                    "technique": "CMSTP",
+                    "sourceData": "{{vars.item}}",
+                    "sourceTool": "{{vars.item.EventChannel}}",
+                    "commandline": "{{vars.item.CommandLine}}",
+                    "description": "An attempt to invoke cmstp.exe was observed. CMSTP has been used to load malicious .inf files, enabling an attacker to force a host to download and execute DLLs or SCT files from a remote server. In many networks, an instance of a host executing cmstp.exe is uncommon and should investigated for additional signs of compromise.",
+                    "processGUID": "{{vars.item.ProcessGuid}}",
+                    "processName": "{{vars.item.process_exec}}",
+                    "registryKey": "",
+                    "sourceImage": "",
+                    "targetImage": "",
+                    "computerName": "{{vars.item.Computer}}",
+                    "destinationIP": "",
+                    "mitre_tech_id": "T1191",
+                    "parentProcess": "{{vars.item.ParentImage}}",
+                    "scheduledTask": "",
+                    "bitstransferid": "",
+                    "parentProcessID": "{{vars.item.ParentProcessId}}",
+                    "bytestransferred": "",
+                    "registryKeyValue": "",
+                    "parentCommandLine": "{{vars.item.ParentCommandLine}}",
+                    "decodedCommandLine": ""
+                },
+                "apply_async": false,
+                "step_variables": [],
+                "workflowReference": "\/api\/3\/workflows\/bf7d418b-7ff3-44c1-b473-90d0a03c4641"
+            },
+            "status": null,
+            "top": "160",
+            "left": "1448",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "uuid": "5379ec1b-ddb5-435a-be41-d0d73992d724",
+            "id": 4824
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Create and Link Elastic Alert",
+            "description": null,
+            "arguments": {
+                "for_each": {
+                    "item": "{{vars.steps.Elastic_Query_for_Sysmon_CMSTP.data.hits.hits}}",
+                    "condition": ""
+                },
+                "arguments": {
+                    "MD5": "{{vars.item._source.event_data.Hashes.split(\"MD5=\")[1].split(',')[0]}}",
+                    "url": "",
+                    "source": "{{vars.item._source.source_name}}",
+                    "comment": "SIEM query identified CMSTP.exe spawning potentially non-standard child process {{vars.item._source.image_path.split(\"\\\\\")[-1] }}  on {{vars.item._source.beat.hostname}} at {{vars.item._source.event_data.UtcTime}}.",
+                    "huntIRI": "{{vars.input.records[0]['@id']}}",
+                    "service": "",
+                    "filePath": "{{vars.item._source.image_path}}",
+                    "hostName": "{{vars.item._source.beat.hostname}}",
+                    "sourceIP": "null",
+                    "userName": "{{vars.item._source.username}}",
+                    "alertName": "ATT&CK-CMSTP-{{vars.item._source.image_path.split(\"\\\\\")[-1]}} spawned",
+                    "epochTime": "{{arrow.get(vars.item._source.event_data.UtcTime).timestamp}}",
+                    "eventName": "",
+                    "eventTime": "{{vars.item._source.event_data.UtcTime}}",
+                    "processID": "{{vars.item._source.event_data.ProcessId}}",
+                    "technique": "CMSTP",
+                    "sourceData": "{{vars.item}}",
+                    "sourceTool": "{{vars.item._source.source_name}}",
+                    "commandline": "{{vars.item._source.event_data.CommandLine}}",
+                    "description": "An attempt to invoke cmstp.exe was observed. CMSTP has been used to load malicious .inf files, enabling an attacker to force a host to download and execute DLLs or SCT files from a remote server. In many networks, an instance of a host executing cmstp.exe is uncommon and should investigated for additional signs of compromise.",
+                    "processGUID": "{{vars.item._source.event_data.ProcessGuid}}",
+                    "processName": "{{vars.item._source.image_path.split(\"\\\\\")[-1] }}",
+                    "registryKey": "",
+                    "sourceImage": "",
+                    "targetImage": "",
+                    "computerName": "{{vars.item._source.computer_name}}",
+                    "destinationIP": "null",
+                    "mitre_tech_id": "T1191",
+                    "parentProcess": "{{vars.item._source.parent_image_path}}",
+                    "scheduledTask": "",
+                    "bitstransferid": "",
+                    "parentProcessID": "{{vars.item._source.event_data.ParentProcessId}}",
+                    "bytestransferred": "",
+                    "registryKeyValue": "",
+                    "parentCommandLine": "{{vars.item._source.event_data.ParentCommandLine}}",
+                    "decodedCommandLine": ""
+                },
+                "apply_async": false,
+                "step_variables": [],
+                "workflowReference": "\/api\/3\/workflows\/bf7d418b-7ff3-44c1-b473-90d0a03c4641"
+            },
+            "status": null,
+            "top": "460",
+            "left": "1440",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "uuid": "48a3b3ef-6a79-4835-80ce-0a1ed26bcc47",
+            "id": 4825
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Set Splunk hunt times",
+            "description": null,
+            "arguments": {
+                "splunkHuntEnd": "{% if vars.input.records[0].huntEnd %}latest={{vars.input.records[0].huntEnd}}{% endif %}",
+                "splunkHuntStart": "earliest={{vars.input.records[0].huntStart}}"
+            },
+            "status": null,
+            "top": "160",
+            "left": "600",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "uuid": "d398533d-7d84-43a8-9772-a5576fe7205e",
+            "id": 4826
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Which SIEM",
+            "description": null,
+            "arguments": {
+                "conditions": [
+                    {
+                        "option": "Splunk",
+                        "step_iri": "\/api\/3\/workflow_steps\/d398533d-7d84-43a8-9772-a5576fe7205e",
+                        "condition": "{{ vars.input.params.siem.itemValue == \"Splunk\" }}"
+                    },
+                    {
+                        "option": "Elasticsearch",
+                        "step_iri": "\/api\/3\/workflow_steps\/3242a482-2545-41cb-a902-e8f547df9c17",
+                        "condition": "{{ vars.input.params.siem.itemValue == \"Elastic\" }}"
+                    }
+                ]
+            },
+            "status": null,
+            "top": "307",
+            "left": "306",
+            "stepType": "\/api\/3\/workflow_step_types\/12254cf5-5db7-4b1a-8cb1-3af081924b28",
+            "uuid": "ff127006-a930-4379-9f92-7275e5ac99c0",
+            "id": 4827
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Set Elastic hunt times",
+            "description": null,
+            "arguments": {
+                "elasticHuntEnd": "{% if vars.input.records[0].huntEnd %} {{ arrow.get(vars.input.records[0].huntEnd).format('YYYY-MM-DDTHH:mm:ss.SSSSSSSSSZ') }} {% else %} now {% endif %}",
+                "elasticHuntStart": "{{ arrow.get(vars.input.records[0].huntStart).format('YYYY-MM-DDTHH:mm:ss.SSSSSSSSSZ') }}"
+            },
+            "status": null,
+            "top": "460",
+            "left": "600",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "uuid": "3242a482-2545-41cb-a902-e8f547df9c17",
+            "id": 4828
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Deduplicate Comments",
+            "description": null,
+            "arguments": {
+                "arguments": {
+                    "hunt_iri": "{{vars.input.records[0]['@id']}}"
+                },
+                "step_variables": [],
+                "workflowReference": "\/api\/3\/workflows\/3fd311be-a1c6-41c7-99a3-8794b33d8f8a"
+            },
+            "status": null,
+            "top": "300",
+            "left": "1740",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "uuid": "2d2c7f10-37a4-4229-ba36-5caee443116e",
+            "id": 4829
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Get Results for Sysmon CMSTP",
+            "description": null,
+            "arguments": {
+                "name": "Splunk",
+                "config": "55bf97af-75c2-45ca-ae75-f4d27220cc52",
+                "params": {
+                    "sid": "{'value': \"{{vars.steps.Splunk_query_for_Sysmon_CMSTP.data.sid}}\"}",
+                    "additional_args": "{\"a\":\"B\"}"
+                },
+                "version": "1.4.0",
+                "do_until": {
+                    "delay": "1",
+                    "retries": "300",
+                    "condition": "{{\"results\" in vars.result.data}}"
+                },
+                "connector": "splunk",
+                "operation": "get_results",
+                "operationTitle": "Get Results for a Search",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "160",
+            "left": "1160",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "uuid": "c43cf215-bbb8-401a-b1bf-02d4520b7671",
+            "id": 4830
+        }
+    ],
+    "routes": [
+        {
+            "@type": "WorkflowRoute",
+            "name": "Set Splunk hunt times -> Splunk query for Sysmon CMSTP",
+            "targetStep": "\/api\/3\/workflow_steps\/ddf9b99e-9ad1-47f0-96aa-4725e5b5e157",
+            "sourceStep": "\/api\/3\/workflow_steps\/d398533d-7d84-43a8-9772-a5576fe7205e",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "bcccc0cc-a0a1-4dcb-bf80-fd47330732e4"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Set Elastic hunt times -> Elastic Query for Sysmon CMSTP",
+            "targetStep": "\/api\/3\/workflow_steps\/14b909d4-5d53-438d-830a-13358bbdede5",
+            "sourceStep": "\/api\/3\/workflow_steps\/3242a482-2545-41cb-a902-e8f547df9c17",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "62bf7b2e-e1cf-48e2-8d9e-025bddf0ab82"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Which SIEM -> Set Elastic hunt times",
+            "targetStep": "\/api\/3\/workflow_steps\/3242a482-2545-41cb-a902-e8f547df9c17",
+            "sourceStep": "\/api\/3\/workflow_steps\/ff127006-a930-4379-9f92-7275e5ac99c0",
+            "label": "Elasticsearch",
+            "isExecuted": false,
+            "uuid": "e9feca46-8eae-43cc-bdbf-59fd0a837fa5"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Copy  of Create and Link Alert -> Deduplicate Comments",
+            "targetStep": "\/api\/3\/workflow_steps\/2d2c7f10-37a4-4229-ba36-5caee443116e",
+            "sourceStep": "\/api\/3\/workflow_steps\/48a3b3ef-6a79-4835-80ce-0a1ed26bcc47",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "6af1f7b4-8f0b-4e6f-b9b9-93709d0e9470"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Create and Link Alert -> Deduplicate Comments",
+            "targetStep": "\/api\/3\/workflow_steps\/2d2c7f10-37a4-4229-ba36-5caee443116e",
+            "sourceStep": "\/api\/3\/workflow_steps\/5379ec1b-ddb5-435a-be41-d0d73992d724",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "55a33688-e059-42e6-9083-3aca97ebf670"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Get Results for Sysmon CMSTP -> Create and Link Splunk Alert",
+            "targetStep": "\/api\/3\/workflow_steps\/5379ec1b-ddb5-435a-be41-d0d73992d724",
+            "sourceStep": "\/api\/3\/workflow_steps\/c43cf215-bbb8-401a-b1bf-02d4520b7671",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "d51b2f5b-9b2e-4a86-85db-cc0cb746610f"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Elastic Query for Sysmon CMSTP -> Copy  of Create and Link Alert",
+            "targetStep": "\/api\/3\/workflow_steps\/48a3b3ef-6a79-4835-80ce-0a1ed26bcc47",
+            "sourceStep": "\/api\/3\/workflow_steps\/14b909d4-5d53-438d-830a-13358bbdede5",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "0dcc6bb3-ea38-4878-9737-90f02ee77d1d"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Splunk query for Sysmon CMSTP -> Get Results for Sysmon CMSTP",
+            "targetStep": "\/api\/3\/workflow_steps\/c43cf215-bbb8-401a-b1bf-02d4520b7671",
+            "sourceStep": "\/api\/3\/workflow_steps\/ddf9b99e-9ad1-47f0-96aa-4725e5b5e157",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "da150ab0-4891-40a9-8a32-58c2e0d57f0e"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Hunt for CMSTP -> Which SIEM",
+            "targetStep": "\/api\/3\/workflow_steps\/ff127006-a930-4379-9f92-7275e5ac99c0",
+            "sourceStep": "\/api\/3\/workflow_steps\/54a101c0-2a90-40d3-bb93-6eec2070b3d4",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "bd13ec28-486f-43f3-8ca2-aefe15061e71"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Which SIEM -> Copy  of Set Elastic hunt times",
+            "targetStep": "\/api\/3\/workflow_steps\/d398533d-7d84-43a8-9772-a5576fe7205e",
+            "sourceStep": "\/api\/3\/workflow_steps\/ff127006-a930-4379-9f92-7275e5ac99c0",
+            "label": "Splunk",
+            "isExecuted": false,
+            "uuid": "308596cf-afed-4f9e-b455-944523c17280"
+        }
+    ],
+    "priority": null,
+    "uuid": "82227e26-769e-4518-bb94-cc038d0c615d",
+    "recordTags": [],
+    "id": 1199,
+    "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
+    "createDate": 1633085066,
+    "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
+    "modifyDate": 1633085066,
+    "owners": [],
+    "isPrivate": false
+}

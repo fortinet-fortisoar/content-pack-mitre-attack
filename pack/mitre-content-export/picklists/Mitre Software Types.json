@@ -1,0 +1,33 @@
+{
+    "@context": "\/api\/3\/contexts\/PicklistName",
+    "@id": "\/api\/3\/picklist_names\/7d980087-e6a1-48da-ba00-82bd3dae67b9",
+    "@type": "PicklistName",
+    "name": "Mitre Software Types",
+    "system": false,
+    "picklists": [
+        {
+            "@id": "\/api\/3\/picklists\/525fae90-2293-497d-b4f6-c767796fe765",
+            "@type": "Picklist",
+            "itemValue": "Tool",
+            "orderIndex": 0,
+            "color": "#178a37",
+            "icon": null,
+            "listName": "\/api\/3\/picklist_names\/7d980087-e6a1-48da-ba00-82bd3dae67b9",
+            "uuid": "525fae90-2293-497d-b4f6-c767796fe765",
+            "id": 332
+        },
+        {
+            "@id": "\/api\/3\/picklists\/00746ab3-a4e1-41f1-984f-de27b251cdba",
+            "@type": "Picklist",
+            "itemValue": "Malware",
+            "orderIndex": 1,
+            "color": "#eb1010",
+            "icon": null,
+            "listName": "\/api\/3\/picklist_names\/7d980087-e6a1-48da-ba00-82bd3dae67b9",
+            "uuid": "00746ab3-a4e1-41f1-984f-de27b251cdba",
+            "id": 333
+        }
+    ],
+    "uuid": "7d980087-e6a1-48da-ba00-82bd3dae67b9",
+    "id": 56
+}

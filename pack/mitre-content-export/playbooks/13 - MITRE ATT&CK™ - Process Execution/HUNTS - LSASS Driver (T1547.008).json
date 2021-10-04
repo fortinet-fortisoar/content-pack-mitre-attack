@@ -1,0 +1,1044 @@
+{
+    "@type": "Workflow",
+    "triggerLimit": null,
+    "name": "HUNTS - LSASS Driver (T1547.008)",
+    "aliasName": null,
+    "tag": "ATT&CK, LSASS_Driver, Execution, Persistence",
+    "description": "Identifies process execution via loading an illegitimate LSASS driver (DLL). This technique can be used to execute a binary whenever LSASS executes.",
+    "isActive": false,
+    "debug": false,
+    "singleRecordExecution": false,
+    "remoteExecutableFlag": false,
+    "parameters": [
+        "sourceIP",
+        "destinationIP",
+        "processname",
+        "processID",
+        "processGUID",
+        "parentprocessname",
+        "parentprocessGUID",
+        "accountname",
+        "computername",
+        "commandline",
+        "sourcetool"
+    ],
+    "synchronous": false,
+    "lastModifyDate": 1633085062,
+    "collection": "\/api\/3\/workflow_collections\/9ecc64e1-cacd-4aac-b361-ad1b44117b44",
+    "versions": [],
+    "triggerStep": "\/api\/3\/workflow_steps\/8fd26452-ff9f-4694-8c49-fc2e34f19905",
+    "steps": [
+        {
+            "@type": "WorkflowStep",
+            "name": "Deduplicate Comments",
+            "description": null,
+            "arguments": {
+                "arguments": {
+                    "hunt_iri": "{{vars.input.records[0]['@id']}}"
+                },
+                "step_variables": [],
+                "workflowReference": "\/api\/3\/workflows\/3fd311be-a1c6-41c7-99a3-8794b33d8f8a"
+            },
+            "status": null,
+            "top": "352",
+            "left": "1820",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "uuid": "1435d96e-5802-45e4-9297-2c7d07a5c2df",
+            "id": 4754
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Get Results 1",
+            "description": null,
+            "arguments": {
+                "name": "Splunk",
+                "config": "55bf97af-75c2-45ca-ae75-f4d27220cc52",
+                "params": {
+                    "sid": "{'value': \"{{vars.steps.Splunk_query_for_illegitimate_DLL_load.data.sid}}\"}",
+                    "additional_args": "{\"a\":\"B\"}"
+                },
+                "version": "1.4.0",
+                "do_until": {
+                    "delay": "1",
+                    "retries": "300",
+                    "condition": "{{\"results\" in vars.result.data}}"
+                },
+                "connector": "splunk",
+                "operation": "get_results",
+                "operationTitle": "Get Results for a Search",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "288",
+            "left": "1246",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "uuid": "a56056d8-a2df-406f-9570-be46ce8e50fb",
+            "id": 4755
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Get Results 2",
+            "description": null,
+            "arguments": {
+                "name": "Splunk",
+                "config": "55bf97af-75c2-45ca-ae75-f4d27220cc52",
+                "params": {
+                    "sid": "{'value': \"{{vars.steps.Splunk_query_for_DLL_load_from_illegitimate_LSASS.data.sid}}\"}",
+                    "additional_args": "{\"a\":\"B\"}"
+                },
+                "version": "1.4.0",
+                "do_until": {
+                    "delay": "1",
+                    "retries": "300",
+                    "condition": "{{\"results\" in vars.result.data}}"
+                },
+                "connector": "splunk",
+                "operation": "get_results",
+                "operationTitle": "Get Results for a Search",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "212",
+            "left": "1247",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "uuid": "f4d44fd0-b6da-4e05-8b58-4b563753742a",
+            "id": 4756
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Set Splunk hunt times",
+            "description": null,
+            "arguments": {
+                "splunkHuntEnd": "{% if vars.input.records[0].huntEnd %}latest={{vars.input.records[0].huntEnd}}{% endif %}",
+                "splunkHuntStart": "earliest={{vars.input.records[0].huntStart}}"
+            },
+            "status": null,
+            "top": "170",
+            "left": "580",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "uuid": "ae1a83ab-1175-446b-b504-351da13a353e",
+            "id": 4757
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Get Results 3",
+            "description": null,
+            "arguments": {
+                "name": "Splunk",
+                "config": "55bf97af-75c2-45ca-ae75-f4d27220cc52",
+                "params": {
+                    "sid": "{'value': \"{{vars.steps.Splunk_query_for_illegitimate_LSASS.data.sid}}\"}",
+                    "additional_args": "{\"a\":\"B\"}"
+                },
+                "version": "1.4.0",
+                "do_until": {
+                    "delay": "1",
+                    "retries": "300",
+                    "condition": "{{\"results\" in vars.result.data}}"
+                },
+                "connector": "splunk",
+                "operation": "get_results",
+                "operationTitle": "Get Results for a Search",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "132",
+            "left": "1248",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "uuid": "1a9764f9-724b-4c7b-9e60-468d10b3f0b5",
+            "id": 4758
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Elastic query for illegitimate LSASS",
+            "description": null,
+            "arguments": {
+                "name": "ElasticSearch",
+                "config": "8d03a01d-1cef-40a8-992a-63d8de2b339f",
+                "params": {
+                    "index": "logstash-beats-*",
+                    "query": "event_type:sysmon AND event_id:\"1\" AND @timestamp:{ {{vars.elasticHuntStart}} TO {{vars.elasticHuntEnd}} } AND image_path:*lsass.exe NOT image_path:C\\:\\\\Windows\\\\System32\\\\lsass.exe NOT image_path:C\\:\\\\Windows\\\\SysWOW64\\\\lsass.exe",
+                    "run_as_user": ""
+                },
+                "version": "2.2.0",
+                "connector": "elasticsearch",
+                "operation": "execute_lucene_query",
+                "operationTitle": "Execute Lucene Query",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "420",
+            "left": "973",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "uuid": "412ebe7f-8538-4972-86d8-7cfcbf5bfffa",
+            "id": 4759
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Create and Link Elastic Alert 1",
+            "description": null,
+            "arguments": {
+                "for_each": {
+                    "item": "{{vars.steps.Elastic_query_for_illegitimate_DLL_load.data.hits.hits}}",
+                    "condition": ""
+                },
+                "arguments": {
+                    "MD5": "{{vars.item._source.event_data.Hashes.split(\"MD5=\")[1].split(',')[0]}}",
+                    "url": "",
+                    "source": "{{vars.item._source.source_name}}",
+                    "comment": "SIEM query indicated LSASS.exe attempted to load a DLL from a non-standard directory on {{vars.item._source.beat.hostname}} at {{vars.item._source.event_data.UtcTime}}.",
+                    "huntIRI": "{{vars.input.records[0]['@id']}}",
+                    "service": "",
+                    "filePath": "{{vars.item._source.image_path}}",
+                    "hostName": "{{vars.item._source.beat.hostname}}",
+                    "sourceIP": "null",
+                    "userName": "{{vars.item._source.username}}",
+                    "alertName": "ATT&CK-LSASS Driver-{{vars.item._source.event_data.ImageLoaded}} by LSASS",
+                    "epochTime": "{{ arrow.get(vars.item._source.event_data.UtcTime).timestamp }}",
+                    "eventName": "",
+                    "eventTime": "{{vars.item._source.event_data.UtcTime}}",
+                    "processID": "{{vars.item._source.event_data.ProcessId}}",
+                    "technique": "LSASS Driver-Illegitimate DLL Loaded",
+                    "sourceData": "{{vars.item}}",
+                    "sourceTool": "{{vars.item._source.source_name}}",
+                    "commandline": "{{vars.item._source.event_data.CommandLine}}",
+                    "description": "LSASS.exe attempted to execute a DLL file located in a nonstandard directory. This could be an attempt by an adversary in the network to execute their code to gain persistence or further access to the system. The DLL being loaded by LSASS.exe should be evaluated to determine its legitimacy.",
+                    "processGUID": "{{vars.item._source.event_data.ProcessGuid}}",
+                    "processName": "{{vars.item._source.image_path.split(\"\\\\\")[-1] }}",
+                    "registryKey": "",
+                    "sourceImage": "",
+                    "targetImage": "{{vars.item._source.event_data.ImageLoaded}}",
+                    "computerName": "{{vars.item._source.computer_name}}",
+                    "destinationIP": "null",
+                    "mitre_tech_id": "T1177",
+                    "parentProcess": "{{vars.item._source.parent_image_path}}",
+                    "scheduledTask": "",
+                    "bitstransferid": "",
+                    "parentProcessID": "{{vars.item._source.event_data.ParentProcessId}}",
+                    "bytestransferred": "",
+                    "registryKeyValue": "",
+                    "parentCommandLine": "{{vars.item._source.event_data.ParentCommandLine}}",
+                    "decodedCommandLine": ""
+                },
+                "apply_async": false,
+                "step_variables": [],
+                "workflowReference": "\/api\/3\/workflows\/bf7d418b-7ff3-44c1-b473-90d0a03c4641"
+            },
+            "status": null,
+            "top": "580",
+            "left": "1520",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "uuid": "cdf71ec6-ecf3-4a19-96c7-aba3d607c1fa",
+            "id": 4760
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Which SIEM",
+            "description": null,
+            "arguments": {
+                "conditions": [
+                    {
+                        "step_iri": "\/api\/3\/workflow_steps\/ebc47f27-dfef-411e-8b98-f509e3b2699e",
+                        "condition": "{{ vars.input.params.siem.itemValue == \"Elastic\" }}"
+                    },
+                    {
+                        "step_iri": "\/api\/3\/workflow_steps\/ae1a83ab-1175-446b-b504-351da13a353e",
+                        "condition": "{{ vars.input.params.siem.itemValue == \"Splunk\" }}"
+                    }
+                ]
+            },
+            "status": null,
+            "top": "320",
+            "left": "288",
+            "stepType": "\/api\/3\/workflow_step_types\/12254cf5-5db7-4b1a-8cb1-3af081924b28",
+            "uuid": "2c4aaf41-ad97-4525-96ab-a3ac3a9424fc",
+            "id": 4761
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Elastic query for illegitimate DLL load",
+            "description": null,
+            "arguments": {
+                "name": "ElasticSearch",
+                "config": "8d03a01d-1cef-40a8-992a-63d8de2b339f",
+                "params": {
+                    "index": "logstash-beats-*",
+                    "query": "event_type:sysmon AND event_id:\"7\" AND @timestamp:{ {{vars.elasticHuntStart}} TO {{vars.elasticHuntEnd}} } AND (image_path:\"C:\\\\Windows\\\\System32\\\\lsass.exe\" OR image_path:\"C:\\\\Windows\\\\SysWOW64\\\\lsass.exe\") NOT event_data.ImageLoaded:C\\:\\\\Windows\\\\System32\\\\*  NOT event_data.ImageLoaded:C\\:\\\\Windows\\\\SysWOW64\\\\* NOT event_data.ImageLoaded:C\\:\\\\Program\\ Files\\\\* NOT event_data.ImageLoaded:C\\:\\\\Program\\ Files\\ \\(x86\\)\\\\*",
+                    "run_as_user": ""
+                },
+                "version": "2.2.0",
+                "connector": "elasticsearch",
+                "operation": "execute_lucene_query",
+                "operationTitle": "Execute Lucene Query",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "580",
+            "left": "973",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "uuid": "c4587332-e967-466e-a06a-801f3fb5a8a6",
+            "id": 4762
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Create and Link Elastic Alert 3",
+            "description": null,
+            "arguments": {
+                "for_each": {
+                    "item": "{{vars.steps.Elastic_query_for_illegitimate_LSASS.data.hits.hits}}",
+                    "condition": ""
+                },
+                "arguments": {
+                    "MD5": "{{vars.item._source.event_data.Hashes.split(\"MD5=\")[1].split(',')[0]}}",
+                    "url": "",
+                    "source": "{{vars.item._source.source_name}}",
+                    "comment": "SIEM query indicated that a file named LSASS.exe was executed from a nonstandard directory on {{vars.item._source.beat.hostname}} at {{vars.item._source.event_data.UtcTime}}.",
+                    "huntIRI": "{{vars.input.records[0]['@id']}}",
+                    "service": "",
+                    "filePath": "{{vars.item._source.image_path}}",
+                    "hostName": "{{vars.item._source.beat.hostname}}",
+                    "sourceIP": "",
+                    "userName": "{{vars.item._source.username}}",
+                    "alertName": "ATT&CK-LSASS Driver-Lsass.exe loaded from {{vars.item._source.image_path | regex_search('[^\\*?\"<>|\\r\\n]+(?=lsass\\.exe)')}}",
+                    "epochTime": "{{ arrow.get(vars.item._source.event_data.UtcTime).timestamp }}",
+                    "eventName": "",
+                    "eventTime": "{{vars.item._source.event_data.UtcTime}}",
+                    "processID": "{{vars.item._source.event_data.ProcessId}}",
+                    "technique": "LSASS Driver-Illegitimate LSASS Executed",
+                    "sourceData": "{{vars.item}}",
+                    "sourceTool": "{{vars.item._source.source_name}}",
+                    "commandline": "{{vars.item._source.event_data.CommandLine}}",
+                    "description": "A process named LSASS.exe was invoked from a nonstandard directory. This may be an attempt by an adversary to execute their own code while masquerading as a legitimate process. The suspicious LSASS.exe executable should be investigated for indicators of malicious activity.",
+                    "processGUID": "{{vars.item._source.event_data.ProcessGuid}}",
+                    "processName": "{{vars.item._source.image_path.split(\"\\\\\")[-1] }}",
+                    "registryKey": "",
+                    "sourceImage": "",
+                    "targetImage": "",
+                    "computerName": "{{vars.item._source.computer_name}}",
+                    "destinationIP": "",
+                    "mitre_tech_id": "T1177",
+                    "parentProcess": "{{vars.item._source.parent_image_path}}",
+                    "scheduledTask": "",
+                    "bitstransferid": "",
+                    "parentProcessID": "{{vars.item._source.event_data.ParentProcessId}}",
+                    "bytestransferred": "",
+                    "registryKeyValue": "",
+                    "parentCommandLine": "{{vars.item._source.event_data.ParentCommandLine}}",
+                    "decodedCommandLine": ""
+                },
+                "apply_async": false,
+                "step_variables": [],
+                "workflowReference": "\/api\/3\/workflows\/bf7d418b-7ff3-44c1-b473-90d0a03c4641"
+            },
+            "status": null,
+            "top": "420",
+            "left": "1520",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "uuid": "3e42a7f8-5a3e-4357-85f9-d1abe824ff2c",
+            "id": 4763
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Hunt for LSASS Driver",
+            "description": null,
+            "arguments": {
+                "route": "35d8f364-a53d-43ae-9024-a075c7778d95",
+                "title": "T1547.008 - Hunt for LSASS Driver",
+                "resources": [
+                    "hunt"
+                ],
+                "inputVariables": [
+                    {
+                        "name": "siem",
+                        "type": "picklists",
+                        "label": "SIEM",
+                        "title": "Picklist",
+                        "usable": true,
+                        "tooltip": "Choose your SIEM",
+                        "dataType": "picklist",
+                        "formType": "picklist",
+                        "required": true,
+                        "_expanded": true,
+                        "mmdUpdate": true,
+                        "collection": false,
+                        "dataSource": {
+                            "model": "picklists",
+                            "query": {
+                                "sort": [
+                                    {
+                                        "field": "orderIndex",
+                                        "direction": "ASC"
+                                    }
+                                ],
+                                "logic": "AND",
+                                "filters": [
+                                    {
+                                        "field": "listName__name",
+                                        "value": "SIEMs",
+                                        "operator": "eq"
+                                    }
+                                ]
+                            },
+                            "displayConditions": {
+                                "876c1483-416b-4d2f-8138-15769ae16d5c": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "bcebcab1-3f93-468a-9f3f-91e5c511a0b5": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                }
+                            }
+                        },
+                        "searchable": false,
+                        "templateUrl": "app\/components\/form\/fields\/typeahead.html",
+                        "_nameTouched": true,
+                        "defaultValue": {
+                            "id": 280,
+                            "@id": "\/api\/3\/picklists\/876c1483-416b-4d2f-8138-15769ae16d5c",
+                            "icon": null,
+                            "@type": "Picklist",
+                            "color": null,
+                            "display": "Elastic",
+                            "listName": "\/api\/3\/picklist_names\/98830189-afff-40e6-bed1-94012551dc67",
+                            "itemValue": "Elastic",
+                            "orderIndex": 1
+                        },
+                        "displayTemplate": "{{ itemValue }}",
+                        "lengthConstraint": false,
+                        "allowedEncryption": false,
+                        "allowedGridColumn": true,
+                        "useRecordFieldDefault": false
+                    }
+                ],
+                "step_variables": {
+                    "input": {
+                        "params": {
+                            "siem": "{{vars.request.data[\"siem\"]}}",
+                            "sourceIP": "{{ vars.sourceIP }}",
+                            "processID": "{{ vars.processID }}",
+                            "sourcetool": "{{ vars.sourcetool }}",
+                            "accountname": "{{ vars.accountname }}",
+                            "commandline": "{{ vars.commandline }}",
+                            "processGUID": "{{ vars.processGUID }}",
+                            "processname": "{{ vars.processname }}",
+                            "computername": "{{ vars.computername }}",
+                            "destinationIP": "{{ vars.destinationIP }}",
+                            "parentprocessGUID": "{{ vars.parentprocessGUID }}",
+                            "parentprocessname": "{{ vars.parentprocessname }}"
+                        },
+                        "records": "{{vars.input.records}}"
+                    }
+                },
+                "_promptexpanded": true,
+                "displayConditions": {
+                    "hunt": {
+                        "sort": [],
+                        "limit": 30,
+                        "logic": "AND",
+                        "filters": []
+                    },
+                    "alerts": {
+                        "sort": [],
+                        "limit": 30,
+                        "logic": "AND",
+                        "filters": []
+                    }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": false,
+                "singleRecordExecution": false
+            },
+            "status": null,
+            "top": "320",
+            "left": "13",
+            "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+            "uuid": "8fd26452-ff9f-4694-8c49-fc2e34f19905",
+            "id": 4764
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Splunk query for illegitimate LSASS",
+            "description": null,
+            "arguments": {
+                "name": "Splunk",
+                "config": "55bf97af-75c2-45ca-ae75-f4d27220cc52",
+                "params": {
+                    "query": "index=sysmon EventCode=1 {{vars.splunkHuntStart}} {{vars.splunkHuntEnd}} Image=\"*lsass.exe\" Image!=\"C:\\\\Windows\\\\System32\\\\lsass.exe\" Image!=\"C:\\\\Windows\\\\SysWOW64\\\\lsass.exe\"   | table  host Image MD5 ParentImage User CommandLine process_exec vendor_product TimeCreated ParentProcessId ProcessId ParentCommandLine ProcessGuid UtcTime EventChannel Computer",
+                    "exec_mode": "",
+                    "auto_cancel": "",
+                    "latest_time": "",
+                    "earliest_time": "",
+                    "additional_search_args": "{\"A\":\"B\"}"
+                },
+                "version": "1.5.0",
+                "connector": "splunk",
+                "operation": "invoke_search",
+                "operationTitle": "Invoke Search",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "132",
+            "left": "960",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "uuid": "0794dd00-d023-4318-a505-e938614b976b",
+            "id": 4765
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Splunk query for DLL load from illegitimate LSASS",
+            "description": null,
+            "arguments": {
+                "name": "Splunk",
+                "config": "55bf97af-75c2-45ca-ae75-f4d27220cc52",
+                "params": {
+                    "query": "index=sysmon EventCode=7 {{vars.splunkHuntStart}} {{vars.splunkHuntEnd}} Image=\"*lsass.exe\" Image!=\"C:\\\\Windows\\\\System32\\\\*\" Image!=\"C:\\\\Windows\\\\SysWOW64\\\\*\" ImageLoaded!=\"C:\\\\Windows\\\\System32\\\\*\" ImageLoaded!=\"C:\\\\Windows\\\\SysWOW64\\\\*\" ImageLoaded!=\"C:\\\\Program Files\\\\*\" ImageLoaded!=\"C:\\\\Program Files (x86)\\\\*\"  | table host Image MD5 ParentImage User CommandLine process_exec vendor_product TimeCreated ParentProcessId ProcessId ParentCommandLine Image_File_Name UtcTime EventChannel ProcessGuid Computer",
+                    "exec_mode": "",
+                    "auto_cancel": "",
+                    "latest_time": "",
+                    "earliest_time": "",
+                    "additional_search_args": "{\"a\":\"B\"}"
+                },
+                "version": "1.5.0",
+                "connector": "splunk",
+                "operation": "invoke_search",
+                "operationTitle": "Invoke Search",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "213",
+            "left": "960",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "uuid": "786ee78a-efe9-4571-97a7-43f539c96058",
+            "id": 4766
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Create and Link Elastic Alert 2",
+            "description": null,
+            "arguments": {
+                "for_each": {
+                    "item": "{{vars.steps.Elastic_query_for_DLL_load_from_illegitimate_LSASS.data.hits.hits}}",
+                    "condition": ""
+                },
+                "arguments": {
+                    "MD5": "{{vars.item._source.event_data.Hashes.split(\"MD5=\")[1].split(',')[0]}}",
+                    "url": "",
+                    "source": "{{vars.item._source.source_name}}",
+                    "comment": "SIEM query indicated that a file named LSASS.exe was executed from a nonstandard directory and attempted to load a DLL from a non-standard directory on {{vars.item._source.beat.hostname}} at {{vars.item._source.event_data.UtcTime}}.",
+                    "huntIRI": "{{vars.input.records[0]['@id']}}",
+                    "service": "",
+                    "filePath": "{{vars.item._source.image_path}}",
+                    "hostName": "{{vars.item._source.beat.hostname}}",
+                    "sourceIP": "",
+                    "userName": "{{vars.item._source.username}}",
+                    "alertName": "ATT&CK-LSASS Driver-{{vars.item._source.event_data.Image}} loaded as illegitimate Lsass",
+                    "epochTime": "{{ arrow.get(vars.item._source.event_data.UtcTime).timestamp }}",
+                    "eventName": "",
+                    "eventTime": "{{vars.item._source.event_data.UtcTime}}",
+                    "processID": "{{vars.item._source.event_data.ProcessId}}",
+                    "technique": "LSASS Driver-DLL Loaded by Illegitimate LSASS",
+                    "sourceData": "{{vars.item}}",
+                    "sourceTool": "{{vars.item._source.source_name}}",
+                    "commandline": "{{vars.item._source.event_data.CommandLine}}",
+                    "description": "A process named LSASS.exe was invoked from a nonstandard directory and attempted to load a DLL file. This may be an attempt by an adversary to execute their own code while masquerading as a legitimate process. The suspicious LSASS.exe process and the DLL file it attempted to execute should be investigated.",
+                    "processGUID": "{{vars.item._source.event_data.ProcessGuid}}",
+                    "processName": "{{vars.item._source.image_path.split(\"\\\\\")[-1] }}",
+                    "registryKey": "",
+                    "sourceImage": "",
+                    "targetImage": "{{vars.item._source.event_data.ImageLoaded}}",
+                    "computerName": "{{vars.item._source.computer_name}}",
+                    "destinationIP": "",
+                    "mitre_tech_id": "T1177",
+                    "parentProcess": "{{vars.item._source.parent_image_path}}",
+                    "scheduledTask": "",
+                    "bitstransferid": "",
+                    "parentProcessID": "{{vars.item._source.event_data.ParentProcessId}}",
+                    "bytestransferred": "",
+                    "registryKeyValue": "",
+                    "parentCommandLine": "{{vars.item._source.event_data.ParentCommandLine}}",
+                    "decodedCommandLine": ""
+                },
+                "apply_async": false,
+                "step_variables": [],
+                "workflowReference": "\/api\/3\/workflows\/bf7d418b-7ff3-44c1-b473-90d0a03c4641"
+            },
+            "status": null,
+            "top": "500",
+            "left": "1520",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "uuid": "b56b1464-3744-43f8-8a9d-060306fc1935",
+            "id": 4767
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Create and Link Alert 1",
+            "description": null,
+            "arguments": {
+                "for_each": {
+                    "item": "{{vars.steps.Get_Results_1.data.results}}",
+                    "condition": ""
+                },
+                "arguments": {
+                    "MD5": "{{vars.item.MD5}}",
+                    "url": "",
+                    "source": "{{vars.item.EventChannel}}",
+                    "comment": "SIEM query indicated LSASS.exe attempted to load a DLL from a non-standard directory on {{vars.item.host}} at {{vars.item.UtcTime}}.",
+                    "huntIRI": "{{vars.input.records[0]['@id']}}",
+                    "service": "",
+                    "filePath": "{{vars.item.Image}}",
+                    "hostName": "{{vars.item.host}}",
+                    "sourceIP": "null",
+                    "userName": "{{vars.item.User}}",
+                    "alertName": "ATT&CK-LSASS Driver-{{vars.item.ImageLoaded}} by LSASS",
+                    "epochTime": "{{ arrow.get(vars.item.UtcTime).timestamp }}",
+                    "eventName": "",
+                    "eventTime": "{{vars.item.UtcTime}}",
+                    "processID": "{{vars.item.ProcessId}}",
+                    "technique": "LSASS Driver-Illegitimate DLL Loaded",
+                    "sourceData": "{{vars.item}}",
+                    "sourceTool": "{{vars.item.EventChannel}}",
+                    "commandline": "{{vars.item.CommandLine}}",
+                    "description": "LSASS.exe attempted to execute a DLL file located in a nonstandard directory. This could be an attempt by an adversary in the network to execute their code to gain persistence or further access to the system. The DLL being loaded by LSASS.exe should be evaluated to determine its legitimacy.",
+                    "processGUID": "{{vars.item.ProcessGuid}}",
+                    "processName": "{{vars.item.process_exec}}",
+                    "registryKey": "",
+                    "sourceImage": "",
+                    "targetImage": "{{vars.item.ImageLoaded}}",
+                    "computerName": "{{vars.item.Computer}}",
+                    "destinationIP": "null",
+                    "mitre_tech_id": "T1177",
+                    "parentProcess": "{{vars.item.ParentImage}}",
+                    "scheduledTask": "",
+                    "bitstransferid": "",
+                    "parentProcessID": "{{vars.item.ParentProcessId}}",
+                    "bytestransferred": "",
+                    "registryKeyValue": "",
+                    "parentCommandLine": "{{vars.item.ParentCommandLine}}",
+                    "decodedCommandLine": ""
+                },
+                "apply_async": false,
+                "step_variables": [],
+                "workflowReference": "\/api\/3\/workflows\/bf7d418b-7ff3-44c1-b473-90d0a03c4641"
+            },
+            "status": null,
+            "top": "288",
+            "left": "1527",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "uuid": "290f40b2-8318-4a2d-838f-8a374732c2b7",
+            "id": 4768
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Elastic query for DLL load from illegitimate LSASS",
+            "description": null,
+            "arguments": {
+                "name": "ElasticSearch",
+                "config": "8d03a01d-1cef-40a8-992a-63d8de2b339f",
+                "params": {
+                    "index": "logstash-beats-*",
+                    "query": "event_type:sysmon AND event_id:\"7\" AND @timestamp:{ {{vars.elasticHuntStart}} TO {{vars.elasticHuntEnd}} } AND image_path.keyword:*lsass.exe NOT image_path.keyword:C\\:\\\\Windows\\\\*ystem32\\\\* NOT image_path.keyword:C\\:\\\\Windows\\\\SysWOW64\\\\* NOT event_data.ImageLoaded.keyword:C\\:\\\\Windows\\\\*ystem32\\\\* NOT event_data.ImageLoaded:.keywordC\\:\\\\Windows\\\\SysWOW64\\\\* NOT event_data.ImageLoaded.keyword:C\\:\\\\Program\\ Files\\\\* NOT event_data.ImageLoaded.keyword:C\\:\\\\Program\\ Files\\ \\(x86\\)\\\\*",
+                    "run_as_user": ""
+                },
+                "version": "2.2.0",
+                "connector": "elasticsearch",
+                "operation": "execute_lucene_query",
+                "operationTitle": "Execute Lucene Query",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "500",
+            "left": "973",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "uuid": "fa92b222-56ea-44ea-b990-30db0584d80b",
+            "id": 4769
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Set Elastic hunt times",
+            "description": null,
+            "arguments": {
+                "elasticHuntEnd": "{% if vars.input.records[0].huntEnd %} {{ arrow.get(vars.input.records[0].huntEnd).format('YYYY-MM-DDTHH:mm:ss.SSSSSSSSSZ') }} {% else %} now {% endif %}",
+                "elasticHuntStart": "{{ arrow.get(vars.input.records[0].huntStart).format('YYYY-MM-DDTHH:mm:ss.SSSSSSSSSZ') }}"
+            },
+            "status": null,
+            "top": "500",
+            "left": "580",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "uuid": "ebc47f27-dfef-411e-8b98-f509e3b2699e",
+            "id": 4770
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Create and Link Alert 2",
+            "description": null,
+            "arguments": {
+                "for_each": {
+                    "item": "{{vars.steps.Get_Results_2.data.results}}",
+                    "condition": ""
+                },
+                "arguments": {
+                    "MD5": "{{vars.item.MD5}}",
+                    "url": "",
+                    "source": "{{vars.item.EventChannel}}",
+                    "comment": "SIEM query indicated that a file named LSASS.exe was executed from a nonstandard directory and attempted to load a DLL from a non-standard directory on {{vars.item.host}} at {{vars.item.UtcTime}}.",
+                    "huntIRI": "{{vars.input.records[0]['@id']}}",
+                    "service": "",
+                    "filePath": "{{vars.item.Image}}",
+                    "hostName": "{{vars.item.host}}",
+                    "sourceIP": "null",
+                    "userName": "{{vars.item.User}}",
+                    "alertName": "ATT&CK-LSASS Driver-{{vars.item.Image}} loaded by illegitimate Lsass",
+                    "epochTime": "{{ arrow.get(vars.item.UtcTime).timestamp }}",
+                    "eventName": "",
+                    "eventTime": "{{vars.item.UtcTime}}",
+                    "processID": "{{vars.item.ProcessId}}",
+                    "technique": "LSASS Driver-DLL Loaded by Illegitimate LSASS",
+                    "sourceData": "{{vars.item}}",
+                    "sourceTool": "{{vars.item.EventChannel}}",
+                    "commandline": "{{vars.item.CommandLine}}",
+                    "description": "A process named LSASS.exe was invoked from a nonstandard directory and attempted to load a DLL file. This may be an attempt by an adversary to execute their own code while masquerading as a legitimate process. The suspicious LSASS.exe process and the DLL file it attempted to execute should be investigated.",
+                    "processGUID": "{{vars.item.ProcessGuid}}",
+                    "processName": "{{vars.item.process_exec}}",
+                    "registryKey": "",
+                    "sourceImage": "",
+                    "targetImage": "{{vars.item.ImageLoaded}}",
+                    "computerName": "{{vars.item.Computer}}",
+                    "destinationIP": "null",
+                    "mitre_tech_id": "T1177",
+                    "parentProcess": "{{vars.item.ParentImage}}",
+                    "scheduledTask": "",
+                    "bitstransferid": "",
+                    "parentProcessID": "{{vars.item.ParentProcessId}}",
+                    "bytestransferred": "",
+                    "registryKeyValue": "",
+                    "parentCommandLine": "{{vars.item.ParentCommandLine}}",
+                    "decodedCommandLine": ""
+                },
+                "apply_async": false,
+                "step_variables": [],
+                "workflowReference": "\/api\/3\/workflows\/bf7d418b-7ff3-44c1-b473-90d0a03c4641"
+            },
+            "status": null,
+            "top": "211",
+            "left": "1528",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "uuid": "7b090d4c-739c-4ddf-a5cc-258615042fa2",
+            "id": 4771
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Splunk query for illegitimate DLL load",
+            "description": null,
+            "arguments": {
+                "name": "Splunk",
+                "config": "55bf97af-75c2-45ca-ae75-f4d27220cc52",
+                "params": {
+                    "query": "index=sysmon EventCode=7 {{vars.splunkHuntStart}} {{vars.splunkHuntEnd}} (Image=\"C:\\\\Windows\\\\System32\\\\lsass.exe\" OR Image=\"C:\\\\Windows\\\\SysWOW64\\\\lsass.exe\") ImageLoaded!=\"C:\\\\Windows\\\\System32\\\\*\" ImageLoaded!=\"C:\\\\Windows\\\\SysWOW64\\\\*\" ImageLoaded!=\"C:\\\\Program Files\\\\*\" ImageLoaded!=\"C:\\\\Program Files (x86)\\\\*\" | table  host Image MD5 ParentImage User CommandLine process_exec vendor_product TimeCreated ParentProcessId ProcessId ParentCommandLine Image_File_Name UtcTime EventChannel ProcessGuid Computer",
+                    "exec_mode": "",
+                    "auto_cancel": "",
+                    "latest_time": "",
+                    "earliest_time": "",
+                    "additional_search_args": "{\"a\":\"B\"}"
+                },
+                "version": "1.5.0",
+                "connector": "splunk",
+                "operation": "invoke_search",
+                "operationTitle": "Invoke Search",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "289",
+            "left": "960",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "uuid": "cda69215-9bc9-4b20-b111-c6e1d68ccc6a",
+            "id": 4772
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Create and Link Alert 3",
+            "description": null,
+            "arguments": {
+                "for_each": {
+                    "item": "{{vars.steps.Get_Results_3.data.results}}",
+                    "condition": ""
+                },
+                "arguments": {
+                    "MD5": "{{vars.item.MD5}}",
+                    "url": "",
+                    "source": "{{vars.item.EventChannel}}",
+                    "comment": "SIEM query indicated that a file named LSASS.exe was executed from a nonstandard directory on {{vars.item.host}} at {{vars.item.UtcTime}}.",
+                    "huntIRI": "{{vars.input.records[0]['@id']}}",
+                    "service": "",
+                    "filePath": "{{vars.item.Image}}",
+                    "hostName": "{{vars.item.host}}",
+                    "sourceIP": "null",
+                    "userName": "{{vars.item.User}}",
+                    "alertName": "ATT&CK-LSASS Driver-Lsass.exe loaded from {{vars.item.Image | regex_search('[^\\*?\"<>|\\r\\n]+(?=lsass\\.exe)')}}",
+                    "epochTime": "{{ arrow.get(vars.item.UtcTime).timestamp }}",
+                    "eventName": "",
+                    "eventTime": "{{vars.item.UtcTime}}",
+                    "processID": "{{vars.item.ProcessId}}",
+                    "technique": "LSASS Driver-Illegitimate LSASS Executed",
+                    "sourceData": "{{vars.item}}",
+                    "sourceTool": "{{vars.item.EventChannel}}",
+                    "commandline": "{{vars.item.CommandLine}}",
+                    "description": "A process named LSASS.exe was invoked from a nonstandard directory. This may be an attempt by an adversary to execute their own code while masquerading as a legitimate process. The suspicious LSASS.exe executable should be investigated for indicators of malicious activity.",
+                    "processGUID": "{{vars.item.ProcessGuid}}",
+                    "processName": "{{vars.item.process_exec}}",
+                    "registryKey": "",
+                    "sourceImage": "",
+                    "targetImage": "",
+                    "computerName": "{{vars.item.Computer}}",
+                    "destinationIP": "null",
+                    "mitre_tech_id": "T1177",
+                    "parentProcess": "{{vars.item.ParentImage}}",
+                    "scheduledTask": "",
+                    "bitstransferid": "",
+                    "parentProcessID": "{{vars.item.ParentProcessId}}",
+                    "bytestransferred": "",
+                    "registryKeyValue": "",
+                    "parentCommandLine": "{{vars.item.ParentCommandLine}}",
+                    "decodedCommandLine": ""
+                },
+                "apply_async": false,
+                "step_variables": [],
+                "workflowReference": "\/api\/3\/workflows\/bf7d418b-7ff3-44c1-b473-90d0a03c4641"
+            },
+            "status": null,
+            "top": "129",
+            "left": "1528",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "uuid": "4be8d38b-533c-4325-a49d-25f26419e1c9",
+            "id": 4773
+        }
+    ],
+    "routes": [
+        {
+            "@type": "WorkflowRoute",
+            "name": "Set Elastic hunt times -> Copy  of Copy  of a",
+            "targetStep": "\/api\/3\/workflow_steps\/c4587332-e967-466e-a06a-801f3fb5a8a6",
+            "sourceStep": "\/api\/3\/workflow_steps\/ebc47f27-dfef-411e-8b98-f509e3b2699e",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "3f2cff69-a156-4ed9-9c04-d814aa815661"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Which SIEM -> Set Elastic hunt times",
+            "targetStep": "\/api\/3\/workflow_steps\/ebc47f27-dfef-411e-8b98-f509e3b2699e",
+            "sourceStep": "\/api\/3\/workflow_steps\/2c4aaf41-ad97-4525-96ab-a3ac3a9424fc",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "d4b51768-3d9f-408d-9bc1-9e6a6faf5387"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Set Splunk hunt times -> Splunk query for illegitimate DLL load",
+            "targetStep": "\/api\/3\/workflow_steps\/cda69215-9bc9-4b20-b111-c6e1d68ccc6a",
+            "sourceStep": "\/api\/3\/workflow_steps\/ae1a83ab-1175-446b-b504-351da13a353e",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "e99b1043-9f64-4c39-9369-c36ad7d340b3"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Elastic query for illegitimate DLL load -> Copy  of Copy  of Create and Link Elastic Alert 3",
+            "targetStep": "\/api\/3\/workflow_steps\/cdf71ec6-ecf3-4a19-96c7-aba3d607c1fa",
+            "sourceStep": "\/api\/3\/workflow_steps\/c4587332-e967-466e-a06a-801f3fb5a8a6",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "233fabba-0b8b-4d70-bc6d-7ef280a40fe7"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Create and Link Alert 3 -> Deduplicate Comments",
+            "targetStep": "\/api\/3\/workflow_steps\/1435d96e-5802-45e4-9297-2c7d07a5c2df",
+            "sourceStep": "\/api\/3\/workflow_steps\/4be8d38b-533c-4325-a49d-25f26419e1c9",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "4f467b7f-cd3c-44e1-984d-c02c3dcf3038"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Elastic query for DLL load from illegitimate LSASS -> Copy  of Create and Link Elastic Alert 3",
+            "targetStep": "\/api\/3\/workflow_steps\/b56b1464-3744-43f8-8a9d-060306fc1935",
+            "sourceStep": "\/api\/3\/workflow_steps\/fa92b222-56ea-44ea-b990-30db0584d80b",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "b912985b-9589-4a00-a11a-154f80d6ae81"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Get Results for Sysmon Regsvr32 DLL Load -> Copy  of Create Splunk Alert",
+            "targetStep": "\/api\/3\/workflow_steps\/7b090d4c-739c-4ddf-a5cc-258615042fa2",
+            "sourceStep": "\/api\/3\/workflow_steps\/f4d44fd0-b6da-4e05-8b58-4b563753742a",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "23a5f1cc-1430-4100-8f35-ce4e2ad3f09e"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Create and Link Elastic Alert 3 -> Deduplicate Comments",
+            "targetStep": "\/api\/3\/workflow_steps\/1435d96e-5802-45e4-9297-2c7d07a5c2df",
+            "sourceStep": "\/api\/3\/workflow_steps\/3e42a7f8-5a3e-4357-85f9-d1abe824ff2c",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "668d598d-0545-405c-8940-be6c93e35406"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Copy  of Create and Link Elastic Alert 3 -> Deduplicate Comments",
+            "targetStep": "\/api\/3\/workflow_steps\/1435d96e-5802-45e4-9297-2c7d07a5c2df",
+            "sourceStep": "\/api\/3\/workflow_steps\/b56b1464-3744-43f8-8a9d-060306fc1935",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "00905ad4-d956-44dc-b883-37cfbd57dfec"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Splunk query for Regsvr32 DLL Load -> Copy  of Get Results for Sysmon Regsvr32 Child",
+            "targetStep": "\/api\/3\/workflow_steps\/f4d44fd0-b6da-4e05-8b58-4b563753742a",
+            "sourceStep": "\/api\/3\/workflow_steps\/786ee78a-efe9-4571-97a7-43f539c96058",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "5e503c1a-45ad-4f1f-9f29-b4c3bab2e112"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Copy  of Copy  of Create and Link Elastic Alert 3 -> Deduplicate Comments",
+            "targetStep": "\/api\/3\/workflow_steps\/1435d96e-5802-45e4-9297-2c7d07a5c2df",
+            "sourceStep": "\/api\/3\/workflow_steps\/cdf71ec6-ecf3-4a19-96c7-aba3d607c1fa",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "e0849293-5af4-41a9-aa6b-f0855f192ff9"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Hunt for LSASS Driver -> Which SIEM",
+            "targetStep": "\/api\/3\/workflow_steps\/2c4aaf41-ad97-4525-96ab-a3ac3a9424fc",
+            "sourceStep": "\/api\/3\/workflow_steps\/8fd26452-ff9f-4694-8c49-fc2e34f19905",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "196f4181-b445-4923-8259-d6fd0bd00e67"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Create and Link Alert 2 -> Deduplicate Comments",
+            "targetStep": "\/api\/3\/workflow_steps\/1435d96e-5802-45e4-9297-2c7d07a5c2df",
+            "sourceStep": "\/api\/3\/workflow_steps\/7b090d4c-739c-4ddf-a5cc-258615042fa2",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "cbf78eb3-ed02-480c-95c4-41056a096da9"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Set Elastic hunt times -> a",
+            "targetStep": "\/api\/3\/workflow_steps\/412ebe7f-8538-4972-86d8-7cfcbf5bfffa",
+            "sourceStep": "\/api\/3\/workflow_steps\/ebc47f27-dfef-411e-8b98-f509e3b2699e",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "bd51a202-dd6e-476a-9fb8-3445dee19414"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Splunk query for illegitimate LSASS -> Copy  of Get Results 2",
+            "targetStep": "\/api\/3\/workflow_steps\/1a9764f9-724b-4c7b-9e60-468d10b3f0b5",
+            "sourceStep": "\/api\/3\/workflow_steps\/0794dd00-d023-4318-a505-e938614b976b",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "e7b03bc3-890c-4ebc-beed-ffa6b41b2d75"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Which SIEM -> Set Splunk hunt times",
+            "targetStep": "\/api\/3\/workflow_steps\/ae1a83ab-1175-446b-b504-351da13a353e",
+            "sourceStep": "\/api\/3\/workflow_steps\/2c4aaf41-ad97-4525-96ab-a3ac3a9424fc",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "89904a9c-6483-4034-a69a-98b6199abe64"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Set Elastic hunt times -> Copy  of a",
+            "targetStep": "\/api\/3\/workflow_steps\/fa92b222-56ea-44ea-b990-30db0584d80b",
+            "sourceStep": "\/api\/3\/workflow_steps\/ebc47f27-dfef-411e-8b98-f509e3b2699e",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "225f4e7f-9976-4e9e-824a-9ea69ceafaff"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Splunk query for Sysmon CMSTP -> Get Results for Sysmon CMSTP",
+            "targetStep": "\/api\/3\/workflow_steps\/a56056d8-a2df-406f-9570-be46ce8e50fb",
+            "sourceStep": "\/api\/3\/workflow_steps\/cda69215-9bc9-4b20-b111-c6e1d68ccc6a",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "2a719755-dbe9-45fa-b151-a57d4ab73352"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Get Results for Sysmon Regsvr32 Child -> Create Splunk Alert",
+            "targetStep": "\/api\/3\/workflow_steps\/290f40b2-8318-4a2d-838f-8a374732c2b7",
+            "sourceStep": "\/api\/3\/workflow_steps\/a56056d8-a2df-406f-9570-be46ce8e50fb",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "5b3a4990-abc3-46a7-b9a4-2a977922e301"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Elastic query for illegitimate LSASS -> Copy 1 of Create and Link Alert 3",
+            "targetStep": "\/api\/3\/workflow_steps\/3e42a7f8-5a3e-4357-85f9-d1abe824ff2c",
+            "sourceStep": "\/api\/3\/workflow_steps\/412ebe7f-8538-4972-86d8-7cfcbf5bfffa",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "139bfa5d-ec62-485d-ac72-f3c89e3ac566"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Set Splunk hunt times -> Splunk query for illegitimate LSASS",
+            "targetStep": "\/api\/3\/workflow_steps\/0794dd00-d023-4318-a505-e938614b976b",
+            "sourceStep": "\/api\/3\/workflow_steps\/ae1a83ab-1175-446b-b504-351da13a353e",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "805c3d8a-921e-415d-8f69-a4f19d6002fc"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Set Splunk hunt times -> Splunk query for DLL load from illegitimate LSASS",
+            "targetStep": "\/api\/3\/workflow_steps\/786ee78a-efe9-4571-97a7-43f539c96058",
+            "sourceStep": "\/api\/3\/workflow_steps\/ae1a83ab-1175-446b-b504-351da13a353e",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "4e059a91-a834-41eb-9f4f-c41753dc556a"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Copy  of Get Results 3 -> Copy  of Copy  of Create Splunk Alert",
+            "targetStep": "\/api\/3\/workflow_steps\/4be8d38b-533c-4325-a49d-25f26419e1c9",
+            "sourceStep": "\/api\/3\/workflow_steps\/1a9764f9-724b-4c7b-9e60-468d10b3f0b5",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "07a86ac2-f317-40b4-9aec-1de4852a5188"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Create and Link Alert 1 -> Deduplicate Comments",
+            "targetStep": "\/api\/3\/workflow_steps\/1435d96e-5802-45e4-9297-2c7d07a5c2df",
+            "sourceStep": "\/api\/3\/workflow_steps\/290f40b2-8318-4a2d-838f-8a374732c2b7",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "a59c077e-04a9-4d53-b587-c92dcb1381ef"
+        }
+    ],
+    "priority": null,
+    "uuid": "583e8a71-535b-4566-a16e-026722755190",
+    "recordTags": [],
+    "id": 1193,
+    "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
+    "createDate": 1633085065,
+    "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
+    "modifyDate": 1633085065,
+    "owners": [],
+    "isPrivate": false
+}

@@ -1,0 +1,756 @@
+{
+    "@type": "Workflow",
+    "triggerLimit": null,
+    "name": "HUNTS - Netsh Helper DLL (T1546.007)",
+    "aliasName": null,
+    "tag": "ATT&CK, Persistence, Netsh_Helper_DLL",
+    "description": "Hunts for abnormal DLL loads and processes spawned by netsh.exe.",
+    "isActive": false,
+    "debug": false,
+    "singleRecordExecution": false,
+    "remoteExecutableFlag": false,
+    "parameters": [],
+    "synchronous": false,
+    "lastModifyDate": 1633085062,
+    "collection": "\/api\/3\/workflow_collections\/8e9e842a-e876-40ed-8ac4-078409ff7c29",
+    "versions": [],
+    "triggerStep": "\/api\/3\/workflow_steps\/c5fbf020-8560-471a-aa54-f638b1f08151",
+    "steps": [
+        {
+            "@type": "WorkflowStep",
+            "name": "Retrieve query results",
+            "description": null,
+            "arguments": {
+                "name": "Splunk",
+                "config": "9ab494b3-68d1-424f-9f76-0693bd787483",
+                "params": {
+                    "sid": "{'value':\"{{vars.steps.Query_for_processes_spawned_by_Netsh.data.sid}}\"}",
+                    "additional_args": "{\"A\":\"B\"}"
+                },
+                "version": "1.4.0",
+                "do_until": {
+                    "delay": "1",
+                    "retries": "300",
+                    "condition": "{{\"results\" in vars.result.data}}"
+                },
+                "connector": "splunk",
+                "operation": "get_results",
+                "operationTitle": "Get Results for a Search",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "340",
+            "left": "1211",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "uuid": "8205c992-69da-4605-b0db-32223d8b341e",
+            "id": 4566
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Retrieve key modification query results",
+            "description": null,
+            "arguments": {
+                "name": "Splunk",
+                "config": "9ab494b3-68d1-424f-9f76-0693bd787483",
+                "params": {
+                    "sid": "{'value':\"{{vars.steps.Query_for_Netsh_helper_DLL_registry_key_modification.data.sid}}\"}",
+                    "additional_args": "{\"A\":\"B\"}"
+                },
+                "version": "1.4.0",
+                "do_until": {
+                    "delay": "1",
+                    "retries": "300",
+                    "condition": "{{\"results\" in vars.result.data}}"
+                },
+                "connector": "splunk",
+                "operation": "get_results",
+                "operationTitle": "Get Results for a Search",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "260",
+            "left": "1212",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "uuid": "ec3583e9-7dfc-427b-86ca-24346cb41939",
+            "id": 4567
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Query for Netsh helper DLL registry key modification",
+            "description": null,
+            "arguments": {
+                "name": "Splunk",
+                "config": "9ab494b3-68d1-424f-9f76-0693bd787483",
+                "params": {
+                    "query": "index=sysmon (EventCode=12 OR EventCode=13) {{vars.splunkHuntStart}} {{vars.splunkHuntEnd}} TargetObject=\"HKLM\\\\SOFTWARE\\\\Microsoft\\\\NetSh\\\\*\"  Details!=NULL Details!=\"(Empty)\" | table host Image process_exec vendor_product TimeCreated ProcessId TargetObject Computer Details object_path UtcTime EventChannel ProcessGuid Computer",
+                    "exec_mode": "",
+                    "auto_cancel": "",
+                    "latest_time": "",
+                    "earliest_time": "",
+                    "additional_search_args": "{\"A\":\"B\"}"
+                },
+                "version": "1.5.0",
+                "connector": "splunk",
+                "operation": "invoke_search",
+                "operationTitle": "Invoke Search",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "260",
+            "left": "934",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "uuid": "1b4b609f-2551-4561-8fc3-089823cecddd",
+            "id": 4568
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Elastic Create and Link Alert",
+            "description": null,
+            "arguments": {
+                "for_each": {
+                    "item": "{{vars.steps.Elastic_Query_for_processes_spawned_by_Netsh.data.hits.hits}}",
+                    "condition": ""
+                },
+                "arguments": {
+                    "MD5": "{{vars.item._source.event_data.Hashes.split(\"MD5=\")[1].split(',')[0]}}",
+                    "url": "",
+                    "source": "{{vars.item._source.source_name}}",
+                    "comment": "SIEM query indicated netsh.exe spawned {{vars.item._source.image_path.split(\"\\\\\")[-1] }} on {{vars.item._source.beat.hostname}} at {{vars.item._source.event_data.UtcTime}}.",
+                    "huntIRI": "{{vars.input.records[0]['@id']}}",
+                    "service": "",
+                    "filePath": "{{vars.item._source.image_path}}",
+                    "hostName": "{{vars.item._source.beat.hostname}}",
+                    "sourceIP": "",
+                    "userName": "{{vars.item._source.username}}",
+                    "alertName": "ATT&CK-Netsh Helper DLL-{{vars.item._source.image_path.split(\"\\\\\")[-1] }} spawned by Netsh",
+                    "epochTime": "{{ arrow.get(vars.item._source.event_data.UtcTime).timestamp }}",
+                    "eventName": "",
+                    "eventTime": "{{vars.item._source.event_data.UtcTime}}",
+                    "processID": "{{vars.item._source.event_data.ProcessId}}",
+                    "technique": "Netsh Helper DLL (Child Process)",
+                    "sourceData": "{{vars.item}}",
+                    "sourceTool": "{{vars.item._source.source_name}}",
+                    "commandline": "{{vars.item._source.event_data.CommandLine}}",
+                    "description": "Netsh.exe spawned a child process. This is unusual behavior in most networks and could be used by an adversary to achieve persistence. The process spawned by netsh.exe should be evaluated to determine its legitimacy.",
+                    "processGUID": "{{vars.item._source.event_data.ProcessGuid}}",
+                    "processName": "{{vars.item._source.image_path.split(\"\\\\\")[-1] }}",
+                    "registryKey": "",
+                    "sourceImage": "",
+                    "targetImage": "",
+                    "computerName": "{{vars.item._source.computer_name}}",
+                    "destinationIP": "",
+                    "mitre_tech_id": "T1128",
+                    "parentProcess": "{{vars.item._source.parent_image_path}}",
+                    "scheduledTask": "",
+                    "bitstransferid": "",
+                    "parentProcessID": "{{vars.item._source.event_data.ParentProcessId}}",
+                    "bytestransferred": "",
+                    "registryKeyValue": "",
+                    "parentCommandLine": "{{vars.item._source.event_data.ParentCommandLine}}",
+                    "decodedCommandLine": ""
+                },
+                "apply_async": false,
+                "step_variables": [],
+                "workflowReference": "\/api\/3\/workflows\/bf7d418b-7ff3-44c1-b473-90d0a03c4641"
+            },
+            "status": null,
+            "top": "531",
+            "left": "1488",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "uuid": "34965f99-fb3a-4db6-95d0-4ff7e2c72f06",
+            "id": 4569
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Create and Link Alert",
+            "description": null,
+            "arguments": {
+                "for_each": {
+                    "item": "{{vars.steps.Retrieve_query_results.data.results}}",
+                    "condition": ""
+                },
+                "arguments": {
+                    "MD5": "{{vars.item.MD5}}",
+                    "url": "",
+                    "source": "{{vars.item.EventChannel}}",
+                    "comment": "SIEM query indicated netsh.exe spawned {{vars.item.process_exec}} on {{vars.item.host}} at {{vars.item.TimeCreated}}.",
+                    "huntIRI": "{{vars.input.records[0]['@id']}}",
+                    "service": "",
+                    "filePath": "{{vars.item.Image}}",
+                    "hostName": "{{vars.item.host}}",
+                    "sourceIP": "null",
+                    "userName": "{{vars.item.User}}",
+                    "alertName": "ATT&CK-Netsh Helper DLL-{{vars.item.process_exec}} spawned by Netsh",
+                    "epochTime": "{{ arrow.get(vars.item.UtcTime).timestamp }}",
+                    "eventName": "",
+                    "eventTime": "{{vars.item.UtcTime}}",
+                    "processID": "{{vars.item.ProcessId}}",
+                    "technique": "Netsh Helper DLL (Child Process)",
+                    "sourceData": "{{vars.item}}",
+                    "sourceTool": "{{vars.item.EventChannel}}",
+                    "commandline": "{{vars.item.CommandLine}}",
+                    "description": "Netsh.exe spawned a child process. This is unusual behavior in most networks and could be used by an adversary to achieve persistence. The process spawned by netsh.exe should be evaluated to determine its legitimacy.",
+                    "processGUID": "{{vars.item.ProcessGuid}}",
+                    "processName": "{{vars.item.process_exec}}",
+                    "registryKey": "",
+                    "sourceImage": "",
+                    "targetImage": "",
+                    "computerName": "{{vars.item.Computer}}",
+                    "destinationIP": "null",
+                    "mitre_tech_id": "T1128",
+                    "parentProcess": "{{vars.item.ParentImage}}",
+                    "scheduledTask": "",
+                    "bitstransferid": "",
+                    "parentProcessID": "{{vars.item.ParentProcessId}}",
+                    "bytestransferred": "",
+                    "registryKeyValue": "",
+                    "parentCommandLine": "{{vars.item.ParentCommandLine}}",
+                    "decodedCommandLine": ""
+                },
+                "apply_async": false,
+                "step_variables": [],
+                "workflowReference": "\/api\/3\/workflows\/bf7d418b-7ff3-44c1-b473-90d0a03c4641"
+            },
+            "status": null,
+            "top": "340",
+            "left": "1486",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "uuid": "b6b67080-3020-4b5b-97db-8e2e663cfe70",
+            "id": 4570
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Set Elasticsearch hunt times",
+            "description": null,
+            "arguments": {
+                "elasticHuntEnd": "{% if vars.input.records[0].huntEnd %} {{ arrow.get(vars.input.records[0].huntEnd).format('YYYY-MM-DDTHH:mm:ss.SSSSSSSSSZ') }} {% else %} now {% endif %}",
+                "elasticHuntStart": "{{ arrow.get(vars.input.records[0].huntStart).format('YYYY-MM-DDTHH:mm:ss.SSSSSSSSSZ') }}"
+            },
+            "status": null,
+            "top": "489",
+            "left": "640",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "uuid": "af96cfa4-669a-4163-9907-4978c11ba237",
+            "id": 4571
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Elastic Query for Netsh helper DLL registry key modification",
+            "description": null,
+            "arguments": {
+                "name": "ElasticSearch",
+                "config": "8d03a01d-1cef-40a8-992a-63d8de2b339f",
+                "params": {
+                    "index": "logstash-beats-*",
+                    "query": "event_type:sysmon AND (event_id:\"12\" OR event_id:\"13\") AND @timestamp:{ {{vars.elasticHuntStart}} TO {{vars.elasticHuntEnd}} } AND event_data.TargetObject:\"HKLM\\\\SOFTWARE\\\\Microsoft\\\\NetSh\\\\*\"",
+                    "run_as_user": ""
+                },
+                "version": "2.2.0",
+                "connector": "elasticsearch",
+                "operation": "execute_lucene_query",
+                "operationTitle": "Execute Lucene Query",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "440",
+            "left": "931",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "uuid": "32d144b9-4453-4eaa-90ec-ff19554069a5",
+            "id": 4572
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Elastic Copy of Create and Link Alert",
+            "description": null,
+            "arguments": {
+                "for_each": {
+                    "item": "{{vars.steps.Elastic_Query_for_Netsh_helper_DLL_registry_key_modification.data.hits.hits}}",
+                    "condition": ""
+                },
+                "arguments": {
+                    "MD5": "",
+                    "url": "",
+                    "source": "{{vars.item._source.source_name}}",
+                    "comment": "SIEM query indicated Netsh helper DLL key value {{vars.item._source.event_data.Details}} was added to key {{vars.item.TargetObject}} on {{vars.item._source.beat.hostname}} at {{vars.item._source.event_data.UtcTime}}.",
+                    "huntIRI": "{{vars.input.records[0]['@id']}}",
+                    "service": "",
+                    "filePath": "",
+                    "hostName": "{{vars.item._source.beat.hostname}}",
+                    "sourceIP": "",
+                    "userName": "",
+                    "alertName": "ATT&CK-Netsh Helper DLL-{{vars.item._source.image_path.split(\"\\\\\")[-1] }} created or modified a Netsh Registry key",
+                    "epochTime": "{{ arrow.get(vars.item._source.event_data.UtcTime).timestamp }}",
+                    "eventName": "",
+                    "eventTime": "{{vars.item._source.event_data.UtcTime}}",
+                    "processID": "{{vars.item._source.event_data.ProcessId}}",
+                    "technique": "Netsh Helper DLL (Key Add\/Mod)",
+                    "sourceData": "{{vars.item}}",
+                    "sourceTool": "{{vars.item._source.source_name}}",
+                    "commandline": "",
+                    "description": "A Netsh DLL helper registry key was modified\/added. This is potentially unusual behavior in most networks and could be used by an adversary to achieve persistence. The added\/modified registry key value should be evaluated to determine its legitimacy.",
+                    "processGUID": "{{vars.item._source.event_data.ProcessGuid}}",
+                    "processName": "{{vars.item._source.image_path}}",
+                    "registryKey": "{{vars.item._source.event_data.TargetObject}}",
+                    "sourceImage": "",
+                    "targetImage": "",
+                    "computerName": "{{vars.item._source.computer_name}}",
+                    "destinationIP": "",
+                    "mitre_tech_id": "T1128",
+                    "parentProcess": "",
+                    "scheduledTask": "",
+                    "bitstransferid": "",
+                    "parentProcessID": "",
+                    "bytestransferred": "",
+                    "registryKeyValue": "{{vars.item._source.event_data.Details}}",
+                    "parentCommandLine": "",
+                    "decodedCommandLine": ""
+                },
+                "apply_async": false,
+                "step_variables": [],
+                "workflowReference": "\/api\/3\/workflows\/bf7d418b-7ff3-44c1-b473-90d0a03c4641"
+            },
+            "status": null,
+            "top": "440",
+            "left": "1480",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "uuid": "e8ec4457-b287-47f8-8bf7-72a6e9c3d6a7",
+            "id": 4573
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Query for processes spawned by Netsh",
+            "description": null,
+            "arguments": {
+                "name": "Splunk",
+                "config": "9ab494b3-68d1-424f-9f76-0693bd787483",
+                "params": {
+                    "query": "index=sysmon EventCode=1 {{vars.splunkHuntStart}} {{vars.splunkHuntEnd}} (ParentImage=\"C:\\\\Windows\\\\System32\\\\netsh.exe\" OR ParentImage=\"C:\\\\Windows\\\\SysWOW64\\\\netsh.exe\")  | table host Image MD5 ParentImage User CommandLine process_exec vendor_product TimeCreated ParentProcessId ProcessId ParentCommandLine ProcessGuid UtcTime EventChannel Computer",
+                    "exec_mode": "",
+                    "auto_cancel": "",
+                    "latest_time": "",
+                    "earliest_time": "",
+                    "additional_search_args": "{\"A\":\"B\"}"
+                },
+                "version": "1.5.0",
+                "connector": "splunk",
+                "operation": "invoke_search",
+                "operationTitle": "Invoke Search",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "340",
+            "left": "932",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "uuid": "60fc8bb4-d1cc-4113-9f31-4ca00890680c",
+            "id": 4574
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Start",
+            "description": null,
+            "arguments": {
+                "route": "d6ceed1d-eefa-44a4-ac2f-9f126a54e0e5",
+                "title": "T1546.007 - Hunt for Netsh Helper DLL",
+                "resources": [
+                    "hunt"
+                ],
+                "inputVariables": [
+                    {
+                        "name": "siem",
+                        "type": "picklists",
+                        "label": "SIEM",
+                        "title": "Picklist",
+                        "usable": true,
+                        "tooltip": "Choose your SIEM",
+                        "dataType": "picklist",
+                        "formType": "picklist",
+                        "required": true,
+                        "_expanded": true,
+                        "mmdUpdate": true,
+                        "collection": false,
+                        "dataSource": {
+                            "model": "picklists",
+                            "query": {
+                                "sort": [
+                                    {
+                                        "field": "orderIndex",
+                                        "direction": "ASC"
+                                    }
+                                ],
+                                "logic": "AND",
+                                "filters": [
+                                    {
+                                        "field": "listName__name",
+                                        "value": "SIEMs",
+                                        "operator": "eq"
+                                    }
+                                ]
+                            },
+                            "displayConditions": {
+                                "876c1483-416b-4d2f-8138-15769ae16d5c": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "bcebcab1-3f93-468a-9f3f-91e5c511a0b5": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                }
+                            }
+                        },
+                        "searchable": false,
+                        "templateUrl": "app\/components\/form\/fields\/typeahead.html",
+                        "_nameTouched": true,
+                        "defaultValue": {
+                            "id": 280,
+                            "@id": "\/api\/3\/picklists\/876c1483-416b-4d2f-8138-15769ae16d5c",
+                            "icon": null,
+                            "@type": "Picklist",
+                            "color": null,
+                            "display": "Elastic",
+                            "listName": "\/api\/3\/picklist_names\/98830189-afff-40e6-bed1-94012551dc67",
+                            "itemValue": "Elastic",
+                            "orderIndex": 1
+                        },
+                        "displayTemplate": "{{ itemValue }}",
+                        "lengthConstraint": false,
+                        "allowedEncryption": false,
+                        "allowedGridColumn": true,
+                        "useRecordFieldDefault": false
+                    }
+                ],
+                "step_variables": {
+                    "input": {
+                        "params": {
+                            "siem": "{{vars.request.data[\"siem\"]}}"
+                        },
+                        "records": "{{vars.input.records}}"
+                    }
+                },
+                "_promptexpanded": true,
+                "displayConditions": {
+                    "hunt": {
+                        "sort": [],
+                        "limit": 30,
+                        "logic": "AND",
+                        "filters": []
+                    }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": false,
+                "singleRecordExecution": false
+            },
+            "status": null,
+            "top": "380",
+            "left": "20",
+            "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+            "uuid": "c5fbf020-8560-471a-aa54-f638b1f08151",
+            "id": 4575
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Elastic Query for processes spawned by Netsh",
+            "description": null,
+            "arguments": {
+                "name": "ElasticSearch",
+                "config": "8d03a01d-1cef-40a8-992a-63d8de2b339f",
+                "params": {
+                    "index": "logstash-beats-*",
+                    "query": "event_type:sysmon AND event_id:\"1\" AND @timestamp:{ {{vars.elasticHuntStart}} TO {{vars.elasticHuntEnd}} } AND (parent_image_path:\"C:\\\\Windows\\\\SysWOW64\\\\netsh.exe\" OR parent_image_path:\"C:\\\\Windows\\\\System32\\\\netsh.exe\")",
+                    "run_as_user": ""
+                },
+                "version": "2.2.0",
+                "connector": "elasticsearch",
+                "operation": "execute_lucene_query",
+                "operationTitle": "Execute Lucene Query",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "531",
+            "left": "931",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "uuid": "f97757fb-a910-4cb6-a3e8-33f0409ac363",
+            "id": 4576
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Copy  of Create and Link Alert",
+            "description": null,
+            "arguments": {
+                "for_each": {
+                    "item": "{{vars.steps.Retrieve_key_modification_query_results.data.results}}",
+                    "condition": ""
+                },
+                "arguments": {
+                    "MD5": "",
+                    "url": "",
+                    "source": "{{vars.item.EventChannel}}",
+                    "comment": "SIEM query indicated Netsh helper DLL key value {{vars.item.Details}} was added to key {{vars.item.TargetObject}} on {{vars.item.host}} at {{vars.item.TimeCreated}}.",
+                    "huntIRI": "{{vars.input.records[0]['@id']}}",
+                    "service": "",
+                    "filePath": "",
+                    "hostName": "{{vars.item.host}}",
+                    "sourceIP": "null",
+                    "userName": "",
+                    "alertName": "ATT&CK-Netsh Helper DLL-{{vars.item.process_exec}} created or modified a Netsh Registry key",
+                    "epochTime": "{{ arrow.get(vars.item.UtcTime).timestamp }}",
+                    "eventName": "",
+                    "eventTime": "{{vars.item.UtcTime}}",
+                    "processID": "{{vars.item.ProcessId}}",
+                    "technique": "Netsh Helper DLL (Key Add\/Mod)",
+                    "sourceData": "{{vars.item}}",
+                    "sourceTool": "{{vars.item.vendor_product}}",
+                    "commandline": "",
+                    "description": "A Netsh DLL helper registry key was modified\/added. This is potentially unusual behavior in most networks and could be used by an adversary to achieve persistence. The added\/modified registry key value should be evaluated to determine its legitimacy.",
+                    "processGUID": "{{vars.item.ProcessGuid}}",
+                    "processName": "{{vars.item.process_exec}}",
+                    "registryKey": "{{vars.item.TargetObject}}",
+                    "sourceImage": "",
+                    "targetImage": "",
+                    "computerName": "{{vars.item.Computer}}",
+                    "destinationIP": "null",
+                    "mitre_tech_id": "T1128",
+                    "parentProcess": "",
+                    "scheduledTask": "",
+                    "bitstransferid": "",
+                    "parentProcessID": "",
+                    "bytestransferred": "",
+                    "registryKeyValue": "{{vars.item.Details}}",
+                    "parentCommandLine": "",
+                    "decodedCommandLine": ""
+                },
+                "apply_async": false,
+                "step_variables": [],
+                "workflowReference": "\/api\/3\/workflows\/bf7d418b-7ff3-44c1-b473-90d0a03c4641"
+            },
+            "status": null,
+            "top": "260",
+            "left": "1489",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "uuid": "4f9856d8-f94b-4dc6-9601-59fa9f718ecd",
+            "id": 4577
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Deduplicate comments",
+            "description": null,
+            "arguments": {
+                "arguments": {
+                    "hunt_iri": "{{vars.input.records[0]['@id']}}"
+                },
+                "step_variables": [],
+                "workflowReference": "\/api\/3\/workflows\/3fd311be-a1c6-41c7-99a3-8794b33d8f8a"
+            },
+            "status": null,
+            "top": "400",
+            "left": "1820",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "uuid": "d1ad897c-2352-4827-b340-78e6c6967fc5",
+            "id": 4578
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Set Splunk hunt times",
+            "description": null,
+            "arguments": {
+                "splunkHuntEnd": "{% if vars.input.records[0].huntEnd %}latest={{vars.input.records[0].huntEnd}}{% endif %}",
+                "splunkHuntStart": "earliest={{vars.input.records[0].huntStart}}"
+            },
+            "status": null,
+            "top": "306",
+            "left": "640",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "uuid": "6ef87c05-fcea-438e-8102-1ffdc35a45b7",
+            "id": 4579
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Select SIEM",
+            "description": null,
+            "arguments": {
+                "conditions": [
+                    {
+                        "option": "Elasticsearch",
+                        "step_iri": "\/api\/3\/workflow_steps\/af96cfa4-669a-4163-9907-4978c11ba237",
+                        "condition": "{{ vars.input.params.siem.itemValue == \"Elastic\" }}"
+                    },
+                    {
+                        "option": "Splunk",
+                        "step_iri": "\/api\/3\/workflow_steps\/6ef87c05-fcea-438e-8102-1ffdc35a45b7",
+                        "condition": "{{ vars.input.params.siem.itemValue == \"Splunk\" }}"
+                    }
+                ]
+            },
+            "status": null,
+            "top": "380",
+            "left": "294",
+            "stepType": "\/api\/3\/workflow_step_types\/12254cf5-5db7-4b1a-8cb1-3af081924b28",
+            "uuid": "6298c168-33cf-4bd2-b7a6-5bfdffb4e4c9",
+            "id": 4580
+        }
+    ],
+    "routes": [
+        {
+            "@type": "WorkflowRoute",
+            "name": "Set Splunk hunt times -> Query for processes spawned by Netsh",
+            "targetStep": "\/api\/3\/workflow_steps\/60fc8bb4-d1cc-4113-9f31-4ca00890680c",
+            "sourceStep": "\/api\/3\/workflow_steps\/6ef87c05-fcea-438e-8102-1ffdc35a45b7",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "d4190ad2-e963-44d3-99aa-4c00a6280934"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Select SIEM -> Set Elasticsearch hunt times",
+            "targetStep": "\/api\/3\/workflow_steps\/af96cfa4-669a-4163-9907-4978c11ba237",
+            "sourceStep": "\/api\/3\/workflow_steps\/6298c168-33cf-4bd2-b7a6-5bfdffb4e4c9",
+            "label": "Elasticsearch",
+            "isExecuted": false,
+            "uuid": "16554508-6525-4415-9fce-c3a7e9e7f75b"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Elastic Query for Netsh helper DLL registry key modification -> Copy  of Copy  of Create and Link Alert",
+            "targetStep": "\/api\/3\/workflow_steps\/e8ec4457-b287-47f8-8bf7-72a6e9c3d6a7",
+            "sourceStep": "\/api\/3\/workflow_steps\/32d144b9-4453-4eaa-90ec-ff19554069a5",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "4356b430-bd8b-4996-b892-d47477f8ad18"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Copy  of Create and Link Alert -> Deduplicate comments",
+            "targetStep": "\/api\/3\/workflow_steps\/d1ad897c-2352-4827-b340-78e6c6967fc5",
+            "sourceStep": "\/api\/3\/workflow_steps\/4f9856d8-f94b-4dc6-9601-59fa9f718ecd",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "d43297fb-b760-4e14-a060-55b760d19be0"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Query for Netsh helper DLL registry key modification -> Copy  of Retrieve key creation query results",
+            "targetStep": "\/api\/3\/workflow_steps\/ec3583e9-7dfc-427b-86ca-24346cb41939",
+            "sourceStep": "\/api\/3\/workflow_steps\/1b4b609f-2551-4561-8fc3-089823cecddd",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "10cf605b-638a-4d4a-982a-f2d548fa1291"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Create and Link Alert -> Deduplicate comments",
+            "targetStep": "\/api\/3\/workflow_steps\/d1ad897c-2352-4827-b340-78e6c6967fc5",
+            "sourceStep": "\/api\/3\/workflow_steps\/b6b67080-3020-4b5b-97db-8e2e663cfe70",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "4e5e265e-8503-42cb-899a-afa3fbe41ee2"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Set Splunk hunt times -> Query for Netsh helper DLL registry key modification",
+            "targetStep": "\/api\/3\/workflow_steps\/1b4b609f-2551-4561-8fc3-089823cecddd",
+            "sourceStep": "\/api\/3\/workflow_steps\/6ef87c05-fcea-438e-8102-1ffdc35a45b7",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "8f5b03a8-6ffa-4b6d-861b-40b5973388dd"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Set Elasticsearch hunt times -> a",
+            "targetStep": "\/api\/3\/workflow_steps\/f97757fb-a910-4cb6-a3e8-33f0409ac363",
+            "sourceStep": "\/api\/3\/workflow_steps\/af96cfa4-669a-4163-9907-4978c11ba237",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "a0cd27d1-c5ed-47cd-a9f8-a94c30af27ef"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Retrieve key modification query results -> Copy  of Create and Link Alert",
+            "targetStep": "\/api\/3\/workflow_steps\/4f9856d8-f94b-4dc6-9601-59fa9f718ecd",
+            "sourceStep": "\/api\/3\/workflow_steps\/ec3583e9-7dfc-427b-86ca-24346cb41939",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "a5c5dc48-3896-4dae-ac5d-750d3140a222"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Elastic Copy of Create and Link Alert -> Deduplicate comments",
+            "targetStep": "\/api\/3\/workflow_steps\/d1ad897c-2352-4827-b340-78e6c6967fc5",
+            "sourceStep": "\/api\/3\/workflow_steps\/e8ec4457-b287-47f8-8bf7-72a6e9c3d6a7",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "3655dbef-0b4f-42cb-9049-7aa6be2e2567"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Elastic Create and Link Alert -> Deduplicate comments",
+            "targetStep": "\/api\/3\/workflow_steps\/d1ad897c-2352-4827-b340-78e6c6967fc5",
+            "sourceStep": "\/api\/3\/workflow_steps\/34965f99-fb3a-4db6-95d0-4ff7e2c72f06",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "64c06330-3eef-4e6e-9a94-26f5a407c101"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Query for use of attrib to hide files -> Copy  of Query for use of attrib to hide files",
+            "targetStep": "\/api\/3\/workflow_steps\/8205c992-69da-4605-b0db-32223d8b341e",
+            "sourceStep": "\/api\/3\/workflow_steps\/60fc8bb4-d1cc-4113-9f31-4ca00890680c",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "aaebec7d-54f7-4098-ac44-a918e1be6f0f"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Select SIEM -> Set Splunk hunt times",
+            "targetStep": "\/api\/3\/workflow_steps\/6ef87c05-fcea-438e-8102-1ffdc35a45b7",
+            "sourceStep": "\/api\/3\/workflow_steps\/6298c168-33cf-4bd2-b7a6-5bfdffb4e4c9",
+            "label": "Splunk",
+            "isExecuted": false,
+            "uuid": "566d2704-a0f4-4295-9662-48b99ef85f50"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Elastic Query for processes spawned by Netsh -> Copy  of Create and Link Alert",
+            "targetStep": "\/api\/3\/workflow_steps\/34965f99-fb3a-4db6-95d0-4ff7e2c72f06",
+            "sourceStep": "\/api\/3\/workflow_steps\/f97757fb-a910-4cb6-a3e8-33f0409ac363",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "ee4b57d5-9ba2-4535-bdb3-2fdbb5ec94e4"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Start -> Select SIEM",
+            "targetStep": "\/api\/3\/workflow_steps\/6298c168-33cf-4bd2-b7a6-5bfdffb4e4c9",
+            "sourceStep": "\/api\/3\/workflow_steps\/c5fbf020-8560-471a-aa54-f638b1f08151",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "eecc3be9-d5a2-4f04-8d6b-cf2a607a1c6d"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Retrieve query results -> Create and Link Alert",
+            "targetStep": "\/api\/3\/workflow_steps\/b6b67080-3020-4b5b-97db-8e2e663cfe70",
+            "sourceStep": "\/api\/3\/workflow_steps\/8205c992-69da-4605-b0db-32223d8b341e",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "1a7fad8c-3ec3-47e4-a508-66ce9e187a9c"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Set Elasticsearch hunt times -> Elastic Query for Netsh helper DLL registry key modification",
+            "targetStep": "\/api\/3\/workflow_steps\/32d144b9-4453-4eaa-90ec-ff19554069a5",
+            "sourceStep": "\/api\/3\/workflow_steps\/af96cfa4-669a-4163-9907-4978c11ba237",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "c339db53-08c8-442b-b84d-85e8f99fa033"
+        }
+    ],
+    "priority": null,
+    "uuid": "43be338a-1b12-4fed-836e-8206014cb2ea",
+    "recordTags": [],
+    "id": 1179,
+    "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
+    "createDate": 1633085064,
+    "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
+    "modifyDate": 1633085064,
+    "owners": [],
+    "isPrivate": false
+}
