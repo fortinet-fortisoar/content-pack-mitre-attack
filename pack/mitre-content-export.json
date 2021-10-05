@@ -77,6 +77,1227 @@
       ],
       "uuid": "7d980087-e6a1-48da-ba00-82bd3dae67b9",
       "id": 46
+    },
+    {
+        "@context": "\/api\/3\/contexts\/PicklistName",
+        "@id": "\/api\/3\/picklist_names\/2f9ed741-25fe-475a-9f12-64336288eebf",
+        "@type": "PicklistName",
+        "name": "AlertState",
+        "system": false,
+        "picklists": [
+            {
+                "@id": "\/api\/3\/picklists\/2879663c-c1dc-4ef2-84ae-8c67c9353b86",
+                "@type": "Picklist",
+                "itemValue": "Detail Extracted",
+                "orderIndex": 1,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/2f9ed741-25fe-475a-9f12-64336288eebf",
+                "uuid": "2879663c-c1dc-4ef2-84ae-8c67c9353b86",
+                "id": 34
+            },
+            {
+                "@id": "\/api\/3\/picklists\/501d0562-89a0-4079-9a9e-cdde7d34e3ed",
+                "@type": "Picklist",
+                "itemValue": "Indicator Extracted",
+                "orderIndex": 2,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/2f9ed741-25fe-475a-9f12-64336288eebf",
+                "uuid": "501d0562-89a0-4079-9a9e-cdde7d34e3ed",
+                "id": 71
+            },
+            {
+                "@id": "\/api\/3\/picklists\/8675a07f-2d0d-4e3a-89af-4822b8341df8",
+                "@type": "Picklist",
+                "itemValue": "Ready to Investigate",
+                "orderIndex": 4,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/2f9ed741-25fe-475a-9f12-64336288eebf",
+                "uuid": "8675a07f-2d0d-4e3a-89af-4822b8341df8",
+                "id": 125
+            },
+            {
+                "@id": "\/api\/3\/picklists\/89dc3716-1818-4286-ab75-0d49714aea0f",
+                "@type": "Picklist",
+                "itemValue": "Similar Alerts Correlated",
+                "orderIndex": 3,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/2f9ed741-25fe-475a-9f12-64336288eebf",
+                "uuid": "89dc3716-1818-4286-ab75-0d49714aea0f",
+                "id": 129
+            },
+            {
+                "@id": "\/api\/3\/picklists\/a1bac09b-1441-45aa-ad1b-c88744e48e72",
+                "@type": "Picklist",
+                "itemValue": "New",
+                "orderIndex": 0,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/2f9ed741-25fe-475a-9f12-64336288eebf",
+                "uuid": "a1bac09b-1441-45aa-ad1b-c88744e48e72",
+                "id": 157
+            }
+        ],
+        "uuid": "2f9ed741-25fe-475a-9f12-64336288eebf",
+        "id": 30
+    },
+    {
+        "@context": "\/api\/3\/contexts\/PicklistName",
+        "@id": "\/api\/3\/picklist_names\/33e964a9-d607-49f2-813c-7ce46141815a",
+        "@type": "PicklistName",
+        "name": "AlertStatus",
+        "system": false,
+        "picklists": [
+            {
+                "@id": "\/api\/3\/picklists\/758925e7-629c-46d8-89db-fb36f5fbe88a",
+                "@type": "Picklist",
+                "itemValue": "Investigating",
+                "orderIndex": 2,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/33e964a9-d607-49f2-813c-7ce46141815a",
+                "uuid": "758925e7-629c-46d8-89db-fb36f5fbe88a",
+                "id": 113
+            },
+            {
+                "@id": "\/api\/3\/picklists\/7de816ff-7140-4ee5-bd05-93ce22002146",
+                "@type": "Picklist",
+                "itemValue": "Open",
+                "orderIndex": 1,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/33e964a9-d607-49f2-813c-7ce46141815a",
+                "uuid": "7de816ff-7140-4ee5-bd05-93ce22002146",
+                "id": 118
+            },
+            {
+                "@id": "\/api\/3\/picklists\/891fb9d5-556c-44c6-9f7d-94a27dec732e",
+                "@type": "Picklist",
+                "itemValue": "Re-Opened",
+                "orderIndex": 6,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/33e964a9-d607-49f2-813c-7ce46141815a",
+                "uuid": "891fb9d5-556c-44c6-9f7d-94a27dec732e",
+                "id": 127
+            },
+            {
+                "@id": "\/api\/3\/picklists\/a53d5465-75a6-4b7a-8144-4eccc23cea4a",
+                "@type": "Picklist",
+                "itemValue": "Pending",
+                "orderIndex": 3,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/33e964a9-d607-49f2-813c-7ce46141815a",
+                "uuid": "a53d5465-75a6-4b7a-8144-4eccc23cea4a",
+                "id": 161
+            },
+            {
+                "@id": "\/api\/3\/picklists\/fac53e73-8d16-4189-98d5-95fbd1555232",
+                "@type": "Picklist",
+                "itemValue": "Closed",
+                "orderIndex": 4,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/33e964a9-d607-49f2-813c-7ce46141815a",
+                "uuid": "fac53e73-8d16-4189-98d5-95fbd1555232",
+                "id": 245
+            }
+        ],
+        "uuid": "33e964a9-d607-49f2-813c-7ce46141815a",
+        "id": 5
+    },
+    {
+        "@context": "\/api\/3\/contexts\/PicklistName",
+        "@id": "\/api\/3\/picklist_names\/a7087b9c-5660-495f-a8ac-c3b198ddb8c2",
+        "@type": "PicklistName",
+        "name": "AlertType",
+        "system": false,
+        "picklists": [
+            {
+                "@id": "\/api\/3\/picklists\/0b3ef6f9-eb29-4ab9-ac98-98364bd1a3aa",
+                "@type": "Picklist",
+                "itemValue": "Phishing",
+                "orderIndex": 9,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/a7087b9c-5660-495f-a8ac-c3b198ddb8c2",
+                "uuid": "0b3ef6f9-eb29-4ab9-ac98-98364bd1a3aa",
+                "id": 8
+            },
+            {
+                "@id": "\/api\/3\/picklists\/0cbc2c31-c360-4770-b1e7-3653a8c24ead",
+                "@type": "Picklist",
+                "itemValue": "Malware",
+                "orderIndex": 7,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/a7087b9c-5660-495f-a8ac-c3b198ddb8c2",
+                "uuid": "0cbc2c31-c360-4770-b1e7-3653a8c24ead",
+                "id": 10
+            },
+            {
+                "@id": "\/api\/3\/picklists\/1b143a42-8dd4-4121-8f38-fb5c299692ae",
+                "@type": "Picklist",
+                "itemValue": "Denial of Service",
+                "orderIndex": 1,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/a7087b9c-5660-495f-a8ac-c3b198ddb8c2",
+                "uuid": "1b143a42-8dd4-4121-8f38-fb5c299692ae",
+                "id": 24
+            },
+            {
+                "@id": "\/api\/3\/picklists\/2b8024fd-096a-426f-bf7f-63fb149ff9ee",
+                "@type": "Picklist",
+                "itemValue": "Lost \/ Stolen",
+                "orderIndex": 5,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/a7087b9c-5660-495f-a8ac-c3b198ddb8c2",
+                "uuid": "2b8024fd-096a-426f-bf7f-63fb149ff9ee",
+                "id": 38
+            },
+            {
+                "@id": "\/api\/3\/picklists\/382183df-212d-4ce1-adae-088647cc72c3",
+                "@type": "Picklist",
+                "itemValue": "Brute Force Attempts",
+                "orderIndex": 3,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/a7087b9c-5660-495f-a8ac-c3b198ddb8c2",
+                "uuid": "382183df-212d-4ce1-adae-088647cc72c3",
+                "id": 51
+            },
+            {
+                "@id": "\/api\/3\/picklists\/382b0435-e517-4760-867a-d662048fe292",
+                "@type": "Picklist",
+                "itemValue": "Command and Control",
+                "orderIndex": 2,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/a7087b9c-5660-495f-a8ac-c3b198ddb8c2",
+                "uuid": "382b0435-e517-4760-867a-d662048fe292",
+                "id": 52
+            },
+            {
+                "@id": "\/api\/3\/picklists\/3be51b8d-a02e-43a8-b6d3-07926771ac47",
+                "@type": "Picklist",
+                "itemValue": "Policy Violation",
+                "orderIndex": 11,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/a7087b9c-5660-495f-a8ac-c3b198ddb8c2",
+                "uuid": "3be51b8d-a02e-43a8-b6d3-07926771ac47",
+                "id": 54
+            },
+            {
+                "@id": "\/api\/3\/picklists\/3eb31470-7a13-4029-9b48-6f5f3d493002",
+                "@type": "Picklist",
+                "itemValue": "Data Leakage",
+                "orderIndex": 14,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/a7087b9c-5660-495f-a8ac-c3b198ddb8c2",
+                "uuid": "3eb31470-7a13-4029-9b48-6f5f3d493002",
+                "id": 55
+            },
+            {
+                "@id": "\/api\/3\/picklists\/459be3a6-db44-4794-9545-f6bd7f1c068f",
+                "@type": "Picklist",
+                "itemValue": "Compliance",
+                "orderIndex": 2,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/a7087b9c-5660-495f-a8ac-c3b198ddb8c2",
+                "uuid": "459be3a6-db44-4794-9545-f6bd7f1c068f",
+                "id": 61
+            },
+            {
+                "@id": "\/api\/3\/picklists\/574a6ee2-7265-4701-815e-cff83b053bce",
+                "@type": "Picklist",
+                "itemValue": "Other \/ Unknown",
+                "orderIndex": 13,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/a7087b9c-5660-495f-a8ac-c3b198ddb8c2",
+                "uuid": "574a6ee2-7265-4701-815e-cff83b053bce",
+                "id": 79
+            },
+            {
+                "@id": "\/api\/3\/picklists\/6bdeedd7-fb20-4b20-9717-f06520f0f788",
+                "@type": "Picklist",
+                "itemValue": "MITRE ATT&CK",
+                "orderIndex": 8,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/a7087b9c-5660-495f-a8ac-c3b198ddb8c2",
+                "uuid": "6bdeedd7-fb20-4b20-9717-f06520f0f788",
+                "id": 92
+            },
+            {
+                "@id": "\/api\/3\/picklists\/844c0b64-04fa-494f-9795-7c8406e59f69",
+                "@type": "Picklist",
+                "itemValue": "Beaconing",
+                "orderIndex": 0,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/a7087b9c-5660-495f-a8ac-c3b198ddb8c2",
+                "uuid": "844c0b64-04fa-494f-9795-7c8406e59f69",
+                "id": 124
+            },
+            {
+                "@id": "\/api\/3\/picklists\/8b6f20f0-08ba-47f7-bc7d-233592309940",
+                "@type": "Picklist",
+                "itemValue": "Ransomware",
+                "orderIndex": 12,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/a7087b9c-5660-495f-a8ac-c3b198ddb8c2",
+                "uuid": "8b6f20f0-08ba-47f7-bc7d-233592309940",
+                "id": 133
+            },
+            {
+                "@id": "\/api\/3\/picklists\/a043fb35-f373-44c0-bfa9-5bce2f711141",
+                "@type": "Picklist",
+                "itemValue": "Data Exfiltration",
+                "orderIndex": 4,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/a7087b9c-5660-495f-a8ac-c3b198ddb8c2",
+                "uuid": "a043fb35-f373-44c0-bfa9-5bce2f711141",
+                "id": 156
+            },
+            {
+                "@id": "\/api\/3\/picklists\/a36e1dbd-a9ec-47b2-8f25-e077a40d509c",
+                "@type": "Picklist",
+                "itemValue": "Improper disposal",
+                "orderIndex": 10,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/a7087b9c-5660-495f-a8ac-c3b198ddb8c2",
+                "uuid": "a36e1dbd-a9ec-47b2-8f25-e077a40d509c",
+                "id": 158
+            },
+            {
+                "@id": "\/api\/3\/picklists\/c145394b-069a-449b-a05e-67980d0f4b82",
+                "@type": "Picklist",
+                "itemValue": "Suspicious Email",
+                "orderIndex": 16,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/a7087b9c-5660-495f-a8ac-c3b198ddb8c2",
+                "uuid": "c145394b-069a-449b-a05e-67980d0f4b82",
+                "id": 195
+            },
+            {
+                "@id": "\/api\/3\/picklists\/d282a627-a16e-4a8e-9b80-fce1636dfcfc",
+                "@type": "Picklist",
+                "itemValue": "Lateral Movement",
+                "orderIndex": 6,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/a7087b9c-5660-495f-a8ac-c3b198ddb8c2",
+                "uuid": "d282a627-a16e-4a8e-9b80-fce1636dfcfc",
+                "id": 208
+            },
+            {
+                "@id": "\/api\/3\/picklists\/ebc1de7c-4089-4ac6-99be-cdbc441b0d91",
+                "@type": "Picklist",
+                "itemValue": "Reconnaissance",
+                "orderIndex": 15,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/a7087b9c-5660-495f-a8ac-c3b198ddb8c2",
+                "uuid": "ebc1de7c-4089-4ac6-99be-cdbc441b0d91",
+                "id": 230
+            }
+        ],
+        "uuid": "a7087b9c-5660-495f-a8ac-c3b198ddb8c2",
+        "id": 14
+    },
+    {
+        "@context": "\/api\/3\/contexts\/PicklistName",
+        "@id": "\/api\/3\/picklist_names\/0042bf40-d0e6-4324-ab84-0c7b0703f681",
+        "@type": "PicklistName",
+        "name": "AssetCategory",
+        "system": false,
+        "picklists": [
+            {
+                "@id": "\/api\/3\/picklists\/0e9cd412-66a1-49ed-8f98-11fab108f6d5",
+                "@type": "Picklist",
+                "itemValue": "Printer",
+                "orderIndex": 9,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/0042bf40-d0e6-4324-ab84-0c7b0703f681",
+                "uuid": "0e9cd412-66a1-49ed-8f98-11fab108f6d5",
+                "id": 14
+            },
+            {
+                "@id": "\/api\/3\/picklists\/183da94b-00f9-4f57-af92-a43394cdbe00",
+                "@type": "Picklist",
+                "itemValue": "UPS",
+                "orderIndex": 11,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/0042bf40-d0e6-4324-ab84-0c7b0703f681",
+                "uuid": "183da94b-00f9-4f57-af92-a43394cdbe00",
+                "id": 20
+            },
+            {
+                "@id": "\/api\/3\/picklists\/1bfa4142-b3f2-4945-8393-66228f9260d3",
+                "@type": "Picklist",
+                "itemValue": "Server",
+                "orderIndex": 3,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/0042bf40-d0e6-4324-ab84-0c7b0703f681",
+                "uuid": "1bfa4142-b3f2-4945-8393-66228f9260d3",
+                "id": 25
+            },
+            {
+                "@id": "\/api\/3\/picklists\/373f6e62-4229-4fbe-9a68-085ec266ff69",
+                "@type": "Picklist",
+                "itemValue": "Laptop",
+                "orderIndex": 1,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/0042bf40-d0e6-4324-ab84-0c7b0703f681",
+                "uuid": "373f6e62-4229-4fbe-9a68-085ec266ff69",
+                "id": 49
+            },
+            {
+                "@id": "\/api\/3\/picklists\/72fe5701-89ba-4d08-a790-ec5e7a56f1ac",
+                "@type": "Picklist",
+                "itemValue": "Access Control Device",
+                "orderIndex": 7,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/0042bf40-d0e6-4324-ab84-0c7b0703f681",
+                "uuid": "72fe5701-89ba-4d08-a790-ec5e7a56f1ac",
+                "id": 110
+            },
+            {
+                "@id": "\/api\/3\/picklists\/8d702d9a-0c1d-4380-9c5e-64b5e1f5ab13",
+                "@type": "Picklist",
+                "itemValue": "VOIP Phone",
+                "orderIndex": 8,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/0042bf40-d0e6-4324-ab84-0c7b0703f681",
+                "uuid": "8d702d9a-0c1d-4380-9c5e-64b5e1f5ab13",
+                "id": 136
+            },
+            {
+                "@id": "\/api\/3\/picklists\/925104c4-9c7a-48fd-be71-74fe85c55f69",
+                "@type": "Picklist",
+                "itemValue": "Other",
+                "orderIndex": 12,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/0042bf40-d0e6-4324-ab84-0c7b0703f681",
+                "uuid": "925104c4-9c7a-48fd-be71-74fe85c55f69",
+                "id": 142
+            },
+            {
+                "@id": "\/api\/3\/picklists\/b40802a5-8462-49d8-a6f0-7853666a4d3a",
+                "@type": "Picklist",
+                "itemValue": "Storage Device",
+                "orderIndex": 10,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/0042bf40-d0e6-4324-ab84-0c7b0703f681",
+                "uuid": "b40802a5-8462-49d8-a6f0-7853666a4d3a",
+                "id": 177
+            },
+            {
+                "@id": "\/api\/3\/picklists\/bb8b4a11-98ab-458e-9db2-d4a3cda8b874",
+                "@type": "Picklist",
+                "itemValue": "Desktop",
+                "orderIndex": 2,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/0042bf40-d0e6-4324-ab84-0c7b0703f681",
+                "uuid": "bb8b4a11-98ab-458e-9db2-d4a3cda8b874",
+                "id": 191
+            },
+            {
+                "@id": "\/api\/3\/picklists\/bc5f5523-058d-476d-9bf5-de6d90855637",
+                "@type": "Picklist",
+                "itemValue": "Router",
+                "orderIndex": 5,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/0042bf40-d0e6-4324-ab84-0c7b0703f681",
+                "uuid": "bc5f5523-058d-476d-9bf5-de6d90855637",
+                "id": 192
+            },
+            {
+                "@id": "\/api\/3\/picklists\/e231a1fb-166b-40b4-9c9f-1a71d5515db3",
+                "@type": "Picklist",
+                "itemValue": "Switch",
+                "orderIndex": 6,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/0042bf40-d0e6-4324-ab84-0c7b0703f681",
+                "uuid": "e231a1fb-166b-40b4-9c9f-1a71d5515db3",
+                "id": 219
+            },
+            {
+                "@id": "\/api\/3\/picklists\/e41a02ee-6be3-480a-aa2c-c22ba5ebb40f",
+                "@type": "Picklist",
+                "itemValue": "Mobile Device",
+                "orderIndex": 4,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/0042bf40-d0e6-4324-ab84-0c7b0703f681",
+                "uuid": "e41a02ee-6be3-480a-aa2c-c22ba5ebb40f",
+                "id": 220
+            }
+        ],
+        "uuid": "0042bf40-d0e6-4324-ab84-0c7b0703f681",
+        "id": 2
+    },
+    {
+        "@context": "\/api\/3\/contexts\/PicklistName",
+        "@id": "\/api\/3\/picklist_names\/4ebacea1-88cd-4ea8-9dcc-385bea42cc59",
+        "@type": "PicklistName",
+        "name": "Closure Reason",
+        "system": false,
+        "picklists": [
+            {
+                "@id": "\/api\/3\/picklists\/672aef13-a684-422e-be6c-15e10ec49915",
+                "@type": "Picklist",
+                "itemValue": "Duplicate",
+                "orderIndex": 1,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/4ebacea1-88cd-4ea8-9dcc-385bea42cc59",
+                "uuid": "672aef13-a684-422e-be6c-15e10ec49915",
+                "id": 248
+            },
+            {
+                "@id": "\/api\/3\/picklists\/2b0112f6-4746-4dab-ada6-a8cd1e675572",
+                "@type": "Picklist",
+                "itemValue": "False Positive",
+                "orderIndex": 2,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/4ebacea1-88cd-4ea8-9dcc-385bea42cc59",
+                "uuid": "2b0112f6-4746-4dab-ada6-a8cd1e675572",
+                "id": 249
+            },
+            {
+                "@id": "\/api\/3\/picklists\/8590c81e-3307-4645-97f5-c3e1bec4e05a",
+                "@type": "Picklist",
+                "itemValue": "Tasks Completed",
+                "orderIndex": 0,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/4ebacea1-88cd-4ea8-9dcc-385bea42cc59",
+                "uuid": "8590c81e-3307-4645-97f5-c3e1bec4e05a",
+                "id": 250
+            }
+        ],
+        "uuid": "4ebacea1-88cd-4ea8-9dcc-385bea42cc59",
+        "id": 35
+    },
+    {
+        "@context": "\/api\/3\/contexts\/PicklistName",
+        "@id": "\/api\/3\/picklist_names\/82e4ff55-ade7-419c-a1c5-94d5b68cf5b3",
+        "@type": "PicklistName",
+        "name": "DeliveryVector",
+        "system": false,
+        "picklists": [
+            {
+                "@id": "\/api\/3\/picklists\/21046bc4-3192-4070-9ca8-e37d4551327e",
+                "@type": "Picklist",
+                "itemValue": "Email",
+                "orderIndex": 0,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/82e4ff55-ade7-419c-a1c5-94d5b68cf5b3",
+                "uuid": "21046bc4-3192-4070-9ca8-e37d4551327e",
+                "id": 30
+            },
+            {
+                "@id": "\/api\/3\/picklists\/8b3753d7-4553-41d1-b1f3-be3acf310f70",
+                "@type": "Picklist",
+                "itemValue": "USB",
+                "orderIndex": 1,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/82e4ff55-ade7-419c-a1c5-94d5b68cf5b3",
+                "uuid": "8b3753d7-4553-41d1-b1f3-be3acf310f70",
+                "id": 132
+            },
+            {
+                "@id": "\/api\/3\/picklists\/9eaa3beb-f828-411d-b51e-ec14dac9d176",
+                "@type": "Picklist",
+                "itemValue": "Other",
+                "orderIndex": 2,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/82e4ff55-ade7-419c-a1c5-94d5b68cf5b3",
+                "uuid": "9eaa3beb-f828-411d-b51e-ec14dac9d176",
+                "id": 155
+            }
+        ],
+        "uuid": "82e4ff55-ade7-419c-a1c5-94d5b68cf5b3",
+        "id": 31
+    },
+    {
+        "@context": "\/api\/3\/contexts\/PicklistName",
+        "@id": "\/api\/3\/picklist_names\/e131cc54-9ae4-43c9-b830-af6e331fe024",
+        "@type": "PicklistName",
+        "name": "EscalatedToIncident",
+        "system": false,
+        "picklists": [
+            {
+                "@id": "\/api\/3\/picklists\/2128a09c-153d-4db3-985d-de6be33deae5",
+                "@type": "Picklist",
+                "itemValue": "No",
+                "orderIndex": 1,
+                "color": "#808080",
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/e131cc54-9ae4-43c9-b830-af6e331fe024",
+                "uuid": "2128a09c-153d-4db3-985d-de6be33deae5",
+                "id": 31
+            },
+            {
+                "@id": "\/api\/3\/picklists\/fa12313b-66af-4a2e-864e-a5f19241b734",
+                "@type": "Picklist",
+                "itemValue": "Yes",
+                "orderIndex": 0,
+                "color": "#bf0a0a",
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/e131cc54-9ae4-43c9-b830-af6e331fe024",
+                "uuid": "fa12313b-66af-4a2e-864e-a5f19241b734",
+                "id": 243
+            }
+        ],
+        "uuid": "e131cc54-9ae4-43c9-b830-af6e331fe024",
+        "id": 27
+    },
+    {
+        "@context": "\/api\/3\/contexts\/PicklistName",
+        "@id": "\/api\/3\/picklist_names\/b862eb1f-b385-40ca-baa7-5a1b1f91a651",
+        "@type": "PicklistName",
+        "name": "IncidentPhase",
+        "system": false,
+        "picklists": [
+            {
+                "@id": "\/api\/3\/picklists\/10b77cd3-0ba5-4c2e-83bb-d665430a9287",
+                "@type": "Picklist",
+                "itemValue": "Aftermath",
+                "orderIndex": 6,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/b862eb1f-b385-40ca-baa7-5a1b1f91a651",
+                "uuid": "10b77cd3-0ba5-4c2e-83bb-d665430a9287",
+                "id": 15
+            },
+            {
+                "@id": "\/api\/3\/picklists\/37f637f0-2e7a-41cc-a6e4-502d7263b2d0",
+                "@type": "Picklist",
+                "itemValue": "Identification",
+                "orderIndex": 1,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/b862eb1f-b385-40ca-baa7-5a1b1f91a651",
+                "uuid": "37f637f0-2e7a-41cc-a6e4-502d7263b2d0",
+                "id": 50
+            },
+            {
+                "@id": "\/api\/3\/picklists\/bb7407e0-f699-11e7-8c3f-9a214cf093ae",
+                "@type": "Picklist",
+                "itemValue": "Containment",
+                "orderIndex": 3,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/b862eb1f-b385-40ca-baa7-5a1b1f91a651",
+                "uuid": "bb7407e0-f699-11e7-8c3f-9a214cf093ae",
+                "id": 186
+            },
+            {
+                "@id": "\/api\/3\/picklists\/bb740a06-f699-11e7-8c3f-9a214cf093ae",
+                "@type": "Picklist",
+                "itemValue": "Eradication",
+                "orderIndex": 4,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/b862eb1f-b385-40ca-baa7-5a1b1f91a651",
+                "uuid": "bb740a06-f699-11e7-8c3f-9a214cf093ae",
+                "id": 187
+            },
+            {
+                "@id": "\/api\/3\/picklists\/bb740d30-f699-11e7-8c3f-9a214cf093ae",
+                "@type": "Picklist",
+                "itemValue": "Recovery",
+                "orderIndex": 5,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/b862eb1f-b385-40ca-baa7-5a1b1f91a651",
+                "uuid": "bb740d30-f699-11e7-8c3f-9a214cf093ae",
+                "id": 188
+            },
+            {
+                "@id": "\/api\/3\/picklists\/cbaa92d2-6fd7-4dbe-88f6-0e0d17e8b430",
+                "@type": "Picklist",
+                "itemValue": "Confirmation",
+                "orderIndex": 2,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/b862eb1f-b385-40ca-baa7-5a1b1f91a651",
+                "uuid": "cbaa92d2-6fd7-4dbe-88f6-0e0d17e8b430",
+                "id": 201
+            },
+            {
+                "@id": "\/api\/3\/picklists\/bb740542-f699-11e7-8c3f-9a214cf093ae",
+                "@type": "Picklist",
+                "itemValue": "Detection",
+                "orderIndex": 0,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/b862eb1f-b385-40ca-baa7-5a1b1f91a651",
+                "uuid": "bb740542-f699-11e7-8c3f-9a214cf093ae",
+                "id": 136
+            }
+        ],
+        "uuid": "b862eb1f-b385-40ca-baa7-5a1b1f91a651",
+        "id": 16
+    },
+    {
+        "@context": "\/api\/3\/contexts\/PicklistName",
+        "@id": "\/api\/3\/picklist_names\/a549e41c-31ca-406d-89ae-eab3de5c06c4",
+        "@type": "PicklistName",
+        "name": "IncidentStatus",
+        "system": false,
+        "picklists": [
+            {
+                "@id": "\/api\/3\/picklists\/bb73fade-f699-11e7-8c3f-9a214cf093ae",
+                "@type": "Picklist",
+                "itemValue": "Inactive",
+                "orderIndex": 4,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/a549e41c-31ca-406d-89ae-eab3de5c06c4",
+                "uuid": "bb73fade-f699-11e7-8c3f-9a214cf093ae",
+                "id": 180
+            },
+            {
+                "@id": "\/api\/3\/picklists\/bb73fd5e-f699-11e7-8c3f-9a214cf093ae",
+                "@type": "Picklist",
+                "itemValue": "Resolved",
+                "orderIndex": 3,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/a549e41c-31ca-406d-89ae-eab3de5c06c4",
+                "uuid": "bb73fd5e-f699-11e7-8c3f-9a214cf093ae",
+                "id": 181
+            },
+            {
+                "@id": "\/api\/3\/picklists\/bb7402d6-f699-11e7-8c3f-9a214cf093ae",
+                "@type": "Picklist",
+                "itemValue": "In Progress",
+                "orderIndex": 1,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/a549e41c-31ca-406d-89ae-eab3de5c06c4",
+                "uuid": "bb7402d6-f699-11e7-8c3f-9a214cf093ae",
+                "id": 183
+            },
+            {
+                "@id": "\/api\/3\/picklists\/bb74042a-f699-11e7-8c3f-9a214cf093ae",
+                "@type": "Picklist",
+                "itemValue": "Awaiting",
+                "orderIndex": 2,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/a549e41c-31ca-406d-89ae-eab3de5c06c4",
+                "uuid": "bb74042a-f699-11e7-8c3f-9a214cf093ae",
+                "id": 184
+            },
+            {
+                "@id": "\/api\/3\/picklists\/bb73fe9e-f699-11e7-8c3f-9a214cf093ae",
+                "@type": "Picklist",
+                "itemValue": "Open",
+                "orderIndex": 0,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/a549e41c-31ca-406d-89ae-eab3de5c06c4",
+                "uuid": "bb73fe9e-f699-11e7-8c3f-9a214cf093ae",
+                "id": 109
+            }
+        ],
+        "uuid": "a549e41c-31ca-406d-89ae-eab3de5c06c4",
+        "id": 13
+    },
+    {
+        "@context": "\/api\/3\/contexts\/PicklistName",
+        "@id": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
+        "@type": "PicklistName",
+        "name": "IncidentType",
+        "system": false,
+        "picklists": [
+            {
+                "@id": "\/api\/3\/picklists\/4e8c71d0-8fba-4313-8b01-ab336cc1af2a",
+                "@type": "Picklist",
+                "itemValue": "Data Theft",
+                "orderIndex": 3,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
+                "uuid": "4e8c71d0-8fba-4313-8b01-ab336cc1af2a",
+                "id": 68
+            },
+            {
+                "@id": "\/api\/3\/picklists\/590f216a-a582-47b8-9d94-17a066ed234c",
+                "@type": "Picklist",
+                "itemValue": "Virus Outbreak",
+                "orderIndex": 20,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
+                "uuid": "590f216a-a582-47b8-9d94-17a066ed234c",
+                "id": 84
+            },
+            {
+                "@id": "\/api\/3\/picklists\/70321398-f69a-11e7-8c3f-9a214cf093ae",
+                "@type": "Picklist",
+                "itemValue": "Improper Usage",
+                "orderIndex": 6,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
+                "uuid": "70321398-f69a-11e7-8c3f-9a214cf093ae",
+                "id": 99
+            },
+            {
+                "@id": "\/api\/3\/picklists\/70321690-f69a-11e7-8c3f-9a214cf093ae",
+                "@type": "Picklist",
+                "itemValue": "Lost \/ Stolen",
+                "orderIndex": 8,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
+                "uuid": "70321690-f69a-11e7-8c3f-9a214cf093ae",
+                "id": 100
+            },
+            {
+                "@id": "\/api\/3\/picklists\/703217da-f69a-11e7-8c3f-9a214cf093ae",
+                "@type": "Picklist",
+                "itemValue": "Brute Force Attempts",
+                "orderIndex": 1,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
+                "uuid": "703217da-f69a-11e7-8c3f-9a214cf093ae",
+                "id": 101
+            },
+            {
+                "@id": "\/api\/3\/picklists\/703218fc-f69a-11e7-8c3f-9a214cf093ae",
+                "@type": "Picklist",
+                "itemValue": "Malware Outbreak",
+                "orderIndex": 8,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
+                "uuid": "703218fc-f69a-11e7-8c3f-9a214cf093ae",
+                "id": 102
+            },
+            {
+                "@id": "\/api\/3\/picklists\/70321a1e-f69a-11e7-8c3f-9a214cf093ae",
+                "@type": "Picklist",
+                "itemValue": "Data Exfiltration",
+                "orderIndex": 2,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
+                "uuid": "70321a1e-f69a-11e7-8c3f-9a214cf093ae",
+                "id": 103
+            },
+            {
+                "@id": "\/api\/3\/picklists\/70321e9c-f69a-11e7-8c3f-9a214cf093ae",
+                "@type": "Picklist",
+                "itemValue": "Ransomware",
+                "orderIndex": 11,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
+                "uuid": "70321e9c-f69a-11e7-8c3f-9a214cf093ae",
+                "id": 104
+            },
+            {
+                "@id": "\/api\/3\/picklists\/70321ffa-f69a-11e7-8c3f-9a214cf093ae",
+                "@type": "Picklist",
+                "itemValue": "Lateral Movement",
+                "orderIndex": 6,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
+                "uuid": "70321ffa-f69a-11e7-8c3f-9a214cf093ae",
+                "id": 105
+            },
+            {
+                "@id": "\/api\/3\/picklists\/703222e8-f69a-11e7-8c3f-9a214cf093ae",
+                "@type": "Picklist",
+                "itemValue": "Phishing",
+                "orderIndex": 9,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
+                "uuid": "703222e8-f69a-11e7-8c3f-9a214cf093ae",
+                "id": 106
+            },
+            {
+                "@id": "\/api\/3\/picklists\/70322432-f69a-11e7-8c3f-9a214cf093ae",
+                "@type": "Picklist",
+                "itemValue": "Beaconing",
+                "orderIndex": 0,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
+                "uuid": "70322432-f69a-11e7-8c3f-9a214cf093ae",
+                "id": 107
+            },
+            {
+                "@id": "\/api\/3\/picklists\/7032255e-f69a-11e7-8c3f-9a214cf093ae",
+                "@type": "Picklist",
+                "itemValue": "Explained Anomaly",
+                "orderIndex": 4,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
+                "uuid": "7032255e-f69a-11e7-8c3f-9a214cf093ae",
+                "id": 108
+            },
+            {
+                "@id": "\/api\/3\/picklists\/836d97af-6022-42b4-8b0a-1c3cab73a7ea",
+                "@type": "Picklist",
+                "itemValue": "Unauthorized Access",
+                "orderIndex": 16,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
+                "uuid": "836d97af-6022-42b4-8b0a-1c3cab73a7ea",
+                "id": 123
+            },
+            {
+                "@id": "\/api\/3\/picklists\/8fea3472-6bd7-4bbf-a080-ca4e778617f8",
+                "@type": "Picklist",
+                "itemValue": "Other",
+                "orderIndex": 12,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
+                "uuid": "8fea3472-6bd7-4bbf-a080-ca4e778617f8",
+                "id": 138
+            },
+            {
+                "@id": "\/api\/3\/picklists\/9c50d999-f17f-40ac-8830-b3417893db70",
+                "@type": "Picklist",
+                "itemValue": "Elevation of Privilege",
+                "orderIndex": 21,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
+                "uuid": "9c50d999-f17f-40ac-8830-b3417893db70",
+                "id": 151
+            },
+            {
+                "@id": "\/api\/3\/picklists\/bb741514-f699-11e7-8c3f-9a214cf093ae",
+                "@type": "Picklist",
+                "itemValue": "Denial of Service",
+                "orderIndex": 3,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
+                "uuid": "bb741514-f699-11e7-8c3f-9a214cf093ae",
+                "id": 189
+            },
+            {
+                "@id": "\/api\/3\/picklists\/bb7417b2-f699-11e7-8c3f-9a214cf093ae",
+                "@type": "Picklist",
+                "itemValue": "Vendor \/ 3rd Party Error",
+                "orderIndex": 16,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
+                "uuid": "bb7417b2-f699-11e7-8c3f-9a214cf093ae",
+                "id": 190
+            },
+            {
+                "@id": "\/api\/3\/picklists\/f79c4b3c-f69a-11e7-8c3f-9a214cf093ae",
+                "@type": "Picklist",
+                "itemValue": "Root Access",
+                "orderIndex": 13,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
+                "uuid": "f79c4b3c-f69a-11e7-8c3f-9a214cf093ae",
+                "id": 237
+            },
+            {
+                "@id": "\/api\/3\/picklists\/f79c5316-f69a-11e7-8c3f-9a214cf093ae",
+                "@type": "Picklist",
+                "itemValue": "Policy Violation",
+                "orderIndex": 10,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
+                "uuid": "f79c5316-f69a-11e7-8c3f-9a214cf093ae",
+                "id": 238
+            },
+            {
+                "@id": "\/api\/3\/picklists\/f79c54d8-f69a-11e7-8c3f-9a214cf093ae",
+                "@type": "Picklist",
+                "itemValue": "Reconnaissance and Probing",
+                "orderIndex": 12,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
+                "uuid": "f79c54d8-f69a-11e7-8c3f-9a214cf093ae",
+                "id": 239
+            },
+            {
+                "@id": "\/api\/3\/picklists\/f79c5618-f69a-11e7-8c3f-9a214cf093ae",
+                "@type": "Picklist",
+                "itemValue": "Unsuccessful Activity Attempt",
+                "orderIndex": 14,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
+                "uuid": "f79c5618-f69a-11e7-8c3f-9a214cf093ae",
+                "id": 240
+            },
+            {
+                "@id": "\/api\/3\/picklists\/f79c5744-f69a-11e7-8c3f-9a214cf093ae",
+                "@type": "Picklist",
+                "itemValue": "Malicious Logic",
+                "orderIndex": 7,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
+                "uuid": "f79c5744-f69a-11e7-8c3f-9a214cf093ae",
+                "id": 241
+            },
+            {
+                "@id": "\/api\/3\/picklists\/f79c585c-f69a-11e7-8c3f-9a214cf093ae",
+                "@type": "Picklist",
+                "itemValue": "User Level Intrusion",
+                "orderIndex": 15,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/f3938848-6220-4b27-af2d-a5329cf63656",
+                "uuid": "f79c585c-f69a-11e7-8c3f-9a214cf093ae",
+                "id": 242
+            }
+        ],
+        "uuid": "f3938848-6220-4b27-af2d-a5329cf63656",
+        "id": 20
+    },
+    {
+        "@context": "\/api\/3\/contexts\/PicklistName",
+        "@id": "\/api\/3\/picklist_names\/eddbc863-c725-479a-867f-cec66206a6b4",
+        "@type": "PicklistName",
+        "name": "KillChainPhases",
+        "system": false,
+        "picklists": [
+            {
+                "@id": "\/api\/3\/picklists\/1713c4c8-7e66-4bb9-bf46-096a9e2bc071",
+                "@type": "Picklist",
+                "itemValue": "Exploitation",
+                "orderIndex": 4,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/eddbc863-c725-479a-867f-cec66206a6b4",
+                "uuid": "1713c4c8-7e66-4bb9-bf46-096a9e2bc071",
+                "id": 19
+            },
+            {
+                "@id": "\/api\/3\/picklists\/2535c634-5822-49a8-99da-ca96291d0095",
+                "@type": "Picklist",
+                "itemValue": "Reconnaissance",
+                "orderIndex": 1,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/eddbc863-c725-479a-867f-cec66206a6b4",
+                "uuid": "2535c634-5822-49a8-99da-ca96291d0095",
+                "id": 33
+            },
+            {
+                "@id": "\/api\/3\/picklists\/6c60c538-bd6c-44b9-aea3-539df0716d92",
+                "@type": "Picklist",
+                "itemValue": "Weaponization",
+                "orderIndex": 2,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/eddbc863-c725-479a-867f-cec66206a6b4",
+                "uuid": "6c60c538-bd6c-44b9-aea3-539df0716d92",
+                "id": 95
+            },
+            {
+                "@id": "\/api\/3\/picklists\/793050d5-a75d-4ea7-9176-1ad69627b7b2",
+                "@type": "Picklist",
+                "itemValue": "Not Applicable",
+                "orderIndex": 0,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/eddbc863-c725-479a-867f-cec66206a6b4",
+                "uuid": "793050d5-a75d-4ea7-9176-1ad69627b7b2",
+                "id": 115
+            },
+            {
+                "@id": "\/api\/3\/picklists\/8153c438-9fe4-4eef-b3af-752e26f665ab",
+                "@type": "Picklist",
+                "itemValue": "Command & Control",
+                "orderIndex": 6,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/eddbc863-c725-479a-867f-cec66206a6b4",
+                "uuid": "8153c438-9fe4-4eef-b3af-752e26f665ab",
+                "id": 121
+            },
+            {
+                "@id": "\/api\/3\/picklists\/8dfaa4f1-cd5b-43dc-bc3f-8821261fcb69",
+                "@type": "Picklist",
+                "itemValue": "Actions on Objectives",
+                "orderIndex": 7,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/eddbc863-c725-479a-867f-cec66206a6b4",
+                "uuid": "8dfaa4f1-cd5b-43dc-bc3f-8821261fcb69",
+                "id": 137
+            },
+            {
+                "@id": "\/api\/3\/picklists\/d889ee08-9ddd-404b-a166-6e8c33414f5e",
+                "@type": "Picklist",
+                "itemValue": "Delivery",
+                "orderIndex": 3,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/eddbc863-c725-479a-867f-cec66206a6b4",
+                "uuid": "d889ee08-9ddd-404b-a166-6e8c33414f5e",
+                "id": 212
+            },
+            {
+                "@id": "\/api\/3\/picklists\/db9978d4-7274-4da6-aec1-47438925a1c3",
+                "@type": "Picklist",
+                "itemValue": "Installation",
+                "orderIndex": 5,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/eddbc863-c725-479a-867f-cec66206a6b4",
+                "uuid": "db9978d4-7274-4da6-aec1-47438925a1c3",
+                "id": 216
+            }
+        ],
+        "uuid": "eddbc863-c725-479a-867f-cec66206a6b4",
+        "id": 33
+    },
+    {
+        "@context": "\/api\/3\/contexts\/PicklistName",
+        "@id": "\/api\/3\/picklist_names\/4e80cba3-032f-48b4-ac03-17e3ec247aac",
+        "@type": "PicklistName",
+        "name": "Severity",
+        "system": false,
+        "picklists": [
+            {
+                "@id": "\/api\/3\/picklists\/0d609b08-45e0-469f-8910-41145c0b7c03",
+                "@type": "Picklist",
+                "itemValue": "Minimal",
+                "orderIndex": 0,
+                "color": "#157DD9",
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/4e80cba3-032f-48b4-ac03-17e3ec247aac",
+                "uuid": "0d609b08-45e0-469f-8910-41145c0b7c03",
+                "id": 12
+            },
+            {
+                "@id": "\/api\/3\/picklists\/40187287-89fc-4e9c-b717-e9443d57eedb",
+                "@type": "Picklist",
+                "itemValue": "High",
+                "orderIndex": 3,
+                "color": "#DE7A13",
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/4e80cba3-032f-48b4-ac03-17e3ec247aac",
+                "uuid": "40187287-89fc-4e9c-b717-e9443d57eedb",
+                "id": 56
+            },
+            {
+                "@id": "\/api\/3\/picklists\/58d0753f-f7e4-403b-953c-b0f521eab759",
+                "@type": "Picklist",
+                "itemValue": "Low",
+                "orderIndex": 1,
+                "color": "#28B35C",
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/4e80cba3-032f-48b4-ac03-17e3ec247aac",
+                "uuid": "58d0753f-f7e4-403b-953c-b0f521eab759",
+                "id": 83
+            },
+            {
+                "@id": "\/api\/3\/picklists\/7efa2220-39bb-44e4-961f-ac368776e3b0",
+                "@type": "Picklist",
+                "itemValue": "Critical",
+                "orderIndex": 4,
+                "color": "#e31b1d",
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/4e80cba3-032f-48b4-ac03-17e3ec247aac",
+                "uuid": "7efa2220-39bb-44e4-961f-ac368776e3b0",
+                "id": 119
+            },
+            {
+                "@id": "\/api\/3\/picklists\/b3c20a3a-ecfd-4adc-a225-0205968e6793",
+                "@type": "Picklist",
+                "itemValue": "Medium",
+                "orderIndex": 2,
+                "color": "#D2AC1A",
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/4e80cba3-032f-48b4-ac03-17e3ec247aac",
+                "uuid": "b3c20a3a-ecfd-4adc-a225-0205968e6793",
+                "id": 176
+            }
+        ],
+        "uuid": "4e80cba3-032f-48b4-ac03-17e3ec247aac",
+        "id": 9
+    },
+    {
+        "@context": "\/api\/3\/contexts\/PicklistName",
+        "@id": "\/api\/3\/picklist_names\/fe36a8f2-fcba-4221-b4ab-1081f596b153",
+        "@type": "PicklistName",
+        "name": "SLAState",
+        "system": false,
+        "picklists": [
+            {
+                "@id": "\/api\/3\/picklists\/090115d7-90fc-4dc6-97ca-27950fc30c1c",
+                "@type": "Picklist",
+                "itemValue": "Met",
+                "orderIndex": 0,
+                "color": "#14b341",
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/fe36a8f2-fcba-4221-b4ab-1081f596b153",
+                "uuid": "090115d7-90fc-4dc6-97ca-27950fc30c1c",
+                "id": 7
+            },
+            {
+                "@id": "\/api\/3\/picklists\/5230b20c-d408-4b36-ad8f-610167d84d34",
+                "@type": "Picklist",
+                "itemValue": "Missed",
+                "orderIndex": 1,
+                "color": "#de2020",
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/fe36a8f2-fcba-4221-b4ab-1081f596b153",
+                "uuid": "5230b20c-d408-4b36-ad8f-610167d84d34",
+                "id": 75
+            }
+        ],
+        "uuid": "fe36a8f2-fcba-4221-b4ab-1081f596b153",
+        "id": 34
     }
   ],
   "reports": [],
@@ -590,52 +1811,6 @@
           }
         },
         {
-          "@id": "\/api\/3\/attribute_metadatas\/507c843b-889c-40f6-8d5b-32227ee9d472",
-          "@type": "AttributeMetadata",
-          "type": "string",
-          "name": "serviceNowID",
-          "length": null,
-          "orderIndex": 3,
-          "formType": "text",
-          "dataSource": null,
-          "searchable": false,
-          "peerReplicable": true,
-          "system": false,
-          "encrypted": false,
-          "gridColumn": false,
-          "collection": false,
-          "inversedField": null,
-          "ownsRelationship": false,
-          "validation": {
-            "required": false,
-            "minlength": 0,
-            "maxlength": 10485761
-          },
-          "bulkAction": {
-            "allow": false,
-            "buttonText": "",
-            "buttonIcon": "",
-            "buttonClass": "btn btn-default btn-sm"
-          },
-          "dataSourceFilters": null,
-          "defaultValue": "",
-          "tooltip": null,
-          "visibility": true,
-          "htmlEscape": false,
-          "orphanRemoval": null,
-          "readable": true,
-          "writeable": true,
-          "identifier": null,
-          "unique": false,
-          "recommend": false,
-          "sattrib": "\/api\/3\/staging_model_metadatas\/9a5f8c83-332a-4dee-9550-4bfb6bd0c212",
-          "uuid": "507c843b-889c-40f6-8d5b-32227ee9d472",
-          "displayName": "{{ serviceNowID }}",
-          "descriptions": {
-            "singular": "ServiceNow ID"
-          }
-        },
-        {
           "@id": "\/api\/3\/attribute_metadatas\/ca173cd6-4b0e-4b98-8623-c2cdc5b37cb6",
           "@type": "AttributeMetadata",
           "type": "integer",
@@ -679,98 +1854,6 @@
           "displayName": "{{ vulnerabilitySeverity }}",
           "descriptions": {
             "singular": "Vulnerability Severity"
-          }
-        },
-        {
-          "@id": "\/api\/3\/attribute_metadatas\/efdc69d1-c824-4f0a-8f97-1a1f6ce2bcd7",
-          "@type": "AttributeMetadata",
-          "type": "string",
-          "name": "approvalGroup",
-          "length": null,
-          "orderIndex": 4,
-          "formType": "text",
-          "dataSource": null,
-          "searchable": false,
-          "peerReplicable": true,
-          "system": false,
-          "encrypted": false,
-          "gridColumn": false,
-          "collection": false,
-          "inversedField": null,
-          "ownsRelationship": false,
-          "validation": {
-            "required": false,
-            "minlength": 0,
-            "maxlength": 10485761
-          },
-          "bulkAction": {
-            "allow": false,
-            "buttonText": "",
-            "buttonIcon": "",
-            "buttonClass": "btn btn-default btn-sm"
-          },
-          "dataSourceFilters": null,
-          "defaultValue": "",
-          "tooltip": null,
-          "visibility": true,
-          "htmlEscape": false,
-          "orphanRemoval": null,
-          "readable": true,
-          "writeable": true,
-          "identifier": null,
-          "unique": false,
-          "recommend": false,
-          "sattrib": "\/api\/3\/staging_model_metadatas\/9a5f8c83-332a-4dee-9550-4bfb6bd0c212",
-          "uuid": "efdc69d1-c824-4f0a-8f97-1a1f6ce2bcd7",
-          "displayName": "{{ approvalGroup }}",
-          "descriptions": {
-            "singular": "Approval Group"
-          }
-        },
-        {
-          "@id": "\/api\/3\/attribute_metadatas\/45faac6a-0ff7-44eb-b74f-3a8d022c343d",
-          "@type": "AttributeMetadata",
-          "type": "string",
-          "name": "qiD",
-          "length": null,
-          "orderIndex": 5,
-          "formType": "text",
-          "dataSource": null,
-          "searchable": false,
-          "peerReplicable": true,
-          "system": false,
-          "encrypted": false,
-          "gridColumn": false,
-          "collection": false,
-          "inversedField": null,
-          "ownsRelationship": false,
-          "validation": {
-            "required": false,
-            "minlength": 0,
-            "maxlength": 10485761
-          },
-          "bulkAction": {
-            "allow": false,
-            "buttonText": "",
-            "buttonIcon": "",
-            "buttonClass": "btn btn-default btn-sm"
-          },
-          "dataSourceFilters": null,
-          "defaultValue": "",
-          "tooltip": null,
-          "visibility": true,
-          "htmlEscape": false,
-          "orphanRemoval": null,
-          "readable": true,
-          "writeable": true,
-          "identifier": null,
-          "unique": false,
-          "recommend": false,
-          "sattrib": "\/api\/3\/staging_model_metadatas\/9a5f8c83-332a-4dee-9550-4bfb6bd0c212",
-          "uuid": "45faac6a-0ff7-44eb-b74f-3a8d022c343d",
-          "displayName": "{{ qiD }}",
-          "descriptions": {
-            "singular": "QiD"
           }
         },
         {
