@@ -1858,52 +1858,6 @@
           }
         },
         {
-          "@id": "\/api\/3\/attribute_metadatas\/4590193d-0201-42b3-9e61-c7bd99190d47",
-          "@type": "AttributeMetadata",
-          "type": "integer",
-          "name": "alertRemainingAckSLA",
-          "length": 0,
-          "orderIndex": 9,
-          "formType": "integer",
-          "dataSource": [],
-          "searchable": true,
-          "peerReplicable": true,
-          "system": false,
-          "encrypted": false,
-          "gridColumn": false,
-          "collection": false,
-          "inversedField": null,
-          "ownsRelationship": false,
-          "validation": {
-            "required": false,
-            "minlength": -2147483648,
-            "maxlength": 10485761
-          },
-          "bulkAction": {
-            "allow": false,
-            "buttonText": "",
-            "buttonIcon": "",
-            "buttonClass": "btn btn-default btn-sm"
-          },
-          "dataSourceFilters": [],
-          "defaultValue": "0",
-          "tooltip": "",
-          "visibility": true,
-          "htmlEscape": false,
-          "orphanRemoval": false,
-          "readable": true,
-          "writeable": true,
-          "identifier": false,
-          "unique": false,
-          "recommend": false,
-          "sattrib": "\/api\/3\/staging_model_metadatas\/9a5f8c83-332a-4dee-9550-4bfb6bd0c212",
-          "uuid": "4590193d-0201-42b3-9e61-c7bd99190d47",
-          "displayName": "{{ alertRemainingAckSLA }}",
-          "descriptions": {
-            "singular": "Remaining Ack SLA on Pause"
-          }
-        },
-        {
           "@id": "\/api\/3\/attribute_metadatas\/54bbf90e-5164-48bd-88df-ad34a5c9c57d",
           "@type": "AttributeMetadata",
           "type": "picklists",
