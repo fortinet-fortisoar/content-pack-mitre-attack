@@ -1298,6 +1298,39 @@
         ],
         "uuid": "fe36a8f2-fcba-4221-b4ab-1081f596b153",
         "id": 34
+    },
+    {
+        "@context": "\/api\/3\/contexts\/PicklistName",
+        "@id": "\/api\/3\/picklist_names\/98830189-afff-40e6-bed1-94012551dc67",
+        "@type": "PicklistName",
+        "name": "SIEMs",
+        "system": false,
+        "picklists": [
+            {
+                "@id": "\/api\/3\/picklists\/bcebcab1-3f93-468a-9f3f-91e5c511a0b5",
+                "@type": "Picklist",
+                "itemValue": "Splunk",
+                "orderIndex": 0,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/98830189-afff-40e6-bed1-94012551dc67",
+                "uuid": "bcebcab1-3f93-468a-9f3f-91e5c511a0b5",
+                "id": 313
+            },
+            {
+                "@id": "\/api\/3\/picklists\/876c1483-416b-4d2f-8138-15769ae16d5c",
+                "@type": "Picklist",
+                "itemValue": "Elastic",
+                "orderIndex": 1,
+                "color": null,
+                "icon": null,
+                "listName": "\/api\/3\/picklist_names\/98830189-afff-40e6-bed1-94012551dc67",
+                "uuid": "876c1483-416b-4d2f-8138-15769ae16d5c",
+                "id": 314
+            }
+        ],
+        "uuid": "98830189-afff-40e6-bed1-94012551dc67",
+        "id": 53
     }
   ],
   "reports": [],
@@ -1811,145 +1844,6 @@
           }
         },
         {
-          "@id": "\/api\/3\/attribute_metadatas\/ca173cd6-4b0e-4b98-8623-c2cdc5b37cb6",
-          "@type": "AttributeMetadata",
-          "type": "integer",
-          "name": "vulnerabilitySeverity",
-          "length": null,
-          "orderIndex": 110,
-          "formType": "integer",
-          "dataSource": null,
-          "searchable": true,
-          "peerReplicable": true,
-          "system": false,
-          "encrypted": false,
-          "gridColumn": false,
-          "collection": false,
-          "inversedField": null,
-          "ownsRelationship": false,
-          "validation": {
-            "required": false,
-            "minlength": -2147483648,
-            "maxlength": 10485761
-          },
-          "bulkAction": {
-            "allow": false,
-            "buttonText": "",
-            "buttonIcon": "",
-            "buttonClass": "btn btn-default btn-sm"
-          },
-          "dataSourceFilters": null,
-          "defaultValue": null,
-          "tooltip": null,
-          "visibility": true,
-          "htmlEscape": false,
-          "orphanRemoval": null,
-          "readable": true,
-          "writeable": true,
-          "identifier": null,
-          "unique": false,
-          "recommend": false,
-          "sattrib": "\/api\/3\/staging_model_metadatas\/9a5f8c83-332a-4dee-9550-4bfb6bd0c212",
-          "uuid": "ca173cd6-4b0e-4b98-8623-c2cdc5b37cb6",
-          "displayName": "{{ vulnerabilitySeverity }}",
-          "descriptions": {
-            "singular": "Vulnerability Severity"
-          }
-        },
-        {
-          "@id": "\/api\/3\/attribute_metadatas\/ef9b3de7-626d-4b75-960a-dc4e5bbdff54",
-          "@type": "AttributeMetadata",
-          "type": "integer",
-          "name": "ackSLApausedon",
-          "length": null,
-          "orderIndex": 7,
-          "formType": "datetime",
-          "dataSource": null,
-          "searchable": true,
-          "peerReplicable": true,
-          "system": false,
-          "encrypted": false,
-          "gridColumn": false,
-          "collection": false,
-          "inversedField": null,
-          "ownsRelationship": false,
-          "validation": {
-            "required": false,
-            "minlength": 0,
-            "maxlength": 10485761,
-            "_enableRange": false
-          },
-          "bulkAction": {
-            "allow": false,
-            "buttonText": "",
-            "buttonIcon": "",
-            "buttonClass": "btn btn-default btn-sm"
-          },
-          "dataSourceFilters": null,
-          "defaultValue": null,
-          "tooltip": null,
-          "visibility": true,
-          "htmlEscape": null,
-          "orphanRemoval": null,
-          "readable": null,
-          "writeable": true,
-          "identifier": null,
-          "unique": false,
-          "recommend": false,
-          "sattrib": "\/api\/3\/staging_model_metadatas\/9a5f8c83-332a-4dee-9550-4bfb6bd0c212",
-          "uuid": "ef9b3de7-626d-4b75-960a-dc4e5bbdff54",
-          "displayName": "{{ ackSLApausedon }}",
-          "descriptions": {
-            "singular": "Ack SLA Paused Date"
-          }
-        },
-        {
-          "@id": "\/api\/3\/attribute_metadatas\/5e71a536-8997-42fa-9762-8712d5e09541",
-          "@type": "AttributeMetadata",
-          "type": "integer",
-          "name": "alertRemainingRespSLA",
-          "length": 0,
-          "orderIndex": 8,
-          "formType": "integer",
-          "dataSource": [],
-          "searchable": true,
-          "peerReplicable": true,
-          "system": false,
-          "encrypted": false,
-          "gridColumn": false,
-          "collection": false,
-          "inversedField": null,
-          "ownsRelationship": false,
-          "validation": {
-            "required": false,
-            "minlength": -2147483648,
-            "maxlength": 10485761
-          },
-          "bulkAction": {
-            "allow": false,
-            "buttonText": "",
-            "buttonIcon": "",
-            "buttonClass": "btn btn-default btn-sm"
-          },
-          "dataSourceFilters": [],
-          "defaultValue": null,
-          "tooltip": "",
-          "visibility": true,
-          "htmlEscape": false,
-          "orphanRemoval": false,
-          "readable": true,
-          "writeable": true,
-          "identifier": false,
-          "unique": false,
-          "recommend": false,
-          "sattrib": "\/api\/3\/staging_model_metadatas\/9a5f8c83-332a-4dee-9550-4bfb6bd0c212",
-          "uuid": "5e71a536-8997-42fa-9762-8712d5e09541",
-          "displayName": "{{ alertRemainingRespSLA }}",
-          "descriptions": {
-            "singular": "Remaining Response SLA on Pause"
-          }
-        },
-        {
           "@id": "\/api\/3\/attribute_metadatas\/0e0ec2d1-9a82-4457-b48d-a5b9f6283ed6",
           "@type": "AttributeMetadata",
           "type": "integer",
@@ -1994,182 +1888,6 @@
           "displayName": "{{ priorityWeight }}",
           "descriptions": {
             "singular": "Priority Weight"
-          }
-        },
-        {
-          "@id": "\/api\/3\/attribute_metadatas\/4590193d-0201-42b3-9e61-c7bd99190d47",
-          "@type": "AttributeMetadata",
-          "type": "integer",
-          "name": "alertRemainingAckSLA",
-          "length": 0,
-          "orderIndex": 9,
-          "formType": "integer",
-          "dataSource": [],
-          "searchable": true,
-          "peerReplicable": true,
-          "system": false,
-          "encrypted": false,
-          "gridColumn": false,
-          "collection": false,
-          "inversedField": null,
-          "ownsRelationship": false,
-          "validation": {
-            "required": false,
-            "minlength": -2147483648,
-            "maxlength": 10485761
-          },
-          "bulkAction": {
-            "allow": false,
-            "buttonText": "",
-            "buttonIcon": "",
-            "buttonClass": "btn btn-default btn-sm"
-          },
-          "dataSourceFilters": [],
-          "defaultValue": "0",
-          "tooltip": "",
-          "visibility": true,
-          "htmlEscape": false,
-          "orphanRemoval": false,
-          "readable": true,
-          "writeable": true,
-          "identifier": false,
-          "unique": false,
-          "recommend": false,
-          "sattrib": "\/api\/3\/staging_model_metadatas\/9a5f8c83-332a-4dee-9550-4bfb6bd0c212",
-          "uuid": "4590193d-0201-42b3-9e61-c7bd99190d47",
-          "displayName": "{{ alertRemainingAckSLA }}",
-          "descriptions": {
-            "singular": "Remaining Ack SLA on Pause"
-          }
-        },
-        {
-          "@id": "\/api\/3\/attribute_metadatas\/e6908b25-d8e3-487f-94d7-f59b1f1d9273",
-          "@type": "AttributeMetadata",
-          "type": "string",
-          "name": "deviceSerialNo",
-          "length": 0,
-          "orderIndex": 10,
-          "formType": "text",
-          "dataSource": [],
-          "searchable": false,
-          "peerReplicable": true,
-          "system": false,
-          "encrypted": false,
-          "gridColumn": false,
-          "collection": false,
-          "inversedField": null,
-          "ownsRelationship": false,
-          "validation": {
-            "required": false,
-            "minlength": 0,
-            "maxlength": 10485761,
-            "_enableRange": false
-          },
-          "bulkAction": {
-            "allow": false,
-            "buttonText": "",
-            "buttonIcon": "",
-            "buttonClass": "btn btn-default btn-sm"
-          },
-          "dataSourceFilters": [],
-          "defaultValue": "",
-          "tooltip": "",
-          "visibility": [
-            {
-              "sort": [],
-              "limit": 30,
-              "logic": "AND",
-              "filters": [
-                {
-                  "field": "type",
-                  "operator": "eq",
-                  "value": "\/api\/3\/picklists\/2b8024fd-096a-426f-bf7f-63fb149ff9ee",
-                  "_value": {
-                    "itemValue": "Lost \/ Stolen",
-                    "@id": "\/api\/3\/picklists\/2b8024fd-096a-426f-bf7f-63fb149ff9ee"
-                  },
-                  "type": "object"
-                }
-              ]
-            }
-          ],
-          "htmlEscape": false,
-          "orphanRemoval": false,
-          "readable": true,
-          "writeable": true,
-          "identifier": false,
-          "unique": false,
-          "recommend": false,
-          "sattrib": "\/api\/3\/staging_model_metadatas\/9a5f8c83-332a-4dee-9550-4bfb6bd0c212",
-          "uuid": "e6908b25-d8e3-487f-94d7-f59b1f1d9273",
-          "displayName": "{{ deviceSerialNo }}",
-          "descriptions": {
-            "singular": "Device Serial No"
-          }
-        },
-        {
-          "@id": "\/api\/3\/attribute_metadatas\/fe6df411-03e0-4f62-b403-ee049d7e194f",
-          "@type": "AttributeMetadata",
-          "type": "string",
-          "name": "deviceOwner",
-          "length": 0,
-          "orderIndex": 11,
-          "formType": "text",
-          "dataSource": [],
-          "searchable": false,
-          "peerReplicable": true,
-          "system": false,
-          "encrypted": false,
-          "gridColumn": false,
-          "collection": false,
-          "inversedField": null,
-          "ownsRelationship": false,
-          "validation": {
-            "required": false,
-            "minlength": 0,
-            "maxlength": 10485761,
-            "_enableRange": false
-          },
-          "bulkAction": {
-            "allow": false,
-            "buttonText": "",
-            "buttonIcon": "",
-            "buttonClass": "btn btn-default btn-sm"
-          },
-          "dataSourceFilters": [],
-          "defaultValue": "",
-          "tooltip": "",
-          "visibility": [
-            {
-              "sort": [],
-              "limit": 30,
-              "logic": "AND",
-              "filters": [
-                {
-                  "field": "type",
-                  "operator": "eq",
-                  "value": "\/api\/3\/picklists\/2b8024fd-096a-426f-bf7f-63fb149ff9ee",
-                  "_value": {
-                    "itemValue": "Lost \/ Stolen",
-                    "@id": "\/api\/3\/picklists\/2b8024fd-096a-426f-bf7f-63fb149ff9ee"
-                  },
-                  "type": "object"
-                }
-              ]
-            }
-          ],
-          "htmlEscape": false,
-          "orphanRemoval": false,
-          "readable": true,
-          "writeable": true,
-          "identifier": false,
-          "unique": false,
-          "recommend": false,
-          "sattrib": "\/api\/3\/staging_model_metadatas\/9a5f8c83-332a-4dee-9550-4bfb6bd0c212",
-          "uuid": "fe6df411-03e0-4f62-b403-ee049d7e194f",
-          "displayName": "{{ deviceOwner }}",
-          "descriptions": {
-            "singular": "Device Owner"
           }
         },
         {
@@ -2362,71 +2080,6 @@
           }
         },
         {
-          "@id": "\/api\/3\/attribute_metadatas\/661de322-1753-4b22-ad22-96cd19f717a4",
-          "@type": "AttributeMetadata",
-          "type": "string",
-          "name": "bucketName",
-          "length": 0,
-          "orderIndex": 22,
-          "formType": "text",
-          "dataSource": [],
-          "searchable": false,
-          "peerReplicable": true,
-          "system": false,
-          "encrypted": false,
-          "gridColumn": false,
-          "collection": false,
-          "inversedField": null,
-          "ownsRelationship": false,
-          "validation": {
-            "required": false,
-            "minlength": 0,
-            "maxlength": 10485761
-          },
-          "bulkAction": {
-            "allow": false,
-            "buttonText": "",
-            "buttonIcon": "",
-            "buttonClass": "btn btn-default btn-sm"
-          },
-          "dataSourceFilters": [],
-          "defaultValue": "",
-          "tooltip": "",
-          "visibility": [
-            {
-              "sort": [],
-              "limit": 30,
-              "logic": "AND",
-              "filters": [
-                {
-                  "field": "type",
-                  "operator": "eq",
-                  "value": "\/api\/3\/picklists\/1b14cac9-5f6a-4d87-8b9b-e710b322c490",
-                  "_value": {
-                    "display": "S3 Policy Change",
-                    "itemValue": "S3 Policy Change",
-                    "@id": "\/api\/3\/picklists\/1b14cac9-5f6a-4d87-8b9b-e710b322c490"
-                  },
-                  "type": "object"
-                }
-              ]
-            }
-          ],
-          "htmlEscape": false,
-          "orphanRemoval": false,
-          "readable": true,
-          "writeable": true,
-          "identifier": false,
-          "unique": false,
-          "recommend": false,
-          "sattrib": "\/api\/3\/staging_model_metadatas\/9a5f8c83-332a-4dee-9550-4bfb6bd0c212",
-          "uuid": "661de322-1753-4b22-ad22-96cd19f717a4",
-          "displayName": "{{ bucketName }}",
-          "descriptions": {
-            "singular": "Bucket Name"
-          }
-        },
-        {
           "@id": "\/api\/3\/attribute_metadatas\/4b0b3fea-2d0a-41cd-ae56-f167ce87471e",
           "@type": "AttributeMetadata",
           "type": "string",
@@ -2603,161 +2256,6 @@
           "displayName": "{{ dueBy }}",
           "descriptions": {
             "singular": "Ack Due Date"
-          }
-        },
-        {
-          "@id": "\/api\/3\/attribute_metadatas\/cb33f044-518c-405b-8304-63080be4aa03",
-          "@type": "AttributeMetadata",
-          "type": "integer",
-          "name": "alertDetectionDate",
-          "length": 0,
-          "orderIndex": 26,
-          "formType": "datetime",
-          "dataSource": [],
-          "searchable": true,
-          "peerReplicable": true,
-          "system": false,
-          "encrypted": false,
-          "gridColumn": false,
-          "collection": false,
-          "inversedField": null,
-          "ownsRelationship": false,
-          "validation": {
-            "required": false,
-            "minlength": 0,
-            "maxlength": 10485761,
-            "_enableRange": false
-          },
-          "bulkAction": {
-            "allow": false,
-            "buttonText": "",
-            "buttonIcon": "",
-            "buttonClass": "btn btn-default btn-sm"
-          },
-          "dataSourceFilters": [],
-          "defaultValue": null,
-          "tooltip": "",
-          "visibility": [
-            {
-              "sort": [],
-              "limit": 30,
-              "logic": "OR",
-              "filters": [
-                {
-                  "field": "alertDetectionDate",
-                  "value": "false",
-                  "operator": "isnull",
-                  "type": "datetime"
-                }
-              ]
-            }
-          ],
-          "htmlEscape": false,
-          "orphanRemoval": false,
-          "readable": true,
-          "writeable": true,
-          "identifier": false,
-          "unique": false,
-          "recommend": false,
-          "sattrib": "\/api\/3\/staging_model_metadatas\/9a5f8c83-332a-4dee-9550-4bfb6bd0c212",
-          "uuid": "cb33f044-518c-405b-8304-63080be4aa03",
-          "displayName": "{{ alertDetectionDate }}",
-          "descriptions": {
-            "singular": "Detection Date"
-          }
-        },
-        {
-          "@id": "\/api\/3\/attribute_metadatas\/e02725c8-f61f-4845-8b95-e1c980e7e75b",
-          "@type": "AttributeMetadata",
-          "type": "string",
-          "name": "destinationID",
-          "length": 0,
-          "orderIndex": 44,
-          "formType": "text",
-          "dataSource": [],
-          "searchable": false,
-          "peerReplicable": true,
-          "system": false,
-          "encrypted": false,
-          "gridColumn": false,
-          "collection": false,
-          "inversedField": null,
-          "ownsRelationship": false,
-          "validation": {
-            "required": false,
-            "minlength": 0,
-            "maxlength": 10485761,
-            "_enableRange": false
-          },
-          "bulkAction": {
-            "allow": false,
-            "buttonText": "",
-            "buttonIcon": "",
-            "buttonClass": "btn btn-default btn-sm"
-          },
-          "dataSourceFilters": [],
-          "defaultValue": "",
-          "tooltip": "",
-          "visibility": true,
-          "htmlEscape": false,
-          "orphanRemoval": false,
-          "readable": true,
-          "writeable": true,
-          "identifier": false,
-          "unique": false,
-          "recommend": false,
-          "sattrib": "\/api\/3\/staging_model_metadatas\/9a5f8c83-332a-4dee-9550-4bfb6bd0c212",
-          "uuid": "e02725c8-f61f-4845-8b95-e1c980e7e75b",
-          "displayName": "{{ destinationID }}",
-          "descriptions": {
-            "singular": "Destination ID"
-          }
-        },
-        {
-          "@id": "\/api\/3\/attribute_metadatas\/0220df1c-cd71-48b6-9cf5-24954850fab0",
-          "@type": "AttributeMetadata",
-          "type": "integer",
-          "name": "respSLApausedon",
-          "length": null,
-          "orderIndex": 6,
-          "formType": "datetime",
-          "dataSource": null,
-          "searchable": true,
-          "peerReplicable": true,
-          "system": false,
-          "encrypted": false,
-          "gridColumn": false,
-          "collection": false,
-          "inversedField": null,
-          "ownsRelationship": false,
-          "validation": {
-            "required": false,
-            "minlength": 0,
-            "maxlength": 10485761,
-            "_enableRange": false
-          },
-          "bulkAction": {
-            "allow": false,
-            "buttonText": "",
-            "buttonIcon": "",
-            "buttonClass": "btn btn-default btn-sm"
-          },
-          "dataSourceFilters": null,
-          "defaultValue": null,
-          "tooltip": null,
-          "visibility": true,
-          "htmlEscape": null,
-          "orphanRemoval": null,
-          "readable": null,
-          "writeable": true,
-          "identifier": null,
-          "unique": false,
-          "recommend": false,
-          "sattrib": "\/api\/3\/staging_model_metadatas\/9a5f8c83-332a-4dee-9550-4bfb6bd0c212",
-          "uuid": "0220df1c-cd71-48b6-9cf5-24954850fab0",
-          "displayName": "{{ respSLApausedon }}",
-          "descriptions": {
-            "singular": "Response SLA Paused Date"
           }
         },
         {
@@ -15783,6 +15281,498 @@
         "singular": "Technique",
         "plural": "Techniques"
       }
+    },
+    {
+        "@context": "\/api\/3\/contexts\/StagingModelMetadata",
+        "@id": "\/api\/3\/staging_model_metadatas\/0ae33327-6281-42a2-88ee-87f624376a9a",
+        "@type": "StagingModelMetadata",
+        "type": "hunt",
+        "parentType": null,
+        "tableName": "hunt",
+        "ownable": true,
+        "userOwnable": false,
+        "trackable": true,
+        "taggable": true,
+        "peerReplicable": false,
+        "defaultSort": [],
+        "uniqueConstraint": [],
+        "indexable": true,
+        "writable": true,
+        "attributes": [
+            {
+                "@id": "\/api\/3\/attribute_metadatas\/ba52afbb-7a91-40d4-a5e0-517e2af8a7ef",
+                "@type": "AttributeMetadata",
+                "type": "comments",
+                "name": "comments",
+                "length": 0,
+                "orderIndex": 2,
+                "formType": "manyToMany",
+                "dataSource": {
+                    "model": "comments"
+                },
+                "searchable": false,
+                "peerReplicable": true,
+                "system": false,
+                "encrypted": false,
+                "gridColumn": false,
+                "collection": true,
+                "inversedField": "hunts",
+                "ownsRelationship": false,
+                "validation": {
+                    "required": false,
+                    "minlength": 0,
+                    "maxlength": 10485761,
+                    "_enableRange": false
+                },
+                "bulkAction": [],
+                "dataSourceFilters": [],
+                "defaultValue": null,
+                "tooltip": "",
+                "visibility": true,
+                "htmlEscape": false,
+                "orphanRemoval": false,
+                "readable": true,
+                "writeable": true,
+                "identifier": false,
+                "unique": false,
+                "recommend": false,
+                "sattrib": "\/api\/3\/staging_model_metadatas\/0ae33327-6281-42a2-88ee-87f624376a9a",
+                "uuid": "ba52afbb-7a91-40d4-a5e0-517e2af8a7ef",
+                "displayName": "{{ comments }}",
+                "descriptions": {
+                    "singular": "Comment"
+                }
+            },
+            {
+                "@id": "\/api\/3\/attribute_metadatas\/4b3309bc-9289-422d-805f-10deeeb7fccc",
+                "@type": "AttributeMetadata",
+                "type": "communication",
+                "name": "communications",
+                "length": 0,
+                "orderIndex": 3,
+                "formType": "manyToMany",
+                "dataSource": {
+                    "model": "communication"
+                },
+                "searchable": false,
+                "peerReplicable": true,
+                "system": false,
+                "encrypted": false,
+                "gridColumn": false,
+                "collection": true,
+                "inversedField": "hunts",
+                "ownsRelationship": false,
+                "validation": {
+                    "required": false,
+                    "minlength": 0,
+                    "maxlength": 10485761,
+                    "_enableRange": false
+                },
+                "bulkAction": [],
+                "dataSourceFilters": [],
+                "defaultValue": null,
+                "tooltip": "",
+                "visibility": true,
+                "htmlEscape": false,
+                "orphanRemoval": false,
+                "readable": true,
+                "writeable": true,
+                "identifier": false,
+                "unique": false,
+                "recommend": false,
+                "sattrib": "\/api\/3\/staging_model_metadatas\/0ae33327-6281-42a2-88ee-87f624376a9a",
+                "uuid": "4b3309bc-9289-422d-805f-10deeeb7fccc",
+                "displayName": "{{ communications }}",
+                "descriptions": {
+                    "singular": "Communications"
+                }
+            },
+            {
+                "@id": "\/api\/3\/attribute_metadatas\/5e21fa75-bfd5-494b-9b32-0a8877c74495",
+                "@type": "AttributeMetadata",
+                "type": "alerts",
+                "name": "alerts",
+                "length": 0,
+                "orderIndex": 1,
+                "formType": "manyToMany",
+                "dataSource": {
+                    "model": "alerts"
+                },
+                "searchable": false,
+                "peerReplicable": true,
+                "system": false,
+                "encrypted": false,
+                "gridColumn": false,
+                "collection": true,
+                "inversedField": "hunts",
+                "ownsRelationship": false,
+                "validation": {
+                    "required": false,
+                    "minlength": 0,
+                    "maxlength": 10485761,
+                    "_enableRange": false
+                },
+                "bulkAction": [],
+                "dataSourceFilters": [],
+                "defaultValue": null,
+                "tooltip": "",
+                "visibility": true,
+                "htmlEscape": false,
+                "orphanRemoval": false,
+                "readable": true,
+                "writeable": true,
+                "identifier": false,
+                "unique": false,
+                "recommend": false,
+                "sattrib": "\/api\/3\/staging_model_metadatas\/0ae33327-6281-42a2-88ee-87f624376a9a",
+                "uuid": "5e21fa75-bfd5-494b-9b32-0a8877c74495",
+                "displayName": "{{ alerts }}",
+                "descriptions": {
+                    "singular": "Alerts"
+                }
+            },
+            {
+                "@id": "\/api\/3\/attribute_metadatas\/4e0a94d1-9093-4181-a275-0d74566e1a8c",
+                "@type": "AttributeMetadata",
+                "type": "integer",
+                "name": "huntEnd",
+                "length": 0,
+                "orderIndex": 4,
+                "formType": "datetime",
+                "dataSource": [],
+                "searchable": true,
+                "peerReplicable": true,
+                "system": false,
+                "encrypted": false,
+                "gridColumn": true,
+                "collection": false,
+                "inversedField": null,
+                "ownsRelationship": false,
+                "validation": {
+                    "required": false,
+                    "minlength": 0,
+                    "maxlength": 10485761,
+                    "_enableRange": false
+                },
+                "bulkAction": {
+                    "allow": false,
+                    "buttonText": "",
+                    "buttonIcon": "",
+                    "buttonClass": "btn btn-default btn-sm"
+                },
+                "dataSourceFilters": [],
+                "defaultValue": "%7B%22differenceType%22:%22mins%22,%22differenceValue%22:1%7D",
+                "tooltip": "Date\/time corresponding to the end of the time frame of the hunt.",
+                "visibility": true,
+                "htmlEscape": false,
+                "orphanRemoval": false,
+                "readable": true,
+                "writeable": true,
+                "identifier": false,
+                "unique": false,
+                "recommend": false,
+                "sattrib": "\/api\/3\/staging_model_metadatas\/0ae33327-6281-42a2-88ee-87f624376a9a",
+                "uuid": "4e0a94d1-9093-4181-a275-0d74566e1a8c",
+                "displayName": "{{ huntEnd }}",
+                "descriptions": {
+                    "singular": "Hunt End"
+                }
+            },
+            {
+                "@id": "\/api\/3\/attribute_metadatas\/453566a4-1adb-41e6-990c-d839eb666b1d",
+                "@type": "AttributeMetadata",
+                "type": "integer",
+                "name": "huntStart",
+                "length": 0,
+                "orderIndex": 5,
+                "formType": "datetime",
+                "dataSource": [],
+                "searchable": true,
+                "peerReplicable": true,
+                "system": false,
+                "encrypted": false,
+                "gridColumn": true,
+                "collection": false,
+                "inversedField": null,
+                "ownsRelationship": false,
+                "validation": {
+                    "required": true,
+                    "minlength": 0,
+                    "maxlength": 10485761,
+                    "_enableRange": false
+                },
+                "bulkAction": {
+                    "allow": false,
+                    "buttonText": "",
+                    "buttonIcon": "",
+                    "buttonClass": "btn btn-default btn-sm"
+                },
+                "dataSourceFilters": [],
+                "defaultValue": "%7B%22differenceType%22:%22mins%22,%22differenceValue%22:1%7D",
+                "tooltip": "Date\/time corresponding to the beginning of the time frame of the hunt.",
+                "visibility": true,
+                "htmlEscape": false,
+                "orphanRemoval": false,
+                "readable": true,
+                "writeable": true,
+                "identifier": false,
+                "unique": false,
+                "recommend": false,
+                "sattrib": "\/api\/3\/staging_model_metadatas\/0ae33327-6281-42a2-88ee-87f624376a9a",
+                "uuid": "453566a4-1adb-41e6-990c-d839eb666b1d",
+                "displayName": "{{ huntStart }}",
+                "descriptions": {
+                    "singular": "Hunt Start"
+                }
+            },
+            {
+                "@id": "\/api\/3\/attribute_metadatas\/72b6a2e4-ffdf-4a6d-a965-6bf9ed985a78",
+                "@type": "AttributeMetadata",
+                "type": "indicators",
+                "name": "indicators",
+                "length": 0,
+                "orderIndex": 6,
+                "formType": "manyToMany",
+                "dataSource": {
+                    "model": "indicators"
+                },
+                "searchable": false,
+                "peerReplicable": true,
+                "system": false,
+                "encrypted": false,
+                "gridColumn": false,
+                "collection": true,
+                "inversedField": "hunts",
+                "ownsRelationship": false,
+                "validation": {
+                    "required": false,
+                    "minlength": 0,
+                    "maxlength": 10485761,
+                    "_enableRange": false
+                },
+                "bulkAction": [],
+                "dataSourceFilters": [],
+                "defaultValue": null,
+                "tooltip": "",
+                "visibility": true,
+                "htmlEscape": false,
+                "orphanRemoval": false,
+                "readable": true,
+                "writeable": true,
+                "identifier": false,
+                "unique": false,
+                "recommend": false,
+                "sattrib": "\/api\/3\/staging_model_metadatas\/0ae33327-6281-42a2-88ee-87f624376a9a",
+                "uuid": "72b6a2e4-ffdf-4a6d-a965-6bf9ed985a78",
+                "displayName": "{{ indicators }}",
+                "descriptions": {
+                    "singular": "Indicators"
+                }
+            },
+            {
+                "@id": "\/api\/3\/attribute_metadatas\/d43fffe8-4882-45a9-ac98-b923653cb6e3",
+                "@type": "AttributeMetadata",
+                "type": "string",
+                "name": "name",
+                "length": 0,
+                "orderIndex": 7,
+                "formType": "text",
+                "dataSource": [],
+                "searchable": true,
+                "peerReplicable": true,
+                "system": false,
+                "encrypted": false,
+                "gridColumn": false,
+                "collection": false,
+                "inversedField": null,
+                "ownsRelationship": false,
+                "validation": {
+                    "required": true,
+                    "minlength": 0,
+                    "maxlength": 10485761
+                },
+                "bulkAction": {
+                    "allow": false,
+                    "buttonText": "",
+                    "buttonIcon": "",
+                    "buttonClass": "btn btn-default btn-sm"
+                },
+                "dataSourceFilters": [],
+                "defaultValue": "",
+                "tooltip": "",
+                "visibility": true,
+                "htmlEscape": false,
+                "orphanRemoval": false,
+                "readable": true,
+                "writeable": true,
+                "identifier": false,
+                "unique": false,
+                "recommend": false,
+                "sattrib": "\/api\/3\/staging_model_metadatas\/0ae33327-6281-42a2-88ee-87f624376a9a",
+                "uuid": "d43fffe8-4882-45a9-ac98-b923653cb6e3",
+                "displayName": "{{ name }}",
+                "descriptions": {
+                    "singular": "Name"
+                }
+            },
+            {
+                "@id": "\/api\/3\/attribute_metadatas\/dd386c5d-edcd-4d16-b86d-91bcc31fe60f",
+                "@type": "AttributeMetadata",
+                "type": "picklists",
+                "name": "siems",
+                "length": 0,
+                "orderIndex": 8,
+                "formType": "picklist",
+                "dataSource": {
+                    "model": "picklists",
+                    "query": {
+                        "logic": "AND",
+                        "filters": [
+                            {
+                                "field": "listName__name",
+                                "operator": "eq",
+                                "value": "SIEMs"
+                            }
+                        ],
+                        "sort": [
+                            {
+                                "field": "orderIndex",
+                                "direction": "ASC"
+                            }
+                        ]
+                    }
+                },
+                "searchable": false,
+                "peerReplicable": true,
+                "system": false,
+                "encrypted": false,
+                "gridColumn": false,
+                "collection": false,
+                "inversedField": null,
+                "ownsRelationship": false,
+                "validation": {
+                    "required": false,
+                    "minlength": 0,
+                    "maxlength": 10485761
+                },
+                "bulkAction": {
+                    "allow": false,
+                    "buttonText": "",
+                    "buttonIcon": "",
+                    "buttonClass": "btn btn-default btn-sm"
+                },
+                "dataSourceFilters": [],
+                "defaultValue": null,
+                "tooltip": "",
+                "visibility": true,
+                "htmlEscape": false,
+                "orphanRemoval": false,
+                "readable": true,
+                "writeable": true,
+                "identifier": false,
+                "unique": false,
+                "recommend": false,
+                "sattrib": "\/api\/3\/staging_model_metadatas\/0ae33327-6281-42a2-88ee-87f624376a9a",
+                "uuid": "dd386c5d-edcd-4d16-b86d-91bcc31fe60f",
+                "displayName": "{{ siems }}",
+                "descriptions": {
+                    "singular": "SIEMs"
+                }
+            },
+            {
+                "@id": "\/api\/3\/attribute_metadatas\/c8c1c7ac-b672-46ae-81e0-3e674482447e",
+                "@type": "AttributeMetadata",
+                "type": "tasks",
+                "name": "tasks",
+                "length": 0,
+                "orderIndex": 9,
+                "formType": "manyToMany",
+                "dataSource": {
+                    "model": "tasks"
+                },
+                "searchable": false,
+                "peerReplicable": true,
+                "system": false,
+                "encrypted": false,
+                "gridColumn": false,
+                "collection": true,
+                "inversedField": "hunt",
+                "ownsRelationship": true,
+                "validation": {
+                    "required": false,
+                    "minlength": 0,
+                    "maxlength": 10485761,
+                    "_enableRange": false
+                },
+                "bulkAction": [],
+                "dataSourceFilters": [],
+                "defaultValue": null,
+                "tooltip": "",
+                "visibility": true,
+                "htmlEscape": false,
+                "orphanRemoval": false,
+                "readable": true,
+                "writeable": true,
+                "identifier": false,
+                "unique": false,
+                "recommend": false,
+                "sattrib": "\/api\/3\/staging_model_metadatas\/0ae33327-6281-42a2-88ee-87f624376a9a",
+                "uuid": "c8c1c7ac-b672-46ae-81e0-3e674482447e",
+                "displayName": "{{ tasks }}",
+                "descriptions": {
+                    "singular": "Tasks"
+                }
+            },
+            {
+                "@id": "\/api\/3\/attribute_metadatas\/0cd32674-db66-444d-a01a-62470fbd2cfc",
+                "@type": "AttributeMetadata",
+                "type": "integer",
+                "name": "timeCreated",
+                "length": 0,
+                "orderIndex": 10,
+                "formType": "datetime",
+                "dataSource": [],
+                "searchable": true,
+                "peerReplicable": true,
+                "system": false,
+                "encrypted": false,
+                "gridColumn": false,
+                "collection": false,
+                "inversedField": null,
+                "ownsRelationship": false,
+                "validation": {
+                    "required": true,
+                    "minlength": 0,
+                    "maxlength": 10485761
+                },
+                "bulkAction": [],
+                "dataSourceFilters": [],
+                "defaultValue": "%7B%22differenceType%22:%22mins%22,%22differenceValue%22:1%7D",
+                "tooltip": "",
+                "visibility": true,
+                "htmlEscape": false,
+                "orphanRemoval": false,
+                "readable": true,
+                "writeable": false,
+                "identifier": false,
+                "unique": false,
+                "recommend": false,
+                "sattrib": "\/api\/3\/staging_model_metadatas\/0ae33327-6281-42a2-88ee-87f624376a9a",
+                "uuid": "0cd32674-db66-444d-a01a-62470fbd2cfc",
+                "displayName": "{{ timeCreated }}",
+                "descriptions": {
+                    "singular": "Time Created"
+                }
+            }
+        ],
+        "system": false,
+        "module": "hunt",
+        "uuid": "0ae33327-6281-42a2-88ee-87f624376a9a",
+        "displayName": "{{ name }}",
+        "descriptions": {
+            "singular": "Hunt",
+            "plural": "Hunts"
+        }
     }
   ],
   "viewTemplates": [
@@ -17251,6 +17241,268 @@
         "wid": "65b7f13a-776c-459d-8ab4-02ae65ed25d5"
       },
       "uuid": "modules-mitre_techniques-list"
+    },
+    {
+        "@context": "\/api\/3\/contexts\/SystemViewTemplate",
+        "@type": "SystemViewTemplate",
+        "type": "rows",
+        "config": {
+            "rows": [
+                {
+                    "columns": [
+                        {
+                            "widgets": [
+                                {
+                                    "type": "primaryDetail",
+                                    "config": {
+                                        "wid": "f63c08c3-9625-46e8-96ce-e860997d6944",
+                                        "idField": "id",
+                                        "picklistFieldReadOnly": false,
+                                        "titleFieldReadOnly": true,
+                                        "titleFieldLinky": false,
+                                        "titleField": "name"
+                                    }
+                                }
+                            ],
+                            "style": "col-lg-12"
+                        }
+                    ],
+                    "wid": "0f46aba4-ae76-41b2-9373-4afc6bf20c7b"
+                },
+                {
+                    "columns": [
+                        {
+                            "widgets": [
+                                {
+                                    "type": "editableFormGroup",
+                                    "config": {
+                                        "wid": "fe1c5b95-c7c3-4564-94e1-6f3b4514f67d",
+                                        "rows": [
+                                            {
+                                                "columns": [
+                                                    {
+                                                        "fields": [
+                                                            {
+                                                                "name": "huntStart",
+                                                                "highlightMode": true,
+                                                                "linky": true,
+                                                                "readOnly": false
+                                                            }
+                                                        ],
+                                                        "style": "col-lg-6"
+                                                    },
+                                                    {
+                                                        "fields": [
+                                                            {
+                                                                "name": "huntEnd",
+                                                                "highlightMode": true,
+                                                                "linky": true,
+                                                                "readOnly": false
+                                                            }
+                                                        ],
+                                                        "style": "col-lg-6"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "type": "editableFormGroup",
+                                    "config": {
+                                        "wid": "0fab68c1-08dd-4f38-b5c0-7ac3d6edd910",
+                                        "rows": [
+                                            {
+                                                "columns": [
+                                                    {
+                                                        "fields": [
+                                                            {
+                                                                "name": "createUser",
+                                                                "highlightMode": true,
+                                                                "linky": true,
+                                                                "readOnly": false
+                                                            },
+                                                            {
+                                                                "name": "modifyUser",
+                                                                "highlightMode": true,
+                                                                "linky": true,
+                                                                "readOnly": false
+                                                            }
+                                                        ],
+                                                        "style": "col-lg-6"
+                                                    },
+                                                    {
+                                                        "fields": [
+                                                            {
+                                                                "name": "createDate",
+                                                                "highlightMode": true,
+                                                                "linky": true,
+                                                                "readOnly": false
+                                                            },
+                                                            {
+                                                                "name": "modifyDate",
+                                                                "highlightMode": true,
+                                                                "linky": true,
+                                                                "readOnly": false
+                                                            }
+                                                        ],
+                                                        "style": "col-lg-6"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                }
+                            ],
+                            "style": "col-lg-12"
+                        }
+                    ],
+                    "wid": "023d01f4-4d97-4250-b724-c9f87509e212"
+                },
+                {
+                    "columns": [
+                        {
+                            "widgets": [
+                                {
+                                    "type": "tabs",
+                                    "config": {
+                                        "tabs": [
+                                            {
+                                                "title": "Correlations",
+                                                "widget": {
+                                                    "type": "relationship.subtab",
+                                                    "config": {
+                                                        "excludes": [
+                                                            "notes",
+                                                            "comments",
+                                                            "attachments"
+                                                        ],
+                                                        "wid": "2c0eceb4-dec9-4a4f-a68e-37a8c68c0c84"
+                                                    }
+                                                },
+                                                "show": true,
+                                                "icon": "fa fa-none"
+                                            }
+                                        ],
+                                        "wid": "f6c0c35b-1e4a-48e8-8bac-a2f579480d21"
+                                    }
+                                }
+                            ],
+                            "style": "col-lg-12"
+                        }
+                    ],
+                    "wid": "ebc448f1-de5b-4765-8f17-787c5ac733b4"
+                }
+            ],
+            "actionButtons": [],
+            "wid": "ad8e7de6-6ca1-47be-aa55-72ed245ce041"
+        },
+        "uuid": "modules-hunt-detail"
+    },
+    {
+        "@context": "\/api\/3\/contexts\/SystemViewTemplate",
+        "@type": "SystemViewTemplate",
+        "type": "form",
+        "config": {
+            "rows": [
+                {
+                    "columns": [
+                        {
+                            "widgets": [
+                                {
+                                    "type": "formGroup",
+                                    "config": {
+                                        "wid": "42966078-be7b-4e43-aca3-d8ed00c2fcae",
+                                        "rows": [
+                                            {
+                                                "columns": [
+                                                    {
+                                                        "fields": [
+                                                            {
+                                                                "name": "name",
+                                                                "highlightMode": true,
+                                                                "linky": true,
+                                                                "readOnly": false
+                                                            },
+                                                            {
+                                                                "name": "huntStart",
+                                                                "highlightMode": true,
+                                                                "linky": true,
+                                                                "readOnly": false
+                                                            },
+                                                            {
+                                                                "name": "huntEnd",
+                                                                "highlightMode": true,
+                                                                "linky": true,
+                                                                "readOnly": false
+                                                            },
+                                                            {
+                                                                "name": "recordTags",
+                                                                "highlightMode": true,
+                                                                "linky": true,
+                                                                "readOnly": false
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "wid": "31406cbf-6e5f-4aa0-835b-88bdf1f163e4"
+                }
+            ],
+            "wid": "3cf7786e-e8bd-4c16-b419-adc2d5c42ebf"
+        },
+        "uuid": "modules-hunt-form"
+    },
+    {
+        "@context": "\/api\/3\/contexts\/SystemViewTemplate",
+        "@type": "SystemViewTemplate",
+        "type": "rows",
+        "config": {
+            "rows": [
+                {
+                    "columns": [
+                        {
+                            "widgets": [
+                                {
+                                    "type": "grid",
+                                    "config": {
+                                        "wid": "80bcd65d-52c3-42e9-ab47-9e01e5b3821a",
+                                        "module": "hunt",
+                                        "columns": [
+                                            "id",
+                                            "name",
+                                            "huntStart",
+                                            "huntEnd",
+                                            "timeCreated"
+                                        ],
+                                        "expandableCol": [],
+                                        "relationshipField": [],
+                                        "checkboxStatus": false,
+                                        "actionButtons": [],
+                                        "query": {
+                                            "sort": [],
+                                            "limit": 30,
+                                            "logic": "AND",
+                                            "filters": []
+                                        }
+                                    }
+                                }
+                            ],
+                            "style": "col-lg-12"
+                        }
+                    ],
+                    "wid": "2fc96656-3784-4c1e-a43d-73bad582c0cf"
+                }
+            ],
+            "wid": "62fe82b8-04ce-4a5c-ac7e-9b923bb34d53"
+        },
+        "uuid": "modules-hunt-list"
     }
   ],
   "views": [],
