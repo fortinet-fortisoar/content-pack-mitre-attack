@@ -1,0 +1,493 @@
+{
+    "@type": "Workflow",
+    "triggerLimit": null,
+    "name": "HUNTS - Hidden Files and Directories (T1564.001)",
+    "aliasName": null,
+    "tag": "ATT&CK, Persistence, Defense_Evasion, Hidden_Files",
+    "description": "Hunts for the use of attrib.exe to hide files.",
+    "isActive": false,
+    "debug": false,
+    "singleRecordExecution": false,
+    "remoteExecutableFlag": false,
+    "parameters": [],
+    "synchronous": false,
+    "lastModifyDate": 1633085062,
+    "collection": "\/api\/3\/workflow_collections\/8e9e842a-e876-40ed-8ac4-078409ff7c29",
+    "versions": [],
+    "triggerStep": "\/api\/3\/workflow_steps\/502937bf-a86e-43de-b869-82092905f674",
+    "steps": [
+        {
+            "@type": "WorkflowStep",
+            "name": "Deduplicate comments",
+            "description": null,
+            "arguments": {
+                "arguments": {
+                    "hunt_iri": "{{vars.input.records[0]['@id']}}"
+                },
+                "step_variables": [],
+                "workflowReference": "\/api\/3\/workflows\/3fd311be-a1c6-41c7-99a3-8794b33d8f8a"
+            },
+            "status": null,
+            "top": "309",
+            "left": "1694",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "uuid": "d49f7431-6a74-4b3e-acc6-36b4eb07b306",
+            "id": 4581
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Set Elastic hunt times",
+            "description": null,
+            "arguments": {
+                "elasticHuntEnd": "{% if vars.input.records[0].huntEnd %} {{ arrow.get(vars.input.records[0].huntEnd).format('YYYY-MM-DDTHH:mm:ss.SSSSSSSSSZ') }} {% else %} now {% endif %}",
+                "elasticHuntStart": "{{ arrow.get(vars.input.records[0].huntStart).format('YYYY-MM-DDTHH:mm:ss.SSSSSSSSSZ') }}"
+            },
+            "status": null,
+            "top": "370",
+            "left": "571",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "uuid": "0e95b83d-9263-4f60-89ba-6ba7c12d8cf3",
+            "id": 4582
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Set Splunk hunt times",
+            "description": null,
+            "arguments": {
+                "splunkHuntEnd": "{% if vars.input.records[0].huntEnd %}latest={{vars.input.records[0].huntEnd}}{% endif %}",
+                "splunkHuntStart": "earliest={{vars.input.records[0].huntStart}}"
+            },
+            "status": null,
+            "top": "253",
+            "left": "571",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "uuid": "9f106962-34da-4401-893c-a4188dcb20a0",
+            "id": 4583
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Retrieve query results",
+            "description": null,
+            "arguments": {
+                "name": "Splunk",
+                "config": "9ab494b3-68d1-424f-9f76-0693bd787483",
+                "params": {
+                    "sid": "{'value':\"{{vars.steps.Query_for_use_of_attrib_to_hide_files.data.sid}}\"}",
+                    "additional_args": "{\"A\":\"B\"}"
+                },
+                "version": "1.4.0",
+                "do_until": {
+                    "delay": "1",
+                    "retries": "300",
+                    "condition": "{{\"results\" in vars.result.data}}"
+                },
+                "connector": "splunk",
+                "operation": "get_results",
+                "operationTitle": "Get Results for a Search",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "251",
+            "left": "1120",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "uuid": "5dcb3c48-26cb-46df-a180-215654dbb47a",
+            "id": 4584
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Create and Link Elastic Alert",
+            "description": null,
+            "arguments": {
+                "for_each": {
+                    "item": "{{vars.steps.Elastic_Query_for_use_of_attrib_to_hide_files.data.hits.hits}}",
+                    "condition": ""
+                },
+                "arguments": {
+                    "MD5": "{{vars.item._source.event_data.Hashes.split(\"MD5=\")[1].split(',')[0]}}",
+                    "url": "",
+                    "source": "{{vars.item._source.source_name}}",
+                    "comment": "SIEM query indicated attrib.exe was used to make a file or directory hidden on {{vars.item._source.computer_name}} at {{vars.item._source.event_data.UtcTime}}.",
+                    "huntIRI": "{{vars.input.records[0]['@id']}}",
+                    "service": "",
+                    "filePath": "{{vars.item._source.image_path}}",
+                    "hostName": "{{vars.item._source.beat.hostname}}",
+                    "sourceIP": "",
+                    "userName": "{{vars.item._source.username}}",
+                    "alertName": "ATT&CK-Hidden Files and Directories-Attrib used to hide {{vars.item._source.event_data.CommandLine | regex_search('(?<=\\+h\\s)[^\\\\\\\/:*?\"<>|\\r\\n]+$')}}",
+                    "epochTime": "{{ arrow.get(vars.item._source.event_data.UtcTime).timestamp }}",
+                    "eventName": "",
+                    "eventTime": "{{vars.item._source.event_data.UtcTime}}",
+                    "processID": "{{vars.item._source.event_data.ProcessId}}",
+                    "technique": "Hidden Files and Directories (attrib.exe)",
+                    "sourceData": "{{vars.item}}",
+                    "sourceTool": "{{vars.item._source.source_name}}",
+                    "commandline": "{{vars.item._source.event_data.CommandLine}}",
+                    "description": "Attrib.exe was used to make a file or directory hidden. This could be an attempt by an adversary to hide files or directories in an attempt to conceal tools or data. This technique may be used to achieve persistence or evade superficial analysis and detection. The file or directory being hidden by attrib.exe should be evaluated to determine its legitimacy.",
+                    "processGUID": "{{vars.item._source.event_data.ProcessGuid}}",
+                    "processName": "{{vars.item._source.image_path.split(\"\\\\\")[-1] }}",
+                    "registryKey": "",
+                    "sourceImage": "",
+                    "targetImage": "",
+                    "computerName": "{{vars.item._source.computer_name}}",
+                    "destinationIP": "",
+                    "mitre_tech_id": "T1158",
+                    "parentProcess": "{{vars.item._source.parent_image_path}}",
+                    "scheduledTask": "",
+                    "bitstransferid": "",
+                    "parentProcessID": "{{vars.item._source.event_data.ParentProcessId}}",
+                    "bytestransferred": "",
+                    "registryKeyValue": "",
+                    "parentCommandLine": "{{vars.item._source.event_data.ParentCommandLine}}",
+                    "decodedCommandLine": ""
+                },
+                "apply_async": false,
+                "step_variables": [],
+                "workflowReference": "\/api\/3\/workflows\/bf7d418b-7ff3-44c1-b473-90d0a03c4641"
+            },
+            "status": null,
+            "top": "369",
+            "left": "1400",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "uuid": "860139c6-bf33-48a1-b914-c7a42215e089",
+            "id": 4585
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Elastic Query for use of attrib to hide files",
+            "description": null,
+            "arguments": {
+                "name": "ElasticSearch",
+                "config": "8d03a01d-1cef-40a8-992a-63d8de2b339f",
+                "params": {
+                    "index": "logstash-beats-*",
+                    "query": "event_type:sysmon AND event_id:\"1\" AND @timestamp:{ {{vars.elasticHuntStart}} TO {{vars.elasticHuntEnd}} } AND (image_path:\"C:\\\\Windows\\\\System32\\\\attrib.exe\" OR image_path:\"C:\\\\Windows\\\\SysWOW64\\\\attrib.exe\") AND event_data.CommandLine:\"*+h*\"",
+                    "run_as_user": ""
+                },
+                "version": "2.2.0",
+                "connector": "elasticsearch",
+                "operation": "execute_lucene_query",
+                "operationTitle": "Execute Lucene Query",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "369",
+            "left": "840",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "uuid": "1b49edb9-cf46-4370-aed1-823b6922699a",
+            "id": 4586
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Which SIEM",
+            "description": null,
+            "arguments": {
+                "conditions": [
+                    {
+                        "step_iri": "\/api\/3\/workflow_steps\/0e95b83d-9263-4f60-89ba-6ba7c12d8cf3",
+                        "condition": "{{ vars.input.params.siem.itemValue == \"Elastic\" }}"
+                    },
+                    {
+                        "step_iri": "\/api\/3\/workflow_steps\/9f106962-34da-4401-893c-a4188dcb20a0",
+                        "condition": "{{ vars.input.params.siem.itemValue == \"Splunk\" }}"
+                    }
+                ]
+            },
+            "status": null,
+            "top": "312",
+            "left": "280",
+            "stepType": "\/api\/3\/workflow_step_types\/12254cf5-5db7-4b1a-8cb1-3af081924b28",
+            "uuid": "1b60804c-cc40-4b5a-9e64-6b649d964a81",
+            "id": 4587
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Start",
+            "description": null,
+            "arguments": {
+                "route": "73aee5e5-2e06-4cfc-bb05-fee04662c00b",
+                "title": "T1564.001 - Hunt for Hidden Files and Directories",
+                "resources": [
+                    "hunt"
+                ],
+                "inputVariables": [
+                    {
+                        "name": "siem",
+                        "type": "picklists",
+                        "label": "SIEM",
+                        "title": "Picklist",
+                        "usable": true,
+                        "tooltip": "Choose your SIEM",
+                        "dataType": "picklist",
+                        "formType": "picklist",
+                        "required": true,
+                        "_expanded": true,
+                        "mmdUpdate": true,
+                        "collection": false,
+                        "dataSource": {
+                            "model": "picklists",
+                            "query": {
+                                "sort": [
+                                    {
+                                        "field": "orderIndex",
+                                        "direction": "ASC"
+                                    }
+                                ],
+                                "logic": "AND",
+                                "filters": [
+                                    {
+                                        "field": "listName__name",
+                                        "value": "SIEMs",
+                                        "operator": "eq"
+                                    }
+                                ]
+                            },
+                            "displayConditions": {
+                                "876c1483-416b-4d2f-8138-15769ae16d5c": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "bcebcab1-3f93-468a-9f3f-91e5c511a0b5": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                }
+                            }
+                        },
+                        "searchable": false,
+                        "templateUrl": "app\/components\/form\/fields\/typeahead.html",
+                        "_nameTouched": true,
+                        "defaultValue": {
+                            "id": 280,
+                            "@id": "\/api\/3\/picklists\/876c1483-416b-4d2f-8138-15769ae16d5c",
+                            "icon": null,
+                            "@type": "Picklist",
+                            "color": null,
+                            "display": "Elastic",
+                            "listName": "\/api\/3\/picklist_names\/98830189-afff-40e6-bed1-94012551dc67",
+                            "itemValue": "Elastic",
+                            "orderIndex": 1
+                        },
+                        "displayTemplate": "{{ itemValue }}",
+                        "lengthConstraint": false,
+                        "allowedEncryption": false,
+                        "allowedGridColumn": true,
+                        "useRecordFieldDefault": false
+                    }
+                ],
+                "step_variables": {
+                    "input": {
+                        "params": {
+                            "siem": "{{vars.request.data[\"siem\"]}}"
+                        },
+                        "records": "{{vars.input.records}}"
+                    }
+                },
+                "_promptexpanded": true,
+                "displayConditions": {
+                    "hunt": {
+                        "sort": [],
+                        "limit": 30,
+                        "logic": "AND",
+                        "filters": []
+                    }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": false,
+                "singleRecordExecution": false
+            },
+            "status": null,
+            "top": "313",
+            "left": "9",
+            "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+            "uuid": "502937bf-a86e-43de-b869-82092905f674",
+            "id": 4588
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Create and Link Alert",
+            "description": null,
+            "arguments": {
+                "for_each": {
+                    "item": "{{vars.steps.Retrieve_query_results.data.results}}",
+                    "condition": ""
+                },
+                "arguments": {
+                    "MD5": "{{vars.item.MD5}}",
+                    "url": "",
+                    "source": "{{vars.item.EventChannel}}",
+                    "comment": "SIEM query indicated attrib.exe was used to make a file or directory hidden on {{vars.item.host}} at {{vars.item.TimeCreated}}.",
+                    "huntIRI": "{{vars.input.records[0]['@id']}}",
+                    "service": "",
+                    "filePath": "{{vars.item.Image}}",
+                    "hostName": "{{vars.item.host}}",
+                    "sourceIP": "null",
+                    "userName": "{{vars.item.User}}",
+                    "alertName": "ATT&CK-Hidden Files and Directories-Attrib used to hide {{vars.item.CommandLine | regex_search('(?<=\\+h\\s)[^\\\\\\\/:*?\"<>|\\r\\n]+$')}}",
+                    "epochTime": "{{ arrow.get(vars.item.UtcTime).timestamp }}",
+                    "eventName": "",
+                    "eventTime": "{{vars.item.UtcTime}}",
+                    "processID": "{{vars.item.ProcessId}}",
+                    "technique": "Hidden Files and Directories (attrib.exe)",
+                    "sourceData": "{{vars.item}}",
+                    "sourceTool": "{{vars.item.vendor_product}}",
+                    "commandline": "{{vars.item.CommandLine}}",
+                    "description": "Attrib.exe was used to make a file or directory hidden. This could be an attempt by an adversary to hide files or directories in an attempt to conceal tools or data. This technique may be used to achieve persistence or evade superficial analysis and detection. The file or directory being hidden by attrib.exe should be evaluated to determine its legitimacy.",
+                    "processGUID": "{{vars.item.ProcessGuid}}",
+                    "processName": "{{vars.item.process_exec}}",
+                    "registryKey": "",
+                    "sourceImage": "",
+                    "targetImage": "",
+                    "computerName": "{{vars.item.Computer}}",
+                    "destinationIP": "null",
+                    "mitre_tech_id": "T1158",
+                    "parentProcess": "{{vars.item.ParentImage}}",
+                    "scheduledTask": "",
+                    "bitstransferid": "",
+                    "parentProcessID": "{{vars.item.ParentProcessId}}",
+                    "bytestransferred": "",
+                    "registryKeyValue": "",
+                    "parentCommandLine": "{{vars.item.ParentCommandLine}}",
+                    "decodedCommandLine": ""
+                },
+                "apply_async": false,
+                "step_variables": [],
+                "workflowReference": "\/api\/3\/workflows\/bf7d418b-7ff3-44c1-b473-90d0a03c4641"
+            },
+            "status": null,
+            "top": "250",
+            "left": "1400",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "uuid": "6f02c43a-5af1-46f5-9c67-b860c73a8589",
+            "id": 4589
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Query for use of attrib to hide files",
+            "description": null,
+            "arguments": {
+                "name": "Splunk",
+                "config": "9ab494b3-68d1-424f-9f76-0693bd787483",
+                "params": {
+                    "query": "index=sysmon EventCode=1 {{vars.splunkHuntStart}} {{vars.splunkHuntEnd}} (Image=\"C:\\\\Windows\\\\System32\\\\attrib.exe\" OR Image=\"C:\\\\Windows\\\\SysWOW64\\\\attrib.exe\") AND CommandLine=\"*+h*\"  | table host Image MD5 ParentImage User CommandLine process_exec vendor_product TimeCreated ParentProcessId ProcessId ParentCommandLine ProcessGuid EventChannel UtcTime Computer",
+                    "exec_mode": "",
+                    "auto_cancel": "",
+                    "latest_time": "",
+                    "earliest_time": "",
+                    "additional_search_args": "{\"A\":\"B\"}"
+                },
+                "version": "1.5.0",
+                "connector": "splunk",
+                "operation": "invoke_search",
+                "operationTitle": "Invoke Search",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "252",
+            "left": "840",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "uuid": "3647098e-769e-4600-bf72-f9a66c54c763",
+            "id": 4590
+        }
+    ],
+    "routes": [
+        {
+            "@type": "WorkflowRoute",
+            "name": "Create and Link Elastic Alert -> Deduplicate comments",
+            "targetStep": "\/api\/3\/workflow_steps\/d49f7431-6a74-4b3e-acc6-36b4eb07b306",
+            "sourceStep": "\/api\/3\/workflow_steps\/860139c6-bf33-48a1-b914-c7a42215e089",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "05c7dd76-2461-426e-9ba3-7433e996a1ee"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Set Splunk hunt times -> Query for use of attrib to hide files",
+            "targetStep": "\/api\/3\/workflow_steps\/3647098e-769e-4600-bf72-f9a66c54c763",
+            "sourceStep": "\/api\/3\/workflow_steps\/9f106962-34da-4401-893c-a4188dcb20a0",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "d156f022-720a-4646-8112-6c351cb9d506"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Start -> Which SIEM",
+            "targetStep": "\/api\/3\/workflow_steps\/1b60804c-cc40-4b5a-9e64-6b649d964a81",
+            "sourceStep": "\/api\/3\/workflow_steps\/502937bf-a86e-43de-b869-82092905f674",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "fdc702d5-a7a9-4acd-8753-6f4cc302c779"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Which SIEM -> Copy  of Set Splunk hunt times",
+            "targetStep": "\/api\/3\/workflow_steps\/0e95b83d-9263-4f60-89ba-6ba7c12d8cf3",
+            "sourceStep": "\/api\/3\/workflow_steps\/1b60804c-cc40-4b5a-9e64-6b649d964a81",
+            "label": "",
+            "isExecuted": false,
+            "uuid": "4f98587d-fbc3-4a3c-b5aa-73a6e1ec2f04"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Create and Link Alert -> Deduplicate comments",
+            "targetStep": "\/api\/3\/workflow_steps\/d49f7431-6a74-4b3e-acc6-36b4eb07b306",
+            "sourceStep": "\/api\/3\/workflow_steps\/6f02c43a-5af1-46f5-9c67-b860c73a8589",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "602070c2-c6c6-4c97-80d2-28cd70906cd7"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Set Elastic hunt times -> Elastic Query for use of attrib to hide files",
+            "targetStep": "\/api\/3\/workflow_steps\/1b49edb9-cf46-4370-aed1-823b6922699a",
+            "sourceStep": "\/api\/3\/workflow_steps\/0e95b83d-9263-4f60-89ba-6ba7c12d8cf3",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "2d75123b-81ec-4202-94a6-def50b247e1d"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Elastic Query for use of attrib to hide files -> Create and Link Elastic Alert",
+            "targetStep": "\/api\/3\/workflow_steps\/860139c6-bf33-48a1-b914-c7a42215e089",
+            "sourceStep": "\/api\/3\/workflow_steps\/1b49edb9-cf46-4370-aed1-823b6922699a",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "f9a03dc7-df5c-4b80-bfb3-fded9b44f175"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Which SIEM -> Set Splunk hunt times",
+            "targetStep": "\/api\/3\/workflow_steps\/9f106962-34da-4401-893c-a4188dcb20a0",
+            "sourceStep": "\/api\/3\/workflow_steps\/1b60804c-cc40-4b5a-9e64-6b649d964a81",
+            "label": "",
+            "isExecuted": false,
+            "uuid": "08308393-126f-41f2-ab21-ff5de88ef555"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Retrieve query results -> Create and Link Alert",
+            "targetStep": "\/api\/3\/workflow_steps\/6f02c43a-5af1-46f5-9c67-b860c73a8589",
+            "sourceStep": "\/api\/3\/workflow_steps\/5dcb3c48-26cb-46df-a180-215654dbb47a",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "6fe78ada-2f00-40b8-ac1b-51db45347eb2"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Query for use of attrib to hide files -> Copy  of Query for use of attrib to hide files",
+            "targetStep": "\/api\/3\/workflow_steps\/5dcb3c48-26cb-46df-a180-215654dbb47a",
+            "sourceStep": "\/api\/3\/workflow_steps\/3647098e-769e-4600-bf72-f9a66c54c763",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "a02a5b6d-18ce-4470-8a69-a64dc97a4fea"
+        }
+    ],
+    "priority": null,
+    "uuid": "936fcc0f-6bae-41b4-abd6-348d62279f88",
+    "recordTags": [],
+    "id": 1180,
+    "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
+    "createDate": 1633085064,
+    "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
+    "modifyDate": 1633085064,
+    "owners": [],
+    "isPrivate": false
+}

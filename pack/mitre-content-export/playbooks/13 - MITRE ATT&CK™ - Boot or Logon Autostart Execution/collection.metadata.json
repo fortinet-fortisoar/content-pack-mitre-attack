@@ -1,0 +1,15 @@
+{
+    "@context": "\/api\/3\/contexts\/WorkflowCollection",
+    "@type": "WorkflowCollection",
+    "name": "13 - MITRE ATT&CK\u2122 - Boot or Logon Autostart Execution",
+    "description": "Playbooks designed to hunt Boot or Logon Autostart Execution Techniques identified in the MITRE ATT&CK Framework",
+    "visible": true,
+    "image": null,
+    "uuid": "681d6397-fbd4-4929-bb55-202c131d3383",
+    "id": 94,
+    "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
+    "createDate": 1633085063,
+    "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
+    "modifyDate": 1633085063,
+    "recordTags": []
+}

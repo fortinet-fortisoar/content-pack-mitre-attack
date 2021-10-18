@@ -1,0 +1,175 @@
+{
+    "@context": "\/api\/3\/contexts\/SystemViewTemplate",
+    "@type": "SystemViewTemplate",
+    "type": "rows",
+    "config": {
+        "rows": [
+            {
+                "columns": [
+                    {
+                        "widgets": [
+                            {
+                                "type": "editableFormGroup",
+                                "config": {
+                                    "wid": "8800f6ef-ab7d-47cd-a8b8-bf36c0e1e21b"
+                                }
+                            },
+                            {
+                                "type": "primaryDetail",
+                                "config": {
+                                    "wid": "b64e2676-5d6a-4b43-8e74-201258afacfd",
+                                    "idField": "mitreId",
+                                    "picklistFieldReadOnly": false,
+                                    "titleFieldReadOnly": false,
+                                    "titleFieldLinky": true,
+                                    "featuredRelationship": {
+                                        "field": null,
+                                        "preText": "Under Investigation In",
+                                        "query": null,
+                                        "statusField": null,
+                                        "sort": []
+                                    },
+                                    "titleField": "name"
+                                }
+                            }
+                        ],
+                        "style": "col-lg-12"
+                    }
+                ],
+                "wid": "3e931e9d-f317-48a7-993e-e33705322993",
+                "_collapsed": false
+            },
+            {
+                "columns": [
+                    {
+                        "widgets": [
+                            {
+                                "type": "editableFormGroup",
+                                "config": {
+                                    "wid": "bf075396-39ff-4d09-bac3-23222fe4f53c",
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "fields": [
+                                                        {
+                                                            "name": "description",
+                                                            "highlightMode": true,
+                                                            "linky": true,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "notes",
+                                                            "highlightMode": true,
+                                                            "linky": true,
+                                                            "readOnly": false
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "style": "col-lg-9"
+                    },
+                    {
+                        "widgets": [
+                            {
+                                "type": "editableFormGroup",
+                                "config": {
+                                    "wid": "419540ce-9574-4270-94d5-7e34492c8360",
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "fields": [
+                                                        {
+                                                            "name": "aliases",
+                                                            "highlightMode": true,
+                                                            "linky": false,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "contributors",
+                                                            "highlightMode": true,
+                                                            "linky": false,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "version",
+                                                            "highlightMode": true,
+                                                            "linky": false,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "created",
+                                                            "highlightMode": true,
+                                                            "linky": false,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "lastModified",
+                                                            "highlightMode": true,
+                                                            "linky": false,
+                                                            "readOnly": true
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "style": "col-lg-3"
+                    }
+                ],
+                "wid": "d981eb05-7f52-40f9-a3fc-dc8d49be2951",
+                "collapsible": false,
+                "collapsibleIndex": 0,
+                "_collapsed": false
+            },
+            {
+                "columns": [
+                    {
+                        "widgets": [
+                            {
+                                "type": "tabs",
+                                "config": {
+                                    "tabs": [
+                                        {
+                                            "title": "Related Records",
+                                            "widget": {
+                                                "type": "relationship.subtab",
+                                                "config": {
+                                                    "excludes": [
+                                                        "notes",
+                                                        "comments",
+                                                        "userOwners",
+                                                        "attachments"
+                                                    ],
+                                                    "wid": "af5c2891-f0ca-4923-9b8b-e65f1091b3f4"
+                                                }
+                                            },
+                                            "show": true,
+                                            "icon": "fa fa-none"
+                                        }
+                                    ],
+                                    "wid": "fbd9bf5c-2b63-4ec2-b0af-40061b597749"
+                                }
+                            }
+                        ],
+                        "style": "col-lg-12"
+                    }
+                ],
+                "wid": "1c5ba92a-1d3c-47b6-ab4c-e189cac3b4da",
+                "_collapsed": false
+            }
+        ],
+        "actionButtons": [],
+        "wid": "659ec474-f2f5-4212-87fb-03c21f00d3c0"
+    },
+    "uuid": "modules-mitre_groups-detail"
+}

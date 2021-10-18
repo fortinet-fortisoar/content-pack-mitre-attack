@@ -1,0 +1,295 @@
+{
+    "@context": "\/api\/3\/contexts\/SystemViewTemplate",
+    "@type": "SystemViewTemplate",
+    "type": "rows",
+    "config": {
+        "rows": [
+            {
+                "columns": [
+                    {
+                        "widgets": [
+                            {
+                                "type": "primaryDetail",
+                                "config": {
+                                    "wid": "a2cae79f-7890-49dc-ba1f-30de04383900",
+                                    "idField": "mitreId",
+                                    "picklistFieldReadOnly": false,
+                                    "titleFieldReadOnly": false,
+                                    "titleFieldLinky": true,
+                                    "featuredRelationship": {
+                                        "field": null,
+                                        "preText": "Under Investigation In",
+                                        "query": null,
+                                        "statusField": null,
+                                        "sort": []
+                                    },
+                                    "titleField": "name"
+                                }
+                            }
+                        ],
+                        "style": "col-lg-12"
+                    }
+                ],
+                "wid": "94119a04-82a0-46a3-b9ed-af5b2761a06b",
+                "_collapsed": false
+            },
+            {
+                "columns": [
+                    {
+                        "widgets": [
+                            {
+                                "type": "editableFormGroup",
+                                "config": {
+                                    "wid": "31a1231c-35e4-4f78-9355-788e36aeeded",
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "fields": [
+                                                        {
+                                                            "name": "description",
+                                                            "highlightMode": true,
+                                                            "linky": true,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "notes",
+                                                            "highlightMode": true,
+                                                            "linky": true,
+                                                            "readOnly": false
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "style": "col-lg-6"
+                    },
+                    {
+                        "widgets": [
+                            {
+                                "type": "editableFormGroup",
+                                "config": {
+                                    "wid": "c70cbc47-960e-4dc4-ac89-5d7542d62290",
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "fields": [
+                                                        {
+                                                            "name": "platforms",
+                                                            "highlightMode": true,
+                                                            "linky": true,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "permissionsRequired",
+                                                            "highlightMode": true,
+                                                            "linky": true,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "dataSources",
+                                                            "highlightMode": true,
+                                                            "linky": true,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "capecId",
+                                                            "highlightMode": true,
+                                                            "linky": true,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "version",
+                                                            "highlightMode": true,
+                                                            "linky": true,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "created",
+                                                            "highlightMode": true,
+                                                            "linky": true,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "lastModified",
+                                                            "highlightMode": true,
+                                                            "linky": true,
+                                                            "readOnly": true
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "style": "col-lg-6"
+                    }
+                ],
+                "wid": "b2b34707-9771-45cb-ae82-e2fb9e0e547f",
+                "collapsible": false,
+                "collapsibleIndex": 0,
+                "_collapsed": false,
+                "container": true
+            },
+            {
+                "columns": [
+                    {
+                        "widgets": [
+                            {
+                                "type": "tabs",
+                                "config": {
+                                    "wid": "47dd5ce7-ea94-40f6-95d2-631b7df54b53",
+                                    "tabs": [
+                                        {
+                                            "title": "Sub-techniques",
+                                            "active": 0,
+                                            "widget": {
+                                                "type": "relationship.subtab",
+                                                "config": {
+                                                    "wid": "e871a2bc-62d9-495e-ab9e-35d41c83be04",
+                                                    "excludes": [
+                                                        "notes",
+                                                        "comments",
+                                                        "userOwners",
+                                                        "attachments",
+                                                        "groups",
+                                                        "software",
+                                                        "tactics",
+                                                        "mitigations"
+                                                    ],
+                                                    "expandableCol": {
+                                                        "subTechniques": {
+                                                            "columns": [],
+                                                            "checkBox": false
+                                                        },
+                                                        "techniques": {
+                                                            "columns": [],
+                                                            "checkBox": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "icon": "fa fa-th-list",
+                                            "show": true
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "editableFormGroup",
+                                "config": {
+                                    "wid": "b0722806-4cd6-424e-a31a-173afa07a189",
+                                    "rows": [
+                                        {
+                                            "columns": [
+                                                {
+                                                    "fields": [
+                                                        {
+                                                            "name": "detection",
+                                                            "highlightMode": true,
+                                                            "linky": true,
+                                                            "readOnly": true
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "style": "col-lg-12"
+                    }
+                ],
+                "wid": "39d189ee-2beb-44d8-869e-5375a823b579",
+                "_collapsed": false,
+                "container": true
+            },
+            {
+                "columns": [
+                    {
+                        "widgets": [
+                            {
+                                "type": "tabs",
+                                "config": {
+                                    "tabs": [
+                                        {
+                                            "title": "Procedure Examples",
+                                            "widget": {
+                                                "type": "relationship.subtab",
+                                                "config": {
+                                                    "excludes": [
+                                                        "notes",
+                                                        "comments",
+                                                        "userOwners",
+                                                        "attachments",
+                                                        "tactics",
+                                                        "mitigations",
+                                                        "subTechniques",
+                                                        "techniques"
+                                                    ],
+                                                    "wid": "98cb6200-4ad0-4579-911b-4eb16ead087f",
+                                                    "expandableCol": {
+                                                        "software": {
+                                                            "columns": [],
+                                                            "checkBox": false
+                                                        },
+                                                        "groups": {
+                                                            "columns": [],
+                                                            "checkBox": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "show": true,
+                                            "icon": "fa fa-th-list"
+                                        },
+                                        {
+                                            "title": "Mitigations",
+                                            "active": 0,
+                                            "widget": {
+                                                "type": "relationship.subtab",
+                                                "config": {
+                                                    "wid": "0312d7bd-0e01-42a1-9b15-8bd27c1ae14d",
+                                                    "excludes": [
+                                                        "notes",
+                                                        "comments",
+                                                        "userOwners",
+                                                        "attachments",
+                                                        "groups",
+                                                        "software",
+                                                        "subTechniques",
+                                                        "tactics",
+                                                        "techniques"
+                                                    ],
+                                                    "expandableCol": []
+                                                }
+                                            },
+                                            "icon": "fa fa-check",
+                                            "show": true
+                                        }
+                                    ],
+                                    "wid": "286e8292-32e2-4f7f-b7fa-c99133b2bdf4",
+                                    "isPrimaryTab": false
+                                }
+                            }
+                        ],
+                        "style": "col-lg-12"
+                    }
+                ],
+                "wid": "25f7e7a2-b41d-4f13-b801-8a0de9a87e6a",
+                "_collapsed": false
+            }
+        ],
+        "actionButtons": [],
+        "wid": "fce1c95c-4fd9-4b92-8c4b-2b28b776f3e6"
+    },
+    "uuid": "modules-mitre_techniques-detail"
+}

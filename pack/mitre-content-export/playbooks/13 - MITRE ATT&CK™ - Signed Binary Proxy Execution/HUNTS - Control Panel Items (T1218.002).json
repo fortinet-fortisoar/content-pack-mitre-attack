@@ -1,0 +1,495 @@
+{
+    "@type": "Workflow",
+    "triggerLimit": null,
+    "name": "HUNTS - Control Panel Items (T1218.002)",
+    "aliasName": null,
+    "tag": "ATT&CK, Defense_Evasion, Execution, Control_Panel_Items",
+    "description": "Identifies processes spawned by Control Panel files and execution of non-standard .cpl files",
+    "isActive": false,
+    "debug": false,
+    "singleRecordExecution": false,
+    "remoteExecutableFlag": false,
+    "parameters": [],
+    "synchronous": false,
+    "lastModifyDate": 1633085062,
+    "collection": "\/api\/3\/workflow_collections\/270b47ed-fc8b-4539-898d-3db2f929c777",
+    "versions": [],
+    "triggerStep": "\/api\/3\/workflow_steps\/3924e519-9dd2-428c-becc-54509a43d10e",
+    "steps": [
+        {
+            "@type": "WorkflowStep",
+            "name": "Which SIEM",
+            "description": null,
+            "arguments": {
+                "conditions": [
+                    {
+                        "option": "Elasticsearch",
+                        "step_iri": "\/api\/3\/workflow_steps\/57ba2f82-0f7b-486a-b7d9-07008ae03ec4",
+                        "condition": "{{ vars.input.params.siem.itemValue == \"Elastic\" }}"
+                    },
+                    {
+                        "option": "Splunk",
+                        "step_iri": "\/api\/3\/workflow_steps\/b248bb29-990b-410c-9200-0db82520b2b6",
+                        "condition": "{{ vars.input.params.siem.itemValue == \"Splunk\" }}"
+                    }
+                ]
+            },
+            "status": null,
+            "top": "360",
+            "left": "280",
+            "stepType": "\/api\/3\/workflow_step_types\/12254cf5-5db7-4b1a-8cb1-3af081924b28",
+            "uuid": "fe172fe9-65f3-47fa-afc4-caaf00745a11",
+            "id": 4861
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Deduplicate Comments",
+            "description": null,
+            "arguments": {
+                "arguments": {
+                    "hunt_iri": "{{vars.input.records[0]['@id']}}"
+                },
+                "step_variables": [],
+                "workflowReference": "\/api\/3\/workflows\/3fd311be-a1c6-41c7-99a3-8794b33d8f8a"
+            },
+            "status": null,
+            "top": "360",
+            "left": "1694",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "uuid": "56499ade-b4ef-4b33-a47f-5368c748da21",
+            "id": 4862
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Hunt for Control Panel Item Execution",
+            "description": null,
+            "arguments": {
+                "route": "04696ba1-c3f1-4d13-bd1d-daf1dd6e48fe",
+                "title": "T1218.002 - Hunt for Control Panel Items",
+                "resources": [
+                    "hunt"
+                ],
+                "inputVariables": [
+                    {
+                        "name": "siem",
+                        "type": "picklists",
+                        "label": "SIEM",
+                        "title": "Picklist",
+                        "usable": true,
+                        "tooltip": "Choose your SIEM",
+                        "dataType": "picklist",
+                        "formType": "picklist",
+                        "required": true,
+                        "_expanded": true,
+                        "mmdUpdate": true,
+                        "collection": false,
+                        "dataSource": {
+                            "model": "picklists",
+                            "query": {
+                                "sort": [
+                                    {
+                                        "field": "orderIndex",
+                                        "direction": "ASC"
+                                    }
+                                ],
+                                "logic": "AND",
+                                "filters": [
+                                    {
+                                        "field": "listName__name",
+                                        "value": "SIEMs",
+                                        "operator": "eq"
+                                    }
+                                ]
+                            },
+                            "displayConditions": {
+                                "876c1483-416b-4d2f-8138-15769ae16d5c": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                },
+                                "bcebcab1-3f93-468a-9f3f-91e5c511a0b5": {
+                                    "conditions": null,
+                                    "visibility": "visible"
+                                }
+                            }
+                        },
+                        "searchable": false,
+                        "templateUrl": "app\/components\/form\/fields\/typeahead.html",
+                        "_nameTouched": true,
+                        "defaultValue": {
+                            "id": 280,
+                            "@id": "\/api\/3\/picklists\/876c1483-416b-4d2f-8138-15769ae16d5c",
+                            "icon": null,
+                            "@type": "Picklist",
+                            "color": null,
+                            "display": "Elastic",
+                            "listName": "\/api\/3\/picklist_names\/98830189-afff-40e6-bed1-94012551dc67",
+                            "itemValue": "Elastic",
+                            "orderIndex": 1
+                        },
+                        "displayTemplate": "{{ itemValue }}",
+                        "lengthConstraint": false,
+                        "allowedEncryption": false,
+                        "allowedGridColumn": true,
+                        "useRecordFieldDefault": false
+                    }
+                ],
+                "step_variables": {
+                    "input": {
+                        "params": {
+                            "siem": "{{vars.request.data[\"siem\"]}}"
+                        },
+                        "records": "{{vars.input.records}}"
+                    }
+                },
+                "_promptexpanded": true,
+                "displayConditions": {
+                    "hunt": {
+                        "sort": [],
+                        "limit": 30,
+                        "logic": "AND",
+                        "filters": []
+                    }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": false,
+                "singleRecordExecution": false
+            },
+            "status": null,
+            "top": "360",
+            "left": "0",
+            "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+            "uuid": "3924e519-9dd2-428c-becc-54509a43d10e",
+            "id": 4863
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Create and Link Elastic Alert",
+            "description": null,
+            "arguments": {
+                "for_each": {
+                    "item": "{{vars.steps.Elastic_Query_for_Control_Panel_Item_Execution.data.hits.hits}}",
+                    "condition": ""
+                },
+                "arguments": {
+                    "MD5": "{{vars.item._source.event_data.Hashes.split(\"MD5=\")[1].split(',')[0]}}",
+                    "url": "",
+                    "source": "{{vars.item._source.source_name}}",
+                    "comment": "SIEM query identified control.exe spawning potentially non-standard child process {{vars.item._source.image_path.split(\"\\\\\")[-1] }} on {{vars.item._source.beat.hostname}} at {{vars.item._source.event_data.UtcTime}}.",
+                    "huntIRI": "{{vars.input.records[0]['@id']}}",
+                    "service": "",
+                    "filePath": "{{vars.item._source.image_path}}",
+                    "hostName": "{{vars.item._source.beat.hostname}}",
+                    "sourceIP": "",
+                    "userName": "{{vars.item._source.username}}",
+                    "alertName": "ATT&CK-Control Panel Items-{{vars.item._source.image_path.split(\"\\\\\")[-1]}} spawned by control.exe",
+                    "epochTime": "{{arrow.get(vars.item._source.event_data.UtcTime).timestamp}}",
+                    "eventName": "",
+                    "eventTime": "{{vars.item._source.event_data.UtcTime}}",
+                    "processID": "{{vars.item._source.event_data.ProcessId}}",
+                    "technique": "Control Panel Items",
+                    "sourceData": "{{vars.item}}",
+                    "sourceTool": "{{vars.item._source.source_name}}",
+                    "commandline": "{{vars.item._source.event_data.CommandLine}}",
+                    "description": "An attempt to invoke control.exe was observed. Control.exe is used to execute Control Panel Items. Control Panel Items are either executables (.exe files) or Control Panel files (.cpl files, which are just DLLs that use the .cpl extension instead of \".dll\"). In most organizations, it is unusual for these files to be manually executed, so the file executed and this host should be investigated for further suspicious activity.",
+                    "processGUID": "{{vars.item._source.event_data.ProcessGuid}}",
+                    "processName": "{{vars.item._source.image_path.split(\"\\\\\")[-1]}}",
+                    "registryKey": "",
+                    "sourceImage": "",
+                    "targetImage": "",
+                    "computerName": "{{vars.item._source.computer_name}}",
+                    "destinationIP": "",
+                    "mitre_tech_id": "T1196",
+                    "parentProcess": "{{vars.item._source.parent_image_path}}",
+                    "scheduledTask": "",
+                    "bitstransferid": "",
+                    "parentProcessID": "{{vars.item._source.event_data.ParentProcessId}}",
+                    "bytestransferred": "",
+                    "registryKeyValue": "",
+                    "parentCommandLine": "{{vars.item._source.event_data.ParentCommandLine}}",
+                    "decodedCommandLine": ""
+                },
+                "apply_async": false,
+                "step_variables": [],
+                "workflowReference": "\/api\/3\/workflows\/bf7d418b-7ff3-44c1-b473-90d0a03c4641"
+            },
+            "status": null,
+            "top": "511",
+            "left": "1393",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "uuid": "f6681f20-a500-442e-849d-79fff1c81940",
+            "id": 4864
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Query for Control Panel Item Execution",
+            "description": null,
+            "arguments": {
+                "name": "Splunk",
+                "config": "55bf97af-75c2-45ca-ae75-f4d27220cc52",
+                "params": {
+                    "query": "index=sysmon EventCode=1 {{vars.splunkHuntStart}} {{vars.splunkHuntEnd}} (ParentImage=\"C:\\\\Windows\\\\System32\\\\control.exe\" OR ParentImage=\"C:\\\\Windows\\\\syswow64\\\\control.exe\") ParentCommandLine!=\"\\\"C:\\\\Windows\\\\System32\\\\control.exe\\\" \\\"C:\\\\Windows\\\\System32\\\\*.cpl\\\"*\" ParentCommandLine!=\"\\\"C:\\\\Windows\\\\syswow64\\\\control.exe\\\" \\\"C:\\\\Windows\\syswow64\\\\*.cpl\\\"*\" | table host Image MD5 ParentImage User CommandLine process_exec vendor_product TimeCreated ParentProcessId ProcessId ParentCommandLine ProcessGuid EventChannel UtcTime Computer",
+                    "exec_mode": "",
+                    "auto_cancel": "",
+                    "latest_time": "",
+                    "earliest_time": "",
+                    "additional_search_args": "{\"a\": \"b\"}"
+                },
+                "version": "1.5.0",
+                "connector": "splunk",
+                "operation": "invoke_search",
+                "operationTitle": "Invoke Search",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "220",
+            "left": "840",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "uuid": "4c2185c3-d274-4d4a-9aea-cea094127c32",
+            "id": 4865
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Create and Link Alert",
+            "description": null,
+            "arguments": {
+                "for_each": {
+                    "item": "{{vars.steps.Get_Control_Panel_Execution_Results.data.results}}",
+                    "condition": ""
+                },
+                "arguments": {
+                    "MD5": "{{vars.item.MD5}}",
+                    "url": "",
+                    "source": "{{vars.item.EventChannel}}",
+                    "comment": "SIEM query identified control.exe spawning potentially non-standard child process {{vars.item.process_exec}} on {{vars.item.host}} at {{vars.item.UtcTime}}.",
+                    "huntIRI": "{{vars.input.records[0]['@id']}}",
+                    "service": "",
+                    "filePath": "{{vars.item.Image}}",
+                    "hostName": "{{vars.item.host}}",
+                    "sourceIP": "",
+                    "userName": "{{vars.item.User}}",
+                    "alertName": "ATT&CK-Control Panel Item-{{vars.item.CommandLine | regex_search('[^\\\\\\\\\\\\\/:*?\\\"<>|\\\\r\\\\n]+(.cpl)') }}",
+                    "epochTime": "{{ arrow.get(vars.item.UtcTime).timestamp }}",
+                    "eventName": "",
+                    "eventTime": "{{vars.item.UtcTime}}",
+                    "processID": "{{vars.item.ProcessId}}",
+                    "technique": "Control Panel Items",
+                    "sourceData": "{{vars.item}}",
+                    "sourceTool": "{{vars.item.EventChannel}}",
+                    "commandline": "{{vars.item.CommandLine}}",
+                    "description": "An attempt to invoke control.exe was observed. Control.exe is used to execute Control Panel Items. Control Panel Items are either executables (.exe files) or Control Panel files (.cpl files, which are just DLLs that use the .cpl extension instead of \".dll\"). In most organizations, it is unusual for these files to be manually executed, so the file executed and this host should be investigated for further suspicious activity.",
+                    "processGUID": "{{vars.item.ProcessGuid}}",
+                    "processName": "{{vars.item.process_exec}}",
+                    "registryKey": "",
+                    "sourceImage": "",
+                    "targetImage": "",
+                    "computerName": "{{vars.item.Computer}}",
+                    "destinationIP": "",
+                    "mitre_tech_id": "T1196",
+                    "parentProcess": "{{vars.item.ParentImage}}",
+                    "scheduledTask": "",
+                    "bitstransferid": "",
+                    "parentProcessID": "{{vars.item.ParendProcessId}}",
+                    "bytestransferred": "",
+                    "registryKeyValue": "",
+                    "parentCommandLine": "{{vars.item.ParentCommandLine}}",
+                    "decodedCommandLine": ""
+                },
+                "apply_async": false,
+                "step_variables": [],
+                "workflowReference": "\/api\/3\/workflows\/bf7d418b-7ff3-44c1-b473-90d0a03c4641"
+            },
+            "status": null,
+            "top": "220",
+            "left": "1400",
+            "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
+            "uuid": "d0cf0556-6e0f-4823-b52b-a5f16d6dc82c",
+            "id": 4866
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Get Control Panel Execution Results",
+            "description": null,
+            "arguments": {
+                "name": "Splunk",
+                "config": "55bf97af-75c2-45ca-ae75-f4d27220cc52",
+                "params": {
+                    "sid": "{\"value\": \"{{vars.steps.Query_for_Control_Panel_Item_Execution.data.sid}}\"}",
+                    "additional_args": "{\"a\": \"b\"}"
+                },
+                "version": "1.4.0",
+                "do_until": {
+                    "delay": "1",
+                    "retries": "300",
+                    "condition": "{{\"results\" in vars.result.data}}"
+                },
+                "connector": "splunk",
+                "operation": "get_results",
+                "operationTitle": "Get Results for a Search",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "220",
+            "left": "1120",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "uuid": "3138d45c-59c8-4859-9806-f5d3024eeafa",
+            "id": 4867
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Elastic Query for Control Panel Item Execution",
+            "description": null,
+            "arguments": {
+                "name": "ElasticSearch",
+                "config": "8d03a01d-1cef-40a8-992a-63d8de2b339f",
+                "params": {
+                    "index": "logstash-beats-*",
+                    "query": "event_type:sysmon AND event_id:\"1\" AND @timestamp:{ {{vars.elasticHuntStart}} TO {{vars.elasticHuntEnd}} } AND (parent_image_path:\"C:\\\\Windows\\\\System32\\\\control.exe\" OR parent_image_path:\"C:\\\\Windows\\\\syswow64\\\\control.exe\") NOT event_data.ParentCommandLine:\\\"C\\:\\\\Windows\\\\System32\\\\control.exe\\\"\\ \\\"C\\:\\\\Windows\\\\system32\\\\*.cpl\\\"* NOT event_data.ParentCommandLine:\\\"C\\:\\\\Windows\\\\syswow64\\\\control.exe\\\"\\ \\\"C\\:\\\\Windows\\\\syswow6432\\\\*.cpl\\\"*",
+                    "run_as_user": ""
+                },
+                "version": "2.2.0",
+                "connector": "elasticsearch",
+                "operation": "execute_lucene_query",
+                "operationTitle": "Execute Lucene Query",
+                "step_variables": []
+            },
+            "status": null,
+            "top": "511",
+            "left": "840",
+            "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
+            "uuid": "7172ede9-092f-4e32-b9b2-c9042c6facb9",
+            "id": 4868
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Set Elastic hunt times",
+            "description": null,
+            "arguments": {
+                "elasticHuntEnd": "{% if vars.input.records[0].huntEnd %} {{ arrow.get(vars.input.records[0].huntEnd).format('YYYY-MM-DDTHH:mm:ss.SSSSSSSSSZ') }} {% else %} now {% endif %}",
+                "elasticHuntStart": "{{ arrow.get(vars.input.records[0].huntStart).format('YYYY-MM-DDTHH:mm:ss.SSSSSSSSSZ') }}"
+            },
+            "status": null,
+            "top": "511",
+            "left": "570",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "uuid": "57ba2f82-0f7b-486a-b7d9-07008ae03ec4",
+            "id": 4869
+        },
+        {
+            "@type": "WorkflowStep",
+            "name": "Set Splunk hunt times",
+            "description": null,
+            "arguments": {
+                "splunkHuntEnd": "{% if vars.input.records[0].huntEnd %}latest={{vars.input.records[0].huntEnd}}{% endif %}",
+                "splunkHuntStart": "earliest={{vars.input.records[0].huntStart}}"
+            },
+            "status": null,
+            "top": "220",
+            "left": "570",
+            "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
+            "uuid": "b248bb29-990b-410c-9200-0db82520b2b6",
+            "id": 4870
+        }
+    ],
+    "routes": [
+        {
+            "@type": "WorkflowRoute",
+            "name": "Get Control Panel Execution Results -> Create Splunk Alerts",
+            "targetStep": "\/api\/3\/workflow_steps\/d0cf0556-6e0f-4823-b52b-a5f16d6dc82c",
+            "sourceStep": "\/api\/3\/workflow_steps\/3138d45c-59c8-4859-9806-f5d3024eeafa",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "5c7ac680-643a-4660-9f49-195a5b3b4fda"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Create and Elastic Alert -> Deduplicate Comments",
+            "targetStep": "\/api\/3\/workflow_steps\/56499ade-b4ef-4b33-a47f-5368c748da21",
+            "sourceStep": "\/api\/3\/workflow_steps\/f6681f20-a500-442e-849d-79fff1c81940",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "15449a3b-31a5-4d15-8511-e0739509896a"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Set Splunk hunt times -> Query for Control Panel Item Execution",
+            "targetStep": "\/api\/3\/workflow_steps\/4c2185c3-d274-4d4a-9aea-cea094127c32",
+            "sourceStep": "\/api\/3\/workflow_steps\/b248bb29-990b-410c-9200-0db82520b2b6",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "b51a0a4d-13c6-4313-8a00-d2e00e3484f1"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Elastic Query for Control Panel Item Execution -> Create and Elastic Alert",
+            "targetStep": "\/api\/3\/workflow_steps\/f6681f20-a500-442e-849d-79fff1c81940",
+            "sourceStep": "\/api\/3\/workflow_steps\/7172ede9-092f-4e32-b9b2-c9042c6facb9",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "e2bcd96b-c1fd-4fb1-9a23-50e765a58bde"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Create and Link Alert -> Deduplicate Comments",
+            "targetStep": "\/api\/3\/workflow_steps\/56499ade-b4ef-4b33-a47f-5368c748da21",
+            "sourceStep": "\/api\/3\/workflow_steps\/d0cf0556-6e0f-4823-b52b-a5f16d6dc82c",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "80d9168a-20d6-4801-8b80-e906f834cf9f"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Which SIEM -> Copy  of Set Splunk hunt times",
+            "targetStep": "\/api\/3\/workflow_steps\/57ba2f82-0f7b-486a-b7d9-07008ae03ec4",
+            "sourceStep": "\/api\/3\/workflow_steps\/fe172fe9-65f3-47fa-afc4-caaf00745a11",
+            "label": "Elasticsearch",
+            "isExecuted": false,
+            "uuid": "69fcb0c6-8737-4d01-8b25-7af9a695d58d"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Query for Control Panel Item Execution -> Get Control Panel Execution Results",
+            "targetStep": "\/api\/3\/workflow_steps\/3138d45c-59c8-4859-9806-f5d3024eeafa",
+            "sourceStep": "\/api\/3\/workflow_steps\/4c2185c3-d274-4d4a-9aea-cea094127c32",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "0ede5fac-2a54-4123-b2a8-cd2e12d34c64"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Set Elastic hunt times -> Elastic Query for Control Panel Item Execution",
+            "targetStep": "\/api\/3\/workflow_steps\/7172ede9-092f-4e32-b9b2-c9042c6facb9",
+            "sourceStep": "\/api\/3\/workflow_steps\/57ba2f82-0f7b-486a-b7d9-07008ae03ec4",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "4d56a189-eb7a-4dc9-9e4e-e73c40956017"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Which SIEM -> Set Splunk hunt times",
+            "targetStep": "\/api\/3\/workflow_steps\/b248bb29-990b-410c-9200-0db82520b2b6",
+            "sourceStep": "\/api\/3\/workflow_steps\/fe172fe9-65f3-47fa-afc4-caaf00745a11",
+            "label": "Splunk",
+            "isExecuted": false,
+            "uuid": "8e07d031-330e-4fc2-a44d-f3c9ea27dff6"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Hunt for Control Panel Item Execution -> Which SIEM",
+            "targetStep": "\/api\/3\/workflow_steps\/fe172fe9-65f3-47fa-afc4-caaf00745a11",
+            "sourceStep": "\/api\/3\/workflow_steps\/3924e519-9dd2-428c-becc-54509a43d10e",
+            "label": null,
+            "isExecuted": false,
+            "uuid": "b03d4692-1b9b-4839-8180-1568a56a2f08"
+        }
+    ],
+    "priority": null,
+    "uuid": "ea5f9b32-03e3-4ffc-b72f-8732c3888cac",
+    "recordTags": [],
+    "id": 1202,
+    "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
+    "createDate": 1633085066,
+    "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
+    "modifyDate": 1633085066,
+    "owners": [],
+    "isPrivate": false
+}
