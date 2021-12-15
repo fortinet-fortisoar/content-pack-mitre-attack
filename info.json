@@ -1,8 +1,8 @@
 {
     "name": "mitreAttack",
     "version": "2.0.0",
-    "display": "Mitre ATT&CK",
-    "description": "Solution Pack for leveraging the MITRE ATT&CK knowledge base in SOAR",
+    "label": "Mitre ATT&CK",
+    "description": "Solution Pack for leveraging the MITRE ATT&CK Knowledge Base in FortiSOAR",
     "category": [],
     "dependencies": [],
     "publisher": "Fortinet",
@@ -11,7 +11,5 @@
     "supportInfo": "",
     "help":"https://github.com/fortinet-fortisoar/solution-pack-mitre-attack",
     "tags": [],
-    "fsrCompatibility": [
-        "7.0.2"
-    ]
+    "fsrMinCompatibility": "7.0.2"
 }
