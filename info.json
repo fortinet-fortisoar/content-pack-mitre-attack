@@ -1,0 +1,17 @@
+{
+    "name": "mitreAttack",
+    "version": "2.0.0",
+    "display": "Mitre ATT&CK",
+    "description": "Solution Pack for leveraging the MITRE ATT&CK knowledge base in SOAR",
+    "category": [],
+    "dependencies": [],
+    "publisher": "Fortinet",
+    "certified": "true",
+    "type": "solutionpack",
+    "supportInfo": "",
+    "help":"https://github.com/fortinet-fortisoar/solution-pack-mitre-attack",
+    "tags": [],
+    "fsrCompatibility": [
+        "7.0.2"
+    ]
+}
