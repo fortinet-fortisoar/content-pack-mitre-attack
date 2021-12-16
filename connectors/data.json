@@ -51,6 +51,7 @@
           }
         ],
         "dataImports": [],
+        "rpm_name": "cyops-connector-mitre-attack-2.0.1",
         "install_mode": "rpm",
         "installer_path": "cyops-connector-mitre-attack-2.0.1"
     }
