@@ -1,7 +1,7 @@
 {
     "@type": "Workflow",
     "triggerLimit": null,
-    "name": "> ASSETS - Service Execution (Enrichment) (T1569.002)",
+    "name": "ASSETS - Service Execution (Enrichment) (T1569.002)",
     "aliasName": null,
     "tag": "ATT&CK, Execution, Service_Execution",
     "description": "Enriches service data and query VirusTotal for reputation. Queries SIEM for all instances of any malicious hash observed.",

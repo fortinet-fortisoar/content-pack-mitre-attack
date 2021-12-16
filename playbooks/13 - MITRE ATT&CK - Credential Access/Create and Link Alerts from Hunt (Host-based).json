@@ -1,7 +1,7 @@
 {
     "@type": "Workflow",
     "triggerLimit": null,
-    "name": ">> Create and Link Alerts from Hunt (Host-based)",
+    "name": "Create and Link Alerts from Hunt (Host-based)",
     "aliasName": null,
     "tag": "MITRE, ALERT, ELASTIC",
     "description": "Creates and Links the Alert with Hunt.",
