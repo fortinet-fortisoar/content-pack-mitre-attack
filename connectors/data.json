@@ -1,0 +1,57 @@
+[
+    {
+        "name": "elasticsearch",
+        "label": "ElasticSearch",
+        "category": "Database",
+        "description": "ElasticSearch is a distributed, RESTful search and analytics engine capable of solving a number of use cases. This connector facilitates automated operations to execute lucene query, get mapping and cluster details.",
+        "publisher": null,
+        "version": "2.2.1",
+        "operation_roles": {
+            "get_cluster_details": [],
+            "get_mapping": [],
+            "execute_query": [],
+            "execute_lucene_query": [],
+            "get_saved_search": []
+        },
+        "configurations": [],
+        "dataImports": [],
+        "rpm_name": "cyops-connector-elasticsearch-2.2.1",
+        "install_mode": "rpm",
+        "installer_path": "cyops-connector-elasticsearch-2.2.1"
+    },
+    {
+        "name": "mitre-attack",
+        "label": "MITRE ATT&CK",
+        "category": "Information",
+        "description": "The MITRE ATT&CK knowledge base is used as a foundation for the development of specific threat models and methodologies. Connector helps to replicate knowledge base of adversary tactics and techniques based on real-world observations",
+        "publisher": null,
+        "version": "2.0.1",
+        "operation_roles": {
+            "get_mitre_data": [],
+            "get_mitre_data_sample": []
+        },
+        "configurations": [
+          {
+            "id": 11,
+            "config_id": "d65ed600-207f-40f4-9931-1ba137e214d8",
+            "status": 1,
+            "name": "Sample Configuration",
+            "default": true,
+            "config": {
+              "matrices": [
+                "Enterprise"
+              ],
+              "upload_json": false
+            },
+            "remote_status": [],
+            "health_status": [],
+            "connector": 17,
+            "agent": "8eaba3eff26fcef7d6b479714fc8699a",
+            "teams": []
+          }
+        ],
+        "dataImports": [],
+        "install_mode": "rpm",
+        "installer_path": "cyops-connector-mitre-attack-2.0.1"
+    }
+]
