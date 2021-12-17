@@ -88,13 +88,13 @@
         {
             "@id": "\/api\/3\/attribute_metadatas\/55ce4c4e-15b9-496b-a884-d7b03e0e057c",
             "@type": "AttributeMetadata",
-            "type": "mitretechniques",
+            "type": "mitre_techniques",
             "name": "mitretechniques",
             "length": null,
             "orderIndex": 3,
             "formType": "manyToMany",
             "dataSource": {
-                "model": "mitretechniques"
+                "model": "mitre_techniques"
             },
             "searchable": false,
             "peerReplicable": false,
@@ -132,13 +132,13 @@
         {
             "@id": "\/api\/3\/attribute_metadatas\/6ec39870-160e-4afd-b121-9800146ecbc6",
             "@type": "AttributeMetadata",
-            "type": "mitresubtechniques",
+            "type": "mitre_sub_techniques",
             "name": "mitresubtechniques",
             "length": null,
             "orderIndex": 4,
             "formType": "manyToMany",
             "dataSource": {
-                "model": "mitresubtechniques"
+                "model": "mitre_sub_techniques"
             },
             "searchable": false,
             "peerReplicable": false,
@@ -176,13 +176,13 @@
         {
             "@id": "\/api\/3\/attribute_metadatas\/8c51e528-cb10-4031-b286-4b66d0ee3d28",
             "@type": "AttributeMetadata",
-            "type": "mitremitigations",
+            "type": "mitre_mitigations",
             "name": "mitremitigations",
             "length": null,
             "orderIndex": 2,
             "formType": "manyToMany",
             "dataSource": {
-                "model": "mitremitigations"
+                "model": "mitre_mitigations"
             },
             "searchable": false,
             "peerReplicable": false,
@@ -220,13 +220,13 @@
         {
             "@id": "\/api\/3\/attribute_metadatas\/753ab7fa-97af-4148-8401-af786c9231e6",
             "@type": "AttributeMetadata",
-            "type": "mitregroups",
+            "type": "mitre_groups",
             "name": "mitregroups",
             "length": null,
             "orderIndex": 1,
             "formType": "lookup",
             "dataSource": {
-                "model": "mitregroups"
+                "model": "mitre_groups"
             },
             "searchable": false,
             "peerReplicable": true,
@@ -268,13 +268,13 @@
         {
             "@id": "\/api\/3\/attribute_metadatas\/991ed6fd-a768-4cfc-a769-be1b292a8a04",
             "@type": "AttributeMetadata",
-            "type": "mitretactics",
+            "type": "mitre_tactics",
             "name": "mitretactics",
             "length": null,
             "orderIndex": 2,
             "formType": "lookup",
             "dataSource": {
-                "model": "mitretactics"
+                "model": "mitre_tactics"
             },
             "searchable": false,
             "peerReplicable": true,
@@ -316,13 +316,13 @@
         {
             "@id": "\/api\/3\/attribute_metadatas\/72fc16c0-0a4f-49f8-acc5-08121c5b9bf5",
             "@type": "AttributeMetadata",
-            "type": "mitresoftware",
+            "type": "mitre_software",
             "name": "mitresoftware",
             "length": null,
             "orderIndex": 1,
             "formType": "manyToMany",
             "dataSource": {
-                "model": "mitresoftware"
+                "model": "mitre_software"
             },
             "searchable": false,
             "peerReplicable": false,

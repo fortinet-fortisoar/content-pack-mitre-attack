@@ -11,10 +11,10 @@
                             {
                                 "type": "primaryDetail",
                                 "config": {
-                                    "wid": "edfe7804-7b0a-4358-bb18-2901edcbc9ae",
+                                    "wid": "75630366-757a-40df-9020-f4d19f5fc5de",
                                     "idField": "mitreId",
                                     "picklistFieldReadOnly": false,
-                                    "titleFieldReadOnly": false,
+                                    "titleFieldReadOnly": true,
                                     "titleFieldLinky": true,
                                     "featuredRelationship": {
                                         "field": null,
@@ -26,10 +26,12 @@
                                     "titleField": "name"
                                 }
                             }
-                        ]
+                        ],
+                        "style": "col-lg-12"
                     }
                 ],
-                "wid": "b6d95972-872e-4392-a65b-e813bf112d61"
+                "wid": "8f404872-5c8b-4a27-9d72-a63b4aeb48b9",
+                "_collapsed": false
             },
             {
                 "columns": [
@@ -38,7 +40,7 @@
                             {
                                 "type": "editableFormGroup",
                                 "config": {
-                                    "wid": "eaa9ac5a-9cdd-493a-9ad9-2a8dca25a252",
+                                    "wid": "8ae5d32a-3fc5-4a33-8da9-f6fe2f8afed5",
                                     "rows": [
                                         {
                                             "columns": [
@@ -49,6 +51,12 @@
                                                             "highlightMode": true,
                                                             "linky": true,
                                                             "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "myNotes",
+                                                            "highlightMode": true,
+                                                            "linky": true,
+                                                            "readOnly": false
                                                         }
                                                     ]
                                                 }
@@ -65,29 +73,53 @@
                             {
                                 "type": "editableFormGroup",
                                 "config": {
-                                    "wid": "89c05d9b-11b6-4cc0-b5f7-8280dd0ad82e",
+                                    "wid": "5c719385-ebe4-4526-ac58-5df593edfc1a",
                                     "rows": [
                                         {
                                             "columns": [
                                                 {
                                                     "fields": [
                                                         {
+                                                            "name": "parentTechnique",
+                                                            "highlightMode": true,
+                                                            "linky": true,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "platforms",
+                                                            "highlightMode": true,
+                                                            "linky": true,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "permissionsRequired",
+                                                            "highlightMode": true,
+                                                            "linky": true,
+                                                            "readOnly": true
+                                                        },
+                                                        {
+                                                            "name": "dataSources",
+                                                            "highlightMode": true,
+                                                            "linky": true,
+                                                            "readOnly": true
+                                                        },
+                                                        {
                                                             "name": "version",
                                                             "highlightMode": true,
                                                             "linky": true,
-                                                            "readOnly": false
+                                                            "readOnly": true
                                                         },
                                                         {
                                                             "name": "created",
                                                             "highlightMode": true,
                                                             "linky": true,
-                                                            "readOnly": false
+                                                            "readOnly": true
                                                         },
                                                         {
                                                             "name": "lastModified",
                                                             "highlightMode": true,
                                                             "linky": true,
-                                                            "readOnly": false
+                                                            "readOnly": true
                                                         }
                                                     ]
                                                 }
@@ -100,10 +132,10 @@
                         "style": "col-lg-3"
                     }
                 ],
-                "wid": "bedb9039-0819-49b2-817a-deeaafb1458f",
-                "_collapsed": false,
+                "wid": "a4834add-b809-40df-9660-e76960e67586",
                 "collapsible": false,
-                "collapsibleIndex": 0
+                "collapsibleIndex": 0,
+                "_collapsed": false
             },
             {
                 "columns": [
@@ -124,26 +156,26 @@
                                                         "userOwners",
                                                         "attachments"
                                                     ],
-                                                    "wid": "9a3c8f7a-e126-4d86-acbf-bc0a5f5269a3"
+                                                    "wid": "6f9169a4-d99e-4254-ac6c-92a6fd69940c"
                                                 }
                                             },
                                             "show": true,
                                             "icon": "fa fa-none"
                                         }
                                     ],
-                                    "wid": "18ea57c7-19b0-4b96-a505-32e2e4699986"
+                                    "wid": "7d31fba4-2b0c-4886-b0ac-a43a5b990a11"
                                 }
                             }
                         ],
                         "style": "col-lg-12"
                     }
                 ],
-                "wid": "f7ec6c1e-e211-4960-8528-c43d314968c4",
+                "wid": "5c397d2c-6363-4124-8238-a5093b49d7b0",
                 "_collapsed": false
             }
         ],
         "actionButtons": [],
-        "wid": "49ad68ea-35be-4337-a7b2-6be9a3fbb20f"
+        "wid": "de146a5f-2551-4c0c-ba83-c5ce727271fb"
     },
-    "uuid": "modules-mitremitigations-detail"
+    "uuid": "modules-mitre_sub_techniques-detail"
 }

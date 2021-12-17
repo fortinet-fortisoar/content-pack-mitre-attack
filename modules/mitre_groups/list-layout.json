@@ -36,7 +36,7 @@
                                 "type": "grid",
                                 "config": {
                                     "wid": "c40a244c-c2ca-4b97-a0d7-c30b4aa76839",
-                                    "module": "mitregroups",
+                                    "module": "mitre_groups",
                                     "columns": [
                                         "mitreId",
                                         "name",
@@ -65,5 +65,5 @@
         ],
         "wid": "81b2d662-2113-416b-ae01-a8deae6c94e2"
     },
-    "uuid": "modules-mitregroups-list"
+    "uuid": "modules-mitre_groups-list"
 }

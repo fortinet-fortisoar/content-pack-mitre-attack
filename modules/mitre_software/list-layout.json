@@ -36,7 +36,7 @@
                                 "type": "grid",
                                 "config": {
                                     "wid": "0417619e-54e5-4cc5-bf08-2c04642f0a73",
-                                    "module": "mitresoftware",
+                                    "module": "mitre_software",
                                     "columns": [
                                         "mitreId",
                                         "name",
@@ -65,5 +65,5 @@
         ],
         "wid": "75eee37e-577e-4171-9af2-702245394bf1"
     },
-    "uuid": "modules-mitresoftware-list"
+    "uuid": "modules-mitre_software-list"
 }
