@@ -11,8 +11,8 @@
                             {
                                 "type": "grid",
                                 "config": {
-                                    "wid": "45a87654-a678-45ae-9fcd-9e72de2ea394",
-                                    "module": "mitre_techniques",
+                                    "wid": "3332b58a-bc4c-4c94-a81b-5ab1b65b6bbe",
+                                    "module": "mitresubtechniques",
                                     "columns": [
                                         "mitreId",
                                         "name",
@@ -34,11 +34,11 @@
                         "style": "col-lg-12"
                     }
                 ],
-                "wid": "f56c2c7a-485d-4200-8809-050d5ced0253",
+                "wid": "6453203a-c5fc-4689-8ad7-0f0da37f35e6",
                 "_collapsed": false
             }
         ],
-        "wid": "65b7f13a-776c-459d-8ab4-02ae65ed25d5"
+        "wid": "0733aa80-4c5b-4919-8532-ce0aad43e048"
     },
-    "uuid": "modules-mitre_techniques-list"
+    "uuid": "modules-mitresubtechniques-list"
 }

@@ -12,7 +12,7 @@
                                 "type": "grid",
                                 "config": {
                                     "wid": "746c2060-f5dd-42a8-873f-308c16e180e0",
-                                    "module": "mitre_mitigations",
+                                    "module": "mitremitigations",
                                     "columns": [
                                         "mitreId",
                                         "name",
@@ -40,5 +40,5 @@
         ],
         "wid": "b2696c64-20c6-4509-a6c2-8adb752e4e23"
     },
-    "uuid": "modules-mitre_mitigations-list"
+    "uuid": "modules-mitremitigations-list"
 }
