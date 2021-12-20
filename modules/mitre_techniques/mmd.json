@@ -75,7 +75,7 @@
             "encrypted": false,
             "gridColumn": false,
             "collection": true,
-            "inversedField": "mitre_techniques",
+            "inversedField": "mitretechniques",
             "ownsRelationship": true,
             "validation": {
                 "required": false,
