@@ -1,4 +1,4 @@
-# **MITRE ATT&CK Framework **Solution Pack v2.0.1
+# **MITRE ATT&CK Framework **Solution Pack v2.0.1**
 
 
 ## **Overview**
