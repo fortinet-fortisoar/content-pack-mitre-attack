@@ -5,16 +5,16 @@
     "aliasName": null,
     "tag": "ATT&CK, Persistence, Netsh_Helper_DLL",
     "description": "Hunts for abnormal DLL loads and processes spawned by netsh.exe.",
-    "isActive": false,
+    "isActive": true,
     "debug": false,
     "singleRecordExecution": false,
     "remoteExecutableFlag": false,
     "parameters": [],
     "synchronous": false,
-    "lastModifyDate": 1633085062,
+    "lastModifyDate": 1640081936,
     "collection": "\/api\/3\/workflow_collections\/8e9e842a-e876-40ed-8ac4-078409ff7c29",
     "versions": [],
-    "triggerStep": "\/api\/3\/workflow_steps\/c5fbf020-8560-471a-aa54-f638b1f08151",
+    "triggerStep": "\/api\/3\/workflow_steps\/afc3e9b0-a9dd-4383-9a90-8bd9a784294d",
     "steps": [
         {
             "@type": "WorkflowStep",
@@ -39,11 +39,11 @@
                 "step_variables": []
             },
             "status": null,
-            "top": "340",
-            "left": "1211",
+            "top": "190",
+            "left": "1425",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "8205c992-69da-4605-b0db-32223d8b341e",
-            "id": 4566
+            "uuid": "67214a49-1090-4fe9-b1a0-bc31f3d67974",
+            "id": 2823
         },
         {
             "@type": "WorkflowStep",
@@ -68,11 +68,11 @@
                 "step_variables": []
             },
             "status": null,
-            "top": "260",
-            "left": "1212",
+            "top": "30",
+            "left": "1425",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "ec3583e9-7dfc-427b-86ca-24346cb41939",
-            "id": 4567
+            "uuid": "b126eed6-6811-4485-92a6-f4f28bec1ca0",
+            "id": 2824
         },
         {
             "@type": "WorkflowStep",
@@ -96,11 +96,11 @@
                 "step_variables": []
             },
             "status": null,
-            "top": "260",
-            "left": "934",
+            "top": "30",
+            "left": "1100",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "1b4b609f-2551-4561-8fc3-089823cecddd",
-            "id": 4568
+            "uuid": "b04577aa-0e20-4f84-8cdb-31a81c10f0f0",
+            "id": 2825
         },
         {
             "@type": "WorkflowStep",
@@ -154,11 +154,11 @@
                 "workflowReference": "\/api\/3\/workflows\/bf7d418b-7ff3-44c1-b473-90d0a03c4641"
             },
             "status": null,
-            "top": "531",
-            "left": "1488",
+            "top": "510",
+            "left": "1750",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "34965f99-fb3a-4db6-95d0-4ff7e2c72f06",
-            "id": 4569
+            "uuid": "6ad4b8ab-5713-4256-9854-d773f4e3182e",
+            "id": 2826
         },
         {
             "@type": "WorkflowStep",
@@ -212,11 +212,11 @@
                 "workflowReference": "\/api\/3\/workflows\/bf7d418b-7ff3-44c1-b473-90d0a03c4641"
             },
             "status": null,
-            "top": "340",
-            "left": "1486",
+            "top": "190",
+            "left": "1750",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "b6b67080-3020-4b5b-97db-8e2e663cfe70",
-            "id": 4570
+            "uuid": "4712397e-e807-40b6-b0c2-231a1b8df216",
+            "id": 2827
         },
         {
             "@type": "WorkflowStep",
@@ -227,11 +227,11 @@
                 "elasticHuntStart": "{{ arrow.get(vars.input.records[0].huntStart).format('YYYY-MM-DDTHH:mm:ss.SSSSSSSSSZ') }}"
             },
             "status": null,
-            "top": "489",
-            "left": "640",
+            "top": "430",
+            "left": "1100",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "uuid": "af96cfa4-669a-4163-9907-4978c11ba237",
-            "id": 4571
+            "uuid": "727fa29a-9c0e-4e4f-b6b8-2402b83bfd81",
+            "id": 2828
         },
         {
             "@type": "WorkflowStep",
@@ -245,18 +245,19 @@
                     "query": "event_type:sysmon AND (event_id:\"12\" OR event_id:\"13\") AND @timestamp:{ {{vars.elasticHuntStart}} TO {{vars.elasticHuntEnd}} } AND event_data.TargetObject:\"HKLM\\\\SOFTWARE\\\\Microsoft\\\\NetSh\\\\*\"",
                     "run_as_user": ""
                 },
-                "version": "2.2.0",
+                "version": "2.2.1",
                 "connector": "elasticsearch",
                 "operation": "execute_lucene_query",
+                "mock_result": "{\n  \"data\": {\n    \"hits\": {\n      \"hits\": [\n        {\n          \"_id\": \"kb4muGsBt8nuALoCum-7\",\n          \"_type\": \"doc\",\n          \"_index\": \"logstash-beats-netshhelperdll\",\n          \"_score\": 3.4384105,\n          \"_source\": {\n            \"beat\": {\n              \"name\": \"admin-PC2\",\n              \"version\": \"6.5.3\",\n              \"hostname\": \"admin-PC2\"\n            },\n            \"tags\": [\n              \"beat\",\n              \"beats_input_codec_plain_applied\"\n            ],\n            \"task\": \"Registry value set (rule: RegistryEvent)\",\n            \"user\": {\n              \"name\": \"SYSTEM\",\n              \"type\": \"User\",\n              \"domain\": \"NT AUTHORITY\",\n              \"identifier\": \"S-1-5-18\"\n            },\n            \"level\": \"Information\",\n            \"opcode\": \"Info\",\n            \"message\": \"Registry value set:\\nRuleName: \\nEventType: SetValue\\nUtcTime: 2019-07-03 14:04:30.887\\nProcessGuid: {BAECEEB0-B2A5-5D1C-0000-0010E4C9A104}\\nProcessId: 1616\\nImage: C:\\\\Windows\\\\regedit.exe\\nTargetObject: HKLM\\\\SOFTWARE\\\\Microsoft\\\\NetSh\\\\scvhosts\\nDetails: C:\\\\MaybeNotACredentialDumper.EXE\",\n            \"version\": 2,\n            \"@version\": \"1\",\n            \"event_id\": 13,\n            \"log_name\": \"Microsoft-Windows-Sysmon\/Operational\",\n            \"beat_host\": {\n              \"id\": \"baeceeb0-040c-498f-84c9-610d57bc902d\",\n              \"os\": {\n                \"build\": \"7601.0\",\n                \"family\": \"windows\",\n                \"version\": \"6.1\",\n                \"platform\": \"windows\"\n              },\n              \"name\": \"admin-PC2\",\n              \"architecture\": \"x86_64\"\n            },\n            \"thread_id\": 1816,\n            \"@timestamp\": \"2019-07-03T14:04:30.981Z\",\n            \"event_data\": {\n              \"Details\": \"C:\\\\MaybeNotACredentialDumper.EXE\",\n              \"UtcTime\": \"2019-07-03 14:04:30.887\",\n              \"EventType\": \"SetValue\",\n              \"ProcessId\": \"1616\",\n              \"ProcessGuid\": \"{BAECEEB0-B2A5-5D1C-0000-0010E4C9A104}\",\n              \"TargetObject\": \"HKLM\\\\SOFTWARE\\\\Microsoft\\\\NetSh\\\\scvhosts\"\n            },\n            \"event_type\": \"sysmon\",\n            \"image_path\": \"C:\\\\Windows\\\\regedit.exe\",\n            \"process_id\": 1460,\n            \"source_name\": \"Microsoft-Windows-Sysmon\",\n            \"computer_name\": \"admin-PC2.cybercom.local\",\n            \"logstash_time\": 0.13560795783996582,\n            \"provider_guid\": \"{5770385F-C22A-43E0-BF4C-06F5698FFBD9}\",\n            \"record_number\": \"189637\"\n          }\n        }\n      ],\n      \"total\": {\n        \"value\": 1,\n        \"relation\": \"eq\"\n      },\n      \"max_score\": 3.4384105\n    },\n    \"took\": 328,\n    \"_shards\": {\n      \"total\": 95,\n      \"failed\": 0,\n      \"skipped\": 0,\n      \"successful\": 95\n    },\n    \"timed_out\": false\n  },\n  \"status\": \"Success\",\n  \"message\": \"\",\n  \"operation\": null\n}",
                 "operationTitle": "Execute Lucene Query",
                 "step_variables": []
             },
             "status": null,
-            "top": "440",
-            "left": "931",
+            "top": "350",
+            "left": "1425",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "32d144b9-4453-4eaa-90ec-ff19554069a5",
-            "id": 4572
+            "uuid": "a8be0ba5-500b-4ccd-9705-40818b3e3f3b",
+            "id": 2829
         },
         {
             "@type": "WorkflowStep",
@@ -310,11 +311,11 @@
                 "workflowReference": "\/api\/3\/workflows\/bf7d418b-7ff3-44c1-b473-90d0a03c4641"
             },
             "status": null,
-            "top": "440",
-            "left": "1480",
+            "top": "350",
+            "left": "1750",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "e8ec4457-b287-47f8-8bf7-72a6e9c3d6a7",
-            "id": 4573
+            "uuid": "5bb7785e-34e3-4010-b64b-a049f60b5c76",
+            "id": 2830
         },
         {
             "@type": "WorkflowStep",
@@ -338,11 +339,11 @@
                 "step_variables": []
             },
             "status": null,
-            "top": "340",
-            "left": "932",
+            "top": "190",
+            "left": "1100",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "60fc8bb4-d1cc-4113-9f31-4ca00890680c",
-            "id": 4574
+            "uuid": "40b38bf2-db6f-44b4-8769-f0905f32d43a",
+            "id": 2831
         },
         {
             "@type": "WorkflowStep",
@@ -424,7 +425,8 @@
                             "siem": "{{vars.request.data[\"siem\"]}}"
                         },
                         "records": "{{vars.input.records}}"
-                    }
+                    },
+                    "useMockOutput": "true"
                 },
                 "_promptexpanded": true,
                 "displayConditions": {
@@ -440,11 +442,11 @@
                 "singleRecordExecution": false
             },
             "status": null,
-            "top": "380",
-            "left": "20",
+            "top": "270",
+            "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-            "uuid": "c5fbf020-8560-471a-aa54-f638b1f08151",
-            "id": 4575
+            "uuid": "afc3e9b0-a9dd-4383-9a90-8bd9a784294d",
+            "id": 2832
         },
         {
             "@type": "WorkflowStep",
@@ -458,18 +460,19 @@
                     "query": "event_type:sysmon AND event_id:\"1\" AND @timestamp:{ {{vars.elasticHuntStart}} TO {{vars.elasticHuntEnd}} } AND (parent_image_path:\"C:\\\\Windows\\\\SysWOW64\\\\netsh.exe\" OR parent_image_path:\"C:\\\\Windows\\\\System32\\\\netsh.exe\")",
                     "run_as_user": ""
                 },
-                "version": "2.2.0",
+                "version": "2.2.1",
                 "connector": "elasticsearch",
                 "operation": "execute_lucene_query",
+                "mock_result": "{\n  \"data\": {\n    \"hits\": {\n      \"hits\": [],\n      \"total\": {\n        \"value\": 0,\n        \"relation\": \"eq\"\n      },\n      \"max_score\": null\n    },\n    \"took\": 349,\n    \"_shards\": {\n      \"total\": 95,\n      \"failed\": 0,\n      \"skipped\": 0,\n      \"successful\": 95\n    },\n    \"timed_out\": false\n  },\n  \"status\": \"Success\",\n  \"message\": \"\",\n  \"operation\": null\n}",
                 "operationTitle": "Execute Lucene Query",
                 "step_variables": []
             },
             "status": null,
-            "top": "531",
-            "left": "931",
+            "top": "510",
+            "left": "1425",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "f97757fb-a910-4cb6-a3e8-33f0409ac363",
-            "id": 4576
+            "uuid": "0dfd24dd-3b1e-4674-9a18-f37adcbc3a2c",
+            "id": 2833
         },
         {
             "@type": "WorkflowStep",
@@ -523,11 +526,11 @@
                 "workflowReference": "\/api\/3\/workflows\/bf7d418b-7ff3-44c1-b473-90d0a03c4641"
             },
             "status": null,
-            "top": "260",
-            "left": "1489",
+            "top": "30",
+            "left": "1750",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "4f9856d8-f94b-4dc6-9601-59fa9f718ecd",
-            "id": 4577
+            "uuid": "ec3ea452-1bd2-4a5f-8773-d10fbee105ba",
+            "id": 2834
         },
         {
             "@type": "WorkflowStep",
@@ -541,11 +544,11 @@
                 "workflowReference": "\/api\/3\/workflows\/3fd311be-a1c6-41c7-99a3-8794b33d8f8a"
             },
             "status": null,
-            "top": "400",
-            "left": "1820",
+            "top": "270",
+            "left": "2075",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "d1ad897c-2352-4827-b340-78e6c6967fc5",
-            "id": 4578
+            "uuid": "3c5cd5f3-d80a-49ae-b719-82ad2ae1744d",
+            "id": 2835
         },
         {
             "@type": "WorkflowStep",
@@ -556,11 +559,11 @@
                 "splunkHuntStart": "earliest={{vars.input.records[0].huntStart}}"
             },
             "status": null,
-            "top": "306",
-            "left": "640",
+            "top": "110",
+            "left": "775",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "uuid": "6ef87c05-fcea-438e-8102-1ffdc35a45b7",
-            "id": 4579
+            "uuid": "a4bfb89a-95c2-4946-9814-48213c156f55",
+            "id": 2836
         },
         {
             "@type": "WorkflowStep",
@@ -570,187 +573,187 @@
                 "conditions": [
                     {
                         "option": "Elasticsearch",
-                        "step_iri": "\/api\/3\/workflow_steps\/af96cfa4-669a-4163-9907-4978c11ba237",
+                        "step_iri": "\/api\/3\/workflow_steps\/727fa29a-9c0e-4e4f-b6b8-2402b83bfd81",
                         "condition": "{{ vars.input.params.siem.itemValue == \"Elastic\" }}"
                     },
                     {
                         "option": "Splunk",
-                        "step_iri": "\/api\/3\/workflow_steps\/6ef87c05-fcea-438e-8102-1ffdc35a45b7",
+                        "step_iri": "\/api\/3\/workflow_steps\/a4bfb89a-95c2-4946-9814-48213c156f55",
                         "condition": "{{ vars.input.params.siem.itemValue == \"Splunk\" }}"
                     }
                 ]
             },
             "status": null,
-            "top": "380",
-            "left": "294",
+            "top": "270",
+            "left": "450",
             "stepType": "\/api\/3\/workflow_step_types\/12254cf5-5db7-4b1a-8cb1-3af081924b28",
-            "uuid": "6298c168-33cf-4bd2-b7a6-5bfdffb4e4c9",
-            "id": 4580
+            "uuid": "529c278d-1716-437a-8d09-6071020540c8",
+            "id": 2837
         }
     ],
     "routes": [
         {
             "@type": "WorkflowRoute",
             "name": "Set Splunk hunt times -> Query for processes spawned by Netsh",
-            "targetStep": "\/api\/3\/workflow_steps\/60fc8bb4-d1cc-4113-9f31-4ca00890680c",
-            "sourceStep": "\/api\/3\/workflow_steps\/6ef87c05-fcea-438e-8102-1ffdc35a45b7",
+            "targetStep": "\/api\/3\/workflow_steps\/40b38bf2-db6f-44b4-8769-f0905f32d43a",
+            "sourceStep": "\/api\/3\/workflow_steps\/a4bfb89a-95c2-4946-9814-48213c156f55",
             "label": null,
             "isExecuted": false,
-            "uuid": "d4190ad2-e963-44d3-99aa-4c00a6280934"
+            "uuid": "d197b69f-e31f-453b-b56c-af52e28ce7e0"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Select SIEM -> Set Elasticsearch hunt times",
-            "targetStep": "\/api\/3\/workflow_steps\/af96cfa4-669a-4163-9907-4978c11ba237",
-            "sourceStep": "\/api\/3\/workflow_steps\/6298c168-33cf-4bd2-b7a6-5bfdffb4e4c9",
+            "targetStep": "\/api\/3\/workflow_steps\/727fa29a-9c0e-4e4f-b6b8-2402b83bfd81",
+            "sourceStep": "\/api\/3\/workflow_steps\/529c278d-1716-437a-8d09-6071020540c8",
             "label": "Elasticsearch",
             "isExecuted": false,
-            "uuid": "16554508-6525-4415-9fce-c3a7e9e7f75b"
+            "uuid": "0d92742c-400a-4cb7-8040-be2a9ccc44ba"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Elastic Query for Netsh helper DLL registry key modification -> Copy  of Copy  of Create and Link Alert",
-            "targetStep": "\/api\/3\/workflow_steps\/e8ec4457-b287-47f8-8bf7-72a6e9c3d6a7",
-            "sourceStep": "\/api\/3\/workflow_steps\/32d144b9-4453-4eaa-90ec-ff19554069a5",
+            "targetStep": "\/api\/3\/workflow_steps\/5bb7785e-34e3-4010-b64b-a049f60b5c76",
+            "sourceStep": "\/api\/3\/workflow_steps\/a8be0ba5-500b-4ccd-9705-40818b3e3f3b",
             "label": null,
             "isExecuted": false,
-            "uuid": "4356b430-bd8b-4996-b892-d47477f8ad18"
+            "uuid": "100c58ca-5c93-4f9e-b3dc-c75e2dfb02e7"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Copy  of Create and Link Alert -> Deduplicate comments",
-            "targetStep": "\/api\/3\/workflow_steps\/d1ad897c-2352-4827-b340-78e6c6967fc5",
-            "sourceStep": "\/api\/3\/workflow_steps\/4f9856d8-f94b-4dc6-9601-59fa9f718ecd",
+            "targetStep": "\/api\/3\/workflow_steps\/3c5cd5f3-d80a-49ae-b719-82ad2ae1744d",
+            "sourceStep": "\/api\/3\/workflow_steps\/ec3ea452-1bd2-4a5f-8773-d10fbee105ba",
             "label": null,
             "isExecuted": false,
-            "uuid": "d43297fb-b760-4e14-a060-55b760d19be0"
+            "uuid": "2304b497-de89-46a0-afc0-85f41b6e5b34"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Query for Netsh helper DLL registry key modification -> Copy  of Retrieve key creation query results",
-            "targetStep": "\/api\/3\/workflow_steps\/ec3583e9-7dfc-427b-86ca-24346cb41939",
-            "sourceStep": "\/api\/3\/workflow_steps\/1b4b609f-2551-4561-8fc3-089823cecddd",
+            "targetStep": "\/api\/3\/workflow_steps\/b126eed6-6811-4485-92a6-f4f28bec1ca0",
+            "sourceStep": "\/api\/3\/workflow_steps\/b04577aa-0e20-4f84-8cdb-31a81c10f0f0",
             "label": null,
             "isExecuted": false,
-            "uuid": "10cf605b-638a-4d4a-982a-f2d548fa1291"
+            "uuid": "35c8ee54-cf05-4dee-85c5-2f7ff6653b19"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Create and Link Alert -> Deduplicate comments",
-            "targetStep": "\/api\/3\/workflow_steps\/d1ad897c-2352-4827-b340-78e6c6967fc5",
-            "sourceStep": "\/api\/3\/workflow_steps\/b6b67080-3020-4b5b-97db-8e2e663cfe70",
+            "targetStep": "\/api\/3\/workflow_steps\/3c5cd5f3-d80a-49ae-b719-82ad2ae1744d",
+            "sourceStep": "\/api\/3\/workflow_steps\/4712397e-e807-40b6-b0c2-231a1b8df216",
             "label": null,
             "isExecuted": false,
-            "uuid": "4e5e265e-8503-42cb-899a-afa3fbe41ee2"
+            "uuid": "da866593-f814-4d72-8551-a0f494206632"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Set Splunk hunt times -> Query for Netsh helper DLL registry key modification",
-            "targetStep": "\/api\/3\/workflow_steps\/1b4b609f-2551-4561-8fc3-089823cecddd",
-            "sourceStep": "\/api\/3\/workflow_steps\/6ef87c05-fcea-438e-8102-1ffdc35a45b7",
+            "targetStep": "\/api\/3\/workflow_steps\/b04577aa-0e20-4f84-8cdb-31a81c10f0f0",
+            "sourceStep": "\/api\/3\/workflow_steps\/a4bfb89a-95c2-4946-9814-48213c156f55",
             "label": null,
             "isExecuted": false,
-            "uuid": "8f5b03a8-6ffa-4b6d-861b-40b5973388dd"
+            "uuid": "467e4467-0b38-4f68-bc22-af4d452ca3e5"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Set Elasticsearch hunt times -> a",
-            "targetStep": "\/api\/3\/workflow_steps\/f97757fb-a910-4cb6-a3e8-33f0409ac363",
-            "sourceStep": "\/api\/3\/workflow_steps\/af96cfa4-669a-4163-9907-4978c11ba237",
+            "targetStep": "\/api\/3\/workflow_steps\/0dfd24dd-3b1e-4674-9a18-f37adcbc3a2c",
+            "sourceStep": "\/api\/3\/workflow_steps\/727fa29a-9c0e-4e4f-b6b8-2402b83bfd81",
             "label": null,
             "isExecuted": false,
-            "uuid": "a0cd27d1-c5ed-47cd-a9f8-a94c30af27ef"
+            "uuid": "2cfc4594-c84d-4b9b-88d4-f577d02046d2"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Retrieve key modification query results -> Copy  of Create and Link Alert",
-            "targetStep": "\/api\/3\/workflow_steps\/4f9856d8-f94b-4dc6-9601-59fa9f718ecd",
-            "sourceStep": "\/api\/3\/workflow_steps\/ec3583e9-7dfc-427b-86ca-24346cb41939",
+            "targetStep": "\/api\/3\/workflow_steps\/ec3ea452-1bd2-4a5f-8773-d10fbee105ba",
+            "sourceStep": "\/api\/3\/workflow_steps\/b126eed6-6811-4485-92a6-f4f28bec1ca0",
             "label": null,
             "isExecuted": false,
-            "uuid": "a5c5dc48-3896-4dae-ac5d-750d3140a222"
+            "uuid": "a42874ac-c9b6-49cf-846a-21ef214f51bc"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Elastic Copy of Create and Link Alert -> Deduplicate comments",
-            "targetStep": "\/api\/3\/workflow_steps\/d1ad897c-2352-4827-b340-78e6c6967fc5",
-            "sourceStep": "\/api\/3\/workflow_steps\/e8ec4457-b287-47f8-8bf7-72a6e9c3d6a7",
+            "targetStep": "\/api\/3\/workflow_steps\/3c5cd5f3-d80a-49ae-b719-82ad2ae1744d",
+            "sourceStep": "\/api\/3\/workflow_steps\/5bb7785e-34e3-4010-b64b-a049f60b5c76",
             "label": null,
             "isExecuted": false,
-            "uuid": "3655dbef-0b4f-42cb-9049-7aa6be2e2567"
+            "uuid": "795e020f-343a-401d-afdd-d4a96da19c81"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Elastic Create and Link Alert -> Deduplicate comments",
-            "targetStep": "\/api\/3\/workflow_steps\/d1ad897c-2352-4827-b340-78e6c6967fc5",
-            "sourceStep": "\/api\/3\/workflow_steps\/34965f99-fb3a-4db6-95d0-4ff7e2c72f06",
+            "targetStep": "\/api\/3\/workflow_steps\/3c5cd5f3-d80a-49ae-b719-82ad2ae1744d",
+            "sourceStep": "\/api\/3\/workflow_steps\/6ad4b8ab-5713-4256-9854-d773f4e3182e",
             "label": null,
             "isExecuted": false,
-            "uuid": "64c06330-3eef-4e6e-9a94-26f5a407c101"
+            "uuid": "decda5e8-c0e4-43fb-91e1-6005296fc126"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Query for use of attrib to hide files -> Copy  of Query for use of attrib to hide files",
-            "targetStep": "\/api\/3\/workflow_steps\/8205c992-69da-4605-b0db-32223d8b341e",
-            "sourceStep": "\/api\/3\/workflow_steps\/60fc8bb4-d1cc-4113-9f31-4ca00890680c",
+            "targetStep": "\/api\/3\/workflow_steps\/67214a49-1090-4fe9-b1a0-bc31f3d67974",
+            "sourceStep": "\/api\/3\/workflow_steps\/40b38bf2-db6f-44b4-8769-f0905f32d43a",
             "label": null,
             "isExecuted": false,
-            "uuid": "aaebec7d-54f7-4098-ac44-a918e1be6f0f"
+            "uuid": "243ed52f-2170-4b6f-bd2b-e32e2a5fa1d0"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Select SIEM -> Set Splunk hunt times",
-            "targetStep": "\/api\/3\/workflow_steps\/6ef87c05-fcea-438e-8102-1ffdc35a45b7",
-            "sourceStep": "\/api\/3\/workflow_steps\/6298c168-33cf-4bd2-b7a6-5bfdffb4e4c9",
+            "targetStep": "\/api\/3\/workflow_steps\/a4bfb89a-95c2-4946-9814-48213c156f55",
+            "sourceStep": "\/api\/3\/workflow_steps\/529c278d-1716-437a-8d09-6071020540c8",
             "label": "Splunk",
             "isExecuted": false,
-            "uuid": "566d2704-a0f4-4295-9662-48b99ef85f50"
+            "uuid": "61ffcf28-7fb5-4216-a42f-835cf10390af"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Elastic Query for processes spawned by Netsh -> Copy  of Create and Link Alert",
-            "targetStep": "\/api\/3\/workflow_steps\/34965f99-fb3a-4db6-95d0-4ff7e2c72f06",
-            "sourceStep": "\/api\/3\/workflow_steps\/f97757fb-a910-4cb6-a3e8-33f0409ac363",
+            "targetStep": "\/api\/3\/workflow_steps\/6ad4b8ab-5713-4256-9854-d773f4e3182e",
+            "sourceStep": "\/api\/3\/workflow_steps\/0dfd24dd-3b1e-4674-9a18-f37adcbc3a2c",
             "label": null,
             "isExecuted": false,
-            "uuid": "ee4b57d5-9ba2-4535-bdb3-2fdbb5ec94e4"
+            "uuid": "d19612af-1949-4bf7-8d2f-4abd00fd2da4"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Start -> Select SIEM",
-            "targetStep": "\/api\/3\/workflow_steps\/6298c168-33cf-4bd2-b7a6-5bfdffb4e4c9",
-            "sourceStep": "\/api\/3\/workflow_steps\/c5fbf020-8560-471a-aa54-f638b1f08151",
+            "targetStep": "\/api\/3\/workflow_steps\/529c278d-1716-437a-8d09-6071020540c8",
+            "sourceStep": "\/api\/3\/workflow_steps\/afc3e9b0-a9dd-4383-9a90-8bd9a784294d",
             "label": null,
             "isExecuted": false,
-            "uuid": "eecc3be9-d5a2-4f04-8d6b-cf2a607a1c6d"
+            "uuid": "e5aaae89-9e39-4ce2-b32d-be70cd740cb0"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Retrieve query results -> Create and Link Alert",
-            "targetStep": "\/api\/3\/workflow_steps\/b6b67080-3020-4b5b-97db-8e2e663cfe70",
-            "sourceStep": "\/api\/3\/workflow_steps\/8205c992-69da-4605-b0db-32223d8b341e",
+            "targetStep": "\/api\/3\/workflow_steps\/4712397e-e807-40b6-b0c2-231a1b8df216",
+            "sourceStep": "\/api\/3\/workflow_steps\/67214a49-1090-4fe9-b1a0-bc31f3d67974",
             "label": null,
             "isExecuted": false,
-            "uuid": "1a7fad8c-3ec3-47e4-a508-66ce9e187a9c"
+            "uuid": "62335d4a-3bcc-427b-b05a-27b1e6116295"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Set Elasticsearch hunt times -> Elastic Query for Netsh helper DLL registry key modification",
-            "targetStep": "\/api\/3\/workflow_steps\/32d144b9-4453-4eaa-90ec-ff19554069a5",
-            "sourceStep": "\/api\/3\/workflow_steps\/af96cfa4-669a-4163-9907-4978c11ba237",
+            "targetStep": "\/api\/3\/workflow_steps\/a8be0ba5-500b-4ccd-9705-40818b3e3f3b",
+            "sourceStep": "\/api\/3\/workflow_steps\/727fa29a-9c0e-4e4f-b6b8-2402b83bfd81",
             "label": null,
             "isExecuted": false,
-            "uuid": "c339db53-08c8-442b-b84d-85e8f99fa033"
+            "uuid": "79a8bc6c-cede-4da9-aaa7-73069220db08"
         }
     ],
     "priority": null,
     "uuid": "43be338a-1b12-4fed-836e-8206014cb2ea",
     "recordTags": [],
-    "id": 1179,
+    "id": 365,
     "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-    "createDate": 1633085064,
+    "createDate": 1640081941,
     "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-    "modifyDate": 1633085064,
+    "modifyDate": 1640081941,
     "owners": [],
     "isPrivate": false
 }

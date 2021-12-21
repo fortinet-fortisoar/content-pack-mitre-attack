@@ -5,16 +5,16 @@
     "aliasName": null,
     "tag": "ATT&CK, Defense_Evasion, Certutil, Copy, Deobfuscate_Decode_Files_or_Information",
     "description": "Identifies use of Certutil or copy \/b to deobfuscate data\/files",
-    "isActive": false,
+    "isActive": true,
     "debug": false,
     "singleRecordExecution": false,
     "remoteExecutableFlag": false,
     "parameters": [],
     "synchronous": false,
-    "lastModifyDate": 1633085062,
+    "lastModifyDate": 1640081936,
     "collection": "\/api\/3\/workflow_collections\/d53a0724-ef01-4a8b-b488-4fd588a54160",
     "versions": [],
-    "triggerStep": "\/api\/3\/workflow_steps\/61865ce0-99e8-4b5d-a71c-3cb716f28012",
+    "triggerStep": "\/api\/3\/workflow_steps\/48a5d785-67ba-4145-87d4-441ca1ea6462",
     "steps": [
         {
             "@type": "WorkflowStep",
@@ -42,8 +42,8 @@
             "top": "420",
             "left": "1180",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "f25e922d-f613-4c49-ad95-01bb82084402",
-            "id": 4541
+            "uuid": "ac84d038-a9c4-408a-b05a-f3da60b42fae",
+            "id": 2773
         },
         {
             "@type": "WorkflowStep",
@@ -100,8 +100,8 @@
             "top": "340",
             "left": "1460",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "9469a648-9628-4769-8652-e9ffb9a5b9f2",
-            "id": 4542
+            "uuid": "4350a2f3-5a2b-4bbf-a6fd-f4967129a4a9",
+            "id": 2774
         },
         {
             "@type": "WorkflowStep",
@@ -128,8 +128,8 @@
             "top": "420",
             "left": "900",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "84d255ce-4b2c-4e4b-b749-f7f4e8dd5850",
-            "id": 4543
+            "uuid": "6b39e4d0-57bc-4d52-9290-75ace2f7ac89",
+            "id": 2775
         },
         {
             "@type": "WorkflowStep",
@@ -156,8 +156,8 @@
             "top": "340",
             "left": "900",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "c210244e-a86e-4c89-825d-480861dff2de",
-            "id": 4544
+            "uuid": "c83533b5-d8a6-429b-8c14-07b7a73f6909",
+            "id": 2776
         },
         {
             "@type": "WorkflowStep",
@@ -239,7 +239,8 @@
                             "siem": "{{vars.request.data[\"siem\"]}}"
                         },
                         "records": "{{vars.input.records}}"
-                    }
+                    },
+                    "useMockOutput": "true"
                 },
                 "_promptexpanded": true,
                 "displayConditions": {
@@ -264,8 +265,8 @@
             "top": "260",
             "left": "20",
             "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-            "uuid": "61865ce0-99e8-4b5d-a71c-3cb716f28012",
-            "id": 4545
+            "uuid": "48a5d785-67ba-4145-87d4-441ca1ea6462",
+            "id": 2777
         },
         {
             "@type": "WorkflowStep",
@@ -274,11 +275,11 @@
             "arguments": {
                 "conditions": [
                     {
-                        "step_iri": "\/api\/3\/workflow_steps\/f0954a26-abf5-4cc6-878b-b040cadcb55d",
+                        "step_iri": "\/api\/3\/workflow_steps\/e93ad67b-9c5b-4c34-9221-f694b7623dad",
                         "condition": "{{ vars.input.params.siem.itemValue == \"Elastic\" }}"
                     },
                     {
-                        "step_iri": "\/api\/3\/workflow_steps\/4cecccc2-bfad-4cf5-9f5a-974bbac854cf",
+                        "step_iri": "\/api\/3\/workflow_steps\/5a239ad3-7d23-489b-989d-4fef5f6cf5c6",
                         "condition": "{{ vars.input.params.siem.itemValue == \"Splunk\" }}"
                     }
                 ]
@@ -287,8 +288,8 @@
             "top": "260",
             "left": "308",
             "stepType": "\/api\/3\/workflow_step_types\/12254cf5-5db7-4b1a-8cb1-3af081924b28",
-            "uuid": "c09b497d-696e-4e93-9250-44e866603e11",
-            "id": 4546
+            "uuid": "a8724506-e2ee-4b74-8bed-8b13038c9769",
+            "id": 2778
         },
         {
             "@type": "WorkflowStep",
@@ -302,8 +303,8 @@
             "top": "140",
             "left": "600",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "uuid": "f0954a26-abf5-4cc6-878b-b040cadcb55d",
-            "id": 4547
+            "uuid": "e93ad67b-9c5b-4c34-9221-f694b7623dad",
+            "id": 2779
         },
         {
             "@type": "WorkflowStep",
@@ -331,8 +332,8 @@
             "top": "340",
             "left": "1180",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "9b2f056b-039b-487c-b49f-d2e7eedf06d1",
-            "id": 4548
+            "uuid": "0b2a1e85-bb0d-4677-a265-7bb7d3b91d07",
+            "id": 2780
         },
         {
             "@type": "WorkflowStep",
@@ -389,8 +390,8 @@
             "top": "100",
             "left": "1454",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "bd9ad92a-b115-4ba4-9375-ab056e6ee013",
-            "id": 4549
+            "uuid": "6fbda94b-a38e-4236-a06d-791e511e1912",
+            "id": 2781
         },
         {
             "@type": "WorkflowStep",
@@ -447,8 +448,8 @@
             "top": "180",
             "left": "1452",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "0d13295e-20e2-4fa8-ad21-3dc6020ca034",
-            "id": 4550
+            "uuid": "cef6b93c-f948-451c-a5f7-08ef355019ea",
+            "id": 2782
         },
         {
             "@type": "WorkflowStep",
@@ -505,8 +506,8 @@
             "top": "420",
             "left": "1460",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "59365307-a7fd-4e5d-96a4-59a00e1f68a2",
-            "id": 4551
+            "uuid": "373792db-8a1a-4239-9010-95fd46e802ff",
+            "id": 2783
         },
         {
             "@type": "WorkflowStep",
@@ -523,8 +524,8 @@
             "top": "260",
             "left": "1772",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "22dea7e1-050e-41dc-944d-5b77a89ddc76",
-            "id": 4552
+            "uuid": "03590dc1-ec31-4411-b3c3-03524008a308",
+            "id": 2784
         },
         {
             "@type": "WorkflowStep",
@@ -538,9 +539,10 @@
                     "query": "event_type:sysmon @timestamp:{ {{vars.elasticHuntStart}} TO {{vars.elasticHuntEnd}} } AND event_id:1 AND (image_path:\"C:\\\\Windows\\\\System32\\\\certutil.exe\" OR image_path:\"C:\\\\Windows\\\\SysWOW64\\\\certutil.exe\") AND event_data.CommandLine:\"*-decode*\"",
                     "run_as_user": ""
                 },
-                "version": "2.2.0",
+                "version": "2.2.1",
                 "connector": "elasticsearch",
                 "operation": "execute_lucene_query",
+                "mock_result": "{\n  \"data\": {\n    \"hits\": {\n      \"hits\": [\n        {\n          \"_id\": \"rwlrUGoBqSmy6R6glsjz\",\n          \"_type\": \"doc\",\n          \"_index\": \"logstash-beats-deobfuscatedecodefiles\",\n          \"_score\": 3.7260926,\n          \"_source\": {\n            \"beat\": {\n              \"name\": \"admin-PC3\",\n              \"version\": \"6.5.3\",\n              \"hostname\": \"admin-PC3\"\n            },\n            \"tags\": [\n              \"beat\",\n              \"beats_input_codec_plain_applied\"\n            ],\n            \"task\": \"Process Create (rule: ProcessCreate)\",\n            \"user\": {\n              \"name\": \"SYSTEM\",\n              \"type\": \"User\",\n              \"domain\": \"NT AUTHORITY\",\n              \"identifier\": \"S-1-5-18\"\n            },\n            \"level\": \"Information\",\n            \"opcode\": \"Info\",\n            \"message\": \"Process Create:\\nRuleName: \\nUtcTime: 2019-04-24 17:36:28.273\\nProcessGuid: {2268A29F-9E9C-5CC0-0000-00103A3CB705}\\nProcessId: 1496\\nImage: C:\\\\Windows\\\\System32\\\\certutil.exe\\nFileVersion: 6.1.7601.18151 (win7sp1_gdr.130512-1533)\\nDescription: CertUtil.exe\\nProduct: Microsoft\u00ae Windows\u00ae Operating System\\nCompany: Microsoft Corporation\\nCommandLine: certutil  -decode \\\".\\\\malware config.txt\\\" \\\".\\\\decoded9.txt\\\"\\nCurrentDirectory: C:\\\\Users\\\\superman\\\\Desktop\\\\\\nUser: CYBERCOM\\\\superman\\nLogonGuid: {2268A29F-F86A-5CB9-0000-0020CB330600}\\nLogonId: 0x633cb\\nTerminalSessionId: 1\\nIntegrityLevel: High\\nHashes: MD5=4586B77B18FA9A8518AF76CA8FD247D9,SHA256=453EDE55C520FAF0EC802D27DB9CE496646400160B638D6E5CC546060B524A65\\nParentProcessGuid: {2268A29F-C628-5CC0-0000-0010A14EB605}\\nParentProcessId: 3936\\nParentImage: C:\\\\Program Files\\\\SplunkUniversalForwarder\\\\bin\\\\splunk-powershell.exe\\nParentCommandLine: \\\"C:\\\\Program Files\\\\SplunkUniversalForwarder\\\\bin\\\\splunk-powershell.exe\\\"\",\n            \"version\": 5,\n            \"@version\": \"1\",\n            \"event_id\": 1,\n            \"log_name\": \"Microsoft-Windows-Sysmon\/Operational\",\n            \"username\": \"CYBERCOM\\\\superman\",\n            \"beat_host\": {\n              \"id\": \"2268a29f-2078-4d13-a846-d03220089285\",\n              \"os\": {\n                \"build\": \"7601.24334\",\n                \"family\": \"windows\",\n                \"version\": \"6.1\",\n                \"platform\": \"windows\"\n              },\n              \"name\": \"admin-PC3\",\n              \"architecture\": \"x86_64\"\n            },\n            \"thread_id\": 1152,\n            \"@timestamp\": \"2019-04-24T17:36:28.352Z\",\n            \"event_data\": {\n              \"Hashes\": \"MD5=4586B77B18FA9A8518AF76CA8FD247D9,SHA256=453EDE55C520FAF0EC802D27DB9CE496646400160B638D6E5CC546060B524A65\",\n              \"Company\": \"Microsoft Corporation\",\n              \"LogonId\": \"0x633cb\",\n              \"Product\": \"Microsoft\u00ae Windows\u00ae Operating System\",\n              \"UtcTime\": \"2019-04-24 17:36:28.273\",\n              \"LogonGuid\": \"{2268A29F-F86A-5CB9-0000-0020CB330600}\",\n              \"ProcessId\": \"1496\",\n              \"CommandLine\": \"certutil  -decode \\\".\\\\malware config.txt\\\" \\\".\\\\decoded9.txt\\\"\",\n              \"Description\": \"CertUtil.exe\",\n              \"FileVersion\": \"6.1.7601.18151 (win7sp1_gdr.130512-1533)\",\n              \"ProcessGuid\": \"{2268A29F-9E9C-5CC0-0000-00103A3CB705}\",\n              \"IntegrityLevel\": \"High\",\n              \"ParentProcessId\": \"3936\",\n              \"CurrentDirectory\": \"C:\\\\Users\\\\superman\\\\Desktop\\\\\",\n              \"ParentCommandLine\": \"\\\"C:\\\\Program Files\\\\SplunkUniversalForwarder\\\\bin\\\\splunk-powershell.exe\\\"\",\n              \"ParentProcessGuid\": \"{2268A29F-C628-5CC0-0000-0010A14EB605}\",\n              \"TerminalSessionId\": \"1\"\n            },\n            \"event_type\": \"sysmon\",\n            \"image_path\": \"C:\\\\Windows\\\\System32\\\\certutil.exe\",\n            \"process_id\": 1544,\n            \"source_name\": \"Microsoft-Windows-Sysmon\",\n            \"computer_name\": \"admin-PC3.cybercom.local\",\n            \"logstash_time\": 0.0011510848999023438,\n            \"provider_guid\": \"{5770385F-C22A-43E0-BF4C-06F5698FFBD9}\",\n            \"record_number\": \"42579\",\n            \"parent_image_path\": \"C:\\\\Program Files\\\\SplunkUniversalForwarder\\\\bin\\\\splunk-powershell.exe\"\n          }\n        },\n        {\n          \"_id\": \"IglmUGoBqSmy6R6gusIp\",\n          \"_type\": \"doc\",\n          \"_index\": \"logstash-beats-deobfuscatedecodefiles\",\n          \"_score\": 3.7260926,\n          \"_source\": {\n            \"beat\": {\n              \"name\": \"admin-PC3\",\n              \"version\": \"6.5.3\",\n              \"hostname\": \"admin-PC3\"\n            },\n            \"tags\": [\n              \"beat\",\n              \"beats_input_codec_plain_applied\"\n            ],\n            \"task\": \"Process Create (rule: ProcessCreate)\",\n            \"user\": {\n              \"name\": \"SYSTEM\",\n              \"type\": \"User\",\n              \"domain\": \"NT AUTHORITY\",\n              \"identifier\": \"S-1-5-18\"\n            },\n            \"level\": \"Information\",\n            \"opcode\": \"Info\",\n            \"message\": \"Process Create:\\nRuleName: \\nUtcTime: 2019-04-24 20:25:17.659\\nProcessGuid: {2268A29F-C62D-5CC0-0000-0010F868B605}\\nProcessId: 3088\\nImage: C:\\\\Windows\\\\System32\\\\certutil.exe\\nFileVersion: 6.1.7601.18151 (win7sp1_gdr.130512-1533)\\nDescription: CertUtil.exe\\nProduct: Microsoft\u00ae Windows\u00ae Operating System\\nCompany: Microsoft Corporation\\nCommandLine: \\\"C:\\\\Windows\\\\system32\\\\certutil.exe\\\"  -decode \\\".\\\\malware config.txt\\\" .\\\\decoded5.txt\\nCurrentDirectory: C:\\\\Users\\\\superman\\\\Desktop\\\\\\nUser: CYBERCOM\\\\superman\\nLogonGuid: {2268A29F-F86A-5CB9-0000-0020CB330600}\\nLogonId: 0x633cb\\nTerminalSessionId: 1\\nIntegrityLevel: High\\nHashes: MD5=4586B77B18FA9A8518AF76CA8FD247D9,SHA256=453EDE55C520FAF0EC802D27DB9CE496646400160B638D6E5CC546060B524A65\\nParentProcessGuid: {2268A29F-2275-5CBA-0000-001007400900}\\nParentProcessId: 1052\\nParentImage: C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\\nParentCommandLine: \\\"C:\\\\WINDOWS\\\\system32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\\\" \",\n            \"version\": 5,\n            \"@version\": \"1\",\n            \"event_id\": 1,\n            \"log_name\": \"Microsoft-Windows-Sysmon\/Operational\",\n            \"username\": \"CYBERCOM\\\\superman\",\n            \"beat_host\": {\n              \"id\": \"2268a29f-2078-4d13-a846-d03220089285\",\n              \"os\": {\n                \"build\": \"7601.24334\",\n                \"family\": \"windows\",\n                \"version\": \"6.1\",\n                \"platform\": \"windows\"\n              },\n              \"name\": \"admin-PC3\",\n              \"architecture\": \"x86_64\"\n            },\n            \"thread_id\": 1152,\n            \"@timestamp\": \"2019-04-24T20:25:17.743Z\",\n            \"event_data\": {\n              \"Hashes\": \"MD5=4586B77B18FA9A8518AF76CA8FD247D9,SHA256=453EDE55C520FAF0EC802D27DB9CE496646400160B638D6E5CC546060B524A65\",\n              \"Company\": \"Microsoft Corporation\",\n              \"LogonId\": \"0x633cb\",\n              \"Product\": \"Microsoft\u00ae Windows\u00ae Operating System\",\n              \"UtcTime\": \"2019-04-24 20:25:17.659\",\n              \"LogonGuid\": \"{2268A29F-F86A-5CB9-0000-0020CB330600}\",\n              \"ProcessId\": \"3088\",\n              \"CommandLine\": \"\\\"C:\\\\Windows\\\\system32\\\\certutil.exe\\\"  -decode \\\".\\\\malware config.txt\\\" .\\\\decoded5.txt\",\n              \"Description\": \"CertUtil.exe\",\n              \"FileVersion\": \"6.1.7601.18151 (win7sp1_gdr.130512-1533)\",\n              \"ProcessGuid\": \"{2268A29F-C62D-5CC0-0000-0010F868B605}\",\n              \"IntegrityLevel\": \"High\",\n              \"ParentProcessId\": \"1052\",\n              \"CurrentDirectory\": \"C:\\\\Users\\\\superman\\\\Desktop\\\\\",\n              \"ParentCommandLine\": \"\\\"C:\\\\WINDOWS\\\\system32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\\\" \",\n              \"ParentProcessGuid\": \"{2268A29F-2275-5CBA-0000-001007400900}\",\n              \"TerminalSessionId\": \"1\"\n            },\n            \"event_type\": \"sysmon\",\n            \"image_path\": \"C:\\\\Windows\\\\System32\\\\certutil.exe\",\n            \"process_id\": 1544,\n            \"source_name\": \"Microsoft-Windows-Sysmon\",\n            \"computer_name\": \"admin-PC3.cybercom.local\",\n            \"logstash_time\": 0.0027799606323242188,\n            \"provider_guid\": \"{5770385F-C22A-43E0-BF4C-06F5698FFBD9}\",\n            \"record_number\": \"42573\",\n            \"parent_image_path\": \"C:\\\\Windows\\\\System32\\\\WindowsPowerShell\\\\v1.0\\\\powershell.exe\"\n          }\n        }\n      ],\n      \"total\": {\n        \"value\": 2,\n        \"relation\": \"eq\"\n      },\n      \"max_score\": 3.7260926\n    },\n    \"took\": 281,\n    \"_shards\": {\n      \"total\": 95,\n      \"failed\": 0,\n      \"skipped\": 0,\n      \"successful\": 95\n    },\n    \"timed_out\": false\n  },\n  \"status\": \"Success\",\n  \"message\": \"\",\n  \"operation\": null\n}",
                 "operationTitle": "Execute Lucene Query",
                 "step_variables": []
             },
@@ -548,8 +550,8 @@
             "top": "100",
             "left": "900",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "1dafcb44-6aa5-42dd-9841-27735d65bf16",
-            "id": 4553
+            "uuid": "307753a2-9f06-4845-8682-24a399997fcf",
+            "id": 2785
         },
         {
             "@type": "WorkflowStep",
@@ -563,8 +565,8 @@
             "top": "366",
             "left": "600",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "uuid": "4cecccc2-bfad-4cf5-9f5a-974bbac854cf",
-            "id": 4554
+            "uuid": "5a239ad3-7d23-489b-989d-4fef5f6cf5c6",
+            "id": 2786
         },
         {
             "@type": "WorkflowStep",
@@ -578,9 +580,10 @@
                     "query": "event_type:sysmon AND @timestamp:{ {{vars.elasticHuntStart}} TO {{vars.elasticHuntEnd}} } AND event_id:1 AND (image_path:\"C:\\\\Windows\\\\System32\\\\cmd.exe\" OR  image_path:\"C:\\\\Windows\\\\SysWOW64\\\\cmd.exe\") AND event_data.CommandLine:\"*copy\\ \\\/b*\"",
                     "run_as_user": ""
                 },
-                "version": "2.2.0",
+                "version": "2.2.1",
                 "connector": "elasticsearch",
                 "operation": "execute_lucene_query",
+                "mock_result": "{\n  \"data\": {\n    \"hits\": {\n      \"hits\": [\n        {\n          \"_id\": \"RAlzUGoBqSmy6R6gX9El\",\n          \"_type\": \"doc\",\n          \"_index\": \"logstash-beats-deobfuscatedecodefiles\",\n          \"_score\": 4.0137744,\n          \"_source\": {\n            \"beat\": {\n              \"name\": \"admin-PC3\",\n              \"version\": \"6.5.3\",\n              \"hostname\": \"admin-PC3\"\n            },\n            \"tags\": [\n              \"beat\",\n              \"beats_input_codec_plain_applied\"\n            ],\n            \"task\": \"Process Create (rule: ProcessCreate)\",\n            \"user\": {\n              \"name\": \"SYSTEM\",\n              \"type\": \"User\",\n              \"domain\": \"NT AUTHORITY\",\n              \"identifier\": \"S-1-5-18\"\n            },\n            \"level\": \"Information\",\n            \"opcode\": \"Info\",\n            \"message\": \"Process Create:\\nRuleName: \\nUtcTime: 2019-04-24 17:44:59.152\\nProcessGuid: {2268A29F-A09B-5CC0-0000-0010FC22B805}\\nProcessId: 3832\\nImage: C:\\\\Windows\\\\System32\\\\cmd.exe\\nFileVersion: 6.1.7601.17514 (win7sp1_rtm.101119-1850)\\nDescription: Windows Command Processor\\nProduct: Microsoft\u00ae Windows\u00ae Operating System\\nCompany: Microsoft Corporation\\nCommandLine: cmd  \/k copy \/b \\\".\\\\decoded9.txt\\\"+\\\".\\\\decoded5.txt\\\" \\\"notgoodatall.bin\\\"\\nCurrentDirectory: C:\\\\Users\\\\superman\\\\Desktop\\\\\\nUser: CYBERCOM\\\\superman\\nLogonGuid: {2268A29F-F86A-5CB9-0000-0020CB330600}\\nLogonId: 0x633cb\\nTerminalSessionId: 1\\nIntegrityLevel: High\\nHashes: MD5=5746BD7E255DD6A8AFA06F7C42C1BA41,SHA256=DB06C3534964E3FC79D2763144BA53742D7FA250CA336F4A0FE724B75AAFF386\\nParentProcessGuid: {2268A29F-A085-5CC0-0000-0010041AB805}\\nParentProcessId: 3644\\nParentImage: C:\\\\Windows\\\\System32\\\\cmd.exe\\nParentCommandLine: cmd  \/k copy\",\n            \"version\": 5,\n            \"@version\": \"1\",\n            \"event_id\": 1,\n            \"log_name\": \"Microsoft-Windows-Sysmon\/Operational\",\n            \"username\": \"CYBERCOM\\\\superman\",\n            \"beat_host\": {\n              \"id\": \"2268a29f-2078-4d13-a846-d03220089285\",\n              \"os\": {\n                \"build\": \"7601.24334\",\n                \"family\": \"windows\",\n                \"version\": \"6.1\",\n                \"platform\": \"windows\"\n              },\n              \"name\": \"admin-PC3\",\n              \"architecture\": \"x86_64\"\n            },\n            \"thread_id\": 1152,\n            \"@timestamp\": \"2019-04-24T17:44:59.198Z\",\n            \"event_data\": {\n              \"Hashes\": \"MD5=5746BD7E255DD6A8AFA06F7C42C1BA41,SHA256=DB06C3534964E3FC79D2763144BA53742D7FA250CA336F4A0FE724B75AAFF386\",\n              \"Company\": \"Microsoft Corporation\",\n              \"LogonId\": \"0x633cb\",\n              \"Product\": \"Microsoft\u00ae Windows\u00ae Operating System\",\n              \"UtcTime\": \"2019-04-24 17:44:59.152\",\n              \"LogonGuid\": \"{2268A29F-F86A-5CB9-0000-0020CB330600}\",\n              \"ProcessId\": \"3832\",\n              \"CommandLine\": \"cmd  \/k copy \/b \\\".\\\\decoded9.txt\\\"+\\\".\\\\decoded5.txt\\\" \\\"notgoodatall.bin\\\"\",\n              \"Description\": \"Windows Command Processor\",\n              \"FileVersion\": \"6.1.7601.17514 (win7sp1_rtm.101119-1850)\",\n              \"ProcessGuid\": \"{2268A29F-A09B-5CC0-0000-0010FC22B805}\",\n              \"IntegrityLevel\": \"High\",\n              \"ParentProcessId\": \"3644\",\n              \"CurrentDirectory\": \"C:\\\\Users\\\\superman\\\\Desktop\\\\\",\n              \"ParentCommandLine\": \"cmd  \/k copy\",\n              \"ParentProcessGuid\": \"{2268A29F-A085-5CC0-0000-0010041AB805}\",\n              \"TerminalSessionId\": \"1\"\n            },\n            \"event_type\": \"sysmon\",\n            \"image_path\": \"C:\\\\Windows\\\\System32\\\\cmd.exe\",\n            \"process_id\": 1544,\n            \"source_name\": \"Microsoft-Windows-Sysmon\",\n            \"computer_name\": \"admin-PC3.cybercom.local\",\n            \"logstash_time\": 0.0009198188781738281,\n            \"provider_guid\": \"{5770385F-C22A-43E0-BF4C-06F5698FFBD9}\",\n            \"record_number\": \"42586\",\n            \"parent_image_path\": \"C:\\\\Windows\\\\System32\\\\cmd.exe\"\n          }\n        }\n      ],\n      \"total\": {\n        \"value\": 1,\n        \"relation\": \"eq\"\n      },\n      \"max_score\": 4.0137744\n    },\n    \"took\": 141,\n    \"_shards\": {\n      \"total\": 95,\n      \"failed\": 0,\n      \"skipped\": 0,\n      \"successful\": 95\n    },\n    \"timed_out\": false\n  },\n  \"status\": \"Success\",\n  \"message\": \"\",\n  \"operation\": null\n}",
                 "operationTitle": "Execute Lucene Query",
                 "step_variables": []
             },
@@ -588,173 +591,173 @@
             "top": "180",
             "left": "900",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "d8f0efa5-de04-48b1-95fc-385af48d21da",
-            "id": 4555
+            "uuid": "b3038536-e3dc-479e-b212-c0140be71f77",
+            "id": 2787
         }
     ],
     "routes": [
         {
             "@type": "WorkflowRoute",
             "name": "Query for Copy B -> Copy  of return certutil query",
-            "targetStep": "\/api\/3\/workflow_steps\/9b2f056b-039b-487c-b49f-d2e7eedf06d1",
-            "sourceStep": "\/api\/3\/workflow_steps\/c210244e-a86e-4c89-825d-480861dff2de",
+            "targetStep": "\/api\/3\/workflow_steps\/0b2a1e85-bb0d-4677-a265-7bb7d3b91d07",
+            "sourceStep": "\/api\/3\/workflow_steps\/c83533b5-d8a6-429b-8c14-07b7a73f6909",
             "label": null,
             "isExecuted": false,
-            "uuid": "82feccf9-0b33-4313-8f69-4d2ab986b1e9"
+            "uuid": "7b77e7ac-6687-4313-bf44-3b7a802312ff"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Set Elastic hunt times -> Copy  of Elastic query for Certutil",
-            "targetStep": "\/api\/3\/workflow_steps\/d8f0efa5-de04-48b1-95fc-385af48d21da",
-            "sourceStep": "\/api\/3\/workflow_steps\/f0954a26-abf5-4cc6-878b-b040cadcb55d",
+            "targetStep": "\/api\/3\/workflow_steps\/b3038536-e3dc-479e-b212-c0140be71f77",
+            "sourceStep": "\/api\/3\/workflow_steps\/e93ad67b-9c5b-4c34-9221-f694b7623dad",
             "label": null,
             "isExecuted": false,
-            "uuid": "c2536bad-1341-4ba6-8b24-e7b722a8c6cf"
+            "uuid": "9e1ebd3f-f84b-4754-93b3-d14b13ca79fb"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Create and Elastic Link Alert -> Deduplicate Comments",
-            "targetStep": "\/api\/3\/workflow_steps\/22dea7e1-050e-41dc-944d-5b77a89ddc76",
-            "sourceStep": "\/api\/3\/workflow_steps\/bd9ad92a-b115-4ba4-9375-ab056e6ee013",
+            "targetStep": "\/api\/3\/workflow_steps\/03590dc1-ec31-4411-b3c3-03524008a308",
+            "sourceStep": "\/api\/3\/workflow_steps\/6fbda94b-a38e-4236-a06d-791e511e1912",
             "label": null,
             "isExecuted": false,
-            "uuid": "4e328a26-efa3-4025-b0c0-7861a3ff2472"
+            "uuid": "0d9567c6-9c7c-45e7-aa12-8c042d3b3cdb"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Select SIEM -> Set Splunk hunt times",
-            "targetStep": "\/api\/3\/workflow_steps\/4cecccc2-bfad-4cf5-9f5a-974bbac854cf",
-            "sourceStep": "\/api\/3\/workflow_steps\/c09b497d-696e-4e93-9250-44e866603e11",
+            "targetStep": "\/api\/3\/workflow_steps\/5a239ad3-7d23-489b-989d-4fef5f6cf5c6",
+            "sourceStep": "\/api\/3\/workflow_steps\/a8724506-e2ee-4b74-8bed-8b13038c9769",
             "label": null,
             "isExecuted": false,
-            "uuid": "aee663ea-064d-4907-9be2-a1ffab0a179c"
+            "uuid": "d8605180-6a58-4061-bc02-cafd9c63baa9"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Set Elastic hunt times -> Elastic query for Certutil",
-            "targetStep": "\/api\/3\/workflow_steps\/1dafcb44-6aa5-42dd-9841-27735d65bf16",
-            "sourceStep": "\/api\/3\/workflow_steps\/f0954a26-abf5-4cc6-878b-b040cadcb55d",
+            "targetStep": "\/api\/3\/workflow_steps\/307753a2-9f06-4845-8682-24a399997fcf",
+            "sourceStep": "\/api\/3\/workflow_steps\/e93ad67b-9c5b-4c34-9221-f694b7623dad",
             "label": null,
             "isExecuted": false,
-            "uuid": "7fd5ae29-4b12-432f-a678-548bd48e7e1c"
+            "uuid": "ab59aa2c-b9e1-4da0-9b60-8d005cdf6e7a"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Copy  of Create Splunk Alert -> Deduplicate Comments",
-            "targetStep": "\/api\/3\/workflow_steps\/22dea7e1-050e-41dc-944d-5b77a89ddc76",
-            "sourceStep": "\/api\/3\/workflow_steps\/9469a648-9628-4769-8652-e9ffb9a5b9f2",
+            "targetStep": "\/api\/3\/workflow_steps\/03590dc1-ec31-4411-b3c3-03524008a308",
+            "sourceStep": "\/api\/3\/workflow_steps\/4350a2f3-5a2b-4bbf-a6fd-f4967129a4a9",
             "label": null,
             "isExecuted": false,
-            "uuid": "36470efd-79d4-4de0-a9e2-d7796ec05683"
+            "uuid": "42695a96-4538-4f8c-bfe6-cde2d15d597c"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Create Splunk Alert -> Deduplicate Comments",
-            "targetStep": "\/api\/3\/workflow_steps\/22dea7e1-050e-41dc-944d-5b77a89ddc76",
-            "sourceStep": "\/api\/3\/workflow_steps\/59365307-a7fd-4e5d-96a4-59a00e1f68a2",
+            "targetStep": "\/api\/3\/workflow_steps\/03590dc1-ec31-4411-b3c3-03524008a308",
+            "sourceStep": "\/api\/3\/workflow_steps\/373792db-8a1a-4239-9010-95fd46e802ff",
             "label": null,
             "isExecuted": false,
-            "uuid": "07762e54-4e17-4067-a43c-ab4c48541d94"
+            "uuid": "7f49ba55-fa4f-4ed1-a9e9-665351a505b9"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Elastic query for Certutil -> Copy  of Create and Link Alert",
-            "targetStep": "\/api\/3\/workflow_steps\/bd9ad92a-b115-4ba4-9375-ab056e6ee013",
-            "sourceStep": "\/api\/3\/workflow_steps\/1dafcb44-6aa5-42dd-9841-27735d65bf16",
+            "targetStep": "\/api\/3\/workflow_steps\/6fbda94b-a38e-4236-a06d-791e511e1912",
+            "sourceStep": "\/api\/3\/workflow_steps\/307753a2-9f06-4845-8682-24a399997fcf",
             "label": null,
             "isExecuted": false,
-            "uuid": "dd7ffbe3-2db0-468f-a2f0-caedfa0cca0e"
+            "uuid": "45803802-6200-4988-8f82-701fbe319a33"
         },
         {
             "@type": "WorkflowRoute",
             "name": "return certutil query -> Create Splunk Alert",
-            "targetStep": "\/api\/3\/workflow_steps\/59365307-a7fd-4e5d-96a4-59a00e1f68a2",
-            "sourceStep": "\/api\/3\/workflow_steps\/f25e922d-f613-4c49-ad95-01bb82084402",
+            "targetStep": "\/api\/3\/workflow_steps\/373792db-8a1a-4239-9010-95fd46e802ff",
+            "sourceStep": "\/api\/3\/workflow_steps\/ac84d038-a9c4-408a-b05a-f3da60b42fae",
             "label": null,
             "isExecuted": false,
-            "uuid": "0ce8e2a2-8609-4094-b2d1-ceb41db0f92d"
+            "uuid": "4ff3dd8b-fec7-4262-ad01-2e22d9a1df74"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Copy  of Elastic query for Certutil -> Create and Elastic Link Alert2",
-            "targetStep": "\/api\/3\/workflow_steps\/0d13295e-20e2-4fa8-ad21-3dc6020ca034",
-            "sourceStep": "\/api\/3\/workflow_steps\/d8f0efa5-de04-48b1-95fc-385af48d21da",
+            "targetStep": "\/api\/3\/workflow_steps\/cef6b93c-f948-451c-a5f7-08ef355019ea",
+            "sourceStep": "\/api\/3\/workflow_steps\/b3038536-e3dc-479e-b212-c0140be71f77",
             "label": null,
             "isExecuted": false,
-            "uuid": "508290b2-3133-4a91-b66f-f646144729a8"
+            "uuid": "9ac049e7-748d-4fbc-bf35-823dcf4638f1"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Set Splunk hunt times -> Query for certutil",
-            "targetStep": "\/api\/3\/workflow_steps\/84d255ce-4b2c-4e4b-b749-f7f4e8dd5850",
-            "sourceStep": "\/api\/3\/workflow_steps\/4cecccc2-bfad-4cf5-9f5a-974bbac854cf",
+            "targetStep": "\/api\/3\/workflow_steps\/6b39e4d0-57bc-4d52-9290-75ace2f7ac89",
+            "sourceStep": "\/api\/3\/workflow_steps\/5a239ad3-7d23-489b-989d-4fef5f6cf5c6",
             "label": null,
             "isExecuted": false,
-            "uuid": "4a5eeb3a-c984-4f8e-a365-3d011e79403a"
+            "uuid": "b1d732aa-5056-49ad-b093-bddcce0fe29f"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Copy  of Create and Elastic Link Alert -> Deduplicate Comments",
-            "targetStep": "\/api\/3\/workflow_steps\/22dea7e1-050e-41dc-944d-5b77a89ddc76",
-            "sourceStep": "\/api\/3\/workflow_steps\/0d13295e-20e2-4fa8-ad21-3dc6020ca034",
+            "targetStep": "\/api\/3\/workflow_steps\/03590dc1-ec31-4411-b3c3-03524008a308",
+            "sourceStep": "\/api\/3\/workflow_steps\/cef6b93c-f948-451c-a5f7-08ef355019ea",
             "label": null,
             "isExecuted": false,
-            "uuid": "67d134f8-62dc-4a52-8482-cad5513529f3"
+            "uuid": "963e597f-d6a0-4384-bf4d-d8480cabb576"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Return copy b query -> Copy  of Create Splunk Alert",
-            "targetStep": "\/api\/3\/workflow_steps\/9469a648-9628-4769-8652-e9ffb9a5b9f2",
-            "sourceStep": "\/api\/3\/workflow_steps\/9b2f056b-039b-487c-b49f-d2e7eedf06d1",
+            "targetStep": "\/api\/3\/workflow_steps\/4350a2f3-5a2b-4bbf-a6fd-f4967129a4a9",
+            "sourceStep": "\/api\/3\/workflow_steps\/0b2a1e85-bb0d-4677-a265-7bb7d3b91d07",
             "label": null,
             "isExecuted": false,
-            "uuid": "c237dfa2-d631-4382-b88c-031b08d6528b"
+            "uuid": "4b868e7e-7024-4b86-b8ec-00fb654c1f43"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Start -> Select SIEM",
-            "targetStep": "\/api\/3\/workflow_steps\/c09b497d-696e-4e93-9250-44e866603e11",
-            "sourceStep": "\/api\/3\/workflow_steps\/61865ce0-99e8-4b5d-a71c-3cb716f28012",
+            "targetStep": "\/api\/3\/workflow_steps\/a8724506-e2ee-4b74-8bed-8b13038c9769",
+            "sourceStep": "\/api\/3\/workflow_steps\/48a5d785-67ba-4145-87d4-441ca1ea6462",
             "label": null,
             "isExecuted": false,
-            "uuid": "9733003f-b258-4d82-a39a-26e599a49d19"
+            "uuid": "c68f77f2-838f-4f20-a675-a594e77565d5"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Set Splunk hunt times -> Query for Copy B",
-            "targetStep": "\/api\/3\/workflow_steps\/c210244e-a86e-4c89-825d-480861dff2de",
-            "sourceStep": "\/api\/3\/workflow_steps\/4cecccc2-bfad-4cf5-9f5a-974bbac854cf",
+            "targetStep": "\/api\/3\/workflow_steps\/c83533b5-d8a6-429b-8c14-07b7a73f6909",
+            "sourceStep": "\/api\/3\/workflow_steps\/5a239ad3-7d23-489b-989d-4fef5f6cf5c6",
             "label": null,
             "isExecuted": false,
-            "uuid": "76d61afc-3aaf-4c58-bede-67b762a40dbc"
+            "uuid": "816fd48b-8402-4fb6-9399-b641a589ca70"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Query for certutil -> return certutil query",
-            "targetStep": "\/api\/3\/workflow_steps\/f25e922d-f613-4c49-ad95-01bb82084402",
-            "sourceStep": "\/api\/3\/workflow_steps\/84d255ce-4b2c-4e4b-b749-f7f4e8dd5850",
+            "targetStep": "\/api\/3\/workflow_steps\/ac84d038-a9c4-408a-b05a-f3da60b42fae",
+            "sourceStep": "\/api\/3\/workflow_steps\/6b39e4d0-57bc-4d52-9290-75ace2f7ac89",
             "label": null,
             "isExecuted": false,
-            "uuid": "b55bd404-92e7-4e10-b399-28f6b7d054c3"
+            "uuid": "b7fef3cb-6ebc-450f-a0ee-bcc2c7d651af"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Select SIEM -> Convert time for elastic",
-            "targetStep": "\/api\/3\/workflow_steps\/f0954a26-abf5-4cc6-878b-b040cadcb55d",
-            "sourceStep": "\/api\/3\/workflow_steps\/c09b497d-696e-4e93-9250-44e866603e11",
+            "targetStep": "\/api\/3\/workflow_steps\/e93ad67b-9c5b-4c34-9221-f694b7623dad",
+            "sourceStep": "\/api\/3\/workflow_steps\/a8724506-e2ee-4b74-8bed-8b13038c9769",
             "label": null,
             "isExecuted": false,
-            "uuid": "b5f263fd-a7fe-45e7-a6f7-59010a8f0db5"
+            "uuid": "e5c5c4d5-25e4-4d1a-aa73-cac034385856"
         }
     ],
     "priority": null,
     "uuid": "0a596dd7-d068-423a-ad43-163be40138f3",
     "recordTags": [],
-    "id": 1177,
+    "id": 361,
     "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-    "createDate": 1633085064,
+    "createDate": 1640081941,
     "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-    "modifyDate": 1633085064,
+    "modifyDate": 1640081941,
     "owners": [],
     "isPrivate": false
 }

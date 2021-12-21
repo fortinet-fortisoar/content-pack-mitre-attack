@@ -4,17 +4,17 @@
     "name": "Link ATT&CK technique to Alert (On Create)",
     "aliasName": null,
     "tag": null,
-    "description": null,
+    "description": "Links MITRE technique or sub-technique to Alert, based on MITRE Attack ID",
     "isActive": true,
     "debug": false,
     "singleRecordExecution": false,
     "remoteExecutableFlag": false,
     "parameters": [],
     "synchronous": false,
-    "lastModifyDate": 1640011256,
+    "lastModifyDate": 1640088011,
     "collection": "\/api\/3\/workflow_collections\/c862c8b5-f841-44a5-983f-551625ca7d6d",
     "versions": [],
-    "triggerStep": "\/api\/3\/workflow_steps\/f5330e8f-80c2-40f9-8cbd-140b9f219df3",
+    "triggerStep": "\/api\/3\/workflow_steps\/cdd5c39f-b23b-4572-b4a0-01f043c37ef4",
     "steps": [
         {
             "@type": "WorkflowStep",
@@ -23,13 +23,13 @@
             "arguments": {
                 "conditions": [
                     {
-                        "step_iri": "\/api\/3\/workflow_steps\/1596a3ad-7d35-4773-8c3c-e37e53a0bb02",
+                        "step_iri": "\/api\/3\/workflow_steps\/e3ce2323-931d-462f-84ef-ba9dedd50baf",
                         "condition": "{{ \".\" in vars.input.records[0].mitreattackid }}",
                         "step_name": "Find subtechnique"
                     },
                     {
                         "default": true,
-                        "step_iri": "\/api\/3\/workflow_steps\/95665da4-144c-426c-b52f-265f670abbcb",
+                        "step_iri": "\/api\/3\/workflow_steps\/09012b41-f571-4695-9887-6942fd4558f7",
                         "step_name": "Find technique"
                     }
                 ]
@@ -38,8 +38,8 @@
             "top": "165",
             "left": "300",
             "stepType": "\/api\/3\/workflow_step_types\/12254cf5-5db7-4b1a-8cb1-3af081924b28",
-            "uuid": "3eda6f8a-68d4-4bb0-b723-61278a1c9a12",
-            "id": 4600
+            "uuid": "fc1facb7-fb64-409d-95aa-786b7c0c9fae",
+            "id": 2859
         },
         {
             "@type": "WorkflowStep",
@@ -67,8 +67,8 @@
             "top": "300",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
-            "uuid": "1596a3ad-7d35-4773-8c3c-e37e53a0bb02",
-            "id": 4601
+            "uuid": "e3ce2323-931d-462f-84ef-ba9dedd50baf",
+            "id": 2860
         },
         {
             "@type": "WorkflowStep",
@@ -78,7 +78,7 @@
                 "when": "{{vars.steps.Find_subtechnique | length > 0}}",
                 "resource": {
                     "__link": {
-                        "mitre_sub_techniques": "{{vars.steps.Find_subtechnique}}"
+                        "mitresubtechniques": "{{vars.steps.Find_subtechnique[0]['@id']}}"
                     }
                 },
                 "_showJson": false,
@@ -95,8 +95,8 @@
             "top": "435",
             "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
-            "uuid": "187e5608-0209-43b7-ba1a-c98b0c502564",
-            "id": 4602
+            "uuid": "4a3a23b3-5d9e-434f-8118-ee6d7a61c547",
+            "id": 2861
         },
         {
             "@type": "WorkflowStep",
@@ -122,10 +122,10 @@
             },
             "status": null,
             "top": "300",
-            "left": "476",
+            "left": "475",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
-            "uuid": "95665da4-144c-426c-b52f-265f670abbcb",
-            "id": 4603
+            "uuid": "09012b41-f571-4695-9887-6942fd4558f7",
+            "id": 2862
         },
         {
             "@type": "WorkflowStep",
@@ -163,8 +163,8 @@
             "top": "30",
             "left": "300",
             "stepType": "\/api\/3\/workflow_step_types\/ea155646-3821-4542-9702-b246da430a8d",
-            "uuid": "f5330e8f-80c2-40f9-8cbd-140b9f219df3",
-            "id": 4604
+            "uuid": "cdd5c39f-b23b-4572-b4a0-01f043c37ef4",
+            "id": 2863
         },
         {
             "@type": "WorkflowStep",
@@ -174,7 +174,7 @@
                 "when": "{{vars.steps.Find_technique | length > 0}}",
                 "resource": {
                     "__link": {
-                        "mitre_techniques": "{{vars.steps.Find_technique}}"
+                        "mitretechniques": "{{vars.steps.Find_technique[0]['@id']}}"
                     }
                 },
                 "_showJson": false,
@@ -189,67 +189,69 @@
             },
             "status": null,
             "top": "435",
-            "left": "476",
+            "left": "475",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
-            "uuid": "75f64e98-7404-466c-9e37-9cb87223589e",
-            "id": 4605
+            "uuid": "affd8cee-a7e8-4ed1-967d-6587c4664467",
+            "id": 2864
         }
     ],
     "routes": [
         {
             "@type": "WorkflowRoute",
             "name": "Is it a subtechnique -> Find subtechnique",
-            "targetStep": "\/api\/3\/workflow_steps\/1596a3ad-7d35-4773-8c3c-e37e53a0bb02",
-            "sourceStep": "\/api\/3\/workflow_steps\/3eda6f8a-68d4-4bb0-b723-61278a1c9a12",
+            "targetStep": "\/api\/3\/workflow_steps\/e3ce2323-931d-462f-84ef-ba9dedd50baf",
+            "sourceStep": "\/api\/3\/workflow_steps\/fc1facb7-fb64-409d-95aa-786b7c0c9fae",
             "label": null,
             "isExecuted": false,
-            "uuid": "89e5654c-a479-4b04-adb9-e9b2181695e9"
+            "uuid": "2cacabb2-5b26-420e-b464-e16da4dcaac8"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Start -> Is it a subtechnique",
-            "targetStep": "\/api\/3\/workflow_steps\/3eda6f8a-68d4-4bb0-b723-61278a1c9a12",
-            "sourceStep": "\/api\/3\/workflow_steps\/f5330e8f-80c2-40f9-8cbd-140b9f219df3",
+            "targetStep": "\/api\/3\/workflow_steps\/fc1facb7-fb64-409d-95aa-786b7c0c9fae",
+            "sourceStep": "\/api\/3\/workflow_steps\/cdd5c39f-b23b-4572-b4a0-01f043c37ef4",
             "label": null,
             "isExecuted": false,
-            "uuid": "d39264f5-e6aa-4ca0-bd34-f9ca4f8a1d6b"
+            "uuid": "78387cdc-b292-40da-afc2-abadfce8d9d8"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Find technique -> Link technique to Alert2",
-            "targetStep": "\/api\/3\/workflow_steps\/75f64e98-7404-466c-9e37-9cb87223589e",
-            "sourceStep": "\/api\/3\/workflow_steps\/95665da4-144c-426c-b52f-265f670abbcb",
+            "targetStep": "\/api\/3\/workflow_steps\/affd8cee-a7e8-4ed1-967d-6587c4664467",
+            "sourceStep": "\/api\/3\/workflow_steps\/09012b41-f571-4695-9887-6942fd4558f7",
             "label": null,
             "isExecuted": false,
-            "uuid": "61dd4ad6-ba33-4a8a-b148-769ad3af96d7"
+            "uuid": "3b0b9c7c-d974-481d-bd03-c5af2ed34ac2"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Find subtechnique -> Link subtechnique to alert",
-            "targetStep": "\/api\/3\/workflow_steps\/187e5608-0209-43b7-ba1a-c98b0c502564",
-            "sourceStep": "\/api\/3\/workflow_steps\/1596a3ad-7d35-4773-8c3c-e37e53a0bb02",
+            "targetStep": "\/api\/3\/workflow_steps\/4a3a23b3-5d9e-434f-8118-ee6d7a61c547",
+            "sourceStep": "\/api\/3\/workflow_steps\/e3ce2323-931d-462f-84ef-ba9dedd50baf",
             "label": null,
             "isExecuted": false,
-            "uuid": "b109ca2f-d56d-4769-93f4-15b48e3c2dda"
+            "uuid": "e730afce-32af-4531-9015-43d9807f5c83"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Is it a subtechnique -> Find technique",
-            "targetStep": "\/api\/3\/workflow_steps\/95665da4-144c-426c-b52f-265f670abbcb",
-            "sourceStep": "\/api\/3\/workflow_steps\/3eda6f8a-68d4-4bb0-b723-61278a1c9a12",
+            "targetStep": "\/api\/3\/workflow_steps\/09012b41-f571-4695-9887-6942fd4558f7",
+            "sourceStep": "\/api\/3\/workflow_steps\/fc1facb7-fb64-409d-95aa-786b7c0c9fae",
             "label": null,
             "isExecuted": false,
-            "uuid": "82d5dc3e-bed2-4f58-a91a-dadb40a52496"
+            "uuid": "cd92eaba-62e3-4ce9-b9ac-cecabb06350a"
         }
     ],
     "priority": null,
     "uuid": "3cd8c0dc-d217-41ad-83f2-a650876289be",
-    "recordTags": [],
-    "id": 1145,
-    "createUser": "\/api\/3\/appliances\/57545210-2adc-472b-a24f-2df6ee8dfe63",
-    "createDate": 1633623607,
+    "recordTags": [
+        "PostCreate"
+    ],
+    "id": 367,
+    "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
+    "createDate": 1640081942,
     "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-    "modifyDate": 1640011256,
+    "modifyDate": 1640088012,
     "owners": [],
     "isPrivate": false
 }
