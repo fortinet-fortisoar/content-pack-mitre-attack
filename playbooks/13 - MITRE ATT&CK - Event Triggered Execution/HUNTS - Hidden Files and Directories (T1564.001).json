@@ -5,16 +5,16 @@
     "aliasName": null,
     "tag": "ATT&CK, Persistence, Defense_Evasion, Hidden_Files",
     "description": "Hunts for the use of attrib.exe to hide files.",
-    "isActive": false,
+    "isActive": true,
     "debug": false,
     "singleRecordExecution": false,
     "remoteExecutableFlag": false,
     "parameters": [],
     "synchronous": false,
-    "lastModifyDate": 1633085062,
+    "lastModifyDate": 1640081936,
     "collection": "\/api\/3\/workflow_collections\/8e9e842a-e876-40ed-8ac4-078409ff7c29",
     "versions": [],
-    "triggerStep": "\/api\/3\/workflow_steps\/502937bf-a86e-43de-b869-82092905f674",
+    "triggerStep": "\/api\/3\/workflow_steps\/d883e982-2bee-4e84-a780-b28c6a3109b7",
     "steps": [
         {
             "@type": "WorkflowStep",
@@ -28,11 +28,11 @@
                 "workflowReference": "\/api\/3\/workflows\/3fd311be-a1c6-41c7-99a3-8794b33d8f8a"
             },
             "status": null,
-            "top": "309",
-            "left": "1694",
+            "top": "110",
+            "left": "2075",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "d49f7431-6a74-4b3e-acc6-36b4eb07b306",
-            "id": 4581
+            "uuid": "4b2f90b5-3d7e-497a-9388-414aded12033",
+            "id": 2813
         },
         {
             "@type": "WorkflowStep",
@@ -43,11 +43,11 @@
                 "elasticHuntStart": "{{ arrow.get(vars.input.records[0].huntStart).format('YYYY-MM-DDTHH:mm:ss.SSSSSSSSSZ') }}"
             },
             "status": null,
-            "top": "370",
-            "left": "571",
+            "top": "30",
+            "left": "1100",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "uuid": "0e95b83d-9263-4f60-89ba-6ba7c12d8cf3",
-            "id": 4582
+            "uuid": "47a56e0c-d674-4f86-a9d6-2b2568f5ff84",
+            "id": 2814
         },
         {
             "@type": "WorkflowStep",
@@ -58,11 +58,11 @@
                 "splunkHuntStart": "earliest={{vars.input.records[0].huntStart}}"
             },
             "status": null,
-            "top": "253",
-            "left": "571",
+            "top": "190",
+            "left": "775",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "uuid": "9f106962-34da-4401-893c-a4188dcb20a0",
-            "id": 4583
+            "uuid": "fef6992e-0be7-4c50-bcbf-22c679b6638b",
+            "id": 2815
         },
         {
             "@type": "WorkflowStep",
@@ -87,11 +87,11 @@
                 "step_variables": []
             },
             "status": null,
-            "top": "251",
-            "left": "1120",
+            "top": "190",
+            "left": "1425",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "5dcb3c48-26cb-46df-a180-215654dbb47a",
-            "id": 4584
+            "uuid": "95e37498-7167-4bfa-8f74-b74ef193c53e",
+            "id": 2816
         },
         {
             "@type": "WorkflowStep",
@@ -145,11 +145,11 @@
                 "workflowReference": "\/api\/3\/workflows\/bf7d418b-7ff3-44c1-b473-90d0a03c4641"
             },
             "status": null,
-            "top": "369",
-            "left": "1400",
+            "top": "30",
+            "left": "1750",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "860139c6-bf33-48a1-b914-c7a42215e089",
-            "id": 4585
+            "uuid": "348be27a-bdd4-4c53-9257-5caa7cc3915f",
+            "id": 2817
         },
         {
             "@type": "WorkflowStep",
@@ -163,18 +163,19 @@
                     "query": "event_type:sysmon AND event_id:\"1\" AND @timestamp:{ {{vars.elasticHuntStart}} TO {{vars.elasticHuntEnd}} } AND (image_path:\"C:\\\\Windows\\\\System32\\\\attrib.exe\" OR image_path:\"C:\\\\Windows\\\\SysWOW64\\\\attrib.exe\") AND event_data.CommandLine:\"*+h*\"",
                     "run_as_user": ""
                 },
-                "version": "2.2.0",
+                "version": "2.2.1",
                 "connector": "elasticsearch",
                 "operation": "execute_lucene_query",
+                "mock_result": "{\n  \"data\": {\n    \"hits\": {\n      \"hits\": [\n        {\n          \"_id\": \"N22f4GoBhEY99dtFBQnI\",\n          \"_type\": \"doc\",\n          \"_index\": \"logstash-beats-hiddenfilesanddirectories\",\n          \"_score\": 3.7260926,\n          \"_source\": {\n            \"beat\": {\n              \"name\": \"admin-PC4\",\n              \"version\": \"6.5.3\",\n              \"hostname\": \"admin-PC4\"\n            },\n            \"tags\": [\n              \"beat\",\n              \"beats_input_codec_plain_applied\"\n            ],\n            \"task\": \"Process Create (rule: ProcessCreate)\",\n            \"user\": {\n              \"name\": \"SYSTEM\",\n              \"type\": \"User\",\n              \"domain\": \"NT AUTHORITY\",\n              \"identifier\": \"S-1-5-18\"\n            },\n            \"level\": \"Information\",\n            \"opcode\": \"Info\",\n            \"message\": \"Process Create:\\nRuleName: \\nUtcTime: 2019-05-22 17:38:58.190\\nProcessGuid: {D1BE7B41-8932-5CE5-0000-00109AA19318}\\nProcessId: 3708\\nImage: C:\\\\Windows\\\\System32\\\\attrib.exe\\nFileVersion: 6.1.7600.16385 (win7_rtm.090713-1255)\\nDescription: Attribute Utility\\nProduct: Microsoft\u00ae Windows\u00ae Operating System\\nCompany: Microsoft Corporation\\nCommandLine: attrib  +h mimimarsupials.exe\\nCurrentDirectory: C:\\\\Users\\\\superman\\\\Desktop\\\\\\nUser: CYBERCOM\\\\superman\\nLogonGuid: {D1BE7B41-D82C-5CC9-0000-00204A087001}\\nLogonId: 0x170084a\\nTerminalSessionId: 1\\nIntegrityLevel: High\\nHashes: MD5=C65C20C89A255517F11DD18B056CADB5,SHA256=F4D77C1928BBA3DC70B3D8E706666EB1C0A268BC3301D9C0B670C332E709BA01\\nParentProcessGuid: {D1BE7B41-8903-5CE5-0000-001031579318}\\nParentProcessId: 2028\\nParentImage: C:\\\\Windows\\\\System32\\\\cmd.exe\\nParentCommandLine: \\\"cmd.exe\\\" \/s \/k pushd \\\"C:\\\\Users\\\\superman\\\\Desktop\\\"\",\n            \"version\": 5,\n            \"@version\": \"1\",\n            \"event_id\": 1,\n            \"log_name\": \"Microsoft-Windows-Sysmon\/Operational\",\n            \"username\": \"CYBERCOM\\\\superman\",\n            \"beat_host\": {\n              \"id\": \"d1be7b41-2fc5-49e3-9ff1-ec91443d27c3\",\n              \"os\": {\n                \"build\": \"7601.0\",\n                \"family\": \"windows\",\n                \"version\": \"6.1\",\n                \"platform\": \"windows\"\n              },\n              \"name\": \"admin-PC4\",\n              \"architecture\": \"x86_64\"\n            },\n            \"thread_id\": 1288,\n            \"@timestamp\": \"2019-05-22T17:38:58.221Z\",\n            \"event_data\": {\n              \"Hashes\": \"MD5=C65C20C89A255517F11DD18B056CADB5,SHA256=F4D77C1928BBA3DC70B3D8E706666EB1C0A268BC3301D9C0B670C332E709BA01\",\n              \"Company\": \"Microsoft Corporation\",\n              \"LogonId\": \"0x170084a\",\n              \"Product\": \"Microsoft\u00ae Windows\u00ae Operating System\",\n              \"UtcTime\": \"2019-05-22 17:38:58.190\",\n              \"LogonGuid\": \"{D1BE7B41-D82C-5CC9-0000-00204A087001}\",\n              \"ProcessId\": \"3708\",\n              \"CommandLine\": \"attrib  +h mimimarsupials.exe\",\n              \"Description\": \"Attribute Utility\",\n              \"FileVersion\": \"6.1.7600.16385 (win7_rtm.090713-1255)\",\n              \"ProcessGuid\": \"{D1BE7B41-8932-5CE5-0000-00109AA19318}\",\n              \"IntegrityLevel\": \"High\",\n              \"ParentProcessId\": \"2028\",\n              \"CurrentDirectory\": \"C:\\\\Users\\\\superman\\\\Desktop\\\\\",\n              \"ParentCommandLine\": \"\\\"cmd.exe\\\" \/s \/k pushd \\\"C:\\\\Users\\\\superman\\\\Desktop\\\"\",\n              \"ParentProcessGuid\": \"{D1BE7B41-8903-5CE5-0000-001031579318}\",\n              \"TerminalSessionId\": \"1\"\n            },\n            \"event_type\": \"sysmon\",\n            \"image_path\": \"C:\\\\Windows\\\\System32\\\\attrib.exe\",\n            \"process_id\": 1468,\n            \"source_name\": \"Microsoft-Windows-Sysmon\",\n            \"computer_name\": \"admin-PC4.cybercom.local\",\n            \"logstash_time\": 0.002141714096069336,\n            \"provider_guid\": \"{5770385F-C22A-43E0-BF4C-06F5698FFBD9}\",\n            \"record_number\": \"367949\",\n            \"parent_image_path\": \"C:\\\\Windows\\\\System32\\\\cmd.exe\"\n          }\n        }\n      ],\n      \"total\": {\n        \"value\": 1,\n        \"relation\": \"eq\"\n      },\n      \"max_score\": 3.7260926\n    },\n    \"took\": 228,\n    \"_shards\": {\n      \"total\": 95,\n      \"failed\": 0,\n      \"skipped\": 0,\n      \"successful\": 95\n    },\n    \"timed_out\": false\n  },\n  \"status\": \"Success\",\n  \"message\": \"\",\n  \"operation\": null\n}",
                 "operationTitle": "Execute Lucene Query",
                 "step_variables": []
             },
             "status": null,
-            "top": "369",
-            "left": "840",
+            "top": "30",
+            "left": "1425",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "1b49edb9-cf46-4370-aed1-823b6922699a",
-            "id": 4586
+            "uuid": "4e2c8bd1-4e2b-482a-9b3c-d96d9f683999",
+            "id": 2818
         },
         {
             "@type": "WorkflowStep",
@@ -183,21 +184,21 @@
             "arguments": {
                 "conditions": [
                     {
-                        "step_iri": "\/api\/3\/workflow_steps\/0e95b83d-9263-4f60-89ba-6ba7c12d8cf3",
+                        "step_iri": "\/api\/3\/workflow_steps\/47a56e0c-d674-4f86-a9d6-2b2568f5ff84",
                         "condition": "{{ vars.input.params.siem.itemValue == \"Elastic\" }}"
                     },
                     {
-                        "step_iri": "\/api\/3\/workflow_steps\/9f106962-34da-4401-893c-a4188dcb20a0",
+                        "step_iri": "\/api\/3\/workflow_steps\/fef6992e-0be7-4c50-bcbf-22c679b6638b",
                         "condition": "{{ vars.input.params.siem.itemValue == \"Splunk\" }}"
                     }
                 ]
             },
             "status": null,
-            "top": "312",
-            "left": "280",
+            "top": "110",
+            "left": "450",
             "stepType": "\/api\/3\/workflow_step_types\/12254cf5-5db7-4b1a-8cb1-3af081924b28",
-            "uuid": "1b60804c-cc40-4b5a-9e64-6b649d964a81",
-            "id": 4587
+            "uuid": "515a9d38-d74f-4e90-909f-29af00a82e89",
+            "id": 2819
         },
         {
             "@type": "WorkflowStep",
@@ -279,7 +280,8 @@
                             "siem": "{{vars.request.data[\"siem\"]}}"
                         },
                         "records": "{{vars.input.records}}"
-                    }
+                    },
+                    "useMockOutput": "true"
                 },
                 "_promptexpanded": true,
                 "displayConditions": {
@@ -295,11 +297,11 @@
                 "singleRecordExecution": false
             },
             "status": null,
-            "top": "313",
-            "left": "9",
+            "top": "110",
+            "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-            "uuid": "502937bf-a86e-43de-b869-82092905f674",
-            "id": 4588
+            "uuid": "d883e982-2bee-4e84-a780-b28c6a3109b7",
+            "id": 2820
         },
         {
             "@type": "WorkflowStep",
@@ -353,11 +355,11 @@
                 "workflowReference": "\/api\/3\/workflows\/bf7d418b-7ff3-44c1-b473-90d0a03c4641"
             },
             "status": null,
-            "top": "250",
-            "left": "1400",
+            "top": "190",
+            "left": "1750",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "6f02c43a-5af1-46f5-9c67-b860c73a8589",
-            "id": 4589
+            "uuid": "a91911e1-a75e-4be7-b952-388a86b52755",
+            "id": 2821
         },
         {
             "@type": "WorkflowStep",
@@ -381,113 +383,113 @@
                 "step_variables": []
             },
             "status": null,
-            "top": "252",
-            "left": "840",
+            "top": "190",
+            "left": "1100",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "3647098e-769e-4600-bf72-f9a66c54c763",
-            "id": 4590
+            "uuid": "cfb0332b-a86d-4817-a955-b8ed9fc71e8c",
+            "id": 2822
         }
     ],
     "routes": [
         {
             "@type": "WorkflowRoute",
             "name": "Create and Link Elastic Alert -> Deduplicate comments",
-            "targetStep": "\/api\/3\/workflow_steps\/d49f7431-6a74-4b3e-acc6-36b4eb07b306",
-            "sourceStep": "\/api\/3\/workflow_steps\/860139c6-bf33-48a1-b914-c7a42215e089",
+            "targetStep": "\/api\/3\/workflow_steps\/4b2f90b5-3d7e-497a-9388-414aded12033",
+            "sourceStep": "\/api\/3\/workflow_steps\/348be27a-bdd4-4c53-9257-5caa7cc3915f",
             "label": null,
             "isExecuted": false,
-            "uuid": "05c7dd76-2461-426e-9ba3-7433e996a1ee"
+            "uuid": "ebcf9b5d-9dfa-46ab-806a-dbeb98c74f87"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Set Splunk hunt times -> Query for use of attrib to hide files",
-            "targetStep": "\/api\/3\/workflow_steps\/3647098e-769e-4600-bf72-f9a66c54c763",
-            "sourceStep": "\/api\/3\/workflow_steps\/9f106962-34da-4401-893c-a4188dcb20a0",
+            "targetStep": "\/api\/3\/workflow_steps\/cfb0332b-a86d-4817-a955-b8ed9fc71e8c",
+            "sourceStep": "\/api\/3\/workflow_steps\/fef6992e-0be7-4c50-bcbf-22c679b6638b",
             "label": null,
             "isExecuted": false,
-            "uuid": "d156f022-720a-4646-8112-6c351cb9d506"
+            "uuid": "997d85a8-396b-47bf-8128-3e8030af9054"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Start -> Which SIEM",
-            "targetStep": "\/api\/3\/workflow_steps\/1b60804c-cc40-4b5a-9e64-6b649d964a81",
-            "sourceStep": "\/api\/3\/workflow_steps\/502937bf-a86e-43de-b869-82092905f674",
+            "targetStep": "\/api\/3\/workflow_steps\/515a9d38-d74f-4e90-909f-29af00a82e89",
+            "sourceStep": "\/api\/3\/workflow_steps\/d883e982-2bee-4e84-a780-b28c6a3109b7",
             "label": null,
             "isExecuted": false,
-            "uuid": "fdc702d5-a7a9-4acd-8753-6f4cc302c779"
+            "uuid": "04d59ed1-75c7-4982-a681-fbb2f655bdb5"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Which SIEM -> Copy  of Set Splunk hunt times",
-            "targetStep": "\/api\/3\/workflow_steps\/0e95b83d-9263-4f60-89ba-6ba7c12d8cf3",
-            "sourceStep": "\/api\/3\/workflow_steps\/1b60804c-cc40-4b5a-9e64-6b649d964a81",
+            "targetStep": "\/api\/3\/workflow_steps\/47a56e0c-d674-4f86-a9d6-2b2568f5ff84",
+            "sourceStep": "\/api\/3\/workflow_steps\/515a9d38-d74f-4e90-909f-29af00a82e89",
             "label": "",
             "isExecuted": false,
-            "uuid": "4f98587d-fbc3-4a3c-b5aa-73a6e1ec2f04"
+            "uuid": "99d12f12-e3aa-4c69-82de-9215f1343f5e"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Create and Link Alert -> Deduplicate comments",
-            "targetStep": "\/api\/3\/workflow_steps\/d49f7431-6a74-4b3e-acc6-36b4eb07b306",
-            "sourceStep": "\/api\/3\/workflow_steps\/6f02c43a-5af1-46f5-9c67-b860c73a8589",
+            "targetStep": "\/api\/3\/workflow_steps\/4b2f90b5-3d7e-497a-9388-414aded12033",
+            "sourceStep": "\/api\/3\/workflow_steps\/a91911e1-a75e-4be7-b952-388a86b52755",
             "label": null,
             "isExecuted": false,
-            "uuid": "602070c2-c6c6-4c97-80d2-28cd70906cd7"
+            "uuid": "b5686306-33ab-49cc-b5cc-dd3cc5e7cddf"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Set Elastic hunt times -> Elastic Query for use of attrib to hide files",
-            "targetStep": "\/api\/3\/workflow_steps\/1b49edb9-cf46-4370-aed1-823b6922699a",
-            "sourceStep": "\/api\/3\/workflow_steps\/0e95b83d-9263-4f60-89ba-6ba7c12d8cf3",
+            "targetStep": "\/api\/3\/workflow_steps\/4e2c8bd1-4e2b-482a-9b3c-d96d9f683999",
+            "sourceStep": "\/api\/3\/workflow_steps\/47a56e0c-d674-4f86-a9d6-2b2568f5ff84",
             "label": null,
             "isExecuted": false,
-            "uuid": "2d75123b-81ec-4202-94a6-def50b247e1d"
+            "uuid": "be2df8ef-1894-4097-b89e-233f1cf532f5"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Elastic Query for use of attrib to hide files -> Create and Link Elastic Alert",
-            "targetStep": "\/api\/3\/workflow_steps\/860139c6-bf33-48a1-b914-c7a42215e089",
-            "sourceStep": "\/api\/3\/workflow_steps\/1b49edb9-cf46-4370-aed1-823b6922699a",
+            "targetStep": "\/api\/3\/workflow_steps\/348be27a-bdd4-4c53-9257-5caa7cc3915f",
+            "sourceStep": "\/api\/3\/workflow_steps\/4e2c8bd1-4e2b-482a-9b3c-d96d9f683999",
             "label": null,
             "isExecuted": false,
-            "uuid": "f9a03dc7-df5c-4b80-bfb3-fded9b44f175"
+            "uuid": "f25233ee-4bf1-494d-8096-64cb5b25f817"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Which SIEM -> Set Splunk hunt times",
-            "targetStep": "\/api\/3\/workflow_steps\/9f106962-34da-4401-893c-a4188dcb20a0",
-            "sourceStep": "\/api\/3\/workflow_steps\/1b60804c-cc40-4b5a-9e64-6b649d964a81",
+            "targetStep": "\/api\/3\/workflow_steps\/fef6992e-0be7-4c50-bcbf-22c679b6638b",
+            "sourceStep": "\/api\/3\/workflow_steps\/515a9d38-d74f-4e90-909f-29af00a82e89",
             "label": "",
             "isExecuted": false,
-            "uuid": "08308393-126f-41f2-ab21-ff5de88ef555"
+            "uuid": "923aef9a-1435-4a22-83f5-6ae95845160c"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Retrieve query results -> Create and Link Alert",
-            "targetStep": "\/api\/3\/workflow_steps\/6f02c43a-5af1-46f5-9c67-b860c73a8589",
-            "sourceStep": "\/api\/3\/workflow_steps\/5dcb3c48-26cb-46df-a180-215654dbb47a",
+            "targetStep": "\/api\/3\/workflow_steps\/a91911e1-a75e-4be7-b952-388a86b52755",
+            "sourceStep": "\/api\/3\/workflow_steps\/95e37498-7167-4bfa-8f74-b74ef193c53e",
             "label": null,
             "isExecuted": false,
-            "uuid": "6fe78ada-2f00-40b8-ac1b-51db45347eb2"
+            "uuid": "182c1d12-6b52-45f1-8825-d0ad0a59925e"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Query for use of attrib to hide files -> Copy  of Query for use of attrib to hide files",
-            "targetStep": "\/api\/3\/workflow_steps\/5dcb3c48-26cb-46df-a180-215654dbb47a",
-            "sourceStep": "\/api\/3\/workflow_steps\/3647098e-769e-4600-bf72-f9a66c54c763",
+            "targetStep": "\/api\/3\/workflow_steps\/95e37498-7167-4bfa-8f74-b74ef193c53e",
+            "sourceStep": "\/api\/3\/workflow_steps\/cfb0332b-a86d-4817-a955-b8ed9fc71e8c",
             "label": null,
             "isExecuted": false,
-            "uuid": "a02a5b6d-18ce-4470-8a69-a64dc97a4fea"
+            "uuid": "5bb39f1e-c43e-4b15-8735-a0614c2f89a8"
         }
     ],
     "priority": null,
     "uuid": "936fcc0f-6bae-41b4-abd6-348d62279f88",
     "recordTags": [],
-    "id": 1180,
+    "id": 364,
     "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-    "createDate": 1633085064,
+    "createDate": 1640081941,
     "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-    "modifyDate": 1633085064,
+    "modifyDate": 1640081941,
     "owners": [],
     "isPrivate": false
 }

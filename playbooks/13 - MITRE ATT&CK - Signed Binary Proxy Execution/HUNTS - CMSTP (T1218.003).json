@@ -5,7 +5,7 @@
     "aliasName": null,
     "tag": "ATT&CK, CMSTP, Execution",
     "description": "Identifies processes spawned by CMSTP.exe",
-    "isActive": false,
+    "isActive": true,
     "debug": false,
     "singleRecordExecution": false,
     "remoteExecutableFlag": false,
@@ -23,10 +23,10 @@
         "sourcetool"
     ],
     "synchronous": false,
-    "lastModifyDate": 1633085062,
+    "lastModifyDate": 1640081936,
     "collection": "\/api\/3\/workflow_collections\/270b47ed-fc8b-4539-898d-3db2f929c777",
     "versions": [],
-    "triggerStep": "\/api\/3\/workflow_steps\/54a101c0-2a90-40d3-bb93-6eec2070b3d4",
+    "triggerStep": "\/api\/3\/workflow_steps\/c732f80d-199b-47d0-94a9-287c5f5cb03a",
     "steps": [
         {
             "@type": "WorkflowStep",
@@ -119,7 +119,8 @@
                             "parentprocessname": "{{ vars.parentprocessname }}"
                         },
                         "records": "{{vars.input.records}}"
-                    }
+                    },
+                    "useMockOutput": "true"
                 },
                 "_promptexpanded": true,
                 "displayConditions": {
@@ -138,8 +139,8 @@
             "top": "308",
             "left": "20",
             "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-            "uuid": "54a101c0-2a90-40d3-bb93-6eec2070b3d4",
-            "id": 4821
+            "uuid": "c732f80d-199b-47d0-94a9-287c5f5cb03a",
+            "id": 3045
         },
         {
             "@type": "WorkflowStep",
@@ -153,18 +154,19 @@
                     "query": "event_type:sysmon AND event_id:\"1\" AND @timestamp:{ {{vars.elasticHuntStart}} TO {{vars.elasticHuntEnd}} } AND (parent_image_path:\"C:\\\\Windows\\\\System32\\\\cmstp.exe\" OR parent_image_path:\"C:\\\\Windows\\\\SysWOW64\\\\cmstp.exe\")",
                     "run_as_user": ""
                 },
-                "version": "2.2.0",
+                "version": "2.2.1",
                 "connector": "elasticsearch",
                 "operation": "execute_lucene_query",
+                "mock_result": "{\n  \"data\": {\n    \"hits\": {\n      \"hits\": [\n        {\n          \"_id\": \"YAkbUGoBqSmy6R6gcmuM\",\n          \"_type\": \"doc\",\n          \"_index\": \"logstash-beats-cmstp\",\n          \"_score\": 3.4384105,\n          \"_source\": {\n            \"beat\": {\n              \"name\": \"win7-host1-PC\",\n              \"version\": \"6.5.3\",\n              \"hostname\": \"win7-host1-PC\"\n            },\n            \"tags\": [\n              \"beat\",\n              \"beats_input_codec_plain_applied\"\n            ],\n            \"task\": \"Process Create (rule: ProcessCreate)\",\n            \"user\": {\n              \"name\": \"SYSTEM\",\n              \"type\": \"User\",\n              \"domain\": \"NT AUTHORITY\",\n              \"identifier\": \"S-1-5-18\"\n            },\n            \"level\": \"Information\",\n            \"opcode\": \"Info\",\n            \"message\": \"Process Create:\\nRuleName: \\nUtcTime: 2019-04-24 19:01:14.208\\nProcessGuid: {DA929735-B27A-5CC0-0000-0010D0089008}\\nProcessId: 2096\\nImage: C:\\\\Windows\\\\System32\\\\calc.exe\\nFileVersion: 6.1.7600.16385 (win7_rtm.090713-1255)\\nDescription: Windows Calculator\\nProduct: Microsoft\u00ae Windows\u00ae Operating System\\nCompany: Microsoft Corporation\\nCommandLine: C:\\\\Windows\\\\System32\\\\calc.exe \/RegServer\\nCurrentDirectory: C:\\\\Users\\\\superman\\\\\\nUser: CYBERCOM\\\\superman\\nLogonGuid: {DA929735-FDE0-5CB9-0000-002076590200}\\nLogonId: 0x25976\\nTerminalSessionId: 1\\nIntegrityLevel: High\\nHashes: MD5=10E4A1D2132CCB5C6759F038CDB6F3C9,SHA256=C6A91CBA00BF87CDB064C49ADAAC82255CBEC6FDD48FD21F9B3B96ABF019916B\\nParentProcessGuid: {DA929735-B279-5CC0-0000-0010BBFB8F08}\\nParentProcessId: 632\\nParentImage: C:\\\\Windows\\\\System32\\\\cmstp.exe\\nParentCommandLine: \\\"C:\\\\Windows\\\\system32\\\\cmstp.exe\\\" \/s C:\\\\Users\\\\superman\\\\Desktop\\\\badstuff4.inf\",\n            \"version\": 5,\n            \"@version\": \"1\",\n            \"event_id\": 1,\n            \"log_name\": \"Microsoft-Windows-Sysmon\/Operational\",\n            \"username\": \"CYBERCOM\\\\superman\",\n            \"beat_host\": {\n              \"id\": \"da929735-a8f9-4b38-8348-7664a570a0a2\",\n              \"os\": {\n                \"build\": \"7601.24356\",\n                \"family\": \"windows\",\n                \"version\": \"6.1\",\n                \"platform\": \"windows\"\n              },\n              \"name\": \"win7-host1-PC\",\n              \"architecture\": \"x86_64\"\n            },\n            \"thread_id\": 2328,\n            \"@timestamp\": \"2019-04-24T19:01:14.349Z\",\n            \"event_data\": {\n              \"Hashes\": \"MD5=10E4A1D2132CCB5C6759F038CDB6F3C9,SHA256=C6A91CBA00BF87CDB064C49ADAAC82255CBEC6FDD48FD21F9B3B96ABF019916B\",\n              \"Company\": \"Microsoft Corporation\",\n              \"LogonId\": \"0x25976\",\n              \"Product\": \"Microsoft\u00ae Windows\u00ae Operating System\",\n              \"UtcTime\": \"2019-04-24 19:01:14.208\",\n              \"LogonGuid\": \"{DA929735-FDE0-5CB9-0000-002076590200}\",\n              \"ProcessId\": \"2096\",\n              \"CommandLine\": \"C:\\\\Windows\\\\System32\\\\calc.exe \/RegServer\",\n              \"Description\": \"Windows Calculator\",\n              \"FileVersion\": \"6.1.7600.16385 (win7_rtm.090713-1255)\",\n              \"ProcessGuid\": \"{DA929735-B27A-5CC0-0000-0010D0089008}\",\n              \"IntegrityLevel\": \"High\",\n              \"ParentProcessId\": \"632\",\n              \"CurrentDirectory\": \"C:\\\\Users\\\\superman\\\\\",\n              \"ParentCommandLine\": \"\\\"C:\\\\Windows\\\\system32\\\\cmstp.exe\\\" \/s C:\\\\Users\\\\superman\\\\Desktop\\\\badstuff4.inf\",\n              \"ParentProcessGuid\": \"{DA929735-B279-5CC0-0000-0010BBFB8F08}\",\n              \"TerminalSessionId\": \"1\"\n            },\n            \"event_type\": \"sysmon\",\n            \"image_path\": \"C:\\\\Windows\\\\System32\\\\calc.exe\",\n            \"process_id\": 1504,\n            \"source_name\": \"Microsoft-Windows-Sysmon\",\n            \"computer_name\": \"win7-host1-PC.cybercom.local\",\n            \"logstash_time\": 0.0005412101745605469,\n            \"provider_guid\": \"{5770385F-C22A-43E0-BF4C-06F5698FFBD9}\",\n            \"record_number\": \"865007\",\n            \"parent_image_path\": \"C:\\\\Windows\\\\System32\\\\cmstp.exe\"\n          }\n        },\n        {\n          \"_id\": \"AgkbUGoBqSmy6R6g7GxT\",\n          \"_type\": \"doc\",\n          \"_index\": \"logstash-beats-cmstp\",\n          \"_score\": 3.4384105,\n          \"_source\": {\n            \"beat\": {\n              \"name\": \"win7-host1-PC\",\n              \"version\": \"6.5.3\",\n              \"hostname\": \"win7-host1-PC\"\n            },\n            \"tags\": [\n              \"beat\",\n              \"beats_input_codec_plain_applied\"\n            ],\n            \"task\": \"Process Create (rule: ProcessCreate)\",\n            \"user\": {\n              \"name\": \"SYSTEM\",\n              \"type\": \"User\",\n              \"domain\": \"NT AUTHORITY\",\n              \"identifier\": \"S-1-5-18\"\n            },\n            \"level\": \"Information\",\n            \"opcode\": \"Info\",\n            \"message\": \"Process Create:\\nRuleName: \\nUtcTime: 2019-04-24 16:08:33.004\\nProcessGuid: {DA929735-8A01-5CC0-0000-001033F79008}\\nProcessId: 860\\nImage: C:\\\\Windows\\\\System32\\\\calc.exe\\nFileVersion: 6.1.7600.16385 (win7_rtm.090713-1255)\\nDescription: Windows Calculator\\nProduct: Microsoft\u00ae Windows\u00ae Operating System\\nCompany: Microsoft Corporation\\nCommandLine: C:\\\\Windows\\\\System32\\\\calc.exe \/RegServer\\nCurrentDirectory: C:\\\\Users\\\\superman\\\\\\nUser: CYBERCOM\\\\superman\\nLogonGuid: {DA929735-FDE0-5CB9-0000-002076590200}\\nLogonId: 0x25976\\nTerminalSessionId: 1\\nIntegrityLevel: High\\nHashes: MD5=10E4A1D2132CCB5C6759F038CDB6F3C9,SHA256=C6A91CBA00BF87CDB064C49ADAAC82255CBEC6FDD48FD21F9B3B96ABF019916B\\nParentProcessGuid: {DA929735-8A00-5CC0-0000-0010C8EE9008}\\nParentProcessId: 3012\\nParentImage: C:\\\\Windows\\\\System32\\\\cmstp.exe\\nParentCommandLine: \\\"C:\\\\Windows\\\\system32\\\\cmstp.exe\\\" \/s C:\\\\Users\\\\superman\\\\Desktop\\\\badstuff4.inf\",\n            \"version\": 5,\n            \"@version\": \"1\",\n            \"event_id\": 1,\n            \"log_name\": \"Microsoft-Windows-Sysmon\/Operational\",\n            \"username\": \"CYBERCOM\\\\superman\",\n            \"beat_host\": {\n              \"id\": \"da929735-a8f9-4b38-8348-7664a570a0a2\",\n              \"os\": {\n                \"build\": \"7601.24356\",\n                \"family\": \"windows\",\n                \"version\": \"6.1\",\n                \"platform\": \"windows\"\n              },\n              \"name\": \"win7-host1-PC\",\n              \"architecture\": \"x86_64\"\n            },\n            \"thread_id\": 2328,\n            \"@timestamp\": \"2019-04-24T16:08:33.128Z\",\n            \"event_data\": {\n              \"Hashes\": \"MD5=10E4A1D2132CCB5C6759F038CDB6F3C9,SHA256=C6A91CBA00BF87CDB064C49ADAAC82255CBEC6FDD48FD21F9B3B96ABF019916B\",\n              \"Company\": \"Microsoft Corporation\",\n              \"LogonId\": \"0x25976\",\n              \"Product\": \"Microsoft\u00ae Windows\u00ae Operating System\",\n              \"UtcTime\": \"2019-04-24 16:08:33.004\",\n              \"LogonGuid\": \"{DA929735-FDE0-5CB9-0000-002076590200}\",\n              \"ProcessId\": \"860\",\n              \"CommandLine\": \"C:\\\\Windows\\\\System32\\\\calc.exe \/RegServer\",\n              \"Description\": \"Windows Calculator\",\n              \"FileVersion\": \"6.1.7600.16385 (win7_rtm.090713-1255)\",\n              \"ProcessGuid\": \"{DA929735-8A01-5CC0-0000-001033F79008}\",\n              \"IntegrityLevel\": \"High\",\n              \"ParentProcessId\": \"3012\",\n              \"CurrentDirectory\": \"C:\\\\Users\\\\superman\\\\\",\n              \"ParentCommandLine\": \"\\\"C:\\\\Windows\\\\system32\\\\cmstp.exe\\\" \/s C:\\\\Users\\\\superman\\\\Desktop\\\\badstuff4.inf\",\n              \"ParentProcessGuid\": \"{DA929735-8A00-5CC0-0000-0010C8EE9008}\",\n              \"TerminalSessionId\": \"1\"\n            },\n            \"event_type\": \"sysmon\",\n            \"image_path\": \"C:\\\\Windows\\\\System32\\\\calc.exe\",\n            \"process_id\": 1504,\n            \"source_name\": \"Microsoft-Windows-Sysmon\",\n            \"computer_name\": \"win7-host1-PC.cybercom.local\",\n            \"logstash_time\": 0.0008289813995361328,\n            \"provider_guid\": \"{5770385F-C22A-43E0-BF4C-06F5698FFBD9}\",\n            \"record_number\": \"865011\",\n            \"parent_image_path\": \"C:\\\\Windows\\\\System32\\\\cmstp.exe\"\n          }\n        }\n      ],\n      \"total\": {\n        \"value\": 2,\n        \"relation\": \"eq\"\n      },\n      \"max_score\": 3.4384105\n    },\n    \"took\": 675,\n    \"_shards\": {\n      \"total\": 95,\n      \"failed\": 0,\n      \"skipped\": 0,\n      \"successful\": 95\n    },\n    \"timed_out\": false\n  },\n  \"status\": \"Success\",\n  \"message\": \"\",\n  \"operation\": null\n}",
                 "operationTitle": "Execute Lucene Query",
                 "step_variables": []
             },
             "status": null,
             "top": "460",
-            "left": "888",
+            "left": "880",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "14b909d4-5d53-438d-830a-13358bbdede5",
-            "id": 4822
+            "uuid": "9f7a092e-ee2f-4d6e-9d51-981984e206d7",
+            "id": 3046
         },
         {
             "@type": "WorkflowStep",
@@ -191,8 +193,8 @@
             "top": "160",
             "left": "880",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "ddf9b99e-9ad1-47f0-96aa-4725e5b5e157",
-            "id": 4823
+            "uuid": "5a16a70e-4000-4d3a-9b2b-03f84561a591",
+            "id": 3047
         },
         {
             "@type": "WorkflowStep",
@@ -249,8 +251,8 @@
             "top": "160",
             "left": "1448",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "5379ec1b-ddb5-435a-be41-d0d73992d724",
-            "id": 4824
+            "uuid": "acaecb3d-1129-4405-9607-2dd57f25619e",
+            "id": 3048
         },
         {
             "@type": "WorkflowStep",
@@ -307,8 +309,8 @@
             "top": "460",
             "left": "1440",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "48a3b3ef-6a79-4835-80ce-0a1ed26bcc47",
-            "id": 4825
+            "uuid": "c2dba6c6-98e4-4bad-beef-5a6f1891e74c",
+            "id": 3049
         },
         {
             "@type": "WorkflowStep",
@@ -322,8 +324,8 @@
             "top": "160",
             "left": "600",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "uuid": "d398533d-7d84-43a8-9772-a5576fe7205e",
-            "id": 4826
+            "uuid": "c7c1f4fd-2226-41f9-8a46-78a741bfbc5e",
+            "id": 3050
         },
         {
             "@type": "WorkflowStep",
@@ -333,12 +335,12 @@
                 "conditions": [
                     {
                         "option": "Splunk",
-                        "step_iri": "\/api\/3\/workflow_steps\/d398533d-7d84-43a8-9772-a5576fe7205e",
+                        "step_iri": "\/api\/3\/workflow_steps\/c7c1f4fd-2226-41f9-8a46-78a741bfbc5e",
                         "condition": "{{ vars.input.params.siem.itemValue == \"Splunk\" }}"
                     },
                     {
                         "option": "Elasticsearch",
-                        "step_iri": "\/api\/3\/workflow_steps\/3242a482-2545-41cb-a902-e8f547df9c17",
+                        "step_iri": "\/api\/3\/workflow_steps\/57df526a-bfbc-4f32-ad2f-4b631e33d8b2",
                         "condition": "{{ vars.input.params.siem.itemValue == \"Elastic\" }}"
                     }
                 ]
@@ -347,8 +349,8 @@
             "top": "307",
             "left": "306",
             "stepType": "\/api\/3\/workflow_step_types\/12254cf5-5db7-4b1a-8cb1-3af081924b28",
-            "uuid": "ff127006-a930-4379-9f92-7275e5ac99c0",
-            "id": 4827
+            "uuid": "a59499ce-6f5a-4212-aaaa-7c35c69aac6c",
+            "id": 3051
         },
         {
             "@type": "WorkflowStep",
@@ -362,8 +364,8 @@
             "top": "460",
             "left": "600",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "uuid": "3242a482-2545-41cb-a902-e8f547df9c17",
-            "id": 4828
+            "uuid": "57df526a-bfbc-4f32-ad2f-4b631e33d8b2",
+            "id": 3052
         },
         {
             "@type": "WorkflowStep",
@@ -380,8 +382,8 @@
             "top": "300",
             "left": "1740",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "2d2c7f10-37a4-4229-ba36-5caee443116e",
-            "id": 4829
+            "uuid": "b29dab83-d352-4bce-b9fa-23d87b17463b",
+            "id": 3053
         },
         {
             "@type": "WorkflowStep",
@@ -409,110 +411,110 @@
             "top": "160",
             "left": "1160",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "c43cf215-bbb8-401a-b1bf-02d4520b7671",
-            "id": 4830
+            "uuid": "34b082cc-2395-49d9-816b-470adafe5174",
+            "id": 3054
         }
     ],
     "routes": [
         {
             "@type": "WorkflowRoute",
             "name": "Set Splunk hunt times -> Splunk query for Sysmon CMSTP",
-            "targetStep": "\/api\/3\/workflow_steps\/ddf9b99e-9ad1-47f0-96aa-4725e5b5e157",
-            "sourceStep": "\/api\/3\/workflow_steps\/d398533d-7d84-43a8-9772-a5576fe7205e",
+            "targetStep": "\/api\/3\/workflow_steps\/5a16a70e-4000-4d3a-9b2b-03f84561a591",
+            "sourceStep": "\/api\/3\/workflow_steps\/c7c1f4fd-2226-41f9-8a46-78a741bfbc5e",
             "label": null,
             "isExecuted": false,
-            "uuid": "bcccc0cc-a0a1-4dcb-bf80-fd47330732e4"
+            "uuid": "f06cfe5c-db02-4792-b83a-57f20eb8759f"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Set Elastic hunt times -> Elastic Query for Sysmon CMSTP",
-            "targetStep": "\/api\/3\/workflow_steps\/14b909d4-5d53-438d-830a-13358bbdede5",
-            "sourceStep": "\/api\/3\/workflow_steps\/3242a482-2545-41cb-a902-e8f547df9c17",
+            "targetStep": "\/api\/3\/workflow_steps\/9f7a092e-ee2f-4d6e-9d51-981984e206d7",
+            "sourceStep": "\/api\/3\/workflow_steps\/57df526a-bfbc-4f32-ad2f-4b631e33d8b2",
             "label": null,
             "isExecuted": false,
-            "uuid": "62bf7b2e-e1cf-48e2-8d9e-025bddf0ab82"
+            "uuid": "821744f9-4a87-41df-9546-12e56b857fa5"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Which SIEM -> Set Elastic hunt times",
-            "targetStep": "\/api\/3\/workflow_steps\/3242a482-2545-41cb-a902-e8f547df9c17",
-            "sourceStep": "\/api\/3\/workflow_steps\/ff127006-a930-4379-9f92-7275e5ac99c0",
+            "targetStep": "\/api\/3\/workflow_steps\/57df526a-bfbc-4f32-ad2f-4b631e33d8b2",
+            "sourceStep": "\/api\/3\/workflow_steps\/a59499ce-6f5a-4212-aaaa-7c35c69aac6c",
             "label": "Elasticsearch",
             "isExecuted": false,
-            "uuid": "e9feca46-8eae-43cc-bdbf-59fd0a837fa5"
+            "uuid": "5ee02256-d392-4d1f-af53-5e262b4869fc"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Copy  of Create and Link Alert -> Deduplicate Comments",
-            "targetStep": "\/api\/3\/workflow_steps\/2d2c7f10-37a4-4229-ba36-5caee443116e",
-            "sourceStep": "\/api\/3\/workflow_steps\/48a3b3ef-6a79-4835-80ce-0a1ed26bcc47",
+            "targetStep": "\/api\/3\/workflow_steps\/b29dab83-d352-4bce-b9fa-23d87b17463b",
+            "sourceStep": "\/api\/3\/workflow_steps\/c2dba6c6-98e4-4bad-beef-5a6f1891e74c",
             "label": null,
             "isExecuted": false,
-            "uuid": "6af1f7b4-8f0b-4e6f-b9b9-93709d0e9470"
+            "uuid": "eea50564-b79d-4d96-bb6b-e753c69d279c"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Create and Link Alert -> Deduplicate Comments",
-            "targetStep": "\/api\/3\/workflow_steps\/2d2c7f10-37a4-4229-ba36-5caee443116e",
-            "sourceStep": "\/api\/3\/workflow_steps\/5379ec1b-ddb5-435a-be41-d0d73992d724",
+            "targetStep": "\/api\/3\/workflow_steps\/b29dab83-d352-4bce-b9fa-23d87b17463b",
+            "sourceStep": "\/api\/3\/workflow_steps\/acaecb3d-1129-4405-9607-2dd57f25619e",
             "label": null,
             "isExecuted": false,
-            "uuid": "55a33688-e059-42e6-9083-3aca97ebf670"
+            "uuid": "00513b7d-8354-422e-a7a5-fee8e632aafe"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Get Results for Sysmon CMSTP -> Create and Link Splunk Alert",
-            "targetStep": "\/api\/3\/workflow_steps\/5379ec1b-ddb5-435a-be41-d0d73992d724",
-            "sourceStep": "\/api\/3\/workflow_steps\/c43cf215-bbb8-401a-b1bf-02d4520b7671",
+            "targetStep": "\/api\/3\/workflow_steps\/acaecb3d-1129-4405-9607-2dd57f25619e",
+            "sourceStep": "\/api\/3\/workflow_steps\/34b082cc-2395-49d9-816b-470adafe5174",
             "label": null,
             "isExecuted": false,
-            "uuid": "d51b2f5b-9b2e-4a86-85db-cc0cb746610f"
+            "uuid": "ad90abe8-f3be-495d-9ea4-5a3642cdb92e"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Elastic Query for Sysmon CMSTP -> Copy  of Create and Link Alert",
-            "targetStep": "\/api\/3\/workflow_steps\/48a3b3ef-6a79-4835-80ce-0a1ed26bcc47",
-            "sourceStep": "\/api\/3\/workflow_steps\/14b909d4-5d53-438d-830a-13358bbdede5",
+            "targetStep": "\/api\/3\/workflow_steps\/c2dba6c6-98e4-4bad-beef-5a6f1891e74c",
+            "sourceStep": "\/api\/3\/workflow_steps\/9f7a092e-ee2f-4d6e-9d51-981984e206d7",
             "label": null,
             "isExecuted": false,
-            "uuid": "0dcc6bb3-ea38-4878-9737-90f02ee77d1d"
+            "uuid": "d129941a-feea-400e-a4e0-45b8811fdbc2"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Splunk query for Sysmon CMSTP -> Get Results for Sysmon CMSTP",
-            "targetStep": "\/api\/3\/workflow_steps\/c43cf215-bbb8-401a-b1bf-02d4520b7671",
-            "sourceStep": "\/api\/3\/workflow_steps\/ddf9b99e-9ad1-47f0-96aa-4725e5b5e157",
+            "targetStep": "\/api\/3\/workflow_steps\/34b082cc-2395-49d9-816b-470adafe5174",
+            "sourceStep": "\/api\/3\/workflow_steps\/5a16a70e-4000-4d3a-9b2b-03f84561a591",
             "label": null,
             "isExecuted": false,
-            "uuid": "da150ab0-4891-40a9-8a32-58c2e0d57f0e"
+            "uuid": "e0c9b2d7-78a0-4b12-9b2a-8f3c8598a534"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Hunt for CMSTP -> Which SIEM",
-            "targetStep": "\/api\/3\/workflow_steps\/ff127006-a930-4379-9f92-7275e5ac99c0",
-            "sourceStep": "\/api\/3\/workflow_steps\/54a101c0-2a90-40d3-bb93-6eec2070b3d4",
+            "targetStep": "\/api\/3\/workflow_steps\/a59499ce-6f5a-4212-aaaa-7c35c69aac6c",
+            "sourceStep": "\/api\/3\/workflow_steps\/c732f80d-199b-47d0-94a9-287c5f5cb03a",
             "label": null,
             "isExecuted": false,
-            "uuid": "bd13ec28-486f-43f3-8ca2-aefe15061e71"
+            "uuid": "ee0f7f98-ca79-4759-b7c3-fd71e7869e90"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Which SIEM -> Copy  of Set Elastic hunt times",
-            "targetStep": "\/api\/3\/workflow_steps\/d398533d-7d84-43a8-9772-a5576fe7205e",
-            "sourceStep": "\/api\/3\/workflow_steps\/ff127006-a930-4379-9f92-7275e5ac99c0",
+            "targetStep": "\/api\/3\/workflow_steps\/c7c1f4fd-2226-41f9-8a46-78a741bfbc5e",
+            "sourceStep": "\/api\/3\/workflow_steps\/a59499ce-6f5a-4212-aaaa-7c35c69aac6c",
             "label": "Splunk",
             "isExecuted": false,
-            "uuid": "308596cf-afed-4f9e-b455-944523c17280"
+            "uuid": "0077242a-5fbd-4a57-b3c2-45c0dae7c093"
         }
     ],
     "priority": null,
     "uuid": "82227e26-769e-4518-bb94-cc038d0c615d",
     "recordTags": [],
-    "id": 1199,
+    "id": 383,
     "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-    "createDate": 1633085066,
+    "createDate": 1640081944,
     "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-    "modifyDate": 1633085066,
+    "modifyDate": 1640081944,
     "owners": [],
     "isPrivate": false
 }

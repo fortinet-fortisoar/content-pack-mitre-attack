@@ -5,7 +5,7 @@
     "aliasName": null,
     "tag": "ATT&CK, Execution, Defense_Evasion, XSL_Script_Processing",
     "description": "Detects process execution via the use of XSL scripts. XSL scripts can allow a user to bypass application whitelisting by executing code through trusted OS binaries.",
-    "isActive": false,
+    "isActive": true,
     "debug": false,
     "singleRecordExecution": false,
     "remoteExecutableFlag": false,
@@ -23,10 +23,10 @@
         "sourcetool"
     ],
     "synchronous": false,
-    "lastModifyDate": 1633085062,
+    "lastModifyDate": 1640081936,
     "collection": "\/api\/3\/workflow_collections\/9ecc64e1-cacd-4aac-b361-ad1b44117b44",
     "versions": [],
-    "triggerStep": "\/api\/3\/workflow_steps\/47be8247-5127-4984-bfac-fe5ac124e9c5",
+    "triggerStep": "\/api\/3\/workflow_steps\/337a2b3f-87f6-471d-8fa3-599c34340bbd",
     "steps": [
         {
             "@type": "WorkflowStep",
@@ -83,8 +83,8 @@
             "top": "114",
             "left": "1620",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "19b976d8-071a-436f-aa2d-eedcb553420c",
-            "id": 4724
+            "uuid": "307343b1-c1df-4e6d-9fdb-09907b6ee20b",
+            "id": 3025
         },
         {
             "@type": "WorkflowStep",
@@ -141,8 +141,8 @@
             "top": "432",
             "left": "1620",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "f39751de-2769-459e-8744-3405bff176df",
-            "id": 4725
+            "uuid": "9b5f4dcc-9154-4a59-911d-4d4be7c12d08",
+            "id": 3026
         },
         {
             "@type": "WorkflowStep",
@@ -199,8 +199,8 @@
             "top": "333",
             "left": "1620",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "67727738-1658-4efc-99fd-396c70f6a811",
-            "id": 4726
+            "uuid": "553b2384-cb64-46b8-a0ee-f772868a9144",
+            "id": 3027
         },
         {
             "@type": "WorkflowStep",
@@ -227,8 +227,8 @@
             "top": "114",
             "left": "1000",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "57809ef9-3d9e-4258-80d4-e1d018e0bddc",
-            "id": 4727
+            "uuid": "76b9271c-fc4f-4277-a13a-487a114d6454",
+            "id": 3028
         },
         {
             "@type": "WorkflowStep",
@@ -242,9 +242,10 @@
                     "query": "event_type:sysmon AND event_id:1 AND @timestamp:{ {{vars.elasticHuntStart}} TO {{vars.elasticHuntEnd}} } AND (image_path:\"C:\\\\Windows\\\\System32\\\\wbem\\\\WMIC.exe\" OR image_path:\"C:\\\\Windows\\\\SysWOW64\\\\wbem\\\\WMIC.exe\") AND event_data.CommandLine:*.xsl*",
                     "run_as_user": ""
                 },
-                "version": "2.2.0",
+                "version": "2.2.1",
                 "connector": "elasticsearch",
                 "operation": "execute_lucene_query",
+                "mock_result": "{\n  \"data\": {\n    \"hits\": {\n      \"hits\": [],\n      \"total\": {\n        \"value\": 0,\n        \"relation\": \"eq\"\n      },\n      \"max_score\": null\n    },\n    \"took\": 247,\n    \"_shards\": {\n      \"total\": 95,\n      \"failed\": 0,\n      \"skipped\": 0,\n      \"successful\": 95\n    },\n    \"timed_out\": false\n  },\n  \"status\": \"Success\",\n  \"message\": \"\",\n  \"operation\": null\n}",
                 "operationTitle": "Execute Lucene Query",
                 "step_variables": []
             },
@@ -252,8 +253,8 @@
             "top": "334",
             "left": "1000",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "8e823a32-b10c-4090-8273-5313b8fc0e15",
-            "id": 4728
+            "uuid": "e5563101-4d24-401b-ac07-3b3132498555",
+            "id": 3029
         },
         {
             "@type": "WorkflowStep",
@@ -281,8 +282,8 @@
             "top": "200",
             "left": "1300",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "b3e6a6e4-a83c-40b1-b8cd-beeea5767a00",
-            "id": 4729
+            "uuid": "eee27830-ee4a-4502-9c09-96422ab236e2",
+            "id": 3030
         },
         {
             "@type": "WorkflowStep",
@@ -339,8 +340,8 @@
             "top": "540",
             "left": "1620",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "0756ce7f-5599-464f-b51d-c574e8058250",
-            "id": 4730
+            "uuid": "70a9550f-f231-4763-a004-55ff9cf5987a",
+            "id": 3031
         },
         {
             "@type": "WorkflowStep",
@@ -354,9 +355,10 @@
                     "query": "event_type:sysmon AND event_id:1 AND @timestamp:{ {{vars.elasticHuntStart}} TO {{vars.elasticHuntEnd}} } AND (event_data.CommandLine:*.xsl* OR event_data.Product:\"Command Line XSLT\" OR image_path:\"*msxsl.exe\") NOT (image_path:\"C:\\\\Windows\\\\System32\\\\wbem\\\\WMIC.exe\" OR image_path:\"C:\\\\Windows\\\\SysWOW64\\\\wbem\\\\WMIC.exe\")",
                     "run_as_user": ""
                 },
-                "version": "2.2.0",
+                "version": "2.2.1",
                 "connector": "elasticsearch",
                 "operation": "execute_lucene_query",
+                "mock_result": "{\n  \"data\": {\n    \"hits\": {\n      \"hits\": [\n        {\n          \"_id\": \"Ub5XuGsBt8nuALoCsdcf\",\n          \"_type\": \"doc\",\n          \"_index\": \"logstash-beats-xsl_script_processing\",\n          \"_score\": 6.053842,\n          \"_source\": {\n            \"beat\": {\n              \"name\": \"win7-host1-PC\",\n              \"version\": \"6.5.3\",\n              \"hostname\": \"win7-host1-PC\"\n            },\n            \"tags\": [\n              \"beat\",\n              \"beats_input_codec_plain_applied\"\n            ],\n            \"task\": \"Process Create (rule: ProcessCreate)\",\n            \"user\": {\n              \"name\": \"SYSTEM\",\n              \"type\": \"User\",\n              \"domain\": \"NT AUTHORITY\",\n              \"identifier\": \"S-1-5-18\"\n            },\n            \"level\": \"Information\",\n            \"opcode\": \"Info\",\n            \"message\": \"Process Create:\\nRuleName: \\nUtcTime: 2019-07-03 14:58:00.733\\nProcessGuid: {DA929735-C278-5D1C-0000-00102B1A2418}\\nProcessId: 3188\\nImage: C:\\\\Users\\\\superman\\\\Documents\\\\msxsl.exe\\nFileVersion: 1.1.0.1\\nDescription: msxsl\\nProduct: Command Line XSLT\\nCompany: Microsoft\\nOriginalFileName: msxsl.exe\\nCommandLine: msxsl.exe  customers.xml script.xsl\\nCurrentDirectory: C:\\\\Users\\\\superman\\\\Documents\\\\\\nUser: CYBERCOM\\\\superman\\nLogonGuid: {DA929735-A7BD-5D0B-0000-002046760300}\\nLogonId: 0x37646\\nTerminalSessionId: 1\\nIntegrityLevel: High\\nHashes: MD5=3E9F31B4E2CD423C015D34D63047685E,SHA256=35BA7624F586086F32A01459FCC0AB755B01B49D571618AF456AA49E593734C7\\nParentProcessGuid: {DA929735-C235-5D1C-0000-001094C72318}\\nParentProcessId: 588\\nParentImage: C:\\\\Windows\\\\System32\\\\cmd.exe\\nParentCommandLine: \\\"C:\\\\Windows\\\\System32\\\\cmd.exe\\\" \",\n            \"version\": 5,\n            \"@version\": \"1\",\n            \"event_id\": 1,\n            \"log_name\": \"Microsoft-Windows-Sysmon\/Operational\",\n            \"username\": \"CYBERCOM\\\\superman\",\n            \"beat_host\": {\n              \"id\": \"da929735-a8f9-4b38-8348-7664a570a0a2\",\n              \"os\": {\n                \"build\": \"7601.24356\",\n                \"family\": \"windows\",\n                \"version\": \"6.1\",\n                \"platform\": \"windows\"\n              },\n              \"name\": \"win7-host1-PC\",\n              \"architecture\": \"x86_64\"\n            },\n            \"thread_id\": 1824,\n            \"@timestamp\": \"2019-07-03T14:58:00.842Z\",\n            \"event_data\": {\n              \"Hashes\": \"MD5=3E9F31B4E2CD423C015D34D63047685E,SHA256=35BA7624F586086F32A01459FCC0AB755B01B49D571618AF456AA49E593734C7\",\n              \"Company\": \"Microsoft\",\n              \"LogonId\": \"0x37646\",\n              \"Product\": \"Command Line XSLT\",\n              \"UtcTime\": \"2019-07-03 14:58:00.733\",\n              \"LogonGuid\": \"{DA929735-A7BD-5D0B-0000-002046760300}\",\n              \"ProcessId\": \"3188\",\n              \"CommandLine\": \"msxsl.exe  customers.xml script.xsl\",\n              \"Description\": \"msxsl\",\n              \"FileVersion\": \"1.1.0.1\",\n              \"ProcessGuid\": \"{DA929735-C278-5D1C-0000-00102B1A2418}\",\n              \"IntegrityLevel\": \"High\",\n              \"ParentProcessId\": \"588\",\n              \"CurrentDirectory\": \"C:\\\\Users\\\\superman\\\\Documents\\\\\",\n              \"OriginalFileName\": \"msxsl.exe\",\n              \"ParentCommandLine\": \"\\\"C:\\\\Windows\\\\System32\\\\cmd.exe\\\" \",\n              \"ParentProcessGuid\": \"{DA929735-C235-5D1C-0000-001094C72318}\",\n              \"TerminalSessionId\": \"1\"\n            },\n            \"event_type\": \"sysmon\",\n            \"image_path\": \"C:\\\\Users\\\\superman\\\\Documents\\\\msxsl.exe\",\n            \"process_id\": 1408,\n            \"source_name\": \"Microsoft-Windows-Sysmon\",\n            \"computer_name\": \"win7-host1-PC.cybercom.local\",\n            \"logstash_time\": 0.0009229183197021484,\n            \"provider_guid\": \"{5770385F-C22A-43E0-BF4C-06F5698FFBD9}\",\n            \"record_number\": \"1978440\",\n            \"parent_image_path\": \"C:\\\\Windows\\\\System32\\\\cmd.exe\"\n          }\n        },\n        {\n          \"_id\": \"JL5WuGsBt8nuALoCMNSz\",\n          \"_type\": \"doc\",\n          \"_index\": \"logstash-beats-xsl_script_processing\",\n          \"_score\": 3.287682,\n          \"_source\": {\n            \"beat\": {\n              \"name\": \"win7-host1-PC\",\n              \"version\": \"6.5.3\",\n              \"hostname\": \"win7-host1-PC\"\n            },\n            \"tags\": [\n              \"beat\",\n              \"beats_input_codec_plain_applied\"\n            ],\n            \"task\": \"Process Create (rule: ProcessCreate)\",\n            \"user\": {\n              \"name\": \"SYSTEM\",\n              \"type\": \"User\",\n              \"domain\": \"NT AUTHORITY\",\n              \"identifier\": \"S-1-5-18\"\n            },\n            \"level\": \"Information\",\n            \"opcode\": \"Info\",\n            \"message\": \"Process Create:\\nRuleName: \\nUtcTime: 2019-07-03 14:56:21.384\\nProcessGuid: {DA929735-C215-5D1C-0000-001095302318}\\nProcessId: 1212\\nImage: C:\\\\Windows\\\\System32\\\\notepad.exe\\nFileVersion: 6.1.7601.18917 (win7sp1_gdr.150709-0600)\\nDescription: Notepad\\nProduct: Microsoft\u00ae Windows\u00ae Operating System\\nCompany: Microsoft Corporation\\nOriginalFileName: NOTEPAD.EXE\\nCommandLine: \\\"C:\\\\Windows\\\\system32\\\\NOTEPAD.EXE\\\" C:\\\\Users\\\\superman\\\\Documents\\\\script.xsl\\nCurrentDirectory: C:\\\\Users\\\\superman\\\\Documents\\\\\\nUser: CYBERCOM\\\\superman\\nLogonGuid: {DA929735-A7BD-5D0B-0000-002046760300}\\nLogonId: 0x37646\\nTerminalSessionId: 1\\nIntegrityLevel: High\\nHashes: MD5=B32189BDFF6E577A92BAA61AD49264E6,SHA256=933E1778B2760B3A9194C2799D7B76052895959C3CAEDEFB4E9D764CBB6AD3B5\\nParentProcessGuid: {DA929735-A7D1-5D0B-0000-00108BFE0500}\\nParentProcessId: 2256\\nParentImage: C:\\\\Windows\\\\explorer.exe\\nParentCommandLine: C:\\\\Windows\\\\Explorer.EXE\",\n            \"version\": 5,\n            \"@version\": \"1\",\n            \"event_id\": 1,\n            \"log_name\": \"Microsoft-Windows-Sysmon\/Operational\",\n            \"username\": \"CYBERCOM\\\\superman\",\n            \"beat_host\": {\n              \"id\": \"da929735-a8f9-4b38-8348-7664a570a0a2\",\n              \"os\": {\n                \"build\": \"7601.24356\",\n                \"family\": \"windows\",\n                \"version\": \"6.1\",\n                \"platform\": \"windows\"\n              },\n              \"name\": \"win7-host1-PC\",\n              \"architecture\": \"x86_64\"\n            },\n            \"thread_id\": 1824,\n            \"@timestamp\": \"2019-07-03T14:56:21.525Z\",\n            \"event_data\": {\n              \"Hashes\": \"MD5=B32189BDFF6E577A92BAA61AD49264E6,SHA256=933E1778B2760B3A9194C2799D7B76052895959C3CAEDEFB4E9D764CBB6AD3B5\",\n              \"Company\": \"Microsoft Corporation\",\n              \"LogonId\": \"0x37646\",\n              \"Product\": \"Microsoft\u00ae Windows\u00ae Operating System\",\n              \"UtcTime\": \"2019-07-03 14:56:21.384\",\n              \"LogonGuid\": \"{DA929735-A7BD-5D0B-0000-002046760300}\",\n              \"ProcessId\": \"1212\",\n              \"CommandLine\": \"\\\"C:\\\\Windows\\\\system32\\\\NOTEPAD.EXE\\\" C:\\\\Users\\\\superman\\\\Documents\\\\script.xsl\",\n              \"Description\": \"Notepad\",\n              \"FileVersion\": \"6.1.7601.18917 (win7sp1_gdr.150709-0600)\",\n              \"ProcessGuid\": \"{DA929735-C215-5D1C-0000-001095302318}\",\n              \"IntegrityLevel\": \"High\",\n              \"ParentProcessId\": \"2256\",\n              \"CurrentDirectory\": \"C:\\\\Users\\\\superman\\\\Documents\\\\\",\n              \"OriginalFileName\": \"NOTEPAD.EXE\",\n              \"ParentCommandLine\": \"C:\\\\Windows\\\\Explorer.EXE\",\n              \"ParentProcessGuid\": \"{DA929735-A7D1-5D0B-0000-00108BFE0500}\",\n              \"TerminalSessionId\": \"1\"\n            },\n            \"event_type\": \"sysmon\",\n            \"image_path\": \"C:\\\\Windows\\\\System32\\\\notepad.exe\",\n            \"process_id\": 1408,\n            \"source_name\": \"Microsoft-Windows-Sysmon\",\n            \"computer_name\": \"win7-host1-PC.cybercom.local\",\n            \"logstash_time\": 0.0009119510650634766,\n            \"provider_guid\": \"{5770385F-C22A-43E0-BF4C-06F5698FFBD9}\",\n            \"record_number\": \"1978325\",\n            \"parent_image_path\": \"C:\\\\Windows\\\\explorer.exe\"\n          }\n        }\n      ],\n      \"total\": {\n        \"value\": 2,\n        \"relation\": \"eq\"\n      },\n      \"max_score\": 6.053842\n    },\n    \"took\": 242,\n    \"_shards\": {\n      \"total\": 95,\n      \"failed\": 0,\n      \"skipped\": 0,\n      \"successful\": 95\n    },\n    \"timed_out\": false\n  },\n  \"status\": \"Success\",\n  \"message\": \"\",\n  \"operation\": null\n}",
                 "operationTitle": "Execute Lucene Query",
                 "step_variables": []
             },
@@ -364,8 +366,8 @@
             "top": "432",
             "left": "1000",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "310bbe1e-e2d4-4251-bc9e-71f4a6c81fda",
-            "id": 4731
+            "uuid": "1eb8077c-1d8d-41c1-8168-6b253956847c",
+            "id": 3032
         },
         {
             "@type": "WorkflowStep",
@@ -393,8 +395,8 @@
             "top": "33",
             "left": "1300",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "0bd78aeb-fc79-4b32-9ba5-340006a761f8",
-            "id": 4732
+            "uuid": "6d3cec44-b3ef-4e32-b8c7-c1229de4df5e",
+            "id": 3033
         },
         {
             "@type": "WorkflowStep",
@@ -421,8 +423,8 @@
             "top": "200",
             "left": "1000",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "9970e17e-0f0b-46da-a2f4-22d5b386ab78",
-            "id": 4733
+            "uuid": "f44511fb-02b7-4075-887c-29180eaabc46",
+            "id": 3034
         },
         {
             "@type": "WorkflowStep",
@@ -436,8 +438,8 @@
             "top": "114",
             "left": "689",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "uuid": "ad1dbe25-2e66-4e45-81e7-da9fb422f2b4",
-            "id": 4734
+            "uuid": "a744408f-c4a5-4172-9aa9-7208de1644c5",
+            "id": 3035
         },
         {
             "@type": "WorkflowStep",
@@ -451,9 +453,10 @@
                     "query": "event_type:sysmon AND event_id:1 AND @timestamp:{ {{vars.elasticHuntStart}} TO {{vars.elasticHuntEnd}} } AND event_data.ParentCommandLine:*.xsl*",
                     "run_as_user": ""
                 },
-                "version": "2.2.0",
+                "version": "2.2.1",
                 "connector": "elasticsearch",
                 "operation": "execute_lucene_query",
+                "mock_result": "{\n  \"data\": {\n    \"hits\": {\n      \"hits\": [\n        {\n          \"_id\": \"nL5YuGsBt8nuALoCQNiQ\",\n          \"_type\": \"doc\",\n          \"_index\": \"logstash-beats-xsl_script_processing\",\n          \"_score\": 3.287682,\n          \"_source\": {\n            \"beat\": {\n              \"name\": \"win7-host1-PC\",\n              \"version\": \"6.5.3\",\n              \"hostname\": \"win7-host1-PC\"\n            },\n            \"tags\": [\n              \"beat\",\n              \"beats_input_codec_plain_applied\"\n            ],\n            \"task\": \"Process Create (rule: ProcessCreate)\",\n            \"user\": {\n              \"name\": \"SYSTEM\",\n              \"type\": \"User\",\n              \"domain\": \"NT AUTHORITY\",\n              \"identifier\": \"S-1-5-18\"\n            },\n            \"level\": \"Information\",\n            \"opcode\": \"Info\",\n            \"message\": \"Process Create:\\nRuleName: \\nUtcTime: 2019-07-03 14:58:38.340\\nProcessGuid: {DA929735-C29E-5D1C-0000-001008B02418}\\nProcessId: 2824\\nImage: C:\\\\Windows\\\\System32\\\\calc.exe\\nFileVersion: 6.1.7600.16385 (win7_rtm.090713-1255)\\nDescription: Windows Calculator\\nProduct: Microsoft\u00ae Windows\u00ae Operating System\\nCompany: Microsoft Corporation\\nOriginalFileName: CALC.EXE\\nCommandLine: \\\"C:\\\\Windows\\\\System32\\\\calc.exe\\\" \\nCurrentDirectory: C:\\\\Users\\\\superman\\\\Documents\\\\\\nUser: CYBERCOM\\\\superman\\nLogonGuid: {DA929735-A7BD-5D0B-0000-002046760300}\\nLogonId: 0x37646\\nTerminalSessionId: 1\\nIntegrityLevel: High\\nHashes: MD5=10E4A1D2132CCB5C6759F038CDB6F3C9,SHA256=C6A91CBA00BF87CDB064C49ADAAC82255CBEC6FDD48FD21F9B3B96ABF019916B\\nParentProcessGuid: {DA929735-C29D-5D1C-0000-0010A77D2418}\\nParentProcessId: 3824\\nParentImage: C:\\\\Windows\\\\System32\\\\wbem\\\\WMIC.exe\\nParentCommandLine: wmic  process list \/FORMAT:script.xsl\",\n            \"version\": 5,\n            \"@version\": \"1\",\n            \"event_id\": 1,\n            \"log_name\": \"Microsoft-Windows-Sysmon\/Operational\",\n            \"username\": \"CYBERCOM\\\\superman\",\n            \"beat_host\": {\n              \"id\": \"da929735-a8f9-4b38-8348-7664a570a0a2\",\n              \"os\": {\n                \"build\": \"7601.24356\",\n                \"family\": \"windows\",\n                \"version\": \"6.1\",\n                \"platform\": \"windows\"\n              },\n              \"name\": \"win7-host1-PC\",\n              \"architecture\": \"x86_64\"\n            },\n            \"thread_id\": 1824,\n            \"@timestamp\": \"2019-07-03T14:58:38.776Z\",\n            \"event_data\": {\n              \"Hashes\": \"MD5=10E4A1D2132CCB5C6759F038CDB6F3C9,SHA256=C6A91CBA00BF87CDB064C49ADAAC82255CBEC6FDD48FD21F9B3B96ABF019916B\",\n              \"Company\": \"Microsoft Corporation\",\n              \"LogonId\": \"0x37646\",\n              \"Product\": \"Microsoft\u00ae Windows\u00ae Operating System\",\n              \"UtcTime\": \"2019-07-03 14:58:38.340\",\n              \"LogonGuid\": \"{DA929735-A7BD-5D0B-0000-002046760300}\",\n              \"ProcessId\": \"2824\",\n              \"CommandLine\": \"\\\"C:\\\\Windows\\\\System32\\\\calc.exe\\\" \",\n              \"Description\": \"Windows Calculator\",\n              \"FileVersion\": \"6.1.7600.16385 (win7_rtm.090713-1255)\",\n              \"ProcessGuid\": \"{DA929735-C29E-5D1C-0000-001008B02418}\",\n              \"IntegrityLevel\": \"High\",\n              \"ParentProcessId\": \"3824\",\n              \"CurrentDirectory\": \"C:\\\\Users\\\\superman\\\\Documents\\\\\",\n              \"OriginalFileName\": \"CALC.EXE\",\n              \"ParentCommandLine\": \"wmic  process list \/FORMAT:script.xsl\",\n              \"ParentProcessGuid\": \"{DA929735-C29D-5D1C-0000-0010A77D2418}\",\n              \"TerminalSessionId\": \"1\"\n            },\n            \"event_type\": \"sysmon\",\n            \"image_path\": \"C:\\\\Windows\\\\System32\\\\calc.exe\",\n            \"process_id\": 1408,\n            \"source_name\": \"Microsoft-Windows-Sysmon\",\n            \"computer_name\": \"win7-host1-PC.cybercom.local\",\n            \"logstash_time\": 0.0013039112091064453,\n            \"provider_guid\": \"{5770385F-C22A-43E0-BF4C-06F5698FFBD9}\",\n            \"record_number\": \"1978456\",\n            \"parent_image_path\": \"C:\\\\Windows\\\\System32\\\\wbem\\\\WMIC.exe\"\n          }\n        },\n        {\n          \"_id\": \"YL5XuGsBt8nuALoCtdcE\",\n          \"_type\": \"doc\",\n          \"_index\": \"logstash-beats-xsl_script_processing\",\n          \"_score\": 3.1823215,\n          \"_source\": {\n            \"beat\": {\n              \"name\": \"win7-host1-PC\",\n              \"version\": \"6.5.3\",\n              \"hostname\": \"win7-host1-PC\"\n            },\n            \"tags\": [\n              \"beat\",\n              \"beats_input_codec_plain_applied\"\n            ],\n            \"task\": \"Process Create (rule: ProcessCreate)\",\n            \"user\": {\n              \"name\": \"SYSTEM\",\n              \"type\": \"User\",\n              \"domain\": \"NT AUTHORITY\",\n              \"identifier\": \"S-1-5-18\"\n            },\n            \"level\": \"Information\",\n            \"opcode\": \"Info\",\n            \"message\": \"Process Create:\\nRuleName: \\nUtcTime: 2019-07-03 14:58:01.203\\nProcessGuid: {DA929735-C279-5D1C-0000-0010592A2418}\\nProcessId: 3540\\nImage: C:\\\\Windows\\\\SysWOW64\\\\calc.exe\\nFileVersion: 6.1.7601.17514 (win7sp1_rtm.101119-1850)\\nDescription: Windows Calculator\\nProduct: Microsoft\u00ae Windows\u00ae Operating System\\nCompany: Microsoft Corporation\\nOriginalFileName: CALC.EXE\\nCommandLine: \\\"C:\\\\Windows\\\\System32\\\\calc.exe\\\" \\nCurrentDirectory: C:\\\\Users\\\\superman\\\\Documents\\\\\\nUser: CYBERCOM\\\\superman\\nLogonGuid: {DA929735-A7BD-5D0B-0000-002046760300}\\nLogonId: 0x37646\\nTerminalSessionId: 1\\nIntegrityLevel: High\\nHashes: MD5=60B7C0FEAD45F2066E5B805A91F4F0FC,SHA256=80C10EE5F21F92F89CBC293A59D2FD4C01C7958AACAD15642558DB700943FA22\\nParentProcessGuid: {DA929735-C278-5D1C-0000-00102B1A2418}\\nParentProcessId: 3188\\nParentImage: C:\\\\Users\\\\superman\\\\Documents\\\\msxsl.exe\\nParentCommandLine: msxsl.exe  customers.xml script.xsl\",\n            \"version\": 5,\n            \"@version\": \"1\",\n            \"event_id\": 1,\n            \"log_name\": \"Microsoft-Windows-Sysmon\/Operational\",\n            \"username\": \"CYBERCOM\\\\superman\",\n            \"beat_host\": {\n              \"id\": \"da929735-a8f9-4b38-8348-7664a570a0a2\",\n              \"os\": {\n                \"build\": \"7601.24356\",\n                \"family\": \"windows\",\n                \"version\": \"6.1\",\n                \"platform\": \"windows\"\n              },\n              \"name\": \"win7-host1-PC\",\n              \"architecture\": \"x86_64\"\n            },\n            \"thread_id\": 1824,\n            \"@timestamp\": \"2019-07-03T14:58:01.359Z\",\n            \"event_data\": {\n              \"Hashes\": \"MD5=60B7C0FEAD45F2066E5B805A91F4F0FC,SHA256=80C10EE5F21F92F89CBC293A59D2FD4C01C7958AACAD15642558DB700943FA22\",\n              \"Company\": \"Microsoft Corporation\",\n              \"LogonId\": \"0x37646\",\n              \"Product\": \"Microsoft\u00ae Windows\u00ae Operating System\",\n              \"UtcTime\": \"2019-07-03 14:58:01.203\",\n              \"LogonGuid\": \"{DA929735-A7BD-5D0B-0000-002046760300}\",\n              \"ProcessId\": \"3540\",\n              \"CommandLine\": \"\\\"C:\\\\Windows\\\\System32\\\\calc.exe\\\" \",\n              \"Description\": \"Windows Calculator\",\n              \"FileVersion\": \"6.1.7601.17514 (win7sp1_rtm.101119-1850)\",\n              \"ProcessGuid\": \"{DA929735-C279-5D1C-0000-0010592A2418}\",\n              \"IntegrityLevel\": \"High\",\n              \"ParentProcessId\": \"3188\",\n              \"CurrentDirectory\": \"C:\\\\Users\\\\superman\\\\Documents\\\\\",\n              \"OriginalFileName\": \"CALC.EXE\",\n              \"ParentCommandLine\": \"msxsl.exe  customers.xml script.xsl\",\n              \"ParentProcessGuid\": \"{DA929735-C278-5D1C-0000-00102B1A2418}\",\n              \"TerminalSessionId\": \"1\"\n            },\n            \"event_type\": \"sysmon\",\n            \"image_path\": \"C:\\\\Windows\\\\SysWOW64\\\\calc.exe\",\n            \"process_id\": 1408,\n            \"source_name\": \"Microsoft-Windows-Sysmon\",\n            \"computer_name\": \"win7-host1-PC.cybercom.local\",\n            \"logstash_time\": 0.0023870468139648438,\n            \"provider_guid\": \"{5770385F-C22A-43E0-BF4C-06F5698FFBD9}\",\n            \"record_number\": \"1978444\",\n            \"parent_image_path\": \"C:\\\\Users\\\\superman\\\\Documents\\\\msxsl.exe\"\n          }\n        }\n      ],\n      \"total\": {\n        \"value\": 2,\n        \"relation\": \"eq\"\n      },\n      \"max_score\": 3.287682\n    },\n    \"took\": 237,\n    \"_shards\": {\n      \"total\": 95,\n      \"failed\": 0,\n      \"skipped\": 0,\n      \"successful\": 95\n    },\n    \"timed_out\": false\n  },\n  \"status\": \"Success\",\n  \"message\": \"\",\n  \"operation\": null\n}",
                 "operationTitle": "Execute Lucene Query",
                 "step_variables": []
             },
@@ -461,8 +464,8 @@
             "top": "540",
             "left": "1000",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "868e4aa3-3b7f-45a5-ae92-30e56f94a7b4",
-            "id": 4735
+            "uuid": "a0f27c28-a2d2-47b1-b5c9-d09f7cde05e1",
+            "id": 3036
         },
         {
             "@type": "WorkflowStep",
@@ -519,8 +522,8 @@
             "top": "33",
             "left": "1620",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "3feeca6d-f900-452b-ad5a-c7dffbfa09a6",
-            "id": 4736
+            "uuid": "9435bed2-d1e5-460f-9f3e-6155d046a48a",
+            "id": 3037
         },
         {
             "@type": "WorkflowStep",
@@ -612,7 +615,8 @@
                             "parentprocessname": "{{ vars.parentprocessname }}"
                         },
                         "records": "{{vars.input.records}}"
-                    }
+                    },
+                    "useMockOutput": "true"
                 },
                 "_promptexpanded": true,
                 "displayConditions": {
@@ -637,8 +641,8 @@
             "top": "180",
             "left": "20",
             "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-            "uuid": "47be8247-5127-4984-bfac-fe5ac124e9c5",
-            "id": 4737
+            "uuid": "337a2b3f-87f6-471d-8fa3-599c34340bbd",
+            "id": 3038
         },
         {
             "@type": "WorkflowStep",
@@ -695,8 +699,8 @@
             "top": "200",
             "left": "1620",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "5fc481c0-ed17-4ba1-8cde-7b075ff8d5a3",
-            "id": 4738
+            "uuid": "73ff2d81-caa5-4780-be41-89b452a50f91",
+            "id": 3039
         },
         {
             "@type": "WorkflowStep",
@@ -713,8 +717,8 @@
             "top": "280",
             "left": "1948",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "e0109eec-53a8-44fa-a669-b1ad834631f0",
-            "id": 4739
+            "uuid": "8b372f84-e11b-4d05-a085-1997fb003108",
+            "id": 3040
         },
         {
             "@type": "WorkflowStep",
@@ -728,8 +732,8 @@
             "top": "432",
             "left": "691",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "uuid": "fd53e3e1-2e5e-4d90-9e32-667dc78b933f",
-            "id": 4740
+            "uuid": "863f728c-ee3d-4317-8a6e-205d50ab082e",
+            "id": 3041
         },
         {
             "@type": "WorkflowStep",
@@ -739,12 +743,12 @@
                 "conditions": [
                     {
                         "option": "Splunk",
-                        "step_iri": "\/api\/3\/workflow_steps\/ad1dbe25-2e66-4e45-81e7-da9fb422f2b4",
+                        "step_iri": "\/api\/3\/workflow_steps\/a744408f-c4a5-4172-9aa9-7208de1644c5",
                         "condition": "{{ vars.input.params.siem.itemValue == \"Splunk\" }}"
                     },
                     {
                         "option": "Elasticsearch",
-                        "step_iri": "\/api\/3\/workflow_steps\/fd53e3e1-2e5e-4d90-9e32-667dc78b933f",
+                        "step_iri": "\/api\/3\/workflow_steps\/863f728c-ee3d-4317-8a6e-205d50ab082e",
                         "condition": "{{ vars.input.params.siem.itemValue == \"Elastic\" }}"
                     }
                 ]
@@ -753,8 +757,8 @@
             "top": "180",
             "left": "340",
             "stepType": "\/api\/3\/workflow_step_types\/12254cf5-5db7-4b1a-8cb1-3af081924b28",
-            "uuid": "0fd12788-547b-483c-9d89-ba2e00605b39",
-            "id": 4741
+            "uuid": "a3b36858-5c6f-4aa5-9a7e-0d2c907a323b",
+            "id": 3042
         },
         {
             "@type": "WorkflowStep",
@@ -782,8 +786,8 @@
             "top": "114",
             "left": "1300",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "78c5d6c7-24b3-4922-82cd-9601e4e0d163",
-            "id": 4742
+            "uuid": "1bc3a7eb-451f-4e03-b8b9-ba8a5af6da51",
+            "id": 3043
         },
         {
             "@type": "WorkflowStep",
@@ -810,236 +814,236 @@
             "top": "33",
             "left": "1000",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "4044cac8-cf8f-4a67-afbe-fde27fb97fb0",
-            "id": 4743
+            "uuid": "853074e8-2bf8-4f9d-9f7e-cd61c588440b",
+            "id": 3044
         }
     ],
     "routes": [
         {
             "@type": "WorkflowRoute",
             "name": "Create and Link Alert -> Deduplicate Comments",
-            "targetStep": "\/api\/3\/workflow_steps\/e0109eec-53a8-44fa-a669-b1ad834631f0",
-            "sourceStep": "\/api\/3\/workflow_steps\/3feeca6d-f900-452b-ad5a-c7dffbfa09a6",
+            "targetStep": "\/api\/3\/workflow_steps\/8b372f84-e11b-4d05-a085-1997fb003108",
+            "sourceStep": "\/api\/3\/workflow_steps\/9435bed2-d1e5-460f-9f3e-6155d046a48a",
             "label": null,
             "isExecuted": false,
-            "uuid": "cce2c148-6a07-4be9-8026-b85355fb7369"
+            "uuid": "39992ff1-8bdc-4e99-9547-da00cd81f4fe"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Set Elastic hunt times -> elastic",
-            "targetStep": "\/api\/3\/workflow_steps\/8e823a32-b10c-4090-8273-5313b8fc0e15",
-            "sourceStep": "\/api\/3\/workflow_steps\/fd53e3e1-2e5e-4d90-9e32-667dc78b933f",
+            "targetStep": "\/api\/3\/workflow_steps\/e5563101-4d24-401b-ac07-3b3132498555",
+            "sourceStep": "\/api\/3\/workflow_steps\/863f728c-ee3d-4317-8a6e-205d50ab082e",
             "label": null,
             "isExecuted": false,
-            "uuid": "cbc99621-2b72-49d8-b53e-47936ca9aa05"
+            "uuid": "b36b1a4b-c917-4b74-b8e6-0c94cb7dee16"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Copy  of Create and Link WMIC Alert -> Deduplicate Comments",
-            "targetStep": "\/api\/3\/workflow_steps\/e0109eec-53a8-44fa-a669-b1ad834631f0",
-            "sourceStep": "\/api\/3\/workflow_steps\/67727738-1658-4efc-99fd-396c70f6a811",
+            "targetStep": "\/api\/3\/workflow_steps\/8b372f84-e11b-4d05-a085-1997fb003108",
+            "sourceStep": "\/api\/3\/workflow_steps\/553b2384-cb64-46b8-a0ee-f772868a9144",
             "label": null,
             "isExecuted": false,
-            "uuid": "fcaf8f4c-2974-494e-850e-c179a85eeaf1"
+            "uuid": "1fa22900-d71d-41c8-a5c4-c22421eade16"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Set Splunk hunt times -> Splunk query for MSXSL XSL Script Processing",
-            "targetStep": "\/api\/3\/workflow_steps\/57809ef9-3d9e-4258-80d4-e1d018e0bddc",
-            "sourceStep": "\/api\/3\/workflow_steps\/ad1dbe25-2e66-4e45-81e7-da9fb422f2b4",
+            "targetStep": "\/api\/3\/workflow_steps\/76b9271c-fc4f-4277-a13a-487a114d6454",
+            "sourceStep": "\/api\/3\/workflow_steps\/a744408f-c4a5-4172-9aa9-7208de1644c5",
             "label": null,
             "isExecuted": false,
-            "uuid": "2daa5ff5-62dc-4ce2-ae08-544754c34f89"
+            "uuid": "b4009498-62c4-495b-bae7-94b6cceb0647"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Set Splunk hunt times -> Splunk query for Child Processes via  XSL Script Processing",
-            "targetStep": "\/api\/3\/workflow_steps\/9970e17e-0f0b-46da-a2f4-22d5b386ab78",
-            "sourceStep": "\/api\/3\/workflow_steps\/ad1dbe25-2e66-4e45-81e7-da9fb422f2b4",
+            "targetStep": "\/api\/3\/workflow_steps\/f44511fb-02b7-4075-887c-29180eaabc46",
+            "sourceStep": "\/api\/3\/workflow_steps\/a744408f-c4a5-4172-9aa9-7208de1644c5",
             "label": null,
             "isExecuted": false,
-            "uuid": "26ec68a2-d4f4-4925-b1dd-3a07c48fa2d8"
+            "uuid": "8c2c4b6b-8035-4893-a36a-9b239ba044b2"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Hunt for XSL Script Processing -> Which SIEM",
-            "targetStep": "\/api\/3\/workflow_steps\/0fd12788-547b-483c-9d89-ba2e00605b39",
-            "sourceStep": "\/api\/3\/workflow_steps\/47be8247-5127-4984-bfac-fe5ac124e9c5",
+            "targetStep": "\/api\/3\/workflow_steps\/a3b36858-5c6f-4aa5-9a7e-0d2c907a323b",
+            "sourceStep": "\/api\/3\/workflow_steps\/337a2b3f-87f6-471d-8fa3-599c34340bbd",
             "label": null,
             "isExecuted": false,
-            "uuid": "9714c086-893f-405e-be81-3dc07a684ca0"
+            "uuid": "1c611668-441b-4e06-a40c-1658674a5152"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Copy 1 of Copy  of Create and Link WMIC Alert -> Deduplicate Comments",
-            "targetStep": "\/api\/3\/workflow_steps\/e0109eec-53a8-44fa-a669-b1ad834631f0",
-            "sourceStep": "\/api\/3\/workflow_steps\/0756ce7f-5599-464f-b51d-c574e8058250",
+            "targetStep": "\/api\/3\/workflow_steps\/8b372f84-e11b-4d05-a085-1997fb003108",
+            "sourceStep": "\/api\/3\/workflow_steps\/70a9550f-f231-4763-a004-55ff9cf5987a",
             "label": null,
             "isExecuted": false,
-            "uuid": "7c7b5f5c-42ec-4c90-ae2f-ea7e781f6582"
+            "uuid": "0e547998-0f16-44d0-bb10-3ca76e6f31f9"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Set Elastic hunt times -> a",
-            "targetStep": "\/api\/3\/workflow_steps\/868e4aa3-3b7f-45a5-ae92-30e56f94a7b4",
-            "sourceStep": "\/api\/3\/workflow_steps\/fd53e3e1-2e5e-4d90-9e32-667dc78b933f",
+            "targetStep": "\/api\/3\/workflow_steps\/a0f27c28-a2d2-47b1-b5c9-d09f7cde05e1",
+            "sourceStep": "\/api\/3\/workflow_steps\/863f728c-ee3d-4317-8a6e-205d50ab082e",
             "label": null,
             "isExecuted": false,
-            "uuid": "6976c6c2-4ff8-4bfa-928f-9cf2ee65b2b2"
+            "uuid": "e328db4e-f9d4-4e5b-aec7-5408202310fe"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Elastic query for Child Processes via  XSL Script Processing -> Copy 1 of Copy  of Create and Link WMIC Alert",
-            "targetStep": "\/api\/3\/workflow_steps\/0756ce7f-5599-464f-b51d-c574e8058250",
-            "sourceStep": "\/api\/3\/workflow_steps\/868e4aa3-3b7f-45a5-ae92-30e56f94a7b4",
+            "targetStep": "\/api\/3\/workflow_steps\/70a9550f-f231-4763-a004-55ff9cf5987a",
+            "sourceStep": "\/api\/3\/workflow_steps\/a0f27c28-a2d2-47b1-b5c9-d09f7cde05e1",
             "label": null,
             "isExecuted": false,
-            "uuid": "172974a6-bceb-4e11-949e-4e7d6ccbbea4"
+            "uuid": "db5b64a6-1d01-4988-9659-4dcab25f3ddb"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Create and Link Child Process Alert -> Deduplicate Comments",
-            "targetStep": "\/api\/3\/workflow_steps\/e0109eec-53a8-44fa-a669-b1ad834631f0",
-            "sourceStep": "\/api\/3\/workflow_steps\/5fc481c0-ed17-4ba1-8cde-7b075ff8d5a3",
+            "targetStep": "\/api\/3\/workflow_steps\/8b372f84-e11b-4d05-a085-1997fb003108",
+            "sourceStep": "\/api\/3\/workflow_steps\/73ff2d81-caa5-4780-be41-89b452a50f91",
             "label": null,
             "isExecuted": false,
-            "uuid": "1d1fb062-d30f-420f-a4ff-3e093b3757fe"
+            "uuid": "f576831d-a19a-452f-b8d5-7671feb5449c"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Which SIEM -> Set Splunk hunt times",
-            "targetStep": "\/api\/3\/workflow_steps\/ad1dbe25-2e66-4e45-81e7-da9fb422f2b4",
-            "sourceStep": "\/api\/3\/workflow_steps\/0fd12788-547b-483c-9d89-ba2e00605b39",
+            "targetStep": "\/api\/3\/workflow_steps\/a744408f-c4a5-4172-9aa9-7208de1644c5",
+            "sourceStep": "\/api\/3\/workflow_steps\/a3b36858-5c6f-4aa5-9a7e-0d2c907a323b",
             "label": "Splunk",
             "isExecuted": false,
-            "uuid": "5c23caf7-c718-40c5-90da-339fc43fc617"
+            "uuid": "18777d04-24a6-44f9-90e6-35011637eff0"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Copy  of Get Results for Sysmon -> Copy  of Create and Link Alert",
-            "targetStep": "\/api\/3\/workflow_steps\/19b976d8-071a-436f-aa2d-eedcb553420c",
-            "sourceStep": "\/api\/3\/workflow_steps\/78c5d6c7-24b3-4922-82cd-9601e4e0d163",
+            "targetStep": "\/api\/3\/workflow_steps\/307343b1-c1df-4e6d-9fdb-09907b6ee20b",
+            "sourceStep": "\/api\/3\/workflow_steps\/1bc3a7eb-451f-4e03-b8b9-ba8a5af6da51",
             "label": null,
             "isExecuted": false,
-            "uuid": "43a34fbd-7bc8-4f7e-b0a9-5f5bc118a4e9"
+            "uuid": "2aa27480-92ab-480f-bce6-34f4dfa3f726"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Elastic query for WMIC XSL Script Processing -> Copy  of Create and Link WMIC Alert",
-            "targetStep": "\/api\/3\/workflow_steps\/67727738-1658-4efc-99fd-396c70f6a811",
-            "sourceStep": "\/api\/3\/workflow_steps\/8e823a32-b10c-4090-8273-5313b8fc0e15",
+            "targetStep": "\/api\/3\/workflow_steps\/553b2384-cb64-46b8-a0ee-f772868a9144",
+            "sourceStep": "\/api\/3\/workflow_steps\/e5563101-4d24-401b-ac07-3b3132498555",
             "label": null,
             "isExecuted": false,
-            "uuid": "cec89606-f77a-41db-8842-447802095b22"
+            "uuid": "e2f90431-0623-421d-8362-34ac6a2ee4c2"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Set Splunk hunt times -> Splunk query for WMIC XSL Script Processing",
-            "targetStep": "\/api\/3\/workflow_steps\/4044cac8-cf8f-4a67-afbe-fde27fb97fb0",
-            "sourceStep": "\/api\/3\/workflow_steps\/ad1dbe25-2e66-4e45-81e7-da9fb422f2b4",
+            "targetStep": "\/api\/3\/workflow_steps\/853074e8-2bf8-4f9d-9f7e-cd61c588440b",
+            "sourceStep": "\/api\/3\/workflow_steps\/a744408f-c4a5-4172-9aa9-7208de1644c5",
             "label": null,
             "isExecuted": false,
-            "uuid": "203ddf24-ab2a-44b7-84db-e515edd5be55"
+            "uuid": "81f0ccfc-c378-47d9-a562-8513301561bc"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Copy2 of Create and Link MSXSL Alert -> Deduplicate Comments",
-            "targetStep": "\/api\/3\/workflow_steps\/e0109eec-53a8-44fa-a669-b1ad834631f0",
-            "sourceStep": "\/api\/3\/workflow_steps\/f39751de-2769-459e-8744-3405bff176df",
+            "targetStep": "\/api\/3\/workflow_steps\/8b372f84-e11b-4d05-a085-1997fb003108",
+            "sourceStep": "\/api\/3\/workflow_steps\/9b5f4dcc-9154-4a59-911d-4d4be7c12d08",
             "label": null,
             "isExecuted": false,
-            "uuid": "2412e9dc-3b1d-4afc-ad38-9bff9c6bfcce"
+            "uuid": "7e32eeda-b11c-404e-b336-1f23743eb41c"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Which SIEM -> Set Elastic hunt times",
-            "targetStep": "\/api\/3\/workflow_steps\/fd53e3e1-2e5e-4d90-9e32-667dc78b933f",
-            "sourceStep": "\/api\/3\/workflow_steps\/0fd12788-547b-483c-9d89-ba2e00605b39",
+            "targetStep": "\/api\/3\/workflow_steps\/863f728c-ee3d-4317-8a6e-205d50ab082e",
+            "sourceStep": "\/api\/3\/workflow_steps\/a3b36858-5c6f-4aa5-9a7e-0d2c907a323b",
             "label": "Elasticsearch",
             "isExecuted": false,
-            "uuid": "854ae3f4-7bc3-44c4-b945-8a9559920200"
+            "uuid": "c22c6eb8-77cb-4470-a510-2396391de5af"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Get Results for Sysmon CMSTP -> Create Splunk Alert",
-            "targetStep": "\/api\/3\/workflow_steps\/3feeca6d-f900-452b-ad5a-c7dffbfa09a6",
-            "sourceStep": "\/api\/3\/workflow_steps\/0bd78aeb-fc79-4b32-9ba5-340006a761f8",
+            "targetStep": "\/api\/3\/workflow_steps\/9435bed2-d1e5-460f-9f3e-6155d046a48a",
+            "sourceStep": "\/api\/3\/workflow_steps\/6d3cec44-b3ef-4e32-b8c7-c1229de4df5e",
             "label": null,
             "isExecuted": false,
-            "uuid": "a2e473f7-9c73-4c6d-9759-08d7ac0a7fdb"
+            "uuid": "3d3be40c-d629-43cc-83ef-f4da7ccb7b12"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Splunk query for Sysmon CMSTP -> Get Results for Sysmon CMSTP",
-            "targetStep": "\/api\/3\/workflow_steps\/0bd78aeb-fc79-4b32-9ba5-340006a761f8",
-            "sourceStep": "\/api\/3\/workflow_steps\/4044cac8-cf8f-4a67-afbe-fde27fb97fb0",
+            "targetStep": "\/api\/3\/workflow_steps\/6d3cec44-b3ef-4e32-b8c7-c1229de4df5e",
+            "sourceStep": "\/api\/3\/workflow_steps\/853074e8-2bf8-4f9d-9f7e-cd61c588440b",
             "label": null,
             "isExecuted": false,
-            "uuid": "20bfbc94-4f17-467d-bc8c-599eaf42da2b"
+            "uuid": "6523dc10-842a-47da-9d0d-fd5869be13a9"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Copy  of Splunk query for XSL Script Processing -> Copy  of Get Results for Sysmon",
-            "targetStep": "\/api\/3\/workflow_steps\/78c5d6c7-24b3-4922-82cd-9601e4e0d163",
-            "sourceStep": "\/api\/3\/workflow_steps\/57809ef9-3d9e-4258-80d4-e1d018e0bddc",
+            "targetStep": "\/api\/3\/workflow_steps\/1bc3a7eb-451f-4e03-b8b9-ba8a5af6da51",
+            "sourceStep": "\/api\/3\/workflow_steps\/76b9271c-fc4f-4277-a13a-487a114d6454",
             "label": null,
             "isExecuted": false,
-            "uuid": "8e08aa0b-a63c-41c1-80b4-1bcc809c9267"
+            "uuid": "c90355f5-5881-48a2-9fd9-a0c0662b3a4c"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Copy  of Create and Link Alert -> Deduplicate Comments",
-            "targetStep": "\/api\/3\/workflow_steps\/e0109eec-53a8-44fa-a669-b1ad834631f0",
-            "sourceStep": "\/api\/3\/workflow_steps\/19b976d8-071a-436f-aa2d-eedcb553420c",
+            "targetStep": "\/api\/3\/workflow_steps\/8b372f84-e11b-4d05-a085-1997fb003108",
+            "sourceStep": "\/api\/3\/workflow_steps\/307343b1-c1df-4e6d-9fdb-09907b6ee20b",
             "label": null,
             "isExecuted": false,
-            "uuid": "028f9a7c-3fd0-4942-85b1-495119732148"
+            "uuid": "833b0b17-e632-4b80-bd12-c0426fef8136"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Copy  of Get Results 3 -> Create and Link Child Process Alert",
-            "targetStep": "\/api\/3\/workflow_steps\/5fc481c0-ed17-4ba1-8cde-7b075ff8d5a3",
-            "sourceStep": "\/api\/3\/workflow_steps\/b3e6a6e4-a83c-40b1-b8cd-beeea5767a00",
+            "targetStep": "\/api\/3\/workflow_steps\/73ff2d81-caa5-4780-be41-89b452a50f91",
+            "sourceStep": "\/api\/3\/workflow_steps\/eee27830-ee4a-4502-9c09-96422ab236e2",
             "label": null,
             "isExecuted": false,
-            "uuid": "200a8949-c450-4131-9cc5-c168653eada0"
+            "uuid": "27ad60ca-e6f8-41b6-9b3f-35bea6bd8642"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Splunk query for Child Processes via  XSL Script Processing -> Copy  of Get Results 3",
-            "targetStep": "\/api\/3\/workflow_steps\/b3e6a6e4-a83c-40b1-b8cd-beeea5767a00",
-            "sourceStep": "\/api\/3\/workflow_steps\/9970e17e-0f0b-46da-a2f4-22d5b386ab78",
+            "targetStep": "\/api\/3\/workflow_steps\/eee27830-ee4a-4502-9c09-96422ab236e2",
+            "sourceStep": "\/api\/3\/workflow_steps\/f44511fb-02b7-4075-887c-29180eaabc46",
             "label": null,
             "isExecuted": false,
-            "uuid": "fc6cda05-a015-4459-8bca-59682bef5551"
+            "uuid": "10947133-bc14-44b0-98bd-1ecae9e842e4"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Set Elastic hunt times -> a",
-            "targetStep": "\/api\/3\/workflow_steps\/310bbe1e-e2d4-4251-bc9e-71f4a6c81fda",
-            "sourceStep": "\/api\/3\/workflow_steps\/fd53e3e1-2e5e-4d90-9e32-667dc78b933f",
+            "targetStep": "\/api\/3\/workflow_steps\/1eb8077c-1d8d-41c1-8168-6b253956847c",
+            "sourceStep": "\/api\/3\/workflow_steps\/863f728c-ee3d-4317-8a6e-205d50ab082e",
             "label": null,
             "isExecuted": false,
-            "uuid": "c3346757-62cd-44fc-9bf3-83e09a2c384c"
+            "uuid": "95451f6b-c292-4c56-bde6-dc485ab6b5f3"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Elastic query for MSXSL XSL Script Processing -> Copy  of Copy  of Create and Link WMIC Alert",
-            "targetStep": "\/api\/3\/workflow_steps\/f39751de-2769-459e-8744-3405bff176df",
-            "sourceStep": "\/api\/3\/workflow_steps\/310bbe1e-e2d4-4251-bc9e-71f4a6c81fda",
+            "targetStep": "\/api\/3\/workflow_steps\/9b5f4dcc-9154-4a59-911d-4d4be7c12d08",
+            "sourceStep": "\/api\/3\/workflow_steps\/1eb8077c-1d8d-41c1-8168-6b253956847c",
             "label": null,
             "isExecuted": false,
-            "uuid": "f073df90-4fd6-4353-a9db-010f4f5c2514"
+            "uuid": "004f8552-e992-4a62-a707-dd8c9699919c"
         }
     ],
     "priority": null,
     "uuid": "183aee4e-8440-4ce8-bb0b-de7bbd9adccd",
     "recordTags": [],
-    "id": 1191,
+    "id": 382,
     "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-    "createDate": 1633085065,
+    "createDate": 1640081944,
     "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-    "modifyDate": 1633085065,
+    "modifyDate": 1640081944,
     "owners": [],
     "isPrivate": false
 }
