@@ -18,12 +18,6 @@ You can setup the MITRE ATT&CK Solution Pack as follows:
 4. Setup modules to lookup MITRE ATT&amp;CK Tactics and Groups.
 5. Leverage Hunt Playbooks to look for specific tactics in your environment. Use cases and screenshots from some hunt playbooks are included in the *Use Case Workflow* section.
 
-### **Deploying the MITRE ATT&CK Framework Solution Pack**
-
-**Important**: Before you deploy the solution pack, ensure that you have deployed the FortiSOAR™ Incident Response Solution Pack ([solution-pack-incident-response](https://github.com/fortinet-fortisoar/solution-pack-incident-response)).
-
-The steps for deploying a solution pack are mentioned in the [Deploying a Solution Pack](https://github.com/fortinet-fortisoar/how-tos/blob/main/DeployingASolutionPack.md) article.
-
 ## Configuring the MITREATT&CK Solution Pack
 
 Once you have the MITRE ATT&CK Solution Pack deployed, do the following configurations:
