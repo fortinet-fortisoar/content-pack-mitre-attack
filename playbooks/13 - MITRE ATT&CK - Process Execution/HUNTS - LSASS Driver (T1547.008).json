@@ -5,7 +5,7 @@
     "aliasName": null,
     "tag": "ATT&CK, LSASS_Driver, Execution, Persistence",
     "description": "Identifies process execution via loading an illegitimate LSASS driver (DLL). This technique can be used to execute a binary whenever LSASS executes.",
-    "isActive": false,
+    "isActive": true,
     "debug": false,
     "singleRecordExecution": false,
     "remoteExecutableFlag": false,
@@ -23,10 +23,10 @@
         "sourcetool"
     ],
     "synchronous": false,
-    "lastModifyDate": 1633085062,
+    "lastModifyDate": 1640081936,
     "collection": "\/api\/3\/workflow_collections\/9ecc64e1-cacd-4aac-b361-ad1b44117b44",
     "versions": [],
-    "triggerStep": "\/api\/3\/workflow_steps\/8fd26452-ff9f-4694-8c49-fc2e34f19905",
+    "triggerStep": "\/api\/3\/workflow_steps\/66ca1129-d00e-47a1-8ddc-af8d8cdac3e0",
     "steps": [
         {
             "@type": "WorkflowStep",
@@ -43,8 +43,8 @@
             "top": "352",
             "left": "1820",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "1435d96e-5802-45e4-9297-2c7d07a5c2df",
-            "id": 4754
+            "uuid": "97d2c3ee-4403-44bf-93e6-d58c345c922e",
+            "id": 3005
         },
         {
             "@type": "WorkflowStep",
@@ -72,8 +72,8 @@
             "top": "288",
             "left": "1246",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "a56056d8-a2df-406f-9570-be46ce8e50fb",
-            "id": 4755
+            "uuid": "2bb6c1e1-acbb-4e18-8d36-7ca0a6b2b897",
+            "id": 3006
         },
         {
             "@type": "WorkflowStep",
@@ -101,8 +101,8 @@
             "top": "212",
             "left": "1247",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "f4d44fd0-b6da-4e05-8b58-4b563753742a",
-            "id": 4756
+            "uuid": "048bb16b-528c-4998-871e-1927648cd426",
+            "id": 3007
         },
         {
             "@type": "WorkflowStep",
@@ -116,8 +116,8 @@
             "top": "170",
             "left": "580",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "uuid": "ae1a83ab-1175-446b-b504-351da13a353e",
-            "id": 4757
+            "uuid": "fb3724f6-a9a8-43e3-8d4c-560b347b28cb",
+            "id": 3008
         },
         {
             "@type": "WorkflowStep",
@@ -145,8 +145,8 @@
             "top": "132",
             "left": "1248",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "1a9764f9-724b-4c7b-9e60-468d10b3f0b5",
-            "id": 4758
+            "uuid": "0a20b568-a8a5-4d44-a2e0-516874787415",
+            "id": 3009
         },
         {
             "@type": "WorkflowStep",
@@ -160,18 +160,19 @@
                     "query": "event_type:sysmon AND event_id:\"1\" AND @timestamp:{ {{vars.elasticHuntStart}} TO {{vars.elasticHuntEnd}} } AND image_path:*lsass.exe NOT image_path:C\\:\\\\Windows\\\\System32\\\\lsass.exe NOT image_path:C\\:\\\\Windows\\\\SysWOW64\\\\lsass.exe",
                     "run_as_user": ""
                 },
-                "version": "2.2.0",
+                "version": "2.2.1",
                 "connector": "elasticsearch",
                 "operation": "execute_lucene_query",
+                "mock_result": "{\n  \"data\": {\n    \"hits\": {\n      \"hits\": [],\n      \"total\": {\n        \"value\": 0,\n        \"relation\": \"eq\"\n      },\n      \"max_score\": null\n    },\n    \"took\": 520,\n    \"_shards\": {\n      \"total\": 95,\n      \"failed\": 0,\n      \"skipped\": 0,\n      \"successful\": 95\n    },\n    \"timed_out\": false\n  },\n  \"status\": \"Success\",\n  \"message\": \"\",\n  \"operation\": null\n}",
                 "operationTitle": "Execute Lucene Query",
                 "step_variables": []
             },
             "status": null,
             "top": "420",
-            "left": "973",
+            "left": "980",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "412ebe7f-8538-4972-86d8-7cfcbf5bfffa",
-            "id": 4759
+            "uuid": "274e18a2-3359-4082-a442-8be462fa2396",
+            "id": 3010
         },
         {
             "@type": "WorkflowStep",
@@ -228,8 +229,8 @@
             "top": "580",
             "left": "1520",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "cdf71ec6-ecf3-4a19-96c7-aba3d607c1fa",
-            "id": 4760
+            "uuid": "2ff0e771-7648-4e44-87bd-0687609481fb",
+            "id": 3011
         },
         {
             "@type": "WorkflowStep",
@@ -238,11 +239,11 @@
             "arguments": {
                 "conditions": [
                     {
-                        "step_iri": "\/api\/3\/workflow_steps\/ebc47f27-dfef-411e-8b98-f509e3b2699e",
+                        "step_iri": "\/api\/3\/workflow_steps\/7753fc84-4e0f-4c56-8dbf-3562f5687a4b",
                         "condition": "{{ vars.input.params.siem.itemValue == \"Elastic\" }}"
                     },
                     {
-                        "step_iri": "\/api\/3\/workflow_steps\/ae1a83ab-1175-446b-b504-351da13a353e",
+                        "step_iri": "\/api\/3\/workflow_steps\/fb3724f6-a9a8-43e3-8d4c-560b347b28cb",
                         "condition": "{{ vars.input.params.siem.itemValue == \"Splunk\" }}"
                     }
                 ]
@@ -251,8 +252,8 @@
             "top": "320",
             "left": "288",
             "stepType": "\/api\/3\/workflow_step_types\/12254cf5-5db7-4b1a-8cb1-3af081924b28",
-            "uuid": "2c4aaf41-ad97-4525-96ab-a3ac3a9424fc",
-            "id": 4761
+            "uuid": "5dae8dbf-baf2-496f-992e-a0b13f40d43a",
+            "id": 3012
         },
         {
             "@type": "WorkflowStep",
@@ -266,9 +267,10 @@
                     "query": "event_type:sysmon AND event_id:\"7\" AND @timestamp:{ {{vars.elasticHuntStart}} TO {{vars.elasticHuntEnd}} } AND (image_path:\"C:\\\\Windows\\\\System32\\\\lsass.exe\" OR image_path:\"C:\\\\Windows\\\\SysWOW64\\\\lsass.exe\") NOT event_data.ImageLoaded:C\\:\\\\Windows\\\\System32\\\\*  NOT event_data.ImageLoaded:C\\:\\\\Windows\\\\SysWOW64\\\\* NOT event_data.ImageLoaded:C\\:\\\\Program\\ Files\\\\* NOT event_data.ImageLoaded:C\\:\\\\Program\\ Files\\ \\(x86\\)\\\\*",
                     "run_as_user": ""
                 },
-                "version": "2.2.0",
+                "version": "2.2.1",
                 "connector": "elasticsearch",
                 "operation": "execute_lucene_query",
+                "mock_result": "{\n  \"data\": {\n    \"hits\": {\n      \"hits\": [],\n      \"total\": {\n        \"value\": 0,\n        \"relation\": \"eq\"\n      },\n      \"max_score\": null\n    },\n    \"took\": 520,\n    \"_shards\": {\n      \"total\": 95,\n      \"failed\": 0,\n      \"skipped\": 0,\n      \"successful\": 95\n    },\n    \"timed_out\": false\n  },\n  \"status\": \"Success\",\n  \"message\": \"\",\n  \"operation\": null\n}",
                 "operationTitle": "Execute Lucene Query",
                 "step_variables": []
             },
@@ -276,8 +278,8 @@
             "top": "580",
             "left": "973",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "c4587332-e967-466e-a06a-801f3fb5a8a6",
-            "id": 4762
+            "uuid": "1ea85894-6b65-40fe-95b3-2660928156f3",
+            "id": 3013
         },
         {
             "@type": "WorkflowStep",
@@ -334,8 +336,8 @@
             "top": "420",
             "left": "1520",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "3e42a7f8-5a3e-4357-85f9-d1abe824ff2c",
-            "id": 4763
+            "uuid": "61e6daa0-51ea-4550-89fd-371f2f320c3e",
+            "id": 3014
         },
         {
             "@type": "WorkflowStep",
@@ -428,7 +430,8 @@
                             "parentprocessname": "{{ vars.parentprocessname }}"
                         },
                         "records": "{{vars.input.records}}"
-                    }
+                    },
+                    "useMockOutput": "true"
                 },
                 "_promptexpanded": true,
                 "displayConditions": {
@@ -451,10 +454,10 @@
             },
             "status": null,
             "top": "320",
-            "left": "13",
+            "left": "20",
             "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-            "uuid": "8fd26452-ff9f-4694-8c49-fc2e34f19905",
-            "id": 4764
+            "uuid": "66ca1129-d00e-47a1-8ddc-af8d8cdac3e0",
+            "id": 3015
         },
         {
             "@type": "WorkflowStep",
@@ -481,8 +484,8 @@
             "top": "132",
             "left": "960",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "0794dd00-d023-4318-a505-e938614b976b",
-            "id": 4765
+            "uuid": "38230f98-e070-411c-91db-7c343383f7e4",
+            "id": 3016
         },
         {
             "@type": "WorkflowStep",
@@ -509,8 +512,8 @@
             "top": "213",
             "left": "960",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "786ee78a-efe9-4571-97a7-43f539c96058",
-            "id": 4766
+            "uuid": "6828519b-dd4e-4c09-9d7e-902df3aae009",
+            "id": 3017
         },
         {
             "@type": "WorkflowStep",
@@ -567,8 +570,8 @@
             "top": "500",
             "left": "1520",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "b56b1464-3744-43f8-8a9d-060306fc1935",
-            "id": 4767
+            "uuid": "013c195a-cc3f-496a-997f-e2a7d1ea9043",
+            "id": 3018
         },
         {
             "@type": "WorkflowStep",
@@ -625,8 +628,8 @@
             "top": "288",
             "left": "1527",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "290f40b2-8318-4a2d-838f-8a374732c2b7",
-            "id": 4768
+            "uuid": "44646486-2e6e-45ff-a738-208085b8ef13",
+            "id": 3019
         },
         {
             "@type": "WorkflowStep",
@@ -640,9 +643,10 @@
                     "query": "event_type:sysmon AND event_id:\"7\" AND @timestamp:{ {{vars.elasticHuntStart}} TO {{vars.elasticHuntEnd}} } AND image_path.keyword:*lsass.exe NOT image_path.keyword:C\\:\\\\Windows\\\\*ystem32\\\\* NOT image_path.keyword:C\\:\\\\Windows\\\\SysWOW64\\\\* NOT event_data.ImageLoaded.keyword:C\\:\\\\Windows\\\\*ystem32\\\\* NOT event_data.ImageLoaded:.keywordC\\:\\\\Windows\\\\SysWOW64\\\\* NOT event_data.ImageLoaded.keyword:C\\:\\\\Program\\ Files\\\\* NOT event_data.ImageLoaded.keyword:C\\:\\\\Program\\ Files\\ \\(x86\\)\\\\*",
                     "run_as_user": ""
                 },
-                "version": "2.2.0",
+                "version": "2.2.1",
                 "connector": "elasticsearch",
                 "operation": "execute_lucene_query",
+                "mock_result": "{\n  \"data\": {\n    \"hits\": {\n      \"hits\": [\n        {\n          \"_id\": \"Il1sdWsBlqecEBF3LUYC\",\n          \"_type\": \"doc\",\n          \"_index\": \"logstash-beats-lsassdriver\",\n          \"_score\": 3.287682,\n          \"_source\": {\n            \"beat\": {\n              \"name\": \"admin-PC4\",\n              \"version\": \"6.5.3\",\n              \"hostname\": \"admin-PC4\"\n            },\n            \"tags\": [\n              \"beat\",\n              \"beats_input_codec_plain_applied\"\n            ],\n            \"task\": \"Image loaded (rule: ImageLoad)\",\n            \"user\": {\n              \"name\": \"SYSTEM\",\n              \"type\": \"User\",\n              \"domain\": \"NT AUTHORITY\",\n              \"identifier\": \"S-1-5-18\"\n            },\n            \"level\": \"Information\",\n            \"opcode\": \"Info\",\n            \"message\": \"Image loaded:\\nRuleName: \\nUtcTime: 2019-06-20 15:05:52.933\\nProcessGuid: {D1BE7B41-0000-0000-0000-001067AA0501}\\nProcessId: 1888\\nImage: C:\\\\Users\\\\superman\\\\Desktop\\\\lsass.exe\\nImageLoaded: C:\\\\Users\\\\superman\\\\Desktop\\\\lsass.exe\\nFileVersion: 2.1.1.0\\nDescription: mimikatz for Windows\\nProduct: mimikatz\\nCompany: gentilkiwi (Benjamin DELPY)\\nOriginalFileName: mimikatz.exe\\nHashes: MD5=332A5371389A8953A96BF09B69EDCB6E,SHA256=E46BA4BDD4168A399EE5BC2161A8C918095FA30EB20AC88CAC6AB1D6DBEA2B4A\\nSigned: true\\nSignature: Open Source Developer, Benjamin Delpy\\nSignatureStatus: Valid\",\n            \"version\": 3,\n            \"@version\": \"1\",\n            \"event_id\": 7,\n            \"log_name\": \"Microsoft-Windows-Sysmon\/Operational\",\n            \"beat_host\": {\n              \"id\": \"d1be7b41-2fc5-49e3-9ff1-ec91443d27c3\",\n              \"os\": {\n                \"build\": \"7601.0\",\n                \"family\": \"windows\",\n                \"version\": \"6.1\",\n                \"platform\": \"windows\"\n              },\n              \"name\": \"admin-PC4\",\n              \"architecture\": \"x86_64\"\n            },\n            \"thread_id\": 2116,\n            \"@timestamp\": \"2019-06-20T15:05:52.995Z\",\n            \"event_data\": {\n              \"Hashes\": \"MD5=332A5371389A8953A96BF09B69EDCB6E,SHA256=E46BA4BDD4168A399EE5BC2161A8C918095FA30EB20AC88CAC6AB1D6DBEA2B4A\",\n              \"Signed\": \"true\",\n              \"Company\": \"gentilkiwi (Benjamin DELPY)\",\n              \"Product\": \"mimikatz\",\n              \"UtcTime\": \"2019-06-20 15:05:52.933\",\n              \"ProcessId\": \"1888\",\n              \"Signature\": \"Open Source Developer, Benjamin Delpy\",\n              \"Description\": \"mimikatz for Windows\",\n              \"FileVersion\": \"2.1.1.0\",\n              \"ImageLoaded\": \"C:\\\\Users\\\\superman\\\\Desktop\\\\lsass.exe\",\n              \"ProcessGuid\": \"{D1BE7B41-0000-0000-0000-001067AA0501}\",\n              \"SignatureStatus\": \"Valid\",\n              \"OriginalFileName\": \"mimikatz.exe\"\n            },\n            \"event_type\": \"sysmon\",\n            \"image_path\": \"C:\\\\Users\\\\superman\\\\Desktop\\\\lsass.exe\",\n            \"process_id\": 1408,\n            \"source_name\": \"Microsoft-Windows-Sysmon\",\n            \"computer_name\": \"admin-PC4.batman.local\",\n            \"logstash_time\": 0.0015377998352050781,\n            \"provider_guid\": \"{5770385F-C22A-43E0-BF4C-06F5698FFBD9}\",\n            \"record_number\": \"402038\"\n          }\n        }\n      ],\n      \"total\": {\n        \"value\": 1,\n        \"relation\": \"eq\"\n      },\n      \"max_score\": 3.287682\n    },\n    \"took\": 428,\n    \"_shards\": {\n      \"total\": 95,\n      \"failed\": 0,\n      \"skipped\": 0,\n      \"successful\": 95\n    },\n    \"timed_out\": false\n  },\n  \"status\": \"Success\",\n  \"message\": \"\",\n  \"operation\": null\n}",
                 "operationTitle": "Execute Lucene Query",
                 "step_variables": []
             },
@@ -650,8 +654,8 @@
             "top": "500",
             "left": "973",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "fa92b222-56ea-44ea-b990-30db0584d80b",
-            "id": 4769
+            "uuid": "8702ccb8-31a4-4018-9c93-84f4210ead2f",
+            "id": 3020
         },
         {
             "@type": "WorkflowStep",
@@ -665,8 +669,8 @@
             "top": "500",
             "left": "580",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "uuid": "ebc47f27-dfef-411e-8b98-f509e3b2699e",
-            "id": 4770
+            "uuid": "7753fc84-4e0f-4c56-8dbf-3562f5687a4b",
+            "id": 3021
         },
         {
             "@type": "WorkflowStep",
@@ -723,8 +727,8 @@
             "top": "211",
             "left": "1528",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "7b090d4c-739c-4ddf-a5cc-258615042fa2",
-            "id": 4771
+            "uuid": "bb595cce-aaa3-407c-95ef-8b3c129edf6f",
+            "id": 3022
         },
         {
             "@type": "WorkflowStep",
@@ -751,8 +755,8 @@
             "top": "289",
             "left": "960",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "cda69215-9bc9-4b20-b111-c6e1d68ccc6a",
-            "id": 4772
+            "uuid": "79b70621-6a9c-4d9d-bfb0-c9af3186fdff",
+            "id": 3023
         },
         {
             "@type": "WorkflowStep",
@@ -809,236 +813,236 @@
             "top": "129",
             "left": "1528",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "4be8d38b-533c-4325-a49d-25f26419e1c9",
-            "id": 4773
+            "uuid": "cc6579e6-8702-4836-a3a3-6439813fe255",
+            "id": 3024
         }
     ],
     "routes": [
         {
             "@type": "WorkflowRoute",
             "name": "Set Elastic hunt times -> Copy  of Copy  of a",
-            "targetStep": "\/api\/3\/workflow_steps\/c4587332-e967-466e-a06a-801f3fb5a8a6",
-            "sourceStep": "\/api\/3\/workflow_steps\/ebc47f27-dfef-411e-8b98-f509e3b2699e",
+            "targetStep": "\/api\/3\/workflow_steps\/1ea85894-6b65-40fe-95b3-2660928156f3",
+            "sourceStep": "\/api\/3\/workflow_steps\/7753fc84-4e0f-4c56-8dbf-3562f5687a4b",
             "label": null,
             "isExecuted": false,
-            "uuid": "3f2cff69-a156-4ed9-9c04-d814aa815661"
+            "uuid": "c3689f89-0dc9-43ab-9a37-6564f6fb1e2e"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Which SIEM -> Set Elastic hunt times",
-            "targetStep": "\/api\/3\/workflow_steps\/ebc47f27-dfef-411e-8b98-f509e3b2699e",
-            "sourceStep": "\/api\/3\/workflow_steps\/2c4aaf41-ad97-4525-96ab-a3ac3a9424fc",
+            "targetStep": "\/api\/3\/workflow_steps\/7753fc84-4e0f-4c56-8dbf-3562f5687a4b",
+            "sourceStep": "\/api\/3\/workflow_steps\/5dae8dbf-baf2-496f-992e-a0b13f40d43a",
             "label": null,
             "isExecuted": false,
-            "uuid": "d4b51768-3d9f-408d-9bc1-9e6a6faf5387"
+            "uuid": "71c547f9-46ec-4aab-b079-531d47d7620f"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Set Splunk hunt times -> Splunk query for illegitimate DLL load",
-            "targetStep": "\/api\/3\/workflow_steps\/cda69215-9bc9-4b20-b111-c6e1d68ccc6a",
-            "sourceStep": "\/api\/3\/workflow_steps\/ae1a83ab-1175-446b-b504-351da13a353e",
+            "targetStep": "\/api\/3\/workflow_steps\/79b70621-6a9c-4d9d-bfb0-c9af3186fdff",
+            "sourceStep": "\/api\/3\/workflow_steps\/fb3724f6-a9a8-43e3-8d4c-560b347b28cb",
             "label": null,
             "isExecuted": false,
-            "uuid": "e99b1043-9f64-4c39-9369-c36ad7d340b3"
+            "uuid": "49fc8f1d-378f-4f5a-816d-f46c508f1521"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Elastic query for illegitimate DLL load -> Copy  of Copy  of Create and Link Elastic Alert 3",
-            "targetStep": "\/api\/3\/workflow_steps\/cdf71ec6-ecf3-4a19-96c7-aba3d607c1fa",
-            "sourceStep": "\/api\/3\/workflow_steps\/c4587332-e967-466e-a06a-801f3fb5a8a6",
+            "targetStep": "\/api\/3\/workflow_steps\/2ff0e771-7648-4e44-87bd-0687609481fb",
+            "sourceStep": "\/api\/3\/workflow_steps\/1ea85894-6b65-40fe-95b3-2660928156f3",
             "label": null,
             "isExecuted": false,
-            "uuid": "233fabba-0b8b-4d70-bc6d-7ef280a40fe7"
+            "uuid": "f8ee4436-1b6a-4843-8e57-d137dd3e687b"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Create and Link Alert 3 -> Deduplicate Comments",
-            "targetStep": "\/api\/3\/workflow_steps\/1435d96e-5802-45e4-9297-2c7d07a5c2df",
-            "sourceStep": "\/api\/3\/workflow_steps\/4be8d38b-533c-4325-a49d-25f26419e1c9",
+            "targetStep": "\/api\/3\/workflow_steps\/97d2c3ee-4403-44bf-93e6-d58c345c922e",
+            "sourceStep": "\/api\/3\/workflow_steps\/cc6579e6-8702-4836-a3a3-6439813fe255",
             "label": null,
             "isExecuted": false,
-            "uuid": "4f467b7f-cd3c-44e1-984d-c02c3dcf3038"
+            "uuid": "cd48aac6-4b2f-4e9a-8fd8-fd50f7b91d7e"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Elastic query for DLL load from illegitimate LSASS -> Copy  of Create and Link Elastic Alert 3",
-            "targetStep": "\/api\/3\/workflow_steps\/b56b1464-3744-43f8-8a9d-060306fc1935",
-            "sourceStep": "\/api\/3\/workflow_steps\/fa92b222-56ea-44ea-b990-30db0584d80b",
+            "targetStep": "\/api\/3\/workflow_steps\/013c195a-cc3f-496a-997f-e2a7d1ea9043",
+            "sourceStep": "\/api\/3\/workflow_steps\/8702ccb8-31a4-4018-9c93-84f4210ead2f",
             "label": null,
             "isExecuted": false,
-            "uuid": "b912985b-9589-4a00-a11a-154f80d6ae81"
+            "uuid": "1110ec4e-d6e9-4025-8318-d84bf498eb4a"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Get Results for Sysmon Regsvr32 DLL Load -> Copy  of Create Splunk Alert",
-            "targetStep": "\/api\/3\/workflow_steps\/7b090d4c-739c-4ddf-a5cc-258615042fa2",
-            "sourceStep": "\/api\/3\/workflow_steps\/f4d44fd0-b6da-4e05-8b58-4b563753742a",
+            "targetStep": "\/api\/3\/workflow_steps\/bb595cce-aaa3-407c-95ef-8b3c129edf6f",
+            "sourceStep": "\/api\/3\/workflow_steps\/048bb16b-528c-4998-871e-1927648cd426",
             "label": null,
             "isExecuted": false,
-            "uuid": "23a5f1cc-1430-4100-8f35-ce4e2ad3f09e"
+            "uuid": "28330a86-5498-411e-b1c9-605ddb60ff6d"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Create and Link Elastic Alert 3 -> Deduplicate Comments",
-            "targetStep": "\/api\/3\/workflow_steps\/1435d96e-5802-45e4-9297-2c7d07a5c2df",
-            "sourceStep": "\/api\/3\/workflow_steps\/3e42a7f8-5a3e-4357-85f9-d1abe824ff2c",
+            "targetStep": "\/api\/3\/workflow_steps\/97d2c3ee-4403-44bf-93e6-d58c345c922e",
+            "sourceStep": "\/api\/3\/workflow_steps\/61e6daa0-51ea-4550-89fd-371f2f320c3e",
             "label": null,
             "isExecuted": false,
-            "uuid": "668d598d-0545-405c-8940-be6c93e35406"
+            "uuid": "18bb4493-7941-431c-8e81-cc4c751a8cab"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Copy  of Create and Link Elastic Alert 3 -> Deduplicate Comments",
-            "targetStep": "\/api\/3\/workflow_steps\/1435d96e-5802-45e4-9297-2c7d07a5c2df",
-            "sourceStep": "\/api\/3\/workflow_steps\/b56b1464-3744-43f8-8a9d-060306fc1935",
+            "targetStep": "\/api\/3\/workflow_steps\/97d2c3ee-4403-44bf-93e6-d58c345c922e",
+            "sourceStep": "\/api\/3\/workflow_steps\/013c195a-cc3f-496a-997f-e2a7d1ea9043",
             "label": null,
             "isExecuted": false,
-            "uuid": "00905ad4-d956-44dc-b883-37cfbd57dfec"
+            "uuid": "eba4c474-b166-49c6-aa27-1a5b715d100a"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Splunk query for Regsvr32 DLL Load -> Copy  of Get Results for Sysmon Regsvr32 Child",
-            "targetStep": "\/api\/3\/workflow_steps\/f4d44fd0-b6da-4e05-8b58-4b563753742a",
-            "sourceStep": "\/api\/3\/workflow_steps\/786ee78a-efe9-4571-97a7-43f539c96058",
+            "targetStep": "\/api\/3\/workflow_steps\/048bb16b-528c-4998-871e-1927648cd426",
+            "sourceStep": "\/api\/3\/workflow_steps\/6828519b-dd4e-4c09-9d7e-902df3aae009",
             "label": null,
             "isExecuted": false,
-            "uuid": "5e503c1a-45ad-4f1f-9f29-b4c3bab2e112"
+            "uuid": "282385cc-c965-415b-92a5-1080143153ed"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Copy  of Copy  of Create and Link Elastic Alert 3 -> Deduplicate Comments",
-            "targetStep": "\/api\/3\/workflow_steps\/1435d96e-5802-45e4-9297-2c7d07a5c2df",
-            "sourceStep": "\/api\/3\/workflow_steps\/cdf71ec6-ecf3-4a19-96c7-aba3d607c1fa",
+            "targetStep": "\/api\/3\/workflow_steps\/97d2c3ee-4403-44bf-93e6-d58c345c922e",
+            "sourceStep": "\/api\/3\/workflow_steps\/2ff0e771-7648-4e44-87bd-0687609481fb",
             "label": null,
             "isExecuted": false,
-            "uuid": "e0849293-5af4-41a9-aa6b-f0855f192ff9"
+            "uuid": "8fa710b1-8e2b-4f11-9ad5-3d95a955d198"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Hunt for LSASS Driver -> Which SIEM",
-            "targetStep": "\/api\/3\/workflow_steps\/2c4aaf41-ad97-4525-96ab-a3ac3a9424fc",
-            "sourceStep": "\/api\/3\/workflow_steps\/8fd26452-ff9f-4694-8c49-fc2e34f19905",
+            "targetStep": "\/api\/3\/workflow_steps\/5dae8dbf-baf2-496f-992e-a0b13f40d43a",
+            "sourceStep": "\/api\/3\/workflow_steps\/66ca1129-d00e-47a1-8ddc-af8d8cdac3e0",
             "label": null,
             "isExecuted": false,
-            "uuid": "196f4181-b445-4923-8259-d6fd0bd00e67"
+            "uuid": "5c13b44a-c53f-4342-a783-c4c78a46a8a8"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Create and Link Alert 2 -> Deduplicate Comments",
-            "targetStep": "\/api\/3\/workflow_steps\/1435d96e-5802-45e4-9297-2c7d07a5c2df",
-            "sourceStep": "\/api\/3\/workflow_steps\/7b090d4c-739c-4ddf-a5cc-258615042fa2",
+            "targetStep": "\/api\/3\/workflow_steps\/97d2c3ee-4403-44bf-93e6-d58c345c922e",
+            "sourceStep": "\/api\/3\/workflow_steps\/bb595cce-aaa3-407c-95ef-8b3c129edf6f",
             "label": null,
             "isExecuted": false,
-            "uuid": "cbf78eb3-ed02-480c-95c4-41056a096da9"
+            "uuid": "8718effd-5478-4223-bdef-75d0cbe181e8"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Set Elastic hunt times -> a",
-            "targetStep": "\/api\/3\/workflow_steps\/412ebe7f-8538-4972-86d8-7cfcbf5bfffa",
-            "sourceStep": "\/api\/3\/workflow_steps\/ebc47f27-dfef-411e-8b98-f509e3b2699e",
+            "targetStep": "\/api\/3\/workflow_steps\/274e18a2-3359-4082-a442-8be462fa2396",
+            "sourceStep": "\/api\/3\/workflow_steps\/7753fc84-4e0f-4c56-8dbf-3562f5687a4b",
             "label": null,
             "isExecuted": false,
-            "uuid": "bd51a202-dd6e-476a-9fb8-3445dee19414"
+            "uuid": "f51bd614-8621-4199-9494-dcd9f2683889"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Splunk query for illegitimate LSASS -> Copy  of Get Results 2",
-            "targetStep": "\/api\/3\/workflow_steps\/1a9764f9-724b-4c7b-9e60-468d10b3f0b5",
-            "sourceStep": "\/api\/3\/workflow_steps\/0794dd00-d023-4318-a505-e938614b976b",
+            "targetStep": "\/api\/3\/workflow_steps\/0a20b568-a8a5-4d44-a2e0-516874787415",
+            "sourceStep": "\/api\/3\/workflow_steps\/38230f98-e070-411c-91db-7c343383f7e4",
             "label": null,
             "isExecuted": false,
-            "uuid": "e7b03bc3-890c-4ebc-beed-ffa6b41b2d75"
+            "uuid": "f7b8b6cf-fbb8-4efb-b721-3894d1cf9757"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Which SIEM -> Set Splunk hunt times",
-            "targetStep": "\/api\/3\/workflow_steps\/ae1a83ab-1175-446b-b504-351da13a353e",
-            "sourceStep": "\/api\/3\/workflow_steps\/2c4aaf41-ad97-4525-96ab-a3ac3a9424fc",
+            "targetStep": "\/api\/3\/workflow_steps\/fb3724f6-a9a8-43e3-8d4c-560b347b28cb",
+            "sourceStep": "\/api\/3\/workflow_steps\/5dae8dbf-baf2-496f-992e-a0b13f40d43a",
             "label": null,
             "isExecuted": false,
-            "uuid": "89904a9c-6483-4034-a69a-98b6199abe64"
+            "uuid": "025e9785-4489-4fbe-a044-7a194e0b6017"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Set Elastic hunt times -> Copy  of a",
-            "targetStep": "\/api\/3\/workflow_steps\/fa92b222-56ea-44ea-b990-30db0584d80b",
-            "sourceStep": "\/api\/3\/workflow_steps\/ebc47f27-dfef-411e-8b98-f509e3b2699e",
+            "targetStep": "\/api\/3\/workflow_steps\/8702ccb8-31a4-4018-9c93-84f4210ead2f",
+            "sourceStep": "\/api\/3\/workflow_steps\/7753fc84-4e0f-4c56-8dbf-3562f5687a4b",
             "label": null,
             "isExecuted": false,
-            "uuid": "225f4e7f-9976-4e9e-824a-9ea69ceafaff"
+            "uuid": "25afd65d-00b5-443d-bf30-4470f362f8f6"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Splunk query for Sysmon CMSTP -> Get Results for Sysmon CMSTP",
-            "targetStep": "\/api\/3\/workflow_steps\/a56056d8-a2df-406f-9570-be46ce8e50fb",
-            "sourceStep": "\/api\/3\/workflow_steps\/cda69215-9bc9-4b20-b111-c6e1d68ccc6a",
+            "targetStep": "\/api\/3\/workflow_steps\/2bb6c1e1-acbb-4e18-8d36-7ca0a6b2b897",
+            "sourceStep": "\/api\/3\/workflow_steps\/79b70621-6a9c-4d9d-bfb0-c9af3186fdff",
             "label": null,
             "isExecuted": false,
-            "uuid": "2a719755-dbe9-45fa-b151-a57d4ab73352"
+            "uuid": "ffa7be53-2b94-4389-bfd2-6fb60801f89e"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Get Results for Sysmon Regsvr32 Child -> Create Splunk Alert",
-            "targetStep": "\/api\/3\/workflow_steps\/290f40b2-8318-4a2d-838f-8a374732c2b7",
-            "sourceStep": "\/api\/3\/workflow_steps\/a56056d8-a2df-406f-9570-be46ce8e50fb",
+            "targetStep": "\/api\/3\/workflow_steps\/44646486-2e6e-45ff-a738-208085b8ef13",
+            "sourceStep": "\/api\/3\/workflow_steps\/2bb6c1e1-acbb-4e18-8d36-7ca0a6b2b897",
             "label": null,
             "isExecuted": false,
-            "uuid": "5b3a4990-abc3-46a7-b9a4-2a977922e301"
+            "uuid": "ba5a1d2b-0f42-4b53-8ab1-89c54e91654b"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Elastic query for illegitimate LSASS -> Copy 1 of Create and Link Alert 3",
-            "targetStep": "\/api\/3\/workflow_steps\/3e42a7f8-5a3e-4357-85f9-d1abe824ff2c",
-            "sourceStep": "\/api\/3\/workflow_steps\/412ebe7f-8538-4972-86d8-7cfcbf5bfffa",
+            "targetStep": "\/api\/3\/workflow_steps\/61e6daa0-51ea-4550-89fd-371f2f320c3e",
+            "sourceStep": "\/api\/3\/workflow_steps\/274e18a2-3359-4082-a442-8be462fa2396",
             "label": null,
             "isExecuted": false,
-            "uuid": "139bfa5d-ec62-485d-ac72-f3c89e3ac566"
+            "uuid": "f1869857-a35d-4d92-af27-b9284b7666d5"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Set Splunk hunt times -> Splunk query for illegitimate LSASS",
-            "targetStep": "\/api\/3\/workflow_steps\/0794dd00-d023-4318-a505-e938614b976b",
-            "sourceStep": "\/api\/3\/workflow_steps\/ae1a83ab-1175-446b-b504-351da13a353e",
+            "targetStep": "\/api\/3\/workflow_steps\/38230f98-e070-411c-91db-7c343383f7e4",
+            "sourceStep": "\/api\/3\/workflow_steps\/fb3724f6-a9a8-43e3-8d4c-560b347b28cb",
             "label": null,
             "isExecuted": false,
-            "uuid": "805c3d8a-921e-415d-8f69-a4f19d6002fc"
+            "uuid": "bcab0949-b2c2-4cb5-84f5-e52ae7f0b1a7"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Set Splunk hunt times -> Splunk query for DLL load from illegitimate LSASS",
-            "targetStep": "\/api\/3\/workflow_steps\/786ee78a-efe9-4571-97a7-43f539c96058",
-            "sourceStep": "\/api\/3\/workflow_steps\/ae1a83ab-1175-446b-b504-351da13a353e",
+            "targetStep": "\/api\/3\/workflow_steps\/6828519b-dd4e-4c09-9d7e-902df3aae009",
+            "sourceStep": "\/api\/3\/workflow_steps\/fb3724f6-a9a8-43e3-8d4c-560b347b28cb",
             "label": null,
             "isExecuted": false,
-            "uuid": "4e059a91-a834-41eb-9f4f-c41753dc556a"
+            "uuid": "4922a0c4-6806-4eeb-961e-149b4b20296c"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Copy  of Get Results 3 -> Copy  of Copy  of Create Splunk Alert",
-            "targetStep": "\/api\/3\/workflow_steps\/4be8d38b-533c-4325-a49d-25f26419e1c9",
-            "sourceStep": "\/api\/3\/workflow_steps\/1a9764f9-724b-4c7b-9e60-468d10b3f0b5",
+            "targetStep": "\/api\/3\/workflow_steps\/cc6579e6-8702-4836-a3a3-6439813fe255",
+            "sourceStep": "\/api\/3\/workflow_steps\/0a20b568-a8a5-4d44-a2e0-516874787415",
             "label": null,
             "isExecuted": false,
-            "uuid": "07a86ac2-f317-40b4-9aec-1de4852a5188"
+            "uuid": "a7ea97e1-ebee-445d-b02c-d9c958406c5d"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Create and Link Alert 1 -> Deduplicate Comments",
-            "targetStep": "\/api\/3\/workflow_steps\/1435d96e-5802-45e4-9297-2c7d07a5c2df",
-            "sourceStep": "\/api\/3\/workflow_steps\/290f40b2-8318-4a2d-838f-8a374732c2b7",
+            "targetStep": "\/api\/3\/workflow_steps\/97d2c3ee-4403-44bf-93e6-d58c345c922e",
+            "sourceStep": "\/api\/3\/workflow_steps\/44646486-2e6e-45ff-a738-208085b8ef13",
             "label": null,
             "isExecuted": false,
-            "uuid": "a59c077e-04a9-4d53-b587-c92dcb1381ef"
+            "uuid": "16b52528-6eaf-4ac5-97b1-5dfbc39eee8f"
         }
     ],
     "priority": null,
     "uuid": "583e8a71-535b-4566-a16e-026722755190",
     "recordTags": [],
-    "id": 1193,
+    "id": 381,
     "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-    "createDate": 1633085065,
+    "createDate": 1640081943,
     "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-    "modifyDate": 1633085065,
+    "modifyDate": 1640081943,
     "owners": [],
     "isPrivate": false
 }

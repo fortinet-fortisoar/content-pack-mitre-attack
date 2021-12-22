@@ -5,16 +5,16 @@
     "aliasName": null,
     "tag": "ATT&CK, Persistence, Winlogon_Helper_DLL",
     "description": "Hunts for abnormal DLL loads and processes spawned by Winlogon",
-    "isActive": false,
+    "isActive": true,
     "debug": false,
     "singleRecordExecution": false,
     "remoteExecutableFlag": false,
     "parameters": [],
     "synchronous": false,
-    "lastModifyDate": 1633085062,
+    "lastModifyDate": 1640081936,
     "collection": "\/api\/3\/workflow_collections\/681d6397-fbd4-4929-bb55-202c131d3383",
     "versions": [],
-    "triggerStep": "\/api\/3\/workflow_steps\/265a8018-e49b-4312-95c5-f8c6753a4d48",
+    "triggerStep": "\/api\/3\/workflow_steps\/339e2d1a-5bd9-45d8-831f-902983b283b6",
     "steps": [
         {
             "@type": "WorkflowStep",
@@ -31,8 +31,8 @@
             "top": "271",
             "left": "1810",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "69e269a0-d9bf-4f16-913f-ee7c4b099163",
-            "id": 4482
+            "uuid": "7242b9d5-f519-4973-a988-8038deb8efb3",
+            "id": 2729
         },
         {
             "@type": "WorkflowStep",
@@ -60,8 +60,8 @@
             "top": "220",
             "left": "1240",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "82f5150d-682a-4395-b206-41b7a667e9f4",
-            "id": 4483
+            "uuid": "bc52359d-33f6-4985-9330-e7a7fd0fb1a3",
+            "id": 2730
         },
         {
             "@type": "WorkflowStep",
@@ -143,7 +143,8 @@
                             "siem": "{{vars.request.data[\"siem\"]}}"
                         },
                         "records": "{{vars.input.records}}"
-                    }
+                    },
+                    "useMockOutput": "true"
                 },
                 "_promptexpanded": true,
                 "displayConditions": {
@@ -162,8 +163,8 @@
             "top": "368",
             "left": "9",
             "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-            "uuid": "265a8018-e49b-4312-95c5-f8c6753a4d48",
-            "id": 4484
+            "uuid": "339e2d1a-5bd9-45d8-831f-902983b283b6",
+            "id": 2731
         },
         {
             "@type": "WorkflowStep",
@@ -177,8 +178,8 @@
             "top": "270",
             "left": "668",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "uuid": "6f053422-f607-495d-9353-7d62996b5758",
-            "id": 4485
+            "uuid": "1385bb62-4f40-4073-948b-ef5f9b145d2c",
+            "id": 2732
         },
         {
             "@type": "WorkflowStep",
@@ -192,8 +193,8 @@
             "top": "460",
             "left": "666",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "uuid": "551f1736-874a-4671-b6d2-ab5f0d74ca30",
-            "id": 4486
+            "uuid": "99c30daa-6fa8-4f38-8a86-cbad9a2567b3",
+            "id": 2733
         },
         {
             "@type": "WorkflowStep",
@@ -220,8 +221,8 @@
             "top": "220",
             "left": "960",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "fe7a586a-3342-428f-8c5b-ac5b00d96a9c",
-            "id": 4487
+            "uuid": "b34e3393-4453-419a-8943-130170491269",
+            "id": 2734
         },
         {
             "@type": "WorkflowStep",
@@ -235,9 +236,10 @@
                     "query": "event_type:sysmon AND event_id:1 AND @timestamp:{ {{vars.elasticHuntStart}} TO {{vars.elasticHuntEnd}} } AND  parent_image_path:\"C:\\\\Windows\\\\System32\\\\winlogon.exe\" NOT (image_path:\"C:\\\\Windows\\\\System32\\\\*\" OR image_path:\"C:\\\\Windows\\\\SysWOW64\\\\*\")",
                     "run_as_user": ""
                 },
-                "version": "2.2.0",
+                "version": "2.2.1",
                 "connector": "elasticsearch",
                 "operation": "execute_lucene_query",
+                "mock_result": "{\n  \"data\": {\n    \"hits\": {\n      \"hits\": [\n        {\n          \"_id\": \"5bQvr2sBt8nuALoCXeGH\",\n          \"_type\": \"doc\",\n          \"_index\": \"logstash-beats-winlogon_helper_dll\",\n          \"_score\": 3.33305,\n          \"_source\": {\n            \"beat\": {\n              \"name\": \"admin-PC2\",\n              \"version\": \"6.5.3\",\n              \"hostname\": \"admin-PC2\"\n            },\n            \"tags\": [\n              \"beat\",\n              \"beats_input_codec_plain_applied\"\n            ],\n            \"task\": \"Process Create (rule: ProcessCreate)\",\n            \"user\": {\n              \"name\": \"SYSTEM\",\n              \"type\": \"User\",\n              \"domain\": \"NT AUTHORITY\",\n              \"identifier\": \"S-1-5-18\"\n            },\n            \"level\": \"Information\",\n            \"opcode\": \"Info\",\n            \"message\": \"Process Create:\\nRuleName: \\nUtcTime: 2019-07-01 21:17:03.290\\nProcessGuid: {BAECEEB0-784F-5D1A-0000-001012210E00}\\nProcessId: 4080\\nImage: C:\\\\MaybeNotACredentialDumper.EXE\\nFileVersion: 2.1.1.0\\nDescription: mimikatz for Windows\\nProduct: mimikatz\\nCompany: gentilkiwi (Benjamin DELPY)\\nCommandLine: C:\\\\MaybeNotACredentialDumper.EXE\\nCurrentDirectory: C:\\\\Windows\\\\system32\\\\\\nUser: batman\\\\superman\\nLogonGuid: {BAECEEB0-784A-5D1A-0000-0020BA5C0D00}\\nLogonId: 0xd5cba\\nTerminalSessionId: 1\\nIntegrityLevel: High\\nHashes: MD5=DEADCCFD2D69CABA26F25AD3BEC116F3,SHA256=0B74785154B6A83D9C742A33CCAF81517B81D862A7FA21A4719A55C298CDA86A\\nParentProcessGuid: {BAECEEB0-779B-5D1A-0000-00100AAF0000}\\nParentProcessId: 468\\nParentImage: C:\\\\Windows\\\\System32\\\\winlogon.exe\\nParentCommandLine: winlogon.exe\",\n            \"version\": 5,\n            \"@version\": \"1\",\n            \"event_id\": 1,\n            \"log_name\": \"Microsoft-Windows-Sysmon\/Operational\",\n            \"username\": \"batman\\\\superman\",\n            \"beat_host\": {\n              \"id\": \"baeceeb0-040c-498f-84c9-610d57bc902d\",\n              \"os\": {\n                \"build\": \"7601.0\",\n                \"family\": \"windows\",\n                \"version\": \"6.1\",\n                \"platform\": \"windows\"\n              },\n              \"name\": \"admin-PC2\",\n              \"architecture\": \"x86_64\"\n            },\n            \"thread_id\": 1816,\n            \"@timestamp\": \"2019-07-01T21:17:03.360Z\",\n            \"event_data\": {\n              \"Hashes\": \"MD5=DEADCCFD2D69CABA26F25AD3BEC116F3,SHA256=0B74785154B6A83D9C742A33CCAF81517B81D862A7FA21A4719A55C298CDA86A\",\n              \"Company\": \"gentilkiwi (Benjamin DELPY)\",\n              \"LogonId\": \"0xd5cba\",\n              \"Product\": \"mimikatz\",\n              \"UtcTime\": \"2019-07-01 21:17:03.290\",\n              \"LogonGuid\": \"{BAECEEB0-784A-5D1A-0000-0020BA5C0D00}\",\n              \"ProcessId\": \"4080\",\n              \"CommandLine\": \"C:\\\\MaybeNotACredentialDumper.EXE\",\n              \"Description\": \"mimikatz for Windows\",\n              \"FileVersion\": \"2.1.1.0\",\n              \"ProcessGuid\": \"{BAECEEB0-784F-5D1A-0000-001012210E00}\",\n              \"IntegrityLevel\": \"High\",\n              \"ParentProcessId\": \"468\",\n              \"CurrentDirectory\": \"C:\\\\Windows\\\\system32\\\\\",\n              \"ParentCommandLine\": \"winlogon.exe\",\n              \"ParentProcessGuid\": \"{BAECEEB0-779B-5D1A-0000-00100AAF0000}\",\n              \"TerminalSessionId\": \"1\"\n            },\n            \"event_type\": \"sysmon\",\n            \"image_path\": \"C:\\\\MaybeNotACredentialDumper.EXE\",\n            \"process_id\": 1460,\n            \"source_name\": \"Microsoft-Windows-Sysmon\",\n            \"computer_name\": \"admin-PC2.batman.local\",\n            \"logstash_time\": 0.004251003265380859,\n            \"provider_guid\": \"{5770385F-C22A-43E0-BF4C-06F5698FFBD9}\",\n            \"record_number\": \"187156\",\n            \"parent_image_path\": \"C:\\\\Windows\\\\System32\\\\winlogon.exe\"\n          }\n        }\n      ],\n      \"total\": {\n        \"value\": 1,\n        \"relation\": \"eq\"\n      },\n      \"max_score\": 3.33305\n    },\n    \"took\": 62,\n    \"_shards\": {\n      \"total\": 95,\n      \"failed\": 0,\n      \"skipped\": 0,\n      \"successful\": 95\n    },\n    \"timed_out\": false\n  },\n  \"status\": \"Success\",\n  \"message\": \"\",\n  \"operation\": null\n}",
                 "operationTitle": "Execute Lucene Query",
                 "step_variables": []
             },
@@ -245,8 +247,8 @@
             "top": "509",
             "left": "960",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "efdfe903-0883-433d-86bd-53dfb1a0706e",
-            "id": 4488
+            "uuid": "0e82adeb-7d6c-4122-bd87-68e6f3826ec1",
+            "id": 2735
         },
         {
             "@type": "WorkflowStep",
@@ -273,8 +275,8 @@
             "top": "320",
             "left": "960",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "28603f33-ee0c-47a1-a010-995445ed27e5",
-            "id": 4489
+            "uuid": "ac218091-685e-4c48-9cb9-dc10e186f2de",
+            "id": 2736
         },
         {
             "@type": "WorkflowStep",
@@ -291,8 +293,8 @@
             "top": "460",
             "left": "1531",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "025b7fd3-b7d5-4ef9-b318-a7c215c2b92c",
-            "id": 4490
+            "uuid": "1d78036c-7b7e-4c67-ab61-65c3c9b6474e",
+            "id": 2737
         },
         {
             "@type": "WorkflowStep",
@@ -349,8 +351,8 @@
             "top": "320",
             "left": "1520",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "f03adad6-5b85-4cc8-86c3-7b5ed7e8cb21",
-            "id": 4491
+            "uuid": "487721c9-71e7-40e7-a230-4588273fcdd1",
+            "id": 2738
         },
         {
             "@type": "WorkflowStep",
@@ -378,8 +380,8 @@
             "top": "320",
             "left": "1240",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "bcfd9880-5fdf-4a78-b407-e42e975ea0a7",
-            "id": 4492
+            "uuid": "9af53cb0-e609-424b-8330-475d27994b67",
+            "id": 2739
         },
         {
             "@type": "WorkflowStep",
@@ -389,12 +391,12 @@
                 "conditions": [
                     {
                         "option": "Splunk",
-                        "step_iri": "\/api\/3\/workflow_steps\/6f053422-f607-495d-9353-7d62996b5758",
+                        "step_iri": "\/api\/3\/workflow_steps\/1385bb62-4f40-4073-948b-ef5f9b145d2c",
                         "condition": "{{ vars.input.params.siem.itemValue == \"Splunk\" }}"
                     },
                     {
                         "option": "Elasticsearch",
-                        "step_iri": "\/api\/3\/workflow_steps\/551f1736-874a-4671-b6d2-ab5f0d74ca30",
+                        "step_iri": "\/api\/3\/workflow_steps\/99c30daa-6fa8-4f38-8a86-cbad9a2567b3",
                         "condition": "{{ vars.input.params.siem.itemValue == \"Elastic\" }}"
                     }
                 ]
@@ -403,8 +405,8 @@
             "top": "369",
             "left": "300",
             "stepType": "\/api\/3\/workflow_step_types\/12254cf5-5db7-4b1a-8cb1-3af081924b28",
-            "uuid": "6e07162f-57c1-4d9b-8fa6-3d0934b3ce36",
-            "id": 4493
+            "uuid": "d71cb6c1-b489-4252-b902-72df1e9f68c4",
+            "id": 2740
         },
         {
             "@type": "WorkflowStep",
@@ -461,8 +463,8 @@
             "top": "509",
             "left": "1240",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "ce8f01be-25ed-4cab-a41a-4e4c72093394",
-            "id": 4494
+            "uuid": "8b6595d5-1043-4f4e-8fc0-8ce1f10ee7e9",
+            "id": 2741
         },
         {
             "@type": "WorkflowStep",
@@ -519,8 +521,8 @@
             "top": "220",
             "left": "1520",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "ff504859-fc18-462c-b047-60edacfc69e2",
-            "id": 4495
+            "uuid": "d3d08b27-f876-4c44-8de7-b93bdf8baa90",
+            "id": 2742
         },
         {
             "@type": "WorkflowStep",
@@ -577,8 +579,8 @@
             "top": "420",
             "left": "1240",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "aa441fa7-b4e1-4f70-91cc-863a23434763",
-            "id": 4496
+            "uuid": "0c8408d9-2463-4d5d-bff2-db798b161790",
+            "id": 2743
         },
         {
             "@type": "WorkflowStep",
@@ -592,9 +594,10 @@
                     "query": "event_type:sysmon AND event_id:13 AND @timestamp:{ {{vars.elasticHuntStart}} TO {{vars.elasticHuntEnd}} } AND (event_data.TargetObject:\"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Winlogon\\\\Shell\" OR event_data.TargetObject:\"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Winlogon\\\\Userinit\" OR event_data.TargetObject:\"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Winlogon\\\\Notify\" OR event_data.TargetObject:\"HKLM\\\\SOFTWARE\\\\WOW6432Node\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Winlogon\\\\Userinit\" OR event_data.TargetObject:\"HKLM\\\\SOFTWARE\\\\WOW6432Node\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Winlogon\\\\Shell\" OR event_data.TargetObject:\"HKCU\\\\Software\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Winlogon\")",
                     "run_as_user": ""
                 },
-                "version": "2.2.0",
+                "version": "2.2.1",
                 "connector": "elasticsearch",
                 "operation": "execute_lucene_query",
+                "mock_result": "{\n  \"data\": {\n    \"hits\": {\n      \"hits\": [\n        {\n          \"_id\": \"LL-EuGsBt8nuALoCJUwP\",\n          \"_type\": \"doc\",\n          \"_index\": \"logstash-beats-winlogon_helper_dll\",\n          \"_score\": 4.589139,\n          \"_source\": {\n            \"beat\": {\n              \"name\": \"win7-host1-PC\",\n              \"version\": \"6.5.3\",\n              \"hostname\": \"win7-host1-PC\"\n            },\n            \"tags\": [\n              \"beat\",\n              \"beats_input_codec_plain_applied\"\n            ],\n            \"task\": \"Registry value set (rule: RegistryEvent)\",\n            \"user\": {\n              \"name\": \"SYSTEM\",\n              \"type\": \"User\",\n              \"domain\": \"NT AUTHORITY\",\n              \"identifier\": \"S-1-5-18\"\n            },\n            \"level\": \"Information\",\n            \"opcode\": \"Info\",\n            \"message\": \"Registry value set:\\nRuleName: \\nEventType: SetValue\\nUtcTime: 2019-07-03 15:46:33.983\\nProcessGuid: {DA929735-CD39-5D1C-0000-0010A2610C00}\\nProcessId: 3628\\nImage: C:\\\\Windows\\\\regedit.exe\\nTargetObject: HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Winlogon\\\\Notify\\nDetails: C:\\\\Users\\\\superman\\\\Desktop\\\\invoice-156784.scr\",\n            \"version\": 2,\n            \"@version\": \"1\",\n            \"event_id\": 13,\n            \"log_name\": \"Microsoft-Windows-Sysmon\/Operational\",\n            \"beat_host\": {\n              \"id\": \"da929735-a8f9-4b38-8348-7664a570a0a2\",\n              \"os\": {\n                \"build\": \"7601.24356\",\n                \"family\": \"windows\",\n                \"version\": \"6.1\",\n                \"platform\": \"windows\"\n              },\n              \"name\": \"win7-host1-PC\",\n              \"architecture\": \"x86_64\"\n            },\n            \"thread_id\": 1412,\n            \"@timestamp\": \"2019-07-03T15:46:33.983Z\",\n            \"event_data\": {\n              \"Details\": \"C:\\\\Users\\\\superman\\\\Desktop\\\\invoice-156784.scr\",\n              \"UtcTime\": \"2019-07-03 15:46:33.983\",\n              \"EventType\": \"SetValue\",\n              \"ProcessId\": \"3628\",\n              \"ProcessGuid\": \"{DA929735-CD39-5D1C-0000-0010A2610C00}\",\n              \"TargetObject\": \"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Winlogon\\\\Notify\"\n            },\n            \"event_type\": \"sysmon\",\n            \"image_path\": \"C:\\\\Windows\\\\regedit.exe\",\n            \"process_id\": 1424,\n            \"source_name\": \"Microsoft-Windows-Sysmon\",\n            \"computer_name\": \"win7-host1-PC.batman.local\",\n            \"logstash_time\": 0.0013267993927001953,\n            \"provider_guid\": \"{5770385F-C22A-43E0-BF4C-06F5698FFBD9}\",\n            \"record_number\": \"1983026\"\n          }\n        },\n        {\n          \"_id\": \"sL-CuGsBt8nuALoCZkdr\",\n          \"_type\": \"doc\",\n          \"_index\": \"logstash-beats-winlogon_helper_dll\",\n          \"_score\": 4.589139,\n          \"_source\": {\n            \"beat\": {\n              \"name\": \"win7-host1-PC\",\n              \"version\": \"6.5.3\",\n              \"hostname\": \"win7-host1-PC\"\n            },\n            \"tags\": [\n              \"beat\",\n              \"beats_input_codec_plain_applied\"\n            ],\n            \"task\": \"Registry value set (rule: RegistryEvent)\",\n            \"user\": {\n              \"name\": \"SYSTEM\",\n              \"type\": \"User\",\n              \"domain\": \"NT AUTHORITY\",\n              \"identifier\": \"S-1-5-18\"\n            },\n            \"level\": \"Information\",\n            \"opcode\": \"Info\",\n            \"message\": \"Registry value set:\\nRuleName: \\nEventType: SetValue\\nUtcTime: 2019-07-03 15:44:39.287\\nProcessGuid: {DA929735-CD39-5D1C-0000-0010A2610C00}\\nProcessId: 3628\\nImage: C:\\\\Windows\\\\regedit.exe\\nTargetObject: HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Winlogon\\\\Userinit\\nDetails: C:\\\\Windows\\\\system32\\\\userinit.exe, C:\\\\Users\\\\superman\\\\Desktop\\\\invoice-156784.scr\",\n            \"version\": 2,\n            \"@version\": \"1\",\n            \"event_id\": 13,\n            \"log_name\": \"Microsoft-Windows-Sysmon\/Operational\",\n            \"beat_host\": {\n              \"id\": \"da929735-a8f9-4b38-8348-7664a570a0a2\",\n              \"os\": {\n                \"build\": \"7601.24356\",\n                \"family\": \"windows\",\n                \"version\": \"6.1\",\n                \"platform\": \"windows\"\n              },\n              \"name\": \"win7-host1-PC\",\n              \"architecture\": \"x86_64\"\n            },\n            \"thread_id\": 1412,\n            \"@timestamp\": \"2019-07-03T15:44:39.287Z\",\n            \"event_data\": {\n              \"Details\": \"C:\\\\Windows\\\\system32\\\\userinit.exe, C:\\\\Users\\\\superman\\\\Desktop\\\\invoice-156784.scr\",\n              \"UtcTime\": \"2019-07-03 15:44:39.287\",\n              \"EventType\": \"SetValue\",\n              \"ProcessId\": \"3628\",\n              \"ProcessGuid\": \"{DA929735-CD39-5D1C-0000-0010A2610C00}\",\n              \"TargetObject\": \"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Winlogon\\\\Userinit\"\n            },\n            \"event_type\": \"sysmon\",\n            \"image_path\": \"C:\\\\Windows\\\\regedit.exe\",\n            \"process_id\": 1424,\n            \"source_name\": \"Microsoft-Windows-Sysmon\",\n            \"computer_name\": \"win7-host1-PC.batman.local\",\n            \"logstash_time\": 0.0026199817657470703,\n            \"provider_guid\": \"{5770385F-C22A-43E0-BF4C-06F5698FFBD9}\",\n            \"record_number\": \"1982857\"\n          }\n        },\n        {\n          \"_id\": \"2L9_uGsBt8nuALoC-juE\",\n          \"_type\": \"doc\",\n          \"_index\": \"logstash-beats-winlogon_helper_dll\",\n          \"_score\": 4.589139,\n          \"_source\": {\n            \"beat\": {\n              \"name\": \"win7-host1-PC\",\n              \"version\": \"6.5.3\",\n              \"hostname\": \"win7-host1-PC\"\n            },\n            \"tags\": [\n              \"beat\",\n              \"beats_input_codec_plain_applied\"\n            ],\n            \"task\": \"Registry value set (rule: RegistryEvent)\",\n            \"user\": {\n              \"name\": \"SYSTEM\",\n              \"type\": \"User\",\n              \"domain\": \"NT AUTHORITY\",\n              \"identifier\": \"S-1-5-18\"\n            },\n            \"level\": \"Information\",\n            \"opcode\": \"Info\",\n            \"message\": \"Registry value set:\\nRuleName: T1060\\nEventType: SetValue\\nUtcTime: 2019-07-03 15:41:59.572\\nProcessGuid: {DA929735-CCBD-5D1C-0000-001063A90800}\\nProcessId: 4032\\nImage: C:\\\\Windows\\\\regedit.exe\\nTargetObject: HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Winlogon\\\\Shell\\nDetails: explorer.exe\",\n            \"version\": 2,\n            \"@version\": \"1\",\n            \"event_id\": 13,\n            \"log_name\": \"Microsoft-Windows-Sysmon\/Operational\",\n            \"beat_host\": {\n              \"id\": \"da929735-a8f9-4b38-8348-7664a570a0a2\",\n              \"os\": {\n                \"build\": \"7601.24356\",\n                \"family\": \"windows\",\n                \"version\": \"6.1\",\n                \"platform\": \"windows\"\n              },\n              \"name\": \"win7-host1-PC\",\n              \"architecture\": \"x86_64\"\n            },\n            \"thread_id\": 1564,\n            \"@timestamp\": \"2019-07-03T15:41:59.753Z\",\n            \"event_data\": {\n              \"Details\": \"explorer.exe\",\n              \"UtcTime\": \"2019-07-03 15:41:59.572\",\n              \"RuleName\": \"T1060\",\n              \"EventType\": \"SetValue\",\n              \"ProcessId\": \"4032\",\n              \"ProcessGuid\": \"{DA929735-CCBD-5D1C-0000-001063A90800}\",\n              \"TargetObject\": \"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Winlogon\\\\Shell\"\n            },\n            \"event_type\": \"sysmon\",\n            \"image_path\": \"C:\\\\Windows\\\\regedit.exe\",\n            \"process_id\": 1424,\n            \"source_name\": \"Microsoft-Windows-Sysmon\",\n            \"computer_name\": \"win7-host1-PC.batman.local\",\n            \"logstash_time\": 0.015459060668945312,\n            \"provider_guid\": \"{5770385F-C22A-43E0-BF4C-06F5698FFBD9}\",\n            \"record_number\": \"1981795\"\n          }\n        },\n        {\n          \"_id\": \"NL-CuGsBt8nuALoClkjC\",\n          \"_type\": \"doc\",\n          \"_index\": \"logstash-beats-winlogon_helper_dll\",\n          \"_score\": 4.4837785,\n          \"_source\": {\n            \"beat\": {\n              \"name\": \"win7-host1-PC\",\n              \"version\": \"6.5.3\",\n              \"hostname\": \"win7-host1-PC\"\n            },\n            \"tags\": [\n              \"beat\",\n              \"beats_input_codec_plain_applied\"\n            ],\n            \"task\": \"Registry value set (rule: RegistryEvent)\",\n            \"user\": {\n              \"name\": \"SYSTEM\",\n              \"type\": \"User\",\n              \"domain\": \"NT AUTHORITY\",\n              \"identifier\": \"S-1-5-18\"\n            },\n            \"level\": \"Information\",\n            \"opcode\": \"Info\",\n            \"message\": \"Registry value set:\\nRuleName: \\nEventType: SetValue\\nUtcTime: 2019-07-03 15:44:52.900\\nProcessGuid: {DA929735-CD39-5D1C-0000-0010A2610C00}\\nProcessId: 3628\\nImage: C:\\\\Windows\\\\regedit.exe\\nTargetObject: HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Winlogon\\\\Userinit\\nDetails: C:\\\\Windows\\\\system32\\\\userinit.exe\",\n            \"version\": 2,\n            \"@version\": \"1\",\n            \"event_id\": 13,\n            \"log_name\": \"Microsoft-Windows-Sysmon\/Operational\",\n            \"beat_host\": {\n              \"id\": \"da929735-a8f9-4b38-8348-7664a570a0a2\",\n              \"os\": {\n                \"build\": \"7601.24356\",\n                \"family\": \"windows\",\n                \"version\": \"6.1\",\n                \"platform\": \"windows\"\n              },\n              \"name\": \"win7-host1-PC\",\n              \"architecture\": \"x86_64\"\n            },\n            \"thread_id\": 1412,\n            \"@timestamp\": \"2019-07-03T15:44:52.900Z\",\n            \"event_data\": {\n              \"Details\": \"C:\\\\Windows\\\\system32\\\\userinit.exe\",\n              \"UtcTime\": \"2019-07-03 15:44:52.900\",\n              \"EventType\": \"SetValue\",\n              \"ProcessId\": \"3628\",\n              \"ProcessGuid\": \"{DA929735-CD39-5D1C-0000-0010A2610C00}\",\n              \"TargetObject\": \"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Winlogon\\\\Userinit\"\n            },\n            \"event_type\": \"sysmon\",\n            \"image_path\": \"C:\\\\Windows\\\\regedit.exe\",\n            \"process_id\": 1424,\n            \"source_name\": \"Microsoft-Windows-Sysmon\",\n            \"computer_name\": \"win7-host1-PC.batman.local\",\n            \"logstash_time\": 0.0010499954223632812,\n            \"provider_guid\": \"{5770385F-C22A-43E0-BF4C-06F5698FFBD9}\",\n            \"record_number\": \"1982903\"\n          }\n        }\n      ],\n      \"total\": {\n        \"value\": 4,\n        \"relation\": \"eq\"\n      },\n      \"max_score\": 4.589139\n    },\n    \"took\": 62,\n    \"_shards\": {\n      \"total\": 95,\n      \"failed\": 0,\n      \"skipped\": 0,\n      \"successful\": 95\n    },\n    \"timed_out\": false\n  },\n  \"status\": \"Success\",\n  \"message\": \"\",\n  \"operation\": null\n}",
                 "operationTitle": "Execute Lucene Query",
                 "step_variables": []
             },
@@ -602,173 +605,173 @@
             "top": "420",
             "left": "960",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "46651cdf-0de2-41c7-b787-16c7c97b4597",
-            "id": 4497
+            "uuid": "bd699d4f-afaf-4007-b32b-a0ab92099213",
+            "id": 2744
         }
     ],
     "routes": [
         {
             "@type": "WorkflowRoute",
             "name": "Query for use of attrib to hide files -> Copy  of Query for use of attrib to hide files",
-            "targetStep": "\/api\/3\/workflow_steps\/bcfd9880-5fdf-4a78-b407-e42e975ea0a7",
-            "sourceStep": "\/api\/3\/workflow_steps\/28603f33-ee0c-47a1-a010-995445ed27e5",
+            "targetStep": "\/api\/3\/workflow_steps\/9af53cb0-e609-424b-8330-475d27994b67",
+            "sourceStep": "\/api\/3\/workflow_steps\/ac218091-685e-4c48-9cb9-dc10e186f2de",
             "label": null,
             "isExecuted": false,
-            "uuid": "d1b5b0f2-eddb-4830-89c2-ff9f14025b02"
+            "uuid": "3ce89c1f-3c54-4afb-be9a-b994f01cb4fc"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Elastic1 Create and Link Alert -> Copy  of Deduplicate comments",
-            "targetStep": "\/api\/3\/workflow_steps\/025b7fd3-b7d5-4ef9-b318-a7c215c2b92c",
-            "sourceStep": "\/api\/3\/workflow_steps\/aa441fa7-b4e1-4f70-91cc-863a23434763",
+            "targetStep": "\/api\/3\/workflow_steps\/1d78036c-7b7e-4c67-ab61-65c3c9b6474e",
+            "sourceStep": "\/api\/3\/workflow_steps\/0c8408d9-2463-4d5d-bff2-db798b161790",
             "label": null,
             "isExecuted": false,
-            "uuid": "6d898992-edd7-4ee1-b7a6-e2e7673b22c4"
+            "uuid": "ee2304cc-4277-4b7a-8ede-6b12320e2e97"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Select SIEM -> Set Elasticsearch hunt times",
-            "targetStep": "\/api\/3\/workflow_steps\/551f1736-874a-4671-b6d2-ab5f0d74ca30",
-            "sourceStep": "\/api\/3\/workflow_steps\/6e07162f-57c1-4d9b-8fa6-3d0934b3ce36",
+            "targetStep": "\/api\/3\/workflow_steps\/99c30daa-6fa8-4f38-8a86-cbad9a2567b3",
+            "sourceStep": "\/api\/3\/workflow_steps\/d71cb6c1-b489-4252-b902-72df1e9f68c4",
             "label": "Elasticsearch",
             "isExecuted": false,
-            "uuid": "62e29417-6e1b-4720-8220-0bfba03cb9c5"
+            "uuid": "a011d7dc-f973-4de2-9a49-7c54a102cc4a"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Retrieve key modification query results -> Copy  of Create and Link Alert",
-            "targetStep": "\/api\/3\/workflow_steps\/ff504859-fc18-462c-b047-60edacfc69e2",
-            "sourceStep": "\/api\/3\/workflow_steps\/82f5150d-682a-4395-b206-41b7a667e9f4",
+            "targetStep": "\/api\/3\/workflow_steps\/d3d08b27-f876-4c44-8de7-b93bdf8baa90",
+            "sourceStep": "\/api\/3\/workflow_steps\/bc52359d-33f6-4985-9330-e7a7fd0fb1a3",
             "label": null,
             "isExecuted": false,
-            "uuid": "29b88b84-ad1e-406c-8d4c-cea8253430f0"
+            "uuid": "6de7051e-86fa-4783-9b48-518f6ab816ba"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Copy  of Create and Link Alert -> Deduplicate comments",
-            "targetStep": "\/api\/3\/workflow_steps\/69e269a0-d9bf-4f16-913f-ee7c4b099163",
-            "sourceStep": "\/api\/3\/workflow_steps\/ff504859-fc18-462c-b047-60edacfc69e2",
+            "targetStep": "\/api\/3\/workflow_steps\/7242b9d5-f519-4973-a988-8038deb8efb3",
+            "sourceStep": "\/api\/3\/workflow_steps\/d3d08b27-f876-4c44-8de7-b93bdf8baa90",
             "label": null,
             "isExecuted": false,
-            "uuid": "e4649abe-ded7-4ce5-8b39-033eb5f89b5d"
+            "uuid": "637bdc8e-ff9d-4687-958a-23305e8da7f6"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Set Elasticsearch hunt times -> Elastic Query for abnormal processes spawned by Winlogon",
-            "targetStep": "\/api\/3\/workflow_steps\/efdfe903-0883-433d-86bd-53dfb1a0706e",
-            "sourceStep": "\/api\/3\/workflow_steps\/551f1736-874a-4671-b6d2-ab5f0d74ca30",
+            "targetStep": "\/api\/3\/workflow_steps\/0e82adeb-7d6c-4122-bd87-68e6f3826ec1",
+            "sourceStep": "\/api\/3\/workflow_steps\/99c30daa-6fa8-4f38-8a86-cbad9a2567b3",
             "label": null,
             "isExecuted": false,
-            "uuid": "1528d62c-b0c8-4fa5-81b8-f319379a2676"
+            "uuid": "88eb36b3-ba0e-47f9-a6ad-711d4a730f73"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Start -> Select SIEM",
-            "targetStep": "\/api\/3\/workflow_steps\/6e07162f-57c1-4d9b-8fa6-3d0934b3ce36",
-            "sourceStep": "\/api\/3\/workflow_steps\/265a8018-e49b-4312-95c5-f8c6753a4d48",
+            "targetStep": "\/api\/3\/workflow_steps\/d71cb6c1-b489-4252-b902-72df1e9f68c4",
+            "sourceStep": "\/api\/3\/workflow_steps\/339e2d1a-5bd9-45d8-831f-902983b283b6",
             "label": null,
             "isExecuted": false,
-            "uuid": "aef1454e-ccb6-4b80-bfcb-a1b41182f77f"
+            "uuid": "f201e374-6a91-4e60-8dbc-e1c4b421ec83"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Set Splunk hunt times -> Query for abnormal processes spawned by Winlogon",
-            "targetStep": "\/api\/3\/workflow_steps\/28603f33-ee0c-47a1-a010-995445ed27e5",
-            "sourceStep": "\/api\/3\/workflow_steps\/6f053422-f607-495d-9353-7d62996b5758",
+            "targetStep": "\/api\/3\/workflow_steps\/ac218091-685e-4c48-9cb9-dc10e186f2de",
+            "sourceStep": "\/api\/3\/workflow_steps\/1385bb62-4f40-4073-948b-ef5f9b145d2c",
             "label": null,
             "isExecuted": false,
-            "uuid": "f1961913-3554-405b-8785-4950146ebeed"
+            "uuid": "136edeb3-2c5c-4872-9a38-de9948d39ee6"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Retrieve query results -> Create and Link Alert",
-            "targetStep": "\/api\/3\/workflow_steps\/f03adad6-5b85-4cc8-86c3-7b5ed7e8cb21",
-            "sourceStep": "\/api\/3\/workflow_steps\/bcfd9880-5fdf-4a78-b407-e42e975ea0a7",
+            "targetStep": "\/api\/3\/workflow_steps\/487721c9-71e7-40e7-a230-4588273fcdd1",
+            "sourceStep": "\/api\/3\/workflow_steps\/9af53cb0-e609-424b-8330-475d27994b67",
             "label": null,
             "isExecuted": false,
-            "uuid": "75101061-4a27-48c6-8dcc-4e2cceeeeaa6"
+            "uuid": "fac07d7d-8c12-4912-8a40-7f432718b7f6"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Create and Link Alert -> Deduplicate comments",
-            "targetStep": "\/api\/3\/workflow_steps\/69e269a0-d9bf-4f16-913f-ee7c4b099163",
-            "sourceStep": "\/api\/3\/workflow_steps\/f03adad6-5b85-4cc8-86c3-7b5ed7e8cb21",
+            "targetStep": "\/api\/3\/workflow_steps\/7242b9d5-f519-4973-a988-8038deb8efb3",
+            "sourceStep": "\/api\/3\/workflow_steps\/487721c9-71e7-40e7-a230-4588273fcdd1",
             "label": null,
             "isExecuted": false,
-            "uuid": "88d9934d-9539-4c86-abc1-79b7c74c586f"
+            "uuid": "be1d1529-df0d-441b-ad3e-cbf88d051b22"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Set Splunk hunt times -> Query for Winlogon helper DLL registry key modification",
-            "targetStep": "\/api\/3\/workflow_steps\/fe7a586a-3342-428f-8c5b-ac5b00d96a9c",
-            "sourceStep": "\/api\/3\/workflow_steps\/6f053422-f607-495d-9353-7d62996b5758",
+            "targetStep": "\/api\/3\/workflow_steps\/b34e3393-4453-419a-8943-130170491269",
+            "sourceStep": "\/api\/3\/workflow_steps\/1385bb62-4f40-4073-948b-ef5f9b145d2c",
             "label": null,
             "isExecuted": false,
-            "uuid": "43417d61-ad10-411a-801b-f5a21deabc37"
+            "uuid": "fb047de1-6d9a-4e47-a789-5686d79163ac"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Elastic2 Create and Link Alert -> Copy  of Deduplicate comments",
-            "targetStep": "\/api\/3\/workflow_steps\/025b7fd3-b7d5-4ef9-b318-a7c215c2b92c",
-            "sourceStep": "\/api\/3\/workflow_steps\/ce8f01be-25ed-4cab-a41a-4e4c72093394",
+            "targetStep": "\/api\/3\/workflow_steps\/1d78036c-7b7e-4c67-ab61-65c3c9b6474e",
+            "sourceStep": "\/api\/3\/workflow_steps\/8b6595d5-1043-4f4e-8fc0-8ce1f10ee7e9",
             "label": null,
             "isExecuted": false,
-            "uuid": "74ba6273-9a1b-41c4-8324-768736488ca6"
+            "uuid": "dfcda4d7-f32b-4650-bc6b-effa7cbd612f"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Select SIEM -> Set Splunk hunt times",
-            "targetStep": "\/api\/3\/workflow_steps\/6f053422-f607-495d-9353-7d62996b5758",
-            "sourceStep": "\/api\/3\/workflow_steps\/6e07162f-57c1-4d9b-8fa6-3d0934b3ce36",
+            "targetStep": "\/api\/3\/workflow_steps\/1385bb62-4f40-4073-948b-ef5f9b145d2c",
+            "sourceStep": "\/api\/3\/workflow_steps\/d71cb6c1-b489-4252-b902-72df1e9f68c4",
             "label": "Splunk",
             "isExecuted": false,
-            "uuid": "bbe20f7b-bfb6-4f67-be7c-f8016d42e479"
+            "uuid": "8844090d-4bbe-43cf-812d-123035b78ad8"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Set Elasticsearch hunt times -> Elastic Query for Winlogon helper DLL registry key modification",
-            "targetStep": "\/api\/3\/workflow_steps\/46651cdf-0de2-41c7-b787-16c7c97b4597",
-            "sourceStep": "\/api\/3\/workflow_steps\/551f1736-874a-4671-b6d2-ab5f0d74ca30",
+            "targetStep": "\/api\/3\/workflow_steps\/bd699d4f-afaf-4007-b32b-a0ab92099213",
+            "sourceStep": "\/api\/3\/workflow_steps\/99c30daa-6fa8-4f38-8a86-cbad9a2567b3",
             "label": null,
             "isExecuted": false,
-            "uuid": "71c33ff4-82a4-417f-8ca9-6e59f47217c7"
+            "uuid": "34509134-cb64-4549-bcb1-dec97e7be1c4"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Elastic Query for abnormal processes spawned by Winlogon -> Copy  of Elastic1 Create and Link Alert",
-            "targetStep": "\/api\/3\/workflow_steps\/ce8f01be-25ed-4cab-a41a-4e4c72093394",
-            "sourceStep": "\/api\/3\/workflow_steps\/efdfe903-0883-433d-86bd-53dfb1a0706e",
+            "targetStep": "\/api\/3\/workflow_steps\/8b6595d5-1043-4f4e-8fc0-8ce1f10ee7e9",
+            "sourceStep": "\/api\/3\/workflow_steps\/0e82adeb-7d6c-4122-bd87-68e6f3826ec1",
             "label": null,
             "isExecuted": false,
-            "uuid": "efc11ea8-ee76-4bb0-b659-78e981d0338b"
+            "uuid": "bc89c355-74a3-47e4-aae6-f60d384a32b3"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Elastic Query for Winlogon helper DLL registry key modification -> Copy  of Copy  of Create and Link Alert",
-            "targetStep": "\/api\/3\/workflow_steps\/aa441fa7-b4e1-4f70-91cc-863a23434763",
-            "sourceStep": "\/api\/3\/workflow_steps\/46651cdf-0de2-41c7-b787-16c7c97b4597",
+            "targetStep": "\/api\/3\/workflow_steps\/0c8408d9-2463-4d5d-bff2-db798b161790",
+            "sourceStep": "\/api\/3\/workflow_steps\/bd699d4f-afaf-4007-b32b-a0ab92099213",
             "label": null,
             "isExecuted": false,
-            "uuid": "520bf643-720d-473b-a5eb-1fb10ec510d8"
+            "uuid": "eae22eab-8720-4c0e-8424-2b1059cf3030"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Query for Netsh helper DLL registry key modification -> Copy  of Retrieve key creation query results",
-            "targetStep": "\/api\/3\/workflow_steps\/82f5150d-682a-4395-b206-41b7a667e9f4",
-            "sourceStep": "\/api\/3\/workflow_steps\/fe7a586a-3342-428f-8c5b-ac5b00d96a9c",
+            "targetStep": "\/api\/3\/workflow_steps\/bc52359d-33f6-4985-9330-e7a7fd0fb1a3",
+            "sourceStep": "\/api\/3\/workflow_steps\/b34e3393-4453-419a-8943-130170491269",
             "label": null,
             "isExecuted": false,
-            "uuid": "3039219b-5d90-4c6c-936d-d32e5370adf2"
+            "uuid": "0bd2590b-a5fe-48db-b4c7-e054ede569a2"
         }
     ],
     "priority": null,
     "uuid": "99ed0cfe-3182-42ef-b293-7bc857fe5a0c",
     "recordTags": [],
-    "id": 1172,
+    "id": 357,
     "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-    "createDate": 1633085063,
+    "createDate": 1640081940,
     "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-    "modifyDate": 1633085063,
+    "modifyDate": 1640081940,
     "owners": [],
     "isPrivate": false
 }

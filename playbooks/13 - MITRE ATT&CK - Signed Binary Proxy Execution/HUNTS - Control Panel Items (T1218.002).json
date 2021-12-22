@@ -5,16 +5,16 @@
     "aliasName": null,
     "tag": "ATT&CK, Defense_Evasion, Execution, Control_Panel_Items",
     "description": "Identifies processes spawned by Control Panel files and execution of non-standard .cpl files",
-    "isActive": false,
+    "isActive": true,
     "debug": false,
     "singleRecordExecution": false,
     "remoteExecutableFlag": false,
     "parameters": [],
     "synchronous": false,
-    "lastModifyDate": 1633085062,
+    "lastModifyDate": 1640081936,
     "collection": "\/api\/3\/workflow_collections\/270b47ed-fc8b-4539-898d-3db2f929c777",
     "versions": [],
-    "triggerStep": "\/api\/3\/workflow_steps\/3924e519-9dd2-428c-becc-54509a43d10e",
+    "triggerStep": "\/api\/3\/workflow_steps\/05e04f2e-098e-4142-ba59-beadda68e43b",
     "steps": [
         {
             "@type": "WorkflowStep",
@@ -24,22 +24,22 @@
                 "conditions": [
                     {
                         "option": "Elasticsearch",
-                        "step_iri": "\/api\/3\/workflow_steps\/57ba2f82-0f7b-486a-b7d9-07008ae03ec4",
+                        "step_iri": "\/api\/3\/workflow_steps\/a7215bcb-f9af-4feb-bcd6-72c92a5e8c4d",
                         "condition": "{{ vars.input.params.siem.itemValue == \"Elastic\" }}"
                     },
                     {
                         "option": "Splunk",
-                        "step_iri": "\/api\/3\/workflow_steps\/b248bb29-990b-410c-9200-0db82520b2b6",
+                        "step_iri": "\/api\/3\/workflow_steps\/eb56301e-b9be-43dc-a254-f2c6dbe508d5",
                         "condition": "{{ vars.input.params.siem.itemValue == \"Splunk\" }}"
                     }
                 ]
             },
             "status": null,
-            "top": "360",
-            "left": "280",
+            "top": "110",
+            "left": "450",
             "stepType": "\/api\/3\/workflow_step_types\/12254cf5-5db7-4b1a-8cb1-3af081924b28",
-            "uuid": "fe172fe9-65f3-47fa-afc4-caaf00745a11",
-            "id": 4861
+            "uuid": "93e161ac-4bdc-442b-bf51-1370cc8e7fe2",
+            "id": 3065
         },
         {
             "@type": "WorkflowStep",
@@ -53,11 +53,11 @@
                 "workflowReference": "\/api\/3\/workflows\/3fd311be-a1c6-41c7-99a3-8794b33d8f8a"
             },
             "status": null,
-            "top": "360",
-            "left": "1694",
+            "top": "110",
+            "left": "2075",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "56499ade-b4ef-4b33-a47f-5368c748da21",
-            "id": 4862
+            "uuid": "c00e6c72-a977-4f45-a3d6-89bd549febdf",
+            "id": 3066
         },
         {
             "@type": "WorkflowStep",
@@ -139,7 +139,8 @@
                             "siem": "{{vars.request.data[\"siem\"]}}"
                         },
                         "records": "{{vars.input.records}}"
-                    }
+                    },
+                    "useMockOutput": "true"
                 },
                 "_promptexpanded": true,
                 "displayConditions": {
@@ -155,11 +156,11 @@
                 "singleRecordExecution": false
             },
             "status": null,
-            "top": "360",
-            "left": "0",
+            "top": "110",
+            "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-            "uuid": "3924e519-9dd2-428c-becc-54509a43d10e",
-            "id": 4863
+            "uuid": "05e04f2e-098e-4142-ba59-beadda68e43b",
+            "id": 3067
         },
         {
             "@type": "WorkflowStep",
@@ -213,11 +214,11 @@
                 "workflowReference": "\/api\/3\/workflows\/bf7d418b-7ff3-44c1-b473-90d0a03c4641"
             },
             "status": null,
-            "top": "511",
-            "left": "1393",
+            "top": "30",
+            "left": "1750",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "f6681f20-a500-442e-849d-79fff1c81940",
-            "id": 4864
+            "uuid": "b18ea43c-dc29-47a1-ac55-31f01c633d1a",
+            "id": 3068
         },
         {
             "@type": "WorkflowStep",
@@ -241,11 +242,11 @@
                 "step_variables": []
             },
             "status": null,
-            "top": "220",
-            "left": "840",
+            "top": "190",
+            "left": "1100",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "4c2185c3-d274-4d4a-9aea-cea094127c32",
-            "id": 4865
+            "uuid": "1f46920d-1782-4e4b-b0da-e85d8a96e817",
+            "id": 3069
         },
         {
             "@type": "WorkflowStep",
@@ -299,11 +300,11 @@
                 "workflowReference": "\/api\/3\/workflows\/bf7d418b-7ff3-44c1-b473-90d0a03c4641"
             },
             "status": null,
-            "top": "220",
-            "left": "1400",
+            "top": "190",
+            "left": "1750",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "d0cf0556-6e0f-4823-b52b-a5f16d6dc82c",
-            "id": 4866
+            "uuid": "5e708b29-5fff-4490-9e46-7d5a876579a7",
+            "id": 3070
         },
         {
             "@type": "WorkflowStep",
@@ -328,11 +329,11 @@
                 "step_variables": []
             },
             "status": null,
-            "top": "220",
-            "left": "1120",
+            "top": "190",
+            "left": "1425",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "3138d45c-59c8-4859-9806-f5d3024eeafa",
-            "id": 4867
+            "uuid": "241b0ccd-07f9-4622-9f97-a5f9f1330884",
+            "id": 3071
         },
         {
             "@type": "WorkflowStep",
@@ -346,18 +347,19 @@
                     "query": "event_type:sysmon AND event_id:\"1\" AND @timestamp:{ {{vars.elasticHuntStart}} TO {{vars.elasticHuntEnd}} } AND (parent_image_path:\"C:\\\\Windows\\\\System32\\\\control.exe\" OR parent_image_path:\"C:\\\\Windows\\\\syswow64\\\\control.exe\") NOT event_data.ParentCommandLine:\\\"C\\:\\\\Windows\\\\System32\\\\control.exe\\\"\\ \\\"C\\:\\\\Windows\\\\system32\\\\*.cpl\\\"* NOT event_data.ParentCommandLine:\\\"C\\:\\\\Windows\\\\syswow64\\\\control.exe\\\"\\ \\\"C\\:\\\\Windows\\\\syswow6432\\\\*.cpl\\\"*",
                     "run_as_user": ""
                 },
-                "version": "2.2.0",
+                "version": "2.2.1",
                 "connector": "elasticsearch",
                 "operation": "execute_lucene_query",
+                "mock_result": "{\n  \"data\": {\n    \"hits\": {\n      \"hits\": [\n        {\n          \"_id\": \"TgnyT2oBqSmy6R6g9Db9\",\n          \"_type\": \"doc\",\n          \"_index\": \"logstash-beats-controlpanelitems\",\n          \"_score\": 2.9116077,\n          \"_source\": {\n            \"beat\": {\n              \"name\": \"admin-PC4\",\n              \"version\": \"6.5.3\",\n              \"hostname\": \"admin-PC4\"\n            },\n            \"tags\": [\n              \"beat\",\n              \"beats_input_codec_plain_applied\"\n            ],\n            \"task\": \"Process Create (rule: ProcessCreate)\",\n            \"user\": {\n              \"name\": \"SYSTEM\",\n              \"type\": \"User\",\n              \"domain\": \"NT AUTHORITY\",\n              \"identifier\": \"S-1-5-18\"\n            },\n            \"level\": \"Information\",\n            \"opcode\": \"Info\",\n            \"message\": \"Process Create:\\nRuleName: \\nUtcTime: 2019-04-24 15:21:30.787\\nProcessGuid: {D1BE7B41-7EFA-5CC0-0000-00103648EA09}\\nProcessId: 552\\nImage: C:\\\\Windows\\\\System32\\\\rundll32.exe\\nFileVersion: 6.1.7600.16385 (win7_rtm.090713-1255)\\nDescription: Windows host process (Rundll32)\\nProduct: Microsoft\u00ae Windows\u00ae Operating System\\nCompany: Microsoft Corporation\\nCommandLine: \\\"C:\\\\Windows\\\\system32\\\\rundll32.exe\\\" Shell32.dll,Control_RunDLL \\\"C:\\\\Users\\\\superman\\\\Desktop\\\\notethan.cpl\\\",\\nCurrentDirectory: C:\\\\Users\\\\superman\\\\Desktop\\\\\\nUser: batman\\\\superman\\nLogonGuid: {D1BE7B41-F352-5CB9-0000-00208C590300}\\nLogonId: 0x3598c\\nTerminalSessionId: 1\\nIntegrityLevel: High\\nHashes: MD5=DD81D91FF3B0763C392422865C9AC12E,SHA256=F5691B8F200E3196E6808E932630E862F8F26F31CD949981373F23C9D87DB8B9\\nParentProcessGuid: {D1BE7B41-7EFA-5CC0-0000-0010A640EA09}\\nParentProcessId: 3872\\nParentImage: C:\\\\Windows\\\\System32\\\\control.exe\\nParentCommandLine: \\\"C:\\\\Windows\\\\System32\\\\control.exe\\\" \\\"C:\\\\Users\\\\superman\\\\Desktop\\\\notethan.cpl\\\",\",\n            \"version\": 5,\n            \"@version\": \"1\",\n            \"event_id\": 1,\n            \"log_name\": \"Microsoft-Windows-Sysmon\/Operational\",\n            \"username\": \"batman\\\\superman\",\n            \"beat_host\": {\n              \"id\": \"d1be7b41-2fc5-49e3-9ff1-ec91443d27c3\",\n              \"os\": {\n                \"build\": \"7601.0\",\n                \"family\": \"windows\",\n                \"version\": \"6.1\",\n                \"platform\": \"windows\"\n              },\n              \"name\": \"admin-PC4\",\n              \"architecture\": \"x86_64\"\n            },\n            \"thread_id\": 1920,\n            \"@timestamp\": \"2019-04-24T15:21:30.834Z\",\n            \"event_data\": {\n              \"Hashes\": \"MD5=DD81D91FF3B0763C392422865C9AC12E,SHA256=F5691B8F200E3196E6808E932630E862F8F26F31CD949981373F23C9D87DB8B9\",\n              \"Company\": \"Microsoft Corporation\",\n              \"LogonId\": \"0x3598c\",\n              \"Product\": \"Microsoft\u00ae Windows\u00ae Operating System\",\n              \"UtcTime\": \"2019-04-24 15:21:30.787\",\n              \"LogonGuid\": \"{D1BE7B41-F352-5CB9-0000-00208C590300}\",\n              \"ProcessId\": \"552\",\n              \"CommandLine\": \"\\\"C:\\\\Windows\\\\system32\\\\rundll32.exe\\\" Shell32.dll,Control_RunDLL \\\"C:\\\\Users\\\\superman\\\\Desktop\\\\notethan.cpl\\\",\",\n              \"Description\": \"Windows host process (Rundll32)\",\n              \"FileVersion\": \"6.1.7600.16385 (win7_rtm.090713-1255)\",\n              \"ProcessGuid\": \"{D1BE7B41-7EFA-5CC0-0000-00103648EA09}\",\n              \"IntegrityLevel\": \"High\",\n              \"ParentProcessId\": \"3872\",\n              \"CurrentDirectory\": \"C:\\\\Users\\\\superman\\\\Desktop\\\\\",\n              \"ParentCommandLine\": \"\\\"C:\\\\Windows\\\\System32\\\\control.exe\\\" \\\"C:\\\\Users\\\\superman\\\\Desktop\\\\notethan.cpl\\\",\",\n              \"ParentProcessGuid\": \"{D1BE7B41-7EFA-5CC0-0000-0010A640EA09}\",\n              \"TerminalSessionId\": \"1\"\n            },\n            \"event_type\": \"sysmon\",\n            \"image_path\": \"C:\\\\Windows\\\\System32\\\\rundll32.exe\",\n            \"process_id\": 1420,\n            \"source_name\": \"Microsoft-Windows-Sysmon\",\n            \"computer_name\": \"admin-PC4.batman.local\",\n            \"logstash_time\": 0.0019500255584716797,\n            \"provider_guid\": \"{5770385F-C22A-43E0-BF4C-06F5698FFBD9}\",\n            \"record_number\": \"335426\",\n            \"parent_image_path\": \"C:\\\\Windows\\\\System32\\\\control.exe\"\n          }\n        },\n        {\n          \"_id\": \"LAnyT2oBqSmy6R6g3TYw\",\n          \"_type\": \"doc\",\n          \"_index\": \"logstash-beats-controlpanelitems\",\n          \"_score\": 2.9116077,\n          \"_source\": {\n            \"beat\": {\n              \"name\": \"admin-PC4\",\n              \"version\": \"6.5.3\",\n              \"hostname\": \"admin-PC4\"\n            },\n            \"tags\": [\n              \"beat\",\n              \"beats_input_codec_plain_applied\"\n            ],\n            \"task\": \"Process Create (rule: ProcessCreate)\",\n            \"user\": {\n              \"name\": \"SYSTEM\",\n              \"type\": \"User\",\n              \"domain\": \"NT AUTHORITY\",\n              \"identifier\": \"S-1-5-18\"\n            },\n            \"level\": \"Information\",\n            \"opcode\": \"Info\",\n            \"message\": \"Process Create:\\nRuleName: \\nUtcTime: 2019-04-24 15:21:24.650\\nProcessGuid: {D1BE7B41-7EF4-5CC0-0000-0010E72AEA09}\\nProcessId: 3592\\nImage: C:\\\\Windows\\\\System32\\\\rundll32.exe\\nFileVersion: 6.1.7600.16385 (win7_rtm.090713-1255)\\nDescription: Windows host process (Rundll32)\\nProduct: Microsoft\u00ae Windows\u00ae Operating System\\nCompany: Microsoft Corporation\\nCommandLine: \\\"C:\\\\Windows\\\\system32\\\\rundll32.exe\\\" Shell32.dll,Control_RunDLL \\\"C:\\\\Users\\\\superman\\\\Desktop\\\\notethan.cpl\\\",\\nCurrentDirectory: C:\\\\Users\\\\superman\\\\Desktop\\\\\\nUser: batman\\\\superman\\nLogonGuid: {D1BE7B41-F352-5CB9-0000-00208C590300}\\nLogonId: 0x3598c\\nTerminalSessionId: 1\\nIntegrityLevel: High\\nHashes: MD5=DD81D91FF3B0763C392422865C9AC12E,SHA256=F5691B8F200E3196E6808E932630E862F8F26F31CD949981373F23C9D87DB8B9\\nParentProcessGuid: {D1BE7B41-7EF4-5CC0-0000-00106523EA09}\\nParentProcessId: 1740\\nParentImage: C:\\\\Windows\\\\System32\\\\control.exe\\nParentCommandLine: \\\"C:\\\\Windows\\\\System32\\\\control.exe\\\" \\\"C:\\\\Users\\\\superman\\\\Desktop\\\\notethan.cpl\\\",\",\n            \"version\": 5,\n            \"@version\": \"1\",\n            \"event_id\": 1,\n            \"log_name\": \"Microsoft-Windows-Sysmon\/Operational\",\n            \"username\": \"batman\\\\superman\",\n            \"beat_host\": {\n              \"id\": \"d1be7b41-2fc5-49e3-9ff1-ec91443d27c3\",\n              \"os\": {\n                \"build\": \"7601.0\",\n                \"family\": \"windows\",\n                \"version\": \"6.1\",\n                \"platform\": \"windows\"\n              },\n              \"name\": \"admin-PC4\",\n              \"architecture\": \"x86_64\"\n            },\n            \"thread_id\": 1920,\n            \"@timestamp\": \"2019-04-24T15:21:24.666Z\",\n            \"event_data\": {\n              \"Hashes\": \"MD5=DD81D91FF3B0763C392422865C9AC12E,SHA256=F5691B8F200E3196E6808E932630E862F8F26F31CD949981373F23C9D87DB8B9\",\n              \"Company\": \"Microsoft Corporation\",\n              \"LogonId\": \"0x3598c\",\n              \"Product\": \"Microsoft\u00ae Windows\u00ae Operating System\",\n              \"UtcTime\": \"2019-04-24 15:21:24.650\",\n              \"LogonGuid\": \"{D1BE7B41-F352-5CB9-0000-00208C590300}\",\n              \"ProcessId\": \"3592\",\n              \"CommandLine\": \"\\\"C:\\\\Windows\\\\system32\\\\rundll32.exe\\\" Shell32.dll,Control_RunDLL \\\"C:\\\\Users\\\\superman\\\\Desktop\\\\notethan.cpl\\\",\",\n              \"Description\": \"Windows host process (Rundll32)\",\n              \"FileVersion\": \"6.1.7600.16385 (win7_rtm.090713-1255)\",\n              \"ProcessGuid\": \"{D1BE7B41-7EF4-5CC0-0000-0010E72AEA09}\",\n              \"IntegrityLevel\": \"High\",\n              \"ParentProcessId\": \"1740\",\n              \"CurrentDirectory\": \"C:\\\\Users\\\\superman\\\\Desktop\\\\\",\n              \"ParentCommandLine\": \"\\\"C:\\\\Windows\\\\System32\\\\control.exe\\\" \\\"C:\\\\Users\\\\superman\\\\Desktop\\\\notethan.cpl\\\",\",\n              \"ParentProcessGuid\": \"{D1BE7B41-7EF4-5CC0-0000-00106523EA09}\",\n              \"TerminalSessionId\": \"1\"\n            },\n            \"event_type\": \"sysmon\",\n            \"image_path\": \"C:\\\\Windows\\\\System32\\\\rundll32.exe\",\n            \"process_id\": 1420,\n            \"source_name\": \"Microsoft-Windows-Sysmon\",\n            \"computer_name\": \"admin-PC4.batman.local\",\n            \"logstash_time\": 0.002641916275024414,\n            \"provider_guid\": \"{5770385F-C22A-43E0-BF4C-06F5698FFBD9}\",\n            \"record_number\": \"335418\",\n            \"parent_image_path\": \"C:\\\\Windows\\\\System32\\\\control.exe\"\n          }\n        }\n      ],\n      \"total\": {\n        \"value\": 2,\n        \"relation\": \"eq\"\n      },\n      \"max_score\": 2.9116077\n    },\n    \"took\": 1353,\n    \"_shards\": {\n      \"total\": 95,\n      \"failed\": 0,\n      \"skipped\": 0,\n      \"successful\": 95\n    },\n    \"timed_out\": false\n  },\n  \"status\": \"Success\",\n  \"message\": \"\",\n  \"operation\": null\n}",
                 "operationTitle": "Execute Lucene Query",
                 "step_variables": []
             },
             "status": null,
-            "top": "511",
-            "left": "840",
+            "top": "30",
+            "left": "1425",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "7172ede9-092f-4e32-b9b2-c9042c6facb9",
-            "id": 4868
+            "uuid": "580eb5d4-22b3-4c39-aba3-e834b5b51391",
+            "id": 3072
         },
         {
             "@type": "WorkflowStep",
@@ -368,11 +370,11 @@
                 "elasticHuntStart": "{{ arrow.get(vars.input.records[0].huntStart).format('YYYY-MM-DDTHH:mm:ss.SSSSSSSSSZ') }}"
             },
             "status": null,
-            "top": "511",
-            "left": "570",
+            "top": "30",
+            "left": "1100",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "uuid": "57ba2f82-0f7b-486a-b7d9-07008ae03ec4",
-            "id": 4869
+            "uuid": "a7215bcb-f9af-4feb-bcd6-72c92a5e8c4d",
+            "id": 3073
         },
         {
             "@type": "WorkflowStep",
@@ -383,113 +385,113 @@
                 "splunkHuntStart": "earliest={{vars.input.records[0].huntStart}}"
             },
             "status": null,
-            "top": "220",
-            "left": "570",
+            "top": "190",
+            "left": "775",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "uuid": "b248bb29-990b-410c-9200-0db82520b2b6",
-            "id": 4870
+            "uuid": "eb56301e-b9be-43dc-a254-f2c6dbe508d5",
+            "id": 3074
         }
     ],
     "routes": [
         {
             "@type": "WorkflowRoute",
             "name": "Get Control Panel Execution Results -> Create Splunk Alerts",
-            "targetStep": "\/api\/3\/workflow_steps\/d0cf0556-6e0f-4823-b52b-a5f16d6dc82c",
-            "sourceStep": "\/api\/3\/workflow_steps\/3138d45c-59c8-4859-9806-f5d3024eeafa",
+            "targetStep": "\/api\/3\/workflow_steps\/5e708b29-5fff-4490-9e46-7d5a876579a7",
+            "sourceStep": "\/api\/3\/workflow_steps\/241b0ccd-07f9-4622-9f97-a5f9f1330884",
             "label": null,
             "isExecuted": false,
-            "uuid": "5c7ac680-643a-4660-9f49-195a5b3b4fda"
+            "uuid": "068f839b-7547-418a-92f0-7679b9ef558f"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Create and Elastic Alert -> Deduplicate Comments",
-            "targetStep": "\/api\/3\/workflow_steps\/56499ade-b4ef-4b33-a47f-5368c748da21",
-            "sourceStep": "\/api\/3\/workflow_steps\/f6681f20-a500-442e-849d-79fff1c81940",
+            "targetStep": "\/api\/3\/workflow_steps\/c00e6c72-a977-4f45-a3d6-89bd549febdf",
+            "sourceStep": "\/api\/3\/workflow_steps\/b18ea43c-dc29-47a1-ac55-31f01c633d1a",
             "label": null,
             "isExecuted": false,
-            "uuid": "15449a3b-31a5-4d15-8511-e0739509896a"
+            "uuid": "b8edec3d-1ed7-4475-be87-316316c7aed2"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Set Splunk hunt times -> Query for Control Panel Item Execution",
-            "targetStep": "\/api\/3\/workflow_steps\/4c2185c3-d274-4d4a-9aea-cea094127c32",
-            "sourceStep": "\/api\/3\/workflow_steps\/b248bb29-990b-410c-9200-0db82520b2b6",
+            "targetStep": "\/api\/3\/workflow_steps\/1f46920d-1782-4e4b-b0da-e85d8a96e817",
+            "sourceStep": "\/api\/3\/workflow_steps\/eb56301e-b9be-43dc-a254-f2c6dbe508d5",
             "label": null,
             "isExecuted": false,
-            "uuid": "b51a0a4d-13c6-4313-8a00-d2e00e3484f1"
+            "uuid": "aa53566d-bc26-46af-8d6e-6507705f7e0f"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Elastic Query for Control Panel Item Execution -> Create and Elastic Alert",
-            "targetStep": "\/api\/3\/workflow_steps\/f6681f20-a500-442e-849d-79fff1c81940",
-            "sourceStep": "\/api\/3\/workflow_steps\/7172ede9-092f-4e32-b9b2-c9042c6facb9",
+            "targetStep": "\/api\/3\/workflow_steps\/b18ea43c-dc29-47a1-ac55-31f01c633d1a",
+            "sourceStep": "\/api\/3\/workflow_steps\/580eb5d4-22b3-4c39-aba3-e834b5b51391",
             "label": null,
             "isExecuted": false,
-            "uuid": "e2bcd96b-c1fd-4fb1-9a23-50e765a58bde"
+            "uuid": "57573fcd-ebd6-47a4-b135-f6f35d3a22ee"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Create and Link Alert -> Deduplicate Comments",
-            "targetStep": "\/api\/3\/workflow_steps\/56499ade-b4ef-4b33-a47f-5368c748da21",
-            "sourceStep": "\/api\/3\/workflow_steps\/d0cf0556-6e0f-4823-b52b-a5f16d6dc82c",
+            "targetStep": "\/api\/3\/workflow_steps\/c00e6c72-a977-4f45-a3d6-89bd549febdf",
+            "sourceStep": "\/api\/3\/workflow_steps\/5e708b29-5fff-4490-9e46-7d5a876579a7",
             "label": null,
             "isExecuted": false,
-            "uuid": "80d9168a-20d6-4801-8b80-e906f834cf9f"
+            "uuid": "fbbcaba7-9c8c-4c23-a281-7dc2212532da"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Which SIEM -> Copy  of Set Splunk hunt times",
-            "targetStep": "\/api\/3\/workflow_steps\/57ba2f82-0f7b-486a-b7d9-07008ae03ec4",
-            "sourceStep": "\/api\/3\/workflow_steps\/fe172fe9-65f3-47fa-afc4-caaf00745a11",
+            "targetStep": "\/api\/3\/workflow_steps\/a7215bcb-f9af-4feb-bcd6-72c92a5e8c4d",
+            "sourceStep": "\/api\/3\/workflow_steps\/93e161ac-4bdc-442b-bf51-1370cc8e7fe2",
             "label": "Elasticsearch",
             "isExecuted": false,
-            "uuid": "69fcb0c6-8737-4d01-8b25-7af9a695d58d"
+            "uuid": "f8179200-160a-4ff5-bcfb-d620bcab4fd4"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Query for Control Panel Item Execution -> Get Control Panel Execution Results",
-            "targetStep": "\/api\/3\/workflow_steps\/3138d45c-59c8-4859-9806-f5d3024eeafa",
-            "sourceStep": "\/api\/3\/workflow_steps\/4c2185c3-d274-4d4a-9aea-cea094127c32",
+            "targetStep": "\/api\/3\/workflow_steps\/241b0ccd-07f9-4622-9f97-a5f9f1330884",
+            "sourceStep": "\/api\/3\/workflow_steps\/1f46920d-1782-4e4b-b0da-e85d8a96e817",
             "label": null,
             "isExecuted": false,
-            "uuid": "0ede5fac-2a54-4123-b2a8-cd2e12d34c64"
+            "uuid": "6b0c47f1-ee05-4466-b7a2-4b59917633f9"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Set Elastic hunt times -> Elastic Query for Control Panel Item Execution",
-            "targetStep": "\/api\/3\/workflow_steps\/7172ede9-092f-4e32-b9b2-c9042c6facb9",
-            "sourceStep": "\/api\/3\/workflow_steps\/57ba2f82-0f7b-486a-b7d9-07008ae03ec4",
+            "targetStep": "\/api\/3\/workflow_steps\/580eb5d4-22b3-4c39-aba3-e834b5b51391",
+            "sourceStep": "\/api\/3\/workflow_steps\/a7215bcb-f9af-4feb-bcd6-72c92a5e8c4d",
             "label": null,
             "isExecuted": false,
-            "uuid": "4d56a189-eb7a-4dc9-9e4e-e73c40956017"
+            "uuid": "cfa11054-8ff0-4902-940f-34226543b1e3"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Which SIEM -> Set Splunk hunt times",
-            "targetStep": "\/api\/3\/workflow_steps\/b248bb29-990b-410c-9200-0db82520b2b6",
-            "sourceStep": "\/api\/3\/workflow_steps\/fe172fe9-65f3-47fa-afc4-caaf00745a11",
+            "targetStep": "\/api\/3\/workflow_steps\/eb56301e-b9be-43dc-a254-f2c6dbe508d5",
+            "sourceStep": "\/api\/3\/workflow_steps\/93e161ac-4bdc-442b-bf51-1370cc8e7fe2",
             "label": "Splunk",
             "isExecuted": false,
-            "uuid": "8e07d031-330e-4fc2-a44d-f3c9ea27dff6"
+            "uuid": "9f91a18a-04dd-4e22-a176-a667c1a1a2d4"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Hunt for Control Panel Item Execution -> Which SIEM",
-            "targetStep": "\/api\/3\/workflow_steps\/fe172fe9-65f3-47fa-afc4-caaf00745a11",
-            "sourceStep": "\/api\/3\/workflow_steps\/3924e519-9dd2-428c-becc-54509a43d10e",
+            "targetStep": "\/api\/3\/workflow_steps\/93e161ac-4bdc-442b-bf51-1370cc8e7fe2",
+            "sourceStep": "\/api\/3\/workflow_steps\/05e04f2e-098e-4142-ba59-beadda68e43b",
             "label": null,
             "isExecuted": false,
-            "uuid": "b03d4692-1b9b-4839-8180-1568a56a2f08"
+            "uuid": "78459abd-4849-417d-90a8-cf9fb04c1627"
         }
     ],
     "priority": null,
     "uuid": "ea5f9b32-03e3-4ffc-b72f-8732c3888cac",
     "recordTags": [],
-    "id": 1202,
+    "id": 385,
     "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-    "createDate": 1633085066,
+    "createDate": 1640081944,
     "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-    "modifyDate": 1633085066,
+    "modifyDate": 1640081944,
     "owners": [],
     "isPrivate": false
 }
