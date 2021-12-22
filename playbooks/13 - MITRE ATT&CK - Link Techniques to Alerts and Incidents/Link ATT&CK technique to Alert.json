@@ -4,7 +4,7 @@
     "name": "Link ATT&CK technique to Alert (On Create)",
     "aliasName": null,
     "tag": null,
-    "description": "Links MITRE technique or sub-technique to Alert, based on MITRE Attack ID",
+    "description": "Links MITRE technique or sub-technique to an alert, based on MITRE Attack ID",
     "isActive": true,
     "debug": false,
     "singleRecordExecution": false,
