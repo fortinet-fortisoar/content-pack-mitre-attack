@@ -116,3 +116,8 @@ By default, the solution pack does not include the navigation view that contains
     ![Adding Mitre Modules as a group in the navigation](screenshots/screenshot_7.png)
 3. Change the name of the group, add an icon to the folder as per your requirements. You can also change the names of the module pages. MITRE ATT&CK modules appear as follows on the left navigation:  
    ![Mitre Attack Module in the left-navigation](screenshots/screenshot_8.png)
+
+## What's new in MITRE ATT&CK Solution Pack v2.0.1 
+- Added mock output in all Hunt playbooks in the MITRE Att&ck collection, thereby removing the dependency on data from the ElasticSearch connector.
+- Added new 'PostUpdate' playbooks in the "13 - MITRE ATT&CK™ - Link Techniques to Alerts and Incidents" collection to link 'Techniques' and 'Sub-Techniques' to alerts and incidents on update of the MITRE ATTACK ID field.
+- Updated the logic to fetch comments that are corelated to hunt records in the "13 - MITRE ATT&CK™ - Modulars > Deduplicate Comments (Hunt)" playbook. Now, the playbook will fetch only those comments that are not deleted; earlier the playbook was trying to delete already deleted comments (soft-deleted comments). 
