@@ -5,16 +5,16 @@
     "aliasName": null,
     "tag": "ATT&CK, Defense_Evasion, Execution, Compiled_HTML",
     "description": "Identifies processes spawned by hh.exe",
-    "isActive": false,
+    "isActive": true,
     "debug": false,
     "singleRecordExecution": false,
     "remoteExecutableFlag": false,
     "parameters": [],
     "synchronous": false,
-    "lastModifyDate": 1633085062,
+    "lastModifyDate": 1640081936,
     "collection": "\/api\/3\/workflow_collections\/270b47ed-fc8b-4539-898d-3db2f929c777",
     "versions": [],
-    "triggerStep": "\/api\/3\/workflow_steps\/df3856a1-bfed-4744-867d-1a523afec583",
+    "triggerStep": "\/api\/3\/workflow_steps\/2d11d376-8cab-4dc1-8e17-db1d8f42c757",
     "steps": [
         {
             "@type": "WorkflowStep",
@@ -71,8 +71,8 @@
             "top": "300",
             "left": "1420",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "ea95acdf-8abd-48a5-88f8-d6732de6eee9",
-            "id": 4786
+            "uuid": "08674fb7-c23f-4493-a2d4-968de8657e8d",
+            "id": 3055
         },
         {
             "@type": "WorkflowStep",
@@ -129,8 +129,8 @@
             "top": "209",
             "left": "1420",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "11cb2ff1-14eb-4001-a327-f3183b88a12c",
-            "id": 4787
+            "uuid": "1c355899-e3ed-4280-b848-b5c8e045b8b1",
+            "id": 3056
         },
         {
             "@type": "WorkflowStep",
@@ -147,8 +147,8 @@
             "top": "260",
             "left": "1712",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "f89439d8-c6c4-440d-80e3-4c10ec591fc6",
-            "id": 4788
+            "uuid": "5067d69f-ce35-4edc-b39c-565b1821ff8b",
+            "id": 3057
         },
         {
             "@type": "WorkflowStep",
@@ -162,18 +162,19 @@
                     "query": "event_type:sysmon AND event_id:\"1\" AND @timestamp:{ {{vars.elasticHuntStart}} TO {{vars.elasticHuntEnd}} } AND parent_image_path:\"C:\\\\windows\\\\hh.exe\"",
                     "run_as_user": ""
                 },
-                "version": "2.2.0",
+                "version": "2.2.1",
                 "connector": "elasticsearch",
                 "operation": "execute_lucene_query",
+                "mock_result": "{\n  \"data\": {\n    \"hits\": {\n      \"hits\": [\n        {\n          \"_id\": \"HgnpT2oBqSmy6R6grirH\",\n          \"_type\": \"doc\",\n          \"_index\": \"logstash-beats-compiledhtml\",\n          \"_score\": 2.7292862,\n          \"_source\": {\n            \"beat\": {\n              \"name\": \"admin-PC4\",\n              \"version\": \"6.5.3\",\n              \"hostname\": \"admin-PC4\"\n            },\n            \"tags\": [\n              \"beat\",\n              \"beats_input_codec_plain_applied\"\n            ],\n            \"task\": \"Process Create (rule: ProcessCreate)\",\n            \"user\": {\n              \"name\": \"SYSTEM\",\n              \"type\": \"User\",\n              \"domain\": \"NT AUTHORITY\",\n              \"identifier\": \"S-1-5-18\"\n            },\n            \"level\": \"Information\",\n            \"opcode\": \"Info\",\n            \"message\": \"Process Create:\\nRuleName: \\nUtcTime: 2019-04-24 15:11:22.359\\nProcessGuid: {D1BE7B41-7C9A-5CC0-0000-00100883E809}\\nProcessId: 1160\\nImage: C:\\\\Users\\\\superman\\\\Desktop\\\\x64\\\\mimikatz.exe\\nFileVersion: 2.1.1.0\\nDescription: mimikatz for Windows\\nProduct: mimikatz\\nCompany: gentilkiwi (Benjamin DELPY)\\nCommandLine: \\\"C:\\\\Users\\\\superman\\\\Desktop\\\\x64\\\\mimikatz.exe\\\" \\nCurrentDirectory: C:\\\\Users\\\\superman\\\\Desktop\\\\threat emulation\\\\\\nUser: batman\\\\superman\\nLogonGuid: {D1BE7B41-F352-5CB9-0000-00208C590300}\\nLogonId: 0x3598c\\nTerminalSessionId: 1\\nIntegrityLevel: High\\nHashes: MD5=332A5371389A8953A96BF09B69EDCB6E,SHA256=E46BA4BDD4168A399EE5BC2161A8C918095FA30EB20AC88CAC6AB1D6DBEA2B4A\\nParentProcessGuid: {D1BE7B41-7C9A-5CC0-0000-00106D6DE809}\\nParentProcessId: 2168\\nParentImage: C:\\\\Windows\\\\hh.exe\\nParentCommandLine: \\\"C:\\\\Windows\\\\hh.exe\\\" C:\\\\Users\\\\superman\\\\Desktop\\\\threat emulation\\\\test.chm\",\n            \"version\": 5,\n            \"@version\": \"1\",\n            \"event_id\": 1,\n            \"log_name\": \"Microsoft-Windows-Sysmon\/Operational\",\n            \"username\": \"batman\\\\superman\",\n            \"beat_host\": {\n              \"id\": \"d1be7b41-2fc5-49e3-9ff1-ec91443d27c3\",\n              \"os\": {\n                \"build\": \"7601.0\",\n                \"family\": \"windows\",\n                \"version\": \"6.1\",\n                \"platform\": \"windows\"\n              },\n              \"name\": \"admin-PC4\",\n              \"architecture\": \"x86_64\"\n            },\n            \"thread_id\": 1920,\n            \"@timestamp\": \"2019-04-24T15:11:22.453Z\",\n            \"event_data\": {\n              \"Hashes\": \"MD5=332A5371389A8953A96BF09B69EDCB6E,SHA256=E46BA4BDD4168A399EE5BC2161A8C918095FA30EB20AC88CAC6AB1D6DBEA2B4A\",\n              \"Company\": \"gentilkiwi (Benjamin DELPY)\",\n              \"LogonId\": \"0x3598c\",\n              \"Product\": \"mimikatz\",\n              \"UtcTime\": \"2019-04-24 15:11:22.359\",\n              \"LogonGuid\": \"{D1BE7B41-F352-5CB9-0000-00208C590300}\",\n              \"ProcessId\": \"1160\",\n              \"CommandLine\": \"\\\"C:\\\\Users\\\\superman\\\\Desktop\\\\x64\\\\mimikatz.exe\\\" \",\n              \"Description\": \"mimikatz for Windows\",\n              \"FileVersion\": \"2.1.1.0\",\n              \"ProcessGuid\": \"{D1BE7B41-7C9A-5CC0-0000-00100883E809}\",\n              \"IntegrityLevel\": \"High\",\n              \"ParentProcessId\": \"2168\",\n              \"CurrentDirectory\": \"C:\\\\Users\\\\superman\\\\Desktop\\\\threat emulation\\\\\",\n              \"ParentCommandLine\": \"\\\"C:\\\\Windows\\\\hh.exe\\\" C:\\\\Users\\\\superman\\\\Desktop\\\\threat emulation\\\\test.chm\",\n              \"ParentProcessGuid\": \"{D1BE7B41-7C9A-5CC0-0000-00106D6DE809}\",\n              \"TerminalSessionId\": \"1\"\n            },\n            \"event_type\": \"sysmon\",\n            \"image_path\": \"C:\\\\Users\\\\superman\\\\Desktop\\\\x64\\\\mimikatz.exe\",\n            \"process_id\": 1420,\n            \"source_name\": \"Microsoft-Windows-Sysmon\",\n            \"computer_name\": \"admin-PC4.batman.local\",\n            \"logstash_time\": 0.0008568763732910156,\n            \"provider_guid\": \"{5770385F-C22A-43E0-BF4C-06F5698FFBD9}\",\n            \"record_number\": \"335366\",\n            \"parent_image_path\": \"C:\\\\Windows\\\\hh.exe\"\n          }\n        },\n        {\n          \"_id\": \"GgnnT2oBqSmy6R6gvydG\",\n          \"_type\": \"doc\",\n          \"_index\": \"logstash-beats-compiledhtml\",\n          \"_score\": 2.7292862,\n          \"_source\": {\n            \"beat\": {\n              \"name\": \"admin-PC4\",\n              \"version\": \"6.5.3\",\n              \"hostname\": \"admin-PC4\"\n            },\n            \"tags\": [\n              \"beat\",\n              \"beats_input_codec_plain_applied\"\n            ],\n            \"task\": \"Process Create (rule: ProcessCreate)\",\n            \"user\": {\n              \"name\": \"SYSTEM\",\n              \"type\": \"User\",\n              \"domain\": \"NT AUTHORITY\",\n              \"identifier\": \"S-1-5-18\"\n            },\n            \"level\": \"Information\",\n            \"opcode\": \"Info\",\n            \"message\": \"Process Create:\\nRuleName: \\nUtcTime: 2019-04-24 18:09:23.753\\nProcessGuid: {D1BE7B41-A653-5CC0-0000-00107D78E709}\\nProcessId: 2892\\nImage: C:\\\\Users\\\\superman\\\\Desktop\\\\x64\\\\mimikatz.exe\\nFileVersion: 2.1.1.0\\nDescription: mimikatz for Windows\\nProduct: mimikatz\\nCompany: gentilkiwi (Benjamin DELPY)\\nCommandLine: \\\"C:\\\\Users\\\\superman\\\\Desktop\\\\x64\\\\mimikatz.exe\\\" \\nCurrentDirectory: C:\\\\Users\\\\superman\\\\Desktop\\\\threat emulation\\\\\\nUser: batman\\\\superman\\nLogonGuid: {D1BE7B41-F352-5CB9-0000-00208C590300}\\nLogonId: 0x3598c\\nTerminalSessionId: 1\\nIntegrityLevel: High\\nHashes: MD5=332A5371389A8953A96BF09B69EDCB6E,SHA256=E46BA4BDD4168A399EE5BC2161A8C918095FA30EB20AC88CAC6AB1D6DBEA2B4A\\nParentProcessGuid: {D1BE7B41-A653-5CC0-0000-00106D5DE709}\\nParentProcessId: 2876\\nParentImage: C:\\\\Windows\\\\hh.exe\\nParentCommandLine: \\\"C:\\\\Windows\\\\hh.exe\\\" C:\\\\Users\\\\superman\\\\Desktop\\\\threat emulation\\\\test.chm\",\n            \"version\": 5,\n            \"@version\": \"1\",\n            \"event_id\": 1,\n            \"log_name\": \"Microsoft-Windows-Sysmon\/Operational\",\n            \"username\": \"batman\\\\superman\",\n            \"beat_host\": {\n              \"id\": \"d1be7b41-2fc5-49e3-9ff1-ec91443d27c3\",\n              \"os\": {\n                \"build\": \"7601.0\",\n                \"family\": \"windows\",\n                \"version\": \"6.1\",\n                \"platform\": \"windows\"\n              },\n              \"name\": \"admin-PC4\",\n              \"architecture\": \"x86_64\"\n            },\n            \"thread_id\": 1920,\n            \"@timestamp\": \"2019-04-24T18:09:23.878Z\",\n            \"event_data\": {\n              \"Hashes\": \"MD5=332A5371389A8953A96BF09B69EDCB6E,SHA256=E46BA4BDD4168A399EE5BC2161A8C918095FA30EB20AC88CAC6AB1D6DBEA2B4A\",\n              \"Company\": \"gentilkiwi (Benjamin DELPY)\",\n              \"LogonId\": \"0x3598c\",\n              \"Product\": \"mimikatz\",\n              \"UtcTime\": \"2019-04-24 18:09:23.753\",\n              \"LogonGuid\": \"{D1BE7B41-F352-5CB9-0000-00208C590300}\",\n              \"ProcessId\": \"2892\",\n              \"CommandLine\": \"\\\"C:\\\\Users\\\\superman\\\\Desktop\\\\x64\\\\mimikatz.exe\\\" \",\n              \"Description\": \"mimikatz for Windows\",\n              \"FileVersion\": \"2.1.1.0\",\n              \"ProcessGuid\": \"{D1BE7B41-A653-5CC0-0000-00107D78E709}\",\n              \"IntegrityLevel\": \"High\",\n              \"ParentProcessId\": \"2876\",\n              \"CurrentDirectory\": \"C:\\\\Users\\\\superman\\\\Desktop\\\\threat emulation\\\\\",\n              \"ParentCommandLine\": \"\\\"C:\\\\Windows\\\\hh.exe\\\" C:\\\\Users\\\\superman\\\\Desktop\\\\threat emulation\\\\test.chm\",\n              \"ParentProcessGuid\": \"{D1BE7B41-A653-5CC0-0000-00106D5DE709}\",\n              \"TerminalSessionId\": \"1\"\n            },\n            \"event_type\": \"sysmon\",\n            \"image_path\": \"C:\\\\Users\\\\superman\\\\Desktop\\\\x64\\\\mimikatz.exe\",\n            \"process_id\": 1420,\n            \"source_name\": \"Microsoft-Windows-Sysmon\",\n            \"computer_name\": \"admin-PC4.batman.local\",\n            \"logstash_time\": 0.0005850791931152344,\n            \"provider_guid\": \"{5770385F-C22A-43E0-BF4C-06F5698FFBD9}\",\n            \"record_number\": \"335357\",\n            \"parent_image_path\": \"C:\\\\Windows\\\\hh.exe\"\n          }\n        }\n      ],\n      \"total\": {\n        \"value\": 2,\n        \"relation\": \"eq\"\n      },\n      \"max_score\": 2.7292862\n    },\n    \"took\": 656,\n    \"_shards\": {\n      \"total\": 95,\n      \"failed\": 0,\n      \"skipped\": 0,\n      \"successful\": 95\n    },\n    \"timed_out\": false\n  },\n  \"status\": \"Success\",\n  \"message\": \"\",\n  \"operation\": null\n}",
                 "operationTitle": "Execute Lucene Query",
                 "step_variables": []
             },
             "status": null,
             "top": "300",
-            "left": "869",
+            "left": "860",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "03286876-5589-4232-85df-8ce66eea9d0b",
-            "id": 4789
+            "uuid": "97b6a852-979c-41f5-9db3-8b01a9c10c50",
+            "id": 3058
         },
         {
             "@type": "WorkflowStep",
@@ -182,11 +183,11 @@
             "arguments": {
                 "conditions": [
                     {
-                        "step_iri": "\/api\/3\/workflow_steps\/0e0bf803-cc3b-432e-a026-4a36d6a06385",
+                        "step_iri": "\/api\/3\/workflow_steps\/20173ea9-e247-4151-ac56-d4b89d0d1c70",
                         "condition": "{{ vars.input.params.siem.itemValue == \"Elastic\" }}"
                     },
                     {
-                        "step_iri": "\/api\/3\/workflow_steps\/cb4718dd-c50e-420c-9a95-16c239ba511f",
+                        "step_iri": "\/api\/3\/workflow_steps\/58dccbb7-dcbf-4856-b737-b43f7f9dfd4e",
                         "condition": "{{ vars.input.params.siem.itemValue == \"Splunk\" }}"
                     }
                 ]
@@ -195,8 +196,8 @@
             "top": "253",
             "left": "300",
             "stepType": "\/api\/3\/workflow_step_types\/12254cf5-5db7-4b1a-8cb1-3af081924b28",
-            "uuid": "22560792-9642-4866-b167-e2cca187cc37",
-            "id": 4790
+            "uuid": "6459bd5a-b650-4980-8c34-1766b6144e96",
+            "id": 3059
         },
         {
             "@type": "WorkflowStep",
@@ -210,8 +211,8 @@
             "top": "300",
             "left": "592",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "uuid": "0e0bf803-cc3b-432e-a026-4a36d6a06385",
-            "id": 4791
+            "uuid": "20173ea9-e247-4151-ac56-d4b89d0d1c70",
+            "id": 3060
         },
         {
             "@type": "WorkflowStep",
@@ -239,8 +240,8 @@
             "top": "209",
             "left": "1147",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "b18fd7ed-453e-4e03-8e27-7457d1f5e4ba",
-            "id": 4792
+            "uuid": "b8e6259c-4c39-492b-8443-41ae85a204c4",
+            "id": 3061
         },
         {
             "@type": "WorkflowStep",
@@ -267,8 +268,8 @@
             "top": "209",
             "left": "869",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "934e4cfb-1798-45a1-a9be-0ccea57d369d",
-            "id": 4793
+            "uuid": "e7a70573-f510-49a2-9a95-987449be6d7f",
+            "id": 3062
         },
         {
             "@type": "WorkflowStep",
@@ -350,7 +351,8 @@
                             "siem": "{{vars.request.data[\"siem\"]}}"
                         },
                         "records": "{{vars.input.records}}"
-                    }
+                    },
+                    "useMockOutput": "true"
                 },
                 "_promptexpanded": true,
                 "displayConditions": {
@@ -375,8 +377,8 @@
             "top": "252",
             "left": "20",
             "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-            "uuid": "df3856a1-bfed-4744-867d-1a523afec583",
-            "id": 4794
+            "uuid": "2d11d376-8cab-4dc1-8e17-db1d8f42c757",
+            "id": 3063
         },
         {
             "@type": "WorkflowStep",
@@ -390,110 +392,110 @@
             "top": "208",
             "left": "590",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "uuid": "cb4718dd-c50e-420c-9a95-16c239ba511f",
-            "id": 4795
+            "uuid": "58dccbb7-dcbf-4856-b737-b43f7f9dfd4e",
+            "id": 3064
         }
     ],
     "routes": [
         {
             "@type": "WorkflowRoute",
             "name": "Set Splunk hunt times -> Splunk Query for Sysmon Compiled HTML",
-            "targetStep": "\/api\/3\/workflow_steps\/934e4cfb-1798-45a1-a9be-0ccea57d369d",
-            "sourceStep": "\/api\/3\/workflow_steps\/cb4718dd-c50e-420c-9a95-16c239ba511f",
+            "targetStep": "\/api\/3\/workflow_steps\/e7a70573-f510-49a2-9a95-987449be6d7f",
+            "sourceStep": "\/api\/3\/workflow_steps\/58dccbb7-dcbf-4856-b737-b43f7f9dfd4e",
             "label": null,
             "isExecuted": false,
-            "uuid": "c2f56171-59aa-4ba5-9239-8755ce7c5fb7"
+            "uuid": "900d187b-77c2-4fe9-bf68-85905f5f1a7e"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Create Splunk Alerts -> Deduplicate Comments",
-            "targetStep": "\/api\/3\/workflow_steps\/f89439d8-c6c4-440d-80e3-4c10ec591fc6",
-            "sourceStep": "\/api\/3\/workflow_steps\/11cb2ff1-14eb-4001-a327-f3183b88a12c",
+            "targetStep": "\/api\/3\/workflow_steps\/5067d69f-ce35-4edc-b39c-565b1821ff8b",
+            "sourceStep": "\/api\/3\/workflow_steps\/1c355899-e3ed-4280-b848-b5c8e045b8b1",
             "label": null,
             "isExecuted": false,
-            "uuid": "6d3f972a-bd46-491b-b207-e5915ec436a3"
+            "uuid": "7c136d1d-dcb4-4361-a955-259484d0b273"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Hunt for Compiled HTML -> Which SIEM",
-            "targetStep": "\/api\/3\/workflow_steps\/22560792-9642-4866-b167-e2cca187cc37",
-            "sourceStep": "\/api\/3\/workflow_steps\/df3856a1-bfed-4744-867d-1a523afec583",
+            "targetStep": "\/api\/3\/workflow_steps\/6459bd5a-b650-4980-8c34-1766b6144e96",
+            "sourceStep": "\/api\/3\/workflow_steps\/2d11d376-8cab-4dc1-8e17-db1d8f42c757",
             "label": null,
             "isExecuted": false,
-            "uuid": "02449f62-0630-4335-bdb1-0f9fc2ed2060"
+            "uuid": "79965372-aeae-4ad4-8cc1-a80b8bcb78bf"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Which SIEM -> Copy  of Set Splunk hunt times",
-            "targetStep": "\/api\/3\/workflow_steps\/0e0bf803-cc3b-432e-a026-4a36d6a06385",
-            "sourceStep": "\/api\/3\/workflow_steps\/22560792-9642-4866-b167-e2cca187cc37",
+            "targetStep": "\/api\/3\/workflow_steps\/20173ea9-e247-4151-ac56-d4b89d0d1c70",
+            "sourceStep": "\/api\/3\/workflow_steps\/6459bd5a-b650-4980-8c34-1766b6144e96",
             "label": "",
             "isExecuted": false,
-            "uuid": "d1d5f3d0-e751-4c20-8a62-1002e597f03f"
+            "uuid": "d3ede2b2-5b98-47f6-8b4c-0aa942487248"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Get Results for Sysmon Compiled HTML -> Create Splunk Alerts",
-            "targetStep": "\/api\/3\/workflow_steps\/11cb2ff1-14eb-4001-a327-f3183b88a12c",
-            "sourceStep": "\/api\/3\/workflow_steps\/b18fd7ed-453e-4e03-8e27-7457d1f5e4ba",
+            "targetStep": "\/api\/3\/workflow_steps\/1c355899-e3ed-4280-b848-b5c8e045b8b1",
+            "sourceStep": "\/api\/3\/workflow_steps\/b8e6259c-4c39-492b-8443-41ae85a204c4",
             "label": null,
             "isExecuted": false,
-            "uuid": "233cbcd5-6b27-4994-9a15-2a8e1d292b5c"
+            "uuid": "7954470a-1e43-4028-aba1-f19719dfdb42"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Set Elastic hunt times -> Elastic Query for Sysmon Compiled HTML",
-            "targetStep": "\/api\/3\/workflow_steps\/03286876-5589-4232-85df-8ce66eea9d0b",
-            "sourceStep": "\/api\/3\/workflow_steps\/0e0bf803-cc3b-432e-a026-4a36d6a06385",
+            "targetStep": "\/api\/3\/workflow_steps\/97b6a852-979c-41f5-9db3-8b01a9c10c50",
+            "sourceStep": "\/api\/3\/workflow_steps\/20173ea9-e247-4151-ac56-d4b89d0d1c70",
             "label": null,
             "isExecuted": false,
-            "uuid": "c79c3df9-d4c1-425f-9093-43beb447e201"
+            "uuid": "19f14fcb-dc2d-40d5-91e8-ec99b11e0ce4"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Copy  of Create Splunk Alerts -> Deduplicate Comments",
-            "targetStep": "\/api\/3\/workflow_steps\/f89439d8-c6c4-440d-80e3-4c10ec591fc6",
-            "sourceStep": "\/api\/3\/workflow_steps\/ea95acdf-8abd-48a5-88f8-d6732de6eee9",
+            "targetStep": "\/api\/3\/workflow_steps\/5067d69f-ce35-4edc-b39c-565b1821ff8b",
+            "sourceStep": "\/api\/3\/workflow_steps\/08674fb7-c23f-4493-a2d4-968de8657e8d",
             "label": null,
             "isExecuted": false,
-            "uuid": "27b9e6e0-24a7-410b-a6b8-10ed23741fbc"
+            "uuid": "7d3e5fb7-e3f8-4172-9b91-3c98f1ab87f5"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Splunk Query for Sysmon Compiled HTML -> Get Results for Sysmon Compiled HTML",
-            "targetStep": "\/api\/3\/workflow_steps\/b18fd7ed-453e-4e03-8e27-7457d1f5e4ba",
-            "sourceStep": "\/api\/3\/workflow_steps\/934e4cfb-1798-45a1-a9be-0ccea57d369d",
+            "targetStep": "\/api\/3\/workflow_steps\/b8e6259c-4c39-492b-8443-41ae85a204c4",
+            "sourceStep": "\/api\/3\/workflow_steps\/e7a70573-f510-49a2-9a95-987449be6d7f",
             "label": null,
             "isExecuted": false,
-            "uuid": "44596712-9262-4f8d-b89d-900cf7f31f08"
+            "uuid": "196560b8-705c-4220-a132-11b5ff381caa"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Elastic Query for Sysmon Compiled HTML -> Copy  of Create Splunk Alerts",
-            "targetStep": "\/api\/3\/workflow_steps\/ea95acdf-8abd-48a5-88f8-d6732de6eee9",
-            "sourceStep": "\/api\/3\/workflow_steps\/03286876-5589-4232-85df-8ce66eea9d0b",
+            "targetStep": "\/api\/3\/workflow_steps\/08674fb7-c23f-4493-a2d4-968de8657e8d",
+            "sourceStep": "\/api\/3\/workflow_steps\/97b6a852-979c-41f5-9db3-8b01a9c10c50",
             "label": null,
             "isExecuted": false,
-            "uuid": "b6365cd8-7e5c-434a-9463-2f075beeaa08"
+            "uuid": "2752483c-dfa0-4c2e-9269-9c4fa881f397"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Which SIEM -> Set Splunk hunt times",
-            "targetStep": "\/api\/3\/workflow_steps\/cb4718dd-c50e-420c-9a95-16c239ba511f",
-            "sourceStep": "\/api\/3\/workflow_steps\/22560792-9642-4866-b167-e2cca187cc37",
+            "targetStep": "\/api\/3\/workflow_steps\/58dccbb7-dcbf-4856-b737-b43f7f9dfd4e",
+            "sourceStep": "\/api\/3\/workflow_steps\/6459bd5a-b650-4980-8c34-1766b6144e96",
             "label": "",
             "isExecuted": false,
-            "uuid": "c2ccd643-f211-444c-b28e-6faeec040a52"
+            "uuid": "b9d44a88-c6dc-4eb8-b369-e9dfdc7a87e8"
         }
     ],
     "priority": null,
     "uuid": "210b92ea-4286-429a-8bf2-9c55ac1e2999",
     "recordTags": [],
-    "id": 1196,
+    "id": 384,
     "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-    "createDate": 1633085066,
+    "createDate": 1640081944,
     "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-    "modifyDate": 1633085066,
+    "modifyDate": 1640081944,
     "owners": [],
     "isPrivate": false
 }

@@ -5,16 +5,16 @@
     "aliasName": null,
     "tag": "ATT&CK, Persistence, Privilege_Escalation, AppInit_DLLs",
     "description": "Hunts for modification to AppInit DLLs registry keys.",
-    "isActive": false,
+    "isActive": true,
     "debug": false,
     "singleRecordExecution": false,
     "remoteExecutableFlag": false,
     "parameters": [],
     "synchronous": false,
-    "lastModifyDate": 1633085062,
+    "lastModifyDate": 1640081936,
     "collection": "\/api\/3\/workflow_collections\/8e9e842a-e876-40ed-8ac4-078409ff7c29",
     "versions": [],
-    "triggerStep": "\/api\/3\/workflow_steps\/c52786d3-f75b-4080-810e-098116e2f1e0",
+    "triggerStep": "\/api\/3\/workflow_steps\/fc9460f7-0e6e-41ef-979b-eabb5bf05b2b",
     "steps": [
         {
             "@type": "WorkflowStep",
@@ -96,7 +96,8 @@
                             "siem": "{{vars.request.data[\"siem\"]}}"
                         },
                         "records": "{{vars.input.records}}"
-                    }
+                    },
+                    "useMockOutput": "true"
                 },
                 "_promptexpanded": true,
                 "displayConditions": {
@@ -115,8 +116,8 @@
             "top": "160",
             "left": "20",
             "stepType": "\/api\/3\/workflow_step_types\/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-            "uuid": "c52786d3-f75b-4080-810e-098116e2f1e0",
-            "id": 4556
+            "uuid": "fc9460f7-0e6e-41ef-979b-eabb5bf05b2b",
+            "id": 2803
         },
         {
             "@type": "WorkflowStep",
@@ -130,8 +131,8 @@
             "top": "240",
             "left": "632",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "uuid": "ca193524-ad10-422e-97d9-a27c40195999",
-            "id": 4557
+            "uuid": "3f167c71-f8d0-466e-b826-15dd9f12bdb7",
+            "id": 2804
         },
         {
             "@type": "WorkflowStep",
@@ -188,8 +189,8 @@
             "top": "80",
             "left": "1440",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "b9dd8ba3-fef1-4653-aa31-041fc6dde9bb",
-            "id": 4558
+            "uuid": "f06f31a0-37a9-46e3-923b-413379c8fdd1",
+            "id": 2805
         },
         {
             "@type": "WorkflowStep",
@@ -246,8 +247,8 @@
             "top": "240",
             "left": "1440",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "3232ace9-ff3a-4688-aa54-1b0c3d18db85",
-            "id": 4559
+            "uuid": "80fb8e1a-ecfc-487e-bb3c-d418c39f565a",
+            "id": 2806
         },
         {
             "@type": "WorkflowStep",
@@ -261,8 +262,8 @@
             "top": "80",
             "left": "631",
             "stepType": "\/api\/3\/workflow_step_types\/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
-            "uuid": "89345363-2b9d-4802-bc0e-3d6ae5f69563",
-            "id": 4560
+            "uuid": "63a88f56-5b60-4e4e-9e53-6845ed20c1bd",
+            "id": 2807
         },
         {
             "@type": "WorkflowStep",
@@ -290,8 +291,8 @@
             "top": "80",
             "left": "1169",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "dbc3e5b6-8225-4b92-a77b-85c81772b8a7",
-            "id": 4561
+            "uuid": "4b0febd4-53db-42e2-a454-b54ccab1f4d8",
+            "id": 2808
         },
         {
             "@type": "WorkflowStep",
@@ -301,12 +302,12 @@
                 "conditions": [
                     {
                         "option": "Elasticsearch",
-                        "step_iri": "\/api\/3\/workflow_steps\/ca193524-ad10-422e-97d9-a27c40195999",
+                        "step_iri": "\/api\/3\/workflow_steps\/3f167c71-f8d0-466e-b826-15dd9f12bdb7",
                         "condition": "{{ vars.input.params.siem.itemValue == \"Elastic\" }}"
                     },
                     {
                         "option": "Splunk",
-                        "step_iri": "\/api\/3\/workflow_steps\/89345363-2b9d-4802-bc0e-3d6ae5f69563",
+                        "step_iri": "\/api\/3\/workflow_steps\/63a88f56-5b60-4e4e-9e53-6845ed20c1bd",
                         "condition": "{{ vars.input.params.siem.itemValue == \"Splunk\" }}"
                     }
                 ]
@@ -315,8 +316,8 @@
             "top": "160",
             "left": "287",
             "stepType": "\/api\/3\/workflow_step_types\/12254cf5-5db7-4b1a-8cb1-3af081924b28",
-            "uuid": "affd4200-a75b-4637-a78c-322494aa0a5c",
-            "id": 4562
+            "uuid": "a50274df-9c4f-44e9-92c3-4c315d4c3e60",
+            "id": 2809
         },
         {
             "@type": "WorkflowStep",
@@ -333,8 +334,8 @@
             "top": "160",
             "left": "1748",
             "stepType": "\/api\/3\/workflow_step_types\/74932bdc-b8b6-4d24-88c4-1a4dfbc524f3",
-            "uuid": "1cd4a390-2829-497b-acdb-91f362629cc5",
-            "id": 4563
+            "uuid": "a29c57b1-6add-4a6f-9fe0-90e12bd2df50",
+            "id": 2810
         },
         {
             "@type": "WorkflowStep",
@@ -361,8 +362,8 @@
             "top": "80",
             "left": "900",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "5a146a30-125f-42e7-a0f2-19e2b70158fc",
-            "id": 4564
+            "uuid": "d68f92ec-2192-4677-9476-c5ddac8d03e5",
+            "id": 2811
         },
         {
             "@type": "WorkflowStep",
@@ -376,9 +377,10 @@
                     "query": "@timestamp:{ {{vars.elasticHuntStart}} TO {{vars.elasticHuntEnd}} } AND event_type:sysmon AND (event_id:\"12\" OR event_id:\"13\") AND (event_data.TargetObject.keyword:HKLM\\\\SOFTWARE\\\\Wow6432Node\\\\Microsoft\\\\Windows\\ NT\\\\CurrentVersion\\\\Windows\\\\AppInit_DLLs OR event_data.TargetObject.keyword:HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows\\ NT\\\\CurrentVersion\\\\Windows\\\\AppInit_DLLs)",
                     "run_as_user": ""
                 },
-                "version": "2.2.0",
+                "version": "2.2.1",
                 "connector": "elasticsearch",
                 "operation": "execute_lucene_query",
+                "mock_result": "{\n  \"data\": {\n    \"hits\": {\n      \"hits\": [\n        {\n          \"_id\": \"CQn5T2oBqSmy6R6gIz2G\",\n          \"_type\": \"doc\",\n          \"_index\": \"logstash-beats-appinitdlls\",\n          \"_score\": 2.575364,\n          \"_source\": {\n            \"beat\": {\n              \"name\": \"admin-PC2\",\n              \"version\": \"6.5.3\",\n              \"hostname\": \"admin-PC2\"\n            },\n            \"tags\": [\n              \"beat\",\n              \"beats_input_codec_plain_applied\"\n            ],\n            \"task\": \"Registry value set (rule: RegistryEvent)\",\n            \"user\": {\n              \"name\": \"SYSTEM\",\n              \"type\": \"User\",\n              \"domain\": \"NT AUTHORITY\",\n              \"identifier\": \"S-1-5-18\"\n            },\n            \"level\": \"Information\",\n            \"opcode\": \"Info\",\n            \"message\": \"Registry value set:\\nRuleName: \\nEventType: SetValue\\nUtcTime: 2019-04-24 15:31:26.951\\nProcessGuid: {BAECEEB0-80DE-5CC0-0000-00109B8A2F18}\\nProcessId: 3008\\nImage: C:\\\\Windows\\\\regedit.exe\\nTargetObject: HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Windows\\\\AppInit_DLLs\\nDetails: C:\\\\xmimilib.dll,\",\n            \"version\": 2,\n            \"@version\": \"1\",\n            \"event_id\": 13,\n            \"log_name\": \"Microsoft-Windows-Sysmon\/Operational\",\n            \"beat_host\": {\n              \"id\": \"baeceeb0-040c-498f-84c9-610d57bc902d\",\n              \"os\": {\n                \"build\": \"7601.0\",\n                \"family\": \"windows\",\n                \"version\": \"6.1\",\n                \"platform\": \"windows\"\n              },\n              \"name\": \"admin-PC2\",\n              \"architecture\": \"x86_64\"\n            },\n            \"thread_id\": 1492,\n            \"@timestamp\": \"2019-04-24T15:31:26.967Z\",\n            \"event_data\": {\n              \"Details\": \"C:\\\\xmimilib.dll,\",\n              \"UtcTime\": \"2019-04-24 15:31:26.951\",\n              \"EventType\": \"SetValue\",\n              \"ProcessId\": \"3008\",\n              \"ProcessGuid\": \"{BAECEEB0-80DE-5CC0-0000-00109B8A2F18}\",\n              \"TargetObject\": \"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Windows\\\\AppInit_DLLs\"\n            },\n            \"event_type\": \"sysmon\",\n            \"image_path\": \"C:\\\\Windows\\\\regedit.exe\",\n            \"process_id\": 1464,\n            \"source_name\": \"Microsoft-Windows-Sysmon\",\n            \"computer_name\": \"admin-PC2.batman.local\",\n            \"logstash_time\": 0.0008051395416259766,\n            \"provider_guid\": \"{5770385F-C22A-43E0-BF4C-06F5698FFBD9}\",\n            \"record_number\": \"169203\"\n          }\n        },\n        {\n          \"_id\": \"EwkAUGoBqSmy6R6g60gh\",\n          \"_type\": \"doc\",\n          \"_index\": \"logstash-beats-appinitdlls\",\n          \"_score\": 2.575364,\n          \"_source\": {\n            \"beat\": {\n              \"name\": \"admin-PC2\",\n              \"version\": \"6.5.3\",\n              \"hostname\": \"admin-PC2\"\n            },\n            \"tags\": [\n              \"beat\",\n              \"beats_input_codec_plain_applied\"\n            ],\n            \"task\": \"Registry value set (rule: RegistryEvent)\",\n            \"user\": {\n              \"name\": \"SYSTEM\",\n              \"type\": \"User\",\n              \"domain\": \"NT AUTHORITY\",\n              \"identifier\": \"S-1-5-18\"\n            },\n            \"level\": \"Information\",\n            \"opcode\": \"Info\",\n            \"message\": \"Registry value set:\\nRuleName: \\nEventType: SetValue\\nUtcTime: 2019-04-24 16:39:15.864\\nProcessGuid: {BAECEEB0-9124-5CC0-0000-00102A913818}\\nProcessId: 632\\nImage: C:\\\\Windows\\\\regedit.exe\\nTargetObject: HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Windows\\\\AppInit_DLLs\\nDetails: C:\\\\x2mimilib.dll,\",\n            \"version\": 2,\n            \"@version\": \"1\",\n            \"event_id\": 13,\n            \"log_name\": \"Microsoft-Windows-Sysmon\/Operational\",\n            \"beat_host\": {\n              \"id\": \"baeceeb0-040c-498f-84c9-610d57bc902d\",\n              \"os\": {\n                \"build\": \"7601.0\",\n                \"family\": \"windows\",\n                \"version\": \"6.1\",\n                \"platform\": \"windows\"\n              },\n              \"name\": \"admin-PC2\",\n              \"architecture\": \"x86_64\"\n            },\n            \"thread_id\": 1492,\n            \"@timestamp\": \"2019-04-24T16:39:15.864Z\",\n            \"event_data\": {\n              \"Details\": \"C:\\\\x2mimilib.dll,\",\n              \"UtcTime\": \"2019-04-24 16:39:15.864\",\n              \"EventType\": \"SetValue\",\n              \"ProcessId\": \"632\",\n              \"ProcessGuid\": \"{BAECEEB0-9124-5CC0-0000-00102A913818}\",\n              \"TargetObject\": \"HKLM\\\\SOFTWARE\\\\Microsoft\\\\Windows NT\\\\CurrentVersion\\\\Windows\\\\AppInit_DLLs\"\n            },\n            \"event_type\": \"sysmon\",\n            \"image_path\": \"C:\\\\Windows\\\\regedit.exe\",\n            \"process_id\": 1464,\n            \"source_name\": \"Microsoft-Windows-Sysmon\",\n            \"computer_name\": \"admin-PC2.batman.local\",\n            \"logstash_time\": 0.0009889602661132812,\n            \"provider_guid\": \"{5770385F-C22A-43E0-BF4C-06F5698FFBD9}\",\n            \"record_number\": \"169212\"\n          }\n        }\n      ],\n      \"total\": {\n        \"value\": 2,\n        \"relation\": \"eq\"\n      },\n      \"max_score\": 2.575364\n    },\n    \"took\": 183,\n    \"_shards\": {\n      \"total\": 95,\n      \"failed\": 0,\n      \"skipped\": 0,\n      \"successful\": 95\n    },\n    \"timed_out\": false\n  },\n  \"status\": \"Success\",\n  \"message\": \"\",\n  \"operation\": null\n}",
                 "operationTitle": "Execute Lucene Query",
                 "step_variables": []
             },
@@ -386,110 +388,110 @@
             "top": "240",
             "left": "900",
             "stepType": "\/api\/3\/workflow_step_types\/0bfed618-0316-11e7-93ae-92361f002671",
-            "uuid": "b83a3a64-67de-473f-b8e2-798acb2d080e",
-            "id": 4565
+            "uuid": "aee6daf9-0aeb-4e42-badb-39068166bd43",
+            "id": 2812
         }
     ],
     "routes": [
         {
             "@type": "WorkflowRoute",
             "name": "Query for Netsh helper DLL registry key modification -> Copy  of Retrieve key creation query results",
-            "targetStep": "\/api\/3\/workflow_steps\/dbc3e5b6-8225-4b92-a77b-85c81772b8a7",
-            "sourceStep": "\/api\/3\/workflow_steps\/5a146a30-125f-42e7-a0f2-19e2b70158fc",
+            "targetStep": "\/api\/3\/workflow_steps\/4b0febd4-53db-42e2-a454-b54ccab1f4d8",
+            "sourceStep": "\/api\/3\/workflow_steps\/d68f92ec-2192-4677-9476-c5ddac8d03e5",
             "label": null,
             "isExecuted": false,
-            "uuid": "d78258c7-cee0-4707-a625-9b8a212a4f9c"
+            "uuid": "0436ea5b-b09b-41a3-b560-4fbf7a44ba38"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Copy  of Create and Link Alert -> Deduplicate comments",
-            "targetStep": "\/api\/3\/workflow_steps\/1cd4a390-2829-497b-acdb-91f362629cc5",
-            "sourceStep": "\/api\/3\/workflow_steps\/b9dd8ba3-fef1-4653-aa31-041fc6dde9bb",
+            "targetStep": "\/api\/3\/workflow_steps\/a29c57b1-6add-4a6f-9fe0-90e12bd2df50",
+            "sourceStep": "\/api\/3\/workflow_steps\/f06f31a0-37a9-46e3-923b-413379c8fdd1",
             "label": null,
             "isExecuted": false,
-            "uuid": "716abf6a-792b-4110-9f7d-206605ca7df1"
+            "uuid": "c479b9d2-88ab-44c4-9d85-e26413fec2dc"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Create and Link Elastic Alert -> Deduplicate comments",
-            "targetStep": "\/api\/3\/workflow_steps\/1cd4a390-2829-497b-acdb-91f362629cc5",
-            "sourceStep": "\/api\/3\/workflow_steps\/3232ace9-ff3a-4688-aa54-1b0c3d18db85",
+            "targetStep": "\/api\/3\/workflow_steps\/a29c57b1-6add-4a6f-9fe0-90e12bd2df50",
+            "sourceStep": "\/api\/3\/workflow_steps\/80fb8e1a-ecfc-487e-bb3c-d418c39f565a",
             "label": null,
             "isExecuted": false,
-            "uuid": "43bbdc93-f5a2-48a1-8477-2b9b1fad7c8f"
+            "uuid": "983fde9f-df0f-4b23-895f-303f3ab93283"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Select SIEM -> Set Splunk hunt times",
-            "targetStep": "\/api\/3\/workflow_steps\/89345363-2b9d-4802-bc0e-3d6ae5f69563",
-            "sourceStep": "\/api\/3\/workflow_steps\/affd4200-a75b-4637-a78c-322494aa0a5c",
+            "targetStep": "\/api\/3\/workflow_steps\/63a88f56-5b60-4e4e-9e53-6845ed20c1bd",
+            "sourceStep": "\/api\/3\/workflow_steps\/a50274df-9c4f-44e9-92c3-4c315d4c3e60",
             "label": "Splunk",
             "isExecuted": false,
-            "uuid": "84ec19d3-8310-48b9-8bce-350179911fcc"
+            "uuid": "545ee6d7-acd6-4066-9e01-1024f7b9521d"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Start -> Select SIEM",
-            "targetStep": "\/api\/3\/workflow_steps\/affd4200-a75b-4637-a78c-322494aa0a5c",
-            "sourceStep": "\/api\/3\/workflow_steps\/c52786d3-f75b-4080-810e-098116e2f1e0",
+            "targetStep": "\/api\/3\/workflow_steps\/a50274df-9c4f-44e9-92c3-4c315d4c3e60",
+            "sourceStep": "\/api\/3\/workflow_steps\/fc9460f7-0e6e-41ef-979b-eabb5bf05b2b",
             "label": null,
             "isExecuted": false,
-            "uuid": "2a7c89d0-02d2-4706-bb6b-4c357437945a"
+            "uuid": "42adba29-d12d-450b-ba3a-7a99cda000d3"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Retrieve key modification query results -> Copy  of Create and Link Alert",
-            "targetStep": "\/api\/3\/workflow_steps\/b9dd8ba3-fef1-4653-aa31-041fc6dde9bb",
-            "sourceStep": "\/api\/3\/workflow_steps\/dbc3e5b6-8225-4b92-a77b-85c81772b8a7",
+            "targetStep": "\/api\/3\/workflow_steps\/f06f31a0-37a9-46e3-923b-413379c8fdd1",
+            "sourceStep": "\/api\/3\/workflow_steps\/4b0febd4-53db-42e2-a454-b54ccab1f4d8",
             "label": null,
             "isExecuted": false,
-            "uuid": "cfac5309-b027-4f9a-88c9-cf5bec460cd6"
+            "uuid": "78019586-becb-4d0c-8004-343c9be08c9e"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Set Splunk hunt times -> Query for AppInit DLL registry key modification",
-            "targetStep": "\/api\/3\/workflow_steps\/5a146a30-125f-42e7-a0f2-19e2b70158fc",
-            "sourceStep": "\/api\/3\/workflow_steps\/89345363-2b9d-4802-bc0e-3d6ae5f69563",
+            "targetStep": "\/api\/3\/workflow_steps\/d68f92ec-2192-4677-9476-c5ddac8d03e5",
+            "sourceStep": "\/api\/3\/workflow_steps\/63a88f56-5b60-4e4e-9e53-6845ed20c1bd",
             "label": null,
             "isExecuted": false,
-            "uuid": "7afd1ce6-1c6a-45a7-8b65-592c815ecc46"
+            "uuid": "eefbfcdd-8327-4ac7-964d-5d9bc1e754b2"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Select SIEM -> Copy  of Set Splunk hunt times",
-            "targetStep": "\/api\/3\/workflow_steps\/ca193524-ad10-422e-97d9-a27c40195999",
-            "sourceStep": "\/api\/3\/workflow_steps\/affd4200-a75b-4637-a78c-322494aa0a5c",
+            "targetStep": "\/api\/3\/workflow_steps\/3f167c71-f8d0-466e-b826-15dd9f12bdb7",
+            "sourceStep": "\/api\/3\/workflow_steps\/a50274df-9c4f-44e9-92c3-4c315d4c3e60",
             "label": "Elasticsearch",
             "isExecuted": false,
-            "uuid": "da791ceb-90d2-4be7-a93d-e984f0c19571"
+            "uuid": "42025507-4fad-4a65-ad80-f79d3c2c6e11"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Elastic query for AppInit DLLs -> Create and Link Elastic Alert",
-            "targetStep": "\/api\/3\/workflow_steps\/3232ace9-ff3a-4688-aa54-1b0c3d18db85",
-            "sourceStep": "\/api\/3\/workflow_steps\/b83a3a64-67de-473f-b8e2-798acb2d080e",
+            "targetStep": "\/api\/3\/workflow_steps\/80fb8e1a-ecfc-487e-bb3c-d418c39f565a",
+            "sourceStep": "\/api\/3\/workflow_steps\/aee6daf9-0aeb-4e42-badb-39068166bd43",
             "label": null,
             "isExecuted": false,
-            "uuid": "2faa50d6-44fa-4c43-b865-1751d4ccb0fc"
+            "uuid": "ef94179a-1a5b-4bcc-a3f1-474cbc5c15b7"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Set Elastic hunt times -> Elastic query for AppInit DLLs",
-            "targetStep": "\/api\/3\/workflow_steps\/b83a3a64-67de-473f-b8e2-798acb2d080e",
-            "sourceStep": "\/api\/3\/workflow_steps\/ca193524-ad10-422e-97d9-a27c40195999",
+            "targetStep": "\/api\/3\/workflow_steps\/aee6daf9-0aeb-4e42-badb-39068166bd43",
+            "sourceStep": "\/api\/3\/workflow_steps\/3f167c71-f8d0-466e-b826-15dd9f12bdb7",
             "label": null,
             "isExecuted": false,
-            "uuid": "9effc6ca-00ee-4efb-a6cc-a2c1939e9a2b"
+            "uuid": "db1b30d8-1a8c-4428-95a8-52cd04483a2b"
         }
     ],
     "priority": null,
     "uuid": "00e98266-9618-4345-a20b-09f241c02e96",
     "recordTags": [],
-    "id": 1178,
+    "id": 363,
     "createUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-    "createDate": 1633085064,
+    "createDate": 1640081941,
     "modifyUser": "\/api\/3\/people\/3451141c-bac6-467c-8d72-85e0fab569ce",
-    "modifyDate": 1633085064,
+    "modifyDate": 1640081941,
     "owners": [],
     "isPrivate": false
 }
