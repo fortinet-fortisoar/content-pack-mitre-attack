@@ -1,4 +1,4 @@
-# MITRE ATT&CK Framework Solution Pack v2.0.1
+# **MITRE ATT&CK Framework Solution Pack v2.0.1**
 
 
 ## Overview
@@ -16,12 +16,6 @@ You can setup the MITRE ATT&CK Solution Pack as follows:
 2. Review the contents of the MITRE ATT&CK Framework Solution Pack.
 3. Setup data ingestion for the MITRE database using the MITRE ATT&amp;CK Connector.
 4. Leverage Hunt Playbooks to look for specific tactics in your environment. Use cases and screenshots from some hunt playbooks are included in the *Use Case Workflow* section.
-
-### Deploying the MITRE ATT&CK Framework Solution Pack
-
-**Important**: Before you deploy the solution pack, ensure that you have deployed the FortiSOAR™ Incident Response Solution Pack ([solution-pack-incident-response](https://github.com/fortinet-fortisoar/solution-pack-incident-response)).
-
-The steps for deploying a solution pack are mentioned in the [Deploying a Solution Pack](https://github.com/fortinet-fortisoar/how-tos/blob/main/DeployingASolutionPack.md) article.
 
 ## Configuring the MITREATT&CK Solution Pack
 
