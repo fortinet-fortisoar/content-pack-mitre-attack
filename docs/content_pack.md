@@ -1,5 +1,5 @@
 
-# MITRE ATT&CK Framework Solution Pack v2.0.1
+# MITRE ATT&CK Solution Pack v2.0.1
 
 ## Overview
 
@@ -7,25 +7,22 @@ This article describes the FortiSOAR™ MITRE ATT&CK Solution Pack (solution-pac
 
 "*MITRE ATT&CK is a globally-accessible knowledge base of adversary tactics and techniques based on real-world observations. The ATT&CK knowledge base is used as a foundation for the development of specific threat models and methodologies in the private sector, in government, and in the cybersecurity product and service community.*"
 
+## What's new in the MITRE ATT&CK Solution Pack v2.0.1 
+- Added mock output in all Hunt playbooks in the MITRE Att&ck collection, thereby removing the dependency on data from the ElasticSearch connector.
+- Added new 'PostUpdate' playbooks in the "13 - MITRE ATT&CK™ - Link Techniques to Alerts and Incidents" collection to link 'Techniques' and 'Sub-Techniques' to alerts and incidents on update of the MITRE ATTACK ID field.
+- Updated the logic to fetch comments that are corelated to hunt records in the "13 - MITRE ATT&CK™ - Modulars > Deduplicate Comments (Hunt)" playbook. Now, the playbook will fetch only those comments that are not deleted; earlier the playbook was trying to delete already deleted comments (soft-deleted comments). 
+
 ## Setting up the MITRE ATT&CK Solution Pack
 
-You can use the MITRE ATT&CK solution pack to map alerts, incidents, and indicators to MITRE Tactics and Threat Actors; and also hunt for specific tactics in your environment using pre-configured playbooks.
-You can setup the MITRE ATT&CK Solution Pack as follows:
+You can use the MITRE ATT&CK solution pack to map alerts, incidents, and indicators to MITRE Tactics and Threat Actors; and also hunt for specific tactics in your environment using pre-configured playbooks. You can setup the MITRE ATT&CK Solution Pack as follows:
 
-1. Deploy the Solution Pack.
+1. Deploy the MITRE ATT&CK Solution Pack. However, before you deploy the MITRE ATT&CK Solution Pack, ensure that you have deployed the FortiSOAR™ Incident Response Solution Pack ([solution-pack-incident-response](https://github.com/fortinet-fortisoar/solution-pack-incident-response)). The steps for deploying a solution pack are mentioned in the [Deploying a Solution Pack](https://github.com/fortinet-fortisoar/how-tos/blob/main/DeployingASolutionPack.md) article. 
 2. Review the contents of the MITRE ATT&CK Framework Solution Pack.
-3. Setup data ingestion for the MITRE database using the MITRE ATT&amp;CK Connector.
+3. Setup data ingestion for the MITRE database using the MITRE ATT&CK Connector.
 4. Leverage Hunt Playbooks to look for specific tactics in your environment. Use cases and screenshots from some hunt playbooks are included in the *Use Case Workflow* section.
+5. Setting up the Navigation View for MITRE modules.
 
-## Configuring the MITREATT&CK Solution Pack
-
-Once you have the MITRE ATT&CK Solution Pack deployed, do the following configurations:
-
-1. Setup data ingestion for the MITRE database using the MITRE ATT&CK Connector.
-2. Setup modules to lookup MITRE ATT&CK Tactics and Groups. 
-3. Leverage Hunt Playbooks to look for specific tactics in your environment. Use cases and screenshots from some hunt playbooks are included in the *Use Case Workflow* topic in this article.
-
-### Contents of the MITRE ATT&CK Framework Solution Pack
+### Contents of the MITRE ATT&CK Solution Pack
 
 - Integrations
     - MITRE ATT&CK
@@ -106,7 +103,7 @@ Screenshot of the "Hidden Files and Directories (T1564.001)" Hunt playbook. This
 Screenshot of the "Link ATT&CK technique to Alert" playbook. This playbook links the 'Alert' records that were created as a result of Hunt playbooks to their related MITRE ATT&CK techniques and subtechniques  
 ![Screenshot of the "Link ATT&CK technique to Alert" playbook](screenshots/screenshot_5.png) 
 
-### Setting up the Navigation View
+### Setting up the Navigation View for MITRE modules
 
 By default, the solution pack does not include the navigation view that contains the new MITRE modules. This is because the navigation view imports overwrite the view altogether. Therefore, after you import the solution pack, you still need to add the new modules to the navigation view. The following screenshots describe this process.
 
@@ -116,8 +113,16 @@ By default, the solution pack does not include the navigation view that contains
     ![Adding Mitre Modules as a group in the navigation](screenshots/screenshot_7.png)
 3. Change the name of the group, add an icon to the folder as per your requirements. You can also change the names of the module pages. MITRE ATT&CK modules appear as follows on the left navigation:  
    ![Mitre Attack Module in the left-navigation](screenshots/screenshot_8.png)
+## Upgrading the MITRE ATT&CK Solution Pack
 
-## What's new in MITRE ATT&CK Solution Pack v2.0.1 
-- Added mock output in all Hunt playbooks in the MITRE Att&ck collection, thereby removing the dependency on data from the ElasticSearch connector.
-- Added new 'PostUpdate' playbooks in the "13 - MITRE ATT&CK™ - Link Techniques to Alerts and Incidents" collection to link 'Techniques' and 'Sub-Techniques' to alerts and incidents on update of the MITRE ATTACK ID field.
-- Updated the logic to fetch comments that are corelated to hunt records in the "13 - MITRE ATT&CK™ - Modulars > Deduplicate Comments (Hunt)" playbook. Now, the playbook will fetch only those comments that are not deleted; earlier the playbook was trying to delete already deleted comments (soft-deleted comments). 
+Before you proceed to upgrade the contents of the solution pack manually, you must take a backup of your current configuration using the “Export Wizard”. You can export all the modules along with their MMDs, SVTs, and all the required playbooks.  
+
+If users have a solution pack installed, then they can upgrade their solution pack by downloading the release zip files from the Solution Pack's page. Steps are included in the [Deploying a Solution Pack](https://github.com/fortinet-fortisoar/how-tos/blob/main/deploying/deployingASolutionPack.md) article.
+
+While you are importing the release zip files, using the "Import Wizard", during the import of MMDs/ SVTs you must ensure that you select the **Merge with Existing** option, as shown in the following image:  
+![Importing MMDs/SVTs](screenshots/importAlertMMDs_new.png)
+
+**Note**: SVT changes might get lost during import and therefore, you can restore them using the configuration that you have backed up.  
+
+Similarly, while importing playbooks, you must select the **Merge Collection (Replace existing Playbooks)** option, if you want to update your existing playbooks and add new ones:  
+![Importing Playbooks](screenshots/importPBs.png)
