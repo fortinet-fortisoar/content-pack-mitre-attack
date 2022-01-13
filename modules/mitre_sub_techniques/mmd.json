@@ -1,6 +1,6 @@
 {
     "@context": "\/api\/3\/contexts\/StagingModelMetadata",
-    "@id": "\/api\/3\/staging_model_metadatas\/9ce13ccb-dd02-4c8d-b8ed-71c711872261",
+    "@id": "\/api\/3\/staging_model_metadatas\/367e4e89-8e4b-4e17-a561-c698830915ad",
     "@type": "StagingModelMetadata",
     "type": "mitre_sub_techniques",
     "parentType": null,
@@ -16,7 +16,7 @@
     "writable": true,
     "attributes": [
         {
-            "@id": "\/api\/3\/attribute_metadatas\/2eb5d4d7-40e0-4a94-b5ce-17d35e0cb0ec",
+            "@id": "\/api\/3\/attribute_metadatas\/afd95be4-c77c-422b-b00b-76a3afc73c12",
             "@type": "AttributeMetadata",
             "type": "incidents",
             "name": "incidents",
@@ -51,15 +51,15 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/9ce13ccb-dd02-4c8d-b8ed-71c711872261",
-            "uuid": "2eb5d4d7-40e0-4a94-b5ce-17d35e0cb0ec",
+            "sattrib": "\/api\/3\/staging_model_metadatas\/367e4e89-8e4b-4e17-a561-c698830915ad",
+            "uuid": "afd95be4-c77c-422b-b00b-76a3afc73c12",
             "displayName": "{{ incidents }}",
             "descriptions": {
                 "singular": "Incidents"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/772f6ced-5230-4765-b59d-2e7b9bdd1d7d",
+            "@id": "\/api\/3\/attribute_metadatas\/d41f7052-0c65-4b43-86b2-3ce4c2dd935e",
             "@type": "AttributeMetadata",
             "type": "alerts",
             "name": "alerts",
@@ -94,61 +94,15 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/9ce13ccb-dd02-4c8d-b8ed-71c711872261",
-            "uuid": "772f6ced-5230-4765-b59d-2e7b9bdd1d7d",
+            "sattrib": "\/api\/3\/staging_model_metadatas\/367e4e89-8e4b-4e17-a561-c698830915ad",
+            "uuid": "d41f7052-0c65-4b43-86b2-3ce4c2dd935e",
             "displayName": "{{ alerts }}",
             "descriptions": {
                 "singular": "Alerts"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/05625c09-c7e5-47bb-9542-136c53727926",
-            "@type": "AttributeMetadata",
-            "type": "string",
-            "name": "mitreId",
-            "length": null,
-            "orderIndex": 1,
-            "formType": "text",
-            "dataSource": null,
-            "searchable": false,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": false,
-            "inversedField": null,
-            "ownsRelationship": false,
-            "validation": {
-                "required": false,
-                "minlength": 0,
-                "maxlength": 10485761
-            },
-            "bulkAction": {
-                "allow": false,
-                "buttonText": "",
-                "buttonIcon": "",
-                "buttonClass": "btn btn-default btn-sm"
-            },
-            "dataSourceFilters": null,
-            "defaultValue": "",
-            "tooltip": null,
-            "visibility": true,
-            "htmlEscape": null,
-            "orphanRemoval": null,
-            "readable": null,
-            "writeable": true,
-            "identifier": null,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/9ce13ccb-dd02-4c8d-b8ed-71c711872261",
-            "uuid": "05625c09-c7e5-47bb-9542-136c53727926",
-            "displayName": "{{ mitreId }}",
-            "descriptions": {
-                "singular": "Mitre ID"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/b201c6ce-f2b1-4e5d-b46e-0e7c89301f9d",
+            "@id": "\/api\/3\/attribute_metadatas\/88163d6b-505c-406a-8014-bbd78ac62b5f",
             "@type": "AttributeMetadata",
             "type": "string",
             "name": "name",
@@ -160,53 +114,7 @@
             "peerReplicable": true,
             "system": false,
             "encrypted": false,
-            "gridColumn": false,
-            "collection": false,
-            "inversedField": null,
-            "ownsRelationship": false,
-            "validation": {
-                "required": false,
-                "minlength": 0,
-                "maxlength": 10485761
-            },
-            "bulkAction": {
-                "allow": false,
-                "buttonText": "",
-                "buttonIcon": "",
-                "buttonClass": "btn btn-default btn-sm"
-            },
-            "dataSourceFilters": null,
-            "defaultValue": "",
-            "tooltip": null,
-            "visibility": true,
-            "htmlEscape": null,
-            "orphanRemoval": null,
-            "readable": null,
-            "writeable": true,
-            "identifier": null,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/9ce13ccb-dd02-4c8d-b8ed-71c711872261",
-            "uuid": "b201c6ce-f2b1-4e5d-b46e-0e7c89301f9d",
-            "displayName": "{{ name }}",
-            "descriptions": {
-                "singular": "Name"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/3854bc6b-667c-4c93-bb55-20d842bc36ca",
-            "@type": "AttributeMetadata",
-            "type": "string",
-            "name": "description",
-            "length": null,
-            "orderIndex": 4,
-            "formType": "richtext",
-            "dataSource": null,
-            "searchable": true,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
+            "gridColumn": true,
             "collection": false,
             "inversedField": null,
             "ownsRelationship": false,
@@ -223,7 +131,7 @@
                 "buttonClass": "btn btn-default btn-sm"
             },
             "dataSourceFilters": null,
-            "defaultValue": null,
+            "defaultValue": "",
             "tooltip": null,
             "visibility": true,
             "htmlEscape": null,
@@ -233,15 +141,15 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/9ce13ccb-dd02-4c8d-b8ed-71c711872261",
-            "uuid": "3854bc6b-667c-4c93-bb55-20d842bc36ca",
-            "displayName": "{{ description }}",
+            "sattrib": "\/api\/3\/staging_model_metadatas\/367e4e89-8e4b-4e17-a561-c698830915ad",
+            "uuid": "88163d6b-505c-406a-8014-bbd78ac62b5f",
+            "displayName": "{{ name }}",
             "descriptions": {
-                "singular": "Description"
+                "singular": "Name"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/f8086aa2-65f3-41b5-a264-3b6517114304",
+            "@id": "\/api\/3\/attribute_metadatas\/0d4f2290-b670-41d2-a9ae-7d6d9654b3f1",
             "@type": "AttributeMetadata",
             "type": "string",
             "name": "detection",
@@ -280,63 +188,15 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/9ce13ccb-dd02-4c8d-b8ed-71c711872261",
-            "uuid": "f8086aa2-65f3-41b5-a264-3b6517114304",
+            "sattrib": "\/api\/3\/staging_model_metadatas\/367e4e89-8e4b-4e17-a561-c698830915ad",
+            "uuid": "0d4f2290-b670-41d2-a9ae-7d6d9654b3f1",
             "displayName": "{{ detection }}",
             "descriptions": {
                 "singular": "Detection"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/cf505d0d-69df-4a4c-a234-fb6b9974868e",
-            "@type": "AttributeMetadata",
-            "type": "mitre_techniques",
-            "name": "parentTechnique",
-            "length": null,
-            "orderIndex": 6,
-            "formType": "lookup",
-            "dataSource": {
-                "model": "mitre_techniques"
-            },
-            "searchable": false,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": false,
-            "inversedField": null,
-            "ownsRelationship": false,
-            "validation": {
-                "required": false,
-                "minlength": 0,
-                "maxlength": 10485761
-            },
-            "bulkAction": {
-                "allow": false,
-                "buttonText": "",
-                "buttonIcon": "",
-                "buttonClass": "btn btn-default btn-sm"
-            },
-            "dataSourceFilters": null,
-            "defaultValue": null,
-            "tooltip": null,
-            "visibility": true,
-            "htmlEscape": null,
-            "orphanRemoval": null,
-            "readable": null,
-            "writeable": true,
-            "identifier": null,
-            "unique": false,
-            "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/9ce13ccb-dd02-4c8d-b8ed-71c711872261",
-            "uuid": "cf505d0d-69df-4a4c-a234-fb6b9974868e",
-            "displayName": "{{ parentTechnique }}",
-            "descriptions": {
-                "singular": "Sub-technique of"
-            }
-        },
-        {
-            "@id": "\/api\/3\/attribute_metadatas\/ddac0d84-83a0-4e31-9668-3c2b5d34e8dc",
+            "@id": "\/api\/3\/attribute_metadatas\/27f95fbe-332a-49e3-910e-d1fce0d4122e",
             "@type": "AttributeMetadata",
             "type": "string",
             "name": "version",
@@ -374,15 +234,15 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/9ce13ccb-dd02-4c8d-b8ed-71c711872261",
-            "uuid": "ddac0d84-83a0-4e31-9668-3c2b5d34e8dc",
+            "sattrib": "\/api\/3\/staging_model_metadatas\/367e4e89-8e4b-4e17-a561-c698830915ad",
+            "uuid": "27f95fbe-332a-49e3-910e-d1fce0d4122e",
             "displayName": "{{ version }}",
             "descriptions": {
                 "singular": "Version"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/e0d8fc16-f3a2-4285-949c-83018846909a",
+            "@id": "\/api\/3\/attribute_metadatas\/fb3eb9e1-c2c8-4c5b-8cad-b297cde24701",
             "@type": "AttributeMetadata",
             "type": "string",
             "name": "myNotes",
@@ -420,15 +280,15 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/9ce13ccb-dd02-4c8d-b8ed-71c711872261",
-            "uuid": "e0d8fc16-f3a2-4285-949c-83018846909a",
+            "sattrib": "\/api\/3\/staging_model_metadatas\/367e4e89-8e4b-4e17-a561-c698830915ad",
+            "uuid": "fb3eb9e1-c2c8-4c5b-8cad-b297cde24701",
             "displayName": "{{ myNotes }}",
             "descriptions": {
                 "singular": "My Notes"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/662198e2-2d85-48ee-823c-be0398dee466",
+            "@id": "\/api\/3\/attribute_metadatas\/26ef366d-7170-4819-aa04-3652cf56a169",
             "@type": "AttributeMetadata",
             "type": "mitre_software",
             "name": "software",
@@ -463,15 +323,15 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/9ce13ccb-dd02-4c8d-b8ed-71c711872261",
-            "uuid": "662198e2-2d85-48ee-823c-be0398dee466",
+            "sattrib": "\/api\/3\/staging_model_metadatas\/367e4e89-8e4b-4e17-a561-c698830915ad",
+            "uuid": "26ef366d-7170-4819-aa04-3652cf56a169",
             "displayName": "{{ software }}",
             "descriptions": {
                 "singular": "Software"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/5dfa0cd2-c137-4032-a7b8-ba151f458491",
+            "@id": "\/api\/3\/attribute_metadatas\/19377c0b-575f-41ac-947c-45c0238261cf",
             "@type": "AttributeMetadata",
             "type": "integer",
             "name": "lastModified",
@@ -509,15 +369,15 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/9ce13ccb-dd02-4c8d-b8ed-71c711872261",
-            "uuid": "5dfa0cd2-c137-4032-a7b8-ba151f458491",
+            "sattrib": "\/api\/3\/staging_model_metadatas\/367e4e89-8e4b-4e17-a561-c698830915ad",
+            "uuid": "19377c0b-575f-41ac-947c-45c0238261cf",
             "displayName": "{{ lastModified }}",
             "descriptions": {
                 "singular": "Last Modified"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/b8db219f-e7c6-4a35-8a9d-48dd450dc0a3",
+            "@id": "\/api\/3\/attribute_metadatas\/23edda60-c584-4279-a8ce-728614e7bc0e",
             "@type": "AttributeMetadata",
             "type": "integer",
             "name": "created",
@@ -555,15 +415,15 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/9ce13ccb-dd02-4c8d-b8ed-71c711872261",
-            "uuid": "b8db219f-e7c6-4a35-8a9d-48dd450dc0a3",
+            "sattrib": "\/api\/3\/staging_model_metadatas\/367e4e89-8e4b-4e17-a561-c698830915ad",
+            "uuid": "23edda60-c584-4279-a8ce-728614e7bc0e",
             "displayName": "{{ created }}",
             "descriptions": {
                 "singular": "Created"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/89d6c538-cc16-4386-ae75-623961f1aa3e",
+            "@id": "\/api\/3\/attribute_metadatas\/f8630d7d-91f6-4666-b91e-b605731eb3c6",
             "@type": "AttributeMetadata",
             "type": "string",
             "name": "platforms",
@@ -601,15 +461,15 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/9ce13ccb-dd02-4c8d-b8ed-71c711872261",
-            "uuid": "89d6c538-cc16-4386-ae75-623961f1aa3e",
+            "sattrib": "\/api\/3\/staging_model_metadatas\/367e4e89-8e4b-4e17-a561-c698830915ad",
+            "uuid": "f8630d7d-91f6-4666-b91e-b605731eb3c6",
             "displayName": "{{ platforms }}",
             "descriptions": {
                 "singular": "Platforms"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/07d6f026-ff7d-4f51-aa89-7eead3d74c28",
+            "@id": "\/api\/3\/attribute_metadatas\/05e31ffb-29ae-476f-9928-3d816eb51660",
             "@type": "AttributeMetadata",
             "type": "string",
             "name": "permissionsRequired",
@@ -647,15 +507,15 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/9ce13ccb-dd02-4c8d-b8ed-71c711872261",
-            "uuid": "07d6f026-ff7d-4f51-aa89-7eead3d74c28",
+            "sattrib": "\/api\/3\/staging_model_metadatas\/367e4e89-8e4b-4e17-a561-c698830915ad",
+            "uuid": "05e31ffb-29ae-476f-9928-3d816eb51660",
             "displayName": "{{ permissionsRequired }}",
             "descriptions": {
                 "singular": "Permissions Required"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/9bf9d866-63ab-42fe-978e-cb68212725a3",
+            "@id": "\/api\/3\/attribute_metadatas\/11ff6952-657b-41b3-8d1c-34234dbcb125",
             "@type": "AttributeMetadata",
             "type": "string",
             "name": "capecId",
@@ -693,15 +553,15 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/9ce13ccb-dd02-4c8d-b8ed-71c711872261",
-            "uuid": "9bf9d866-63ab-42fe-978e-cb68212725a3",
+            "sattrib": "\/api\/3\/staging_model_metadatas\/367e4e89-8e4b-4e17-a561-c698830915ad",
+            "uuid": "11ff6952-657b-41b3-8d1c-34234dbcb125",
             "displayName": "{{ capecId }}",
             "descriptions": {
                 "singular": "CAPEC ID"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/a09b8f37-b557-439c-ae30-88c5b6321ae3",
+            "@id": "\/api\/3\/attribute_metadatas\/3648e37b-6802-48c4-9c11-c835c03f930b",
             "@type": "AttributeMetadata",
             "type": "string",
             "name": "dataSources",
@@ -739,17 +599,160 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/9ce13ccb-dd02-4c8d-b8ed-71c711872261",
-            "uuid": "a09b8f37-b557-439c-ae30-88c5b6321ae3",
+            "sattrib": "\/api\/3\/staging_model_metadatas\/367e4e89-8e4b-4e17-a561-c698830915ad",
+            "uuid": "3648e37b-6802-48c4-9c11-c835c03f930b",
             "displayName": "{{ dataSources }}",
             "descriptions": {
                 "singular": "Data Sources"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/225f9902-1e6f-4471-a9cc-1eb9d9151933",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "mitreId",
+            "length": null,
+            "orderIndex": 1,
+            "formType": "text",
+            "dataSource": null,
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": true,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": "",
+            "tooltip": null,
+            "visibility": true,
+            "htmlEscape": null,
+            "orphanRemoval": null,
+            "readable": null,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "sattrib": "\/api\/3\/staging_model_metadatas\/367e4e89-8e4b-4e17-a561-c698830915ad",
+            "uuid": "225f9902-1e6f-4471-a9cc-1eb9d9151933",
+            "displayName": "{{ mitreId }}",
+            "descriptions": {
+                "singular": "Mitre ID"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/aa96a2da-9527-42e2-b076-e965f5f9f0ec",
+            "@type": "AttributeMetadata",
+            "type": "string",
+            "name": "description",
+            "length": null,
+            "orderIndex": 4,
+            "formType": "richtext",
+            "dataSource": null,
+            "searchable": true,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": true,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": null,
+            "visibility": true,
+            "htmlEscape": null,
+            "orphanRemoval": null,
+            "readable": null,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "sattrib": "\/api\/3\/staging_model_metadatas\/367e4e89-8e4b-4e17-a561-c698830915ad",
+            "uuid": "aa96a2da-9527-42e2-b076-e965f5f9f0ec",
+            "displayName": "{{ description }}",
+            "descriptions": {
+                "singular": "Description"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/da178891-befc-44a1-aa2a-59733b70946e",
+            "@type": "AttributeMetadata",
+            "type": "mitre_techniques",
+            "name": "parentTechnique",
+            "length": null,
+            "orderIndex": 6,
+            "formType": "lookup",
+            "dataSource": {
+                "model": "mitre_techniques"
+            },
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": true,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": null,
+            "visibility": true,
+            "htmlEscape": null,
+            "orphanRemoval": null,
+            "readable": null,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "sattrib": "\/api\/3\/staging_model_metadatas\/367e4e89-8e4b-4e17-a561-c698830915ad",
+            "uuid": "da178891-befc-44a1-aa2a-59733b70946e",
+            "displayName": "{{ parentTechnique }}",
+            "descriptions": {
+                "singular": "Sub-technique of"
             }
         }
     ],
     "system": false,
     "module": "mitre_sub_techniques",
-    "uuid": "9ce13ccb-dd02-4c8d-b8ed-71c711872261",
+    "uuid": "367e4e89-8e4b-4e17-a561-c698830915ad",
     "displayName": "{{ name }}",
     "descriptions": {
         "singular": "Sub-technique",
