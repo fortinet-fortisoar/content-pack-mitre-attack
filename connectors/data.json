@@ -10,34 +10,10 @@
             "get_mitre_data": [],
             "get_mitre_data_sample": []
         },
-        "configurations": [
-            {
-                "id": 2,
-                "config_id": "d65ed600-207f-40f4-9931-1ba137e214d8",
-                "status": 1,
-                "name": "Sample Configuration",
-                "default": true,
-                "config": {
-                    "matrices": [
-                        "Enterprise"
-                    ],
-                    "upload_json": false
-                },
-                "remote_status": [],
-                "health_status": [],
-                "connector": 71,
-                "agent": "a4428b2391c9fba4ddf432766be2e3d2",
-                "teams": []
-            }
-        ],
+        "configurations": [],
         "dataImports": [],
         "rpm_name": "cyops-connector-mitre-attack-2.0.1",
         "install_mode": "rpm",
-        "installer_path": "cyops-connector-mitre-attack-2.0.1",
-        "ingestionPlaybooks": {
-            "collections": [],
-            "exported_tags": [],
-            "globalVariables": []
-        }
+        "installer_path": "cyops-connector-mitre-attack-2.0.1"
     }
 ]
