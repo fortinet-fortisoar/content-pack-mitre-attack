@@ -1,0 +1,92 @@
+{
+    "@context": "\/api\/3\/contexts\/SystemViewTemplate",
+    "@type": "SystemViewTemplate",
+    "type": "app",
+    "config": {
+        "navigation": [
+            {
+                "title": "MITRE ATT&CK",
+                "icon": "fa fa-tasks",
+                "items": [
+                    {
+                        "title": "Groups",
+                        "require": {
+                            "module": "mitre_groups",
+                            "action": "read"
+                        },
+                        "state": {
+                            "name": "main.modules.list",
+                            "parameters": {
+                                "module": "mitre_groups"
+                            }
+                        },
+                        "icon": "fa fa-none",
+                        "editMode": false
+                    },
+                    {
+                        "title": "Mitigations",
+                        "require": {
+                            "module": "mitre_mitigations",
+                            "action": "read"
+                        },
+                        "state": {
+                            "name": "main.modules.list",
+                            "parameters": {
+                                "module": "mitre_mitigations"
+                            }
+                        },
+                        "icon": "fa fa-none",
+                        "editMode": false
+                    },
+                    {
+                        "title": "Software",
+                        "require": {
+                            "module": "mitre_software",
+                            "action": "read"
+                        },
+                        "state": {
+                            "name": "main.modules.list",
+                            "parameters": {
+                                "module": "mitre_software"
+                            }
+                        },
+                        "icon": "fa fa-none",
+                        "editMode": false
+                    },
+                    {
+                        "title": "Sub-techniques",
+                        "require": {
+                            "module": "mitre_sub_techniques",
+                            "action": "read"
+                        },
+                        "state": {
+                            "name": "main.modules.list",
+                            "parameters": {
+                                "module": "mitre_sub_techniques"
+                            }
+                        },
+                        "icon": "fa fa-none",
+                        "editMode": false
+                    },
+                    {
+                        "title": "Techniques",
+                        "require": {
+                            "module": "mitre_techniques",
+                            "action": "read"
+                        },
+                        "state": {
+                            "name": "main.modules.list",
+                            "parameters": {
+                                "module": "mitre_techniques"
+                            }
+                        },
+                        "icon": "fa fa-none",
+                        "editMode": false
+                    }
+                ],
+                "editMode": false
+            }
+        ]
+    },
+    "uuid": "navigation"
+}
