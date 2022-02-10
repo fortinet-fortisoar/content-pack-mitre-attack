@@ -1,15 +1,150 @@
 {
-    "name": "mitreAttack",
-    "version": "2.0.0",
-    "label": "Mitre ATT&CK",
-    "description": "Solution Pack for leveraging the MITRE ATT&CK Knowledge Base in FortiSOAR",
-    "category": [],
-    "dependencies": [],
+    "name": "mITREATT&CKEnrichmentFramework",
+    "version": "2.0.2",
+    "type": "solutionpack",
+    "local": true,
+    "label": "MITRE ATT&CK Enrichment Framework",
+    "dependencies": [
+        {
+            "name": "incidentResponse",
+            "type": "solutionpack",
+            "label": "Incident Response",
+            "version": "1.0.0",
+            "minVersion": null
+        }
+    ],
+    "prerequisite": [],
     "publisher": "Fortinet",
-    "certified": "true",
-    "type": "multiContent",
-    "supportInfo": "support@fortinet.com",
-    "help":"https://github.com/fortinet-fortisoar/solution-pack-mitre-attack",
-    "tags": [],
-    "fsrMinCompatibility": "7.0.2"
+    "description": "Solution Pack for leveraging the MITRE ATT&CK Knowledge Base in FortiSOAR",
+    "fsrMinCompatibility": "7.2.0",
+    "date": "2022-02-09T19:44:40+00:00",
+    "exported_from": "master.fortisoar.com",
+    "exported_by": "CS Admin",
+    "contents": {
+        "picklist": [
+            {
+                "name": "AlertState"
+            },
+            {
+                "name": "AlertStatus"
+            },
+            {
+                "name": "AlertType"
+            },
+            {
+                "name": "AssetCategory"
+            },
+            {
+                "name": "Closure Reason"
+            },
+            {
+                "name": "DeliveryVector"
+            },
+            {
+                "name": "Email Classification"
+            },
+            {
+                "name": "EscalatedToIncident"
+            },
+            {
+                "name": "IncidentPhase"
+            },
+            {
+                "name": "IncidentStatus"
+            },
+            {
+                "name": "IncidentType"
+            },
+            {
+                "name": "KillChainPhases"
+            },
+            {
+                "name": "Mitre Software Types"
+            },
+            {
+                "name": "Severity"
+            },
+            {
+                "name": "SIEMs"
+            },
+            {
+                "name": "SLAState"
+            }
+        ],
+        "module": {
+            "alerts": [],
+            "hunt": [],
+            "incidents": [],
+            "mitre_groups": [],
+            "mitre_mitigations": [],
+            "mitre_software": [],
+            "mitre_sub_techniques": [],
+            "mitre_tactics": [],
+            "mitre_techniques": []
+        },
+        "viewTemplates": {
+            "alerts": [
+                "list",
+                "detail",
+                "form"
+            ],
+            "hunt": [
+                "list",
+                "detail",
+                "form"
+            ],
+            "incidents": [
+                "list",
+                "detail",
+                "form"
+            ],
+            "mitre_groups": [
+                "list",
+                "detail",
+                "form"
+            ],
+            "mitre_mitigations": [
+                "list",
+                "detail"
+            ],
+            "mitre_software": [
+                "list",
+                "detail"
+            ],
+            "mitre_sub_techniques": [
+                "list",
+                "detail"
+            ],
+            "mitre_tactics": [
+                "list",
+                "detail",
+                "form"
+            ],
+            "mitre_techniques": [
+                "list",
+                "detail",
+                "form"
+            ]
+        },
+        "roles": [
+            {
+                "name": "Mitre Admin"
+            },
+            {
+                "name": "Full App Permissions"
+            }
+        ],
+        "teams": [
+            {
+                "name": "SOC Team"
+            }
+        ],
+        "connectors": [
+            {
+                "name": "mitre-attack",
+                "version": "2.0.1"
+            }
+        ],
+        "recordSets": []
+    }
 }
