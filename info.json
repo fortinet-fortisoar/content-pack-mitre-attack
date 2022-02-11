@@ -1,27 +1,29 @@
 {
-    "name": "mITREATT&CKEnrichmentFramework",
+    "name": "mitreAttack",
     "version": "2.0.2",
     "type": "solutionpack",
-    "local": true,
-    "label": "MITRE ATT&CK Enrichment Framework",
+    "local": false,
+    "label": "Mitre ATT&CK",
     "dependencies": [
         {
-            "name": "incidentResponse",
+            "name": "fortiSOAREssentials",
             "type": "solutionpack",
-            "label": "Incident Response",
-            "version": "1.0.0",
-            "minVersion": null
+            "label": "FortiSOAR Essentials"
         }
     ],
     "prerequisite": [],
+    "category": [],
     "publisher": "Fortinet",
+    "supportInfo": "support@fortinet.com",
+    "help": "https://github.com/fortinet-fortisoar/solution-pack-mitre-attack/blob/develop/README.md",
     "description": "Solution Pack for leveraging the MITRE ATT&CK Knowledge Base in FortiSOAR",
+    "tags": [],
     "fsrMinCompatibility": "7.2.0",
     "date": "2022-02-09T19:44:40+00:00",
     "exported_from": "master.fortisoar.com",
     "exported_by": "CS Admin",
     "contents": {
-        "picklist": [
+        "picklistNames": [
             {
                 "name": "AlertState"
             },
@@ -71,7 +73,7 @@
                 "name": "SLAState"
             }
         ],
-        "module": {
+        "modules": {
             "alerts": [],
             "hunt": [],
             "incidents": [],
@@ -144,7 +146,6 @@
                 "name": "mitre-attack",
                 "version": "2.0.1"
             }
-        ],
-        "recordSets": []
+        ]
     }
 }
