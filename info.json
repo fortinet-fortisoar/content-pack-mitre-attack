@@ -115,20 +115,6 @@
         },
         "views": {
             "navigation": [
-                "Dashboard",
-                "Incident Response",
-                "Vulnerability Management",
-                "Automation",
-                "Resources",
-                "Reports",
-                "Marketplace",
-                "Help",
-                "User Community",
-                "Queue Management",
-                "Threat Intelligence",
-                "Widget Library",
-                "Simulations",
-                "Knowledge Base",
                 "MITRE ATT&CK"
             ]
         },
