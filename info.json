@@ -1,9 +1,9 @@
 {
-    "name": "mitreAttack",
+    "name": "mITREATTACKEnrichmentFramework",
     "version": "2.0.2",
     "type": "solutionpack",
     "local": false,
-    "label": "Mitre ATT&CK",
+    "label": "MITRE ATTACK Enrichment Framework",
     "dependencies": [
         {
             "name": "fortiSOAREssentials",
@@ -19,70 +19,55 @@
     "description": "Solution Pack for leveraging the MITRE ATT&CK Knowledge Base in FortiSOAR",
     "tags": [],
     "fsrMinCompatibility": "7.2.0",
-    "date": "2022-02-09T19:44:40+00:00",
-    "exported_from": "master.fortisoar.com",
+    "date": "2022-02-16T10:38:06+00:00",
+    "exported_from": "tenant.fortisoar.com",
     "exported_by": "CS Admin",
     "contents": {
         "picklistNames": [
             {
-                "name": "AlertState"
-            },
-            {
-                "name": "AlertStatus"
-            },
-            {
-                "name": "AlertType"
-            },
-            {
-                "name": "AssetCategory"
-            },
-            {
-                "name": "Closure Reason"
-            },
-            {
-                "name": "DeliveryVector"
-            },
-            {
-                "name": "Email Classification"
-            },
-            {
-                "name": "EscalatedToIncident"
-            },
-            {
-                "name": "IncidentPhase"
-            },
-            {
-                "name": "IncidentStatus"
-            },
-            {
-                "name": "IncidentType"
-            },
-            {
-                "name": "KillChainPhases"
-            },
-            {
                 "name": "Mitre Software Types"
             },
             {
-                "name": "Severity"
-            },
-            {
                 "name": "SIEMs"
-            },
-            {
-                "name": "SLAState"
             }
         ],
         "modules": {
-            "alerts": [],
-            "hunt": [],
-            "incidents": [],
-            "mitre_groups": [],
-            "mitre_mitigations": [],
-            "mitre_software": [],
-            "mitre_sub_techniques": [],
-            "mitre_tactics": [],
-            "mitre_techniques": []
+            "alerts": {
+                "name": "Alerts",
+                "apiName": "alerts"
+            },
+            "hunt": {
+                "name": "Hunts",
+                "apiName": "hunt"
+            },
+            "incidents": {
+                "name": "Incidents",
+                "apiName": "incidents"
+            },
+            "mitre_groups": {
+                "name": "Groups",
+                "apiName": "mitre_groups"
+            },
+            "mitre_mitigations": {
+                "name": "Mitigations",
+                "apiName": "mitre_mitigations"
+            },
+            "mitre_software": {
+                "name": "Software",
+                "apiName": "mitre_software"
+            },
+            "mitre_sub_techniques": {
+                "name": "Sub-techniques",
+                "apiName": "mitre_sub_techniques"
+            },
+            "mitre_tactics": {
+                "name": "Tactics",
+                "apiName": "mitre_tactics"
+            },
+            "mitre_techniques": {
+                "name": "Techniques",
+                "apiName": "mitre_techniques"
+            }
         },
         "viewTemplates": {
             "alerts": [
@@ -128,6 +113,11 @@
                 "form"
             ]
         },
+        "views": {
+            "navigation": [
+                "MITRE ATT&CK"
+            ]
+        },
         "roles": [
             {
                 "name": "Mitre Admin"
@@ -136,14 +126,10 @@
                 "name": "Full App Permissions"
             }
         ],
-        "teams": [
-            {
-                "name": "SOC Team"
-            }
-        ],
         "connectors": [
             {
-                "name": "mitre-attack",
+                "name": "MITRE ATT&CK",
+                "apiName": "mitre-attack",
                 "version": "2.0.1"
             }
         ]

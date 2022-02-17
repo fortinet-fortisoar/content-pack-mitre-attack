@@ -5,86 +5,122 @@
     "config": {
         "navigation": [
             {
-                "title": "MITRE ATT&CK",
                 "icon": "fa fa-tasks",
                 "items": [
                     {
-                        "title": "Groups",
-                        "require": {
-                            "module": "mitre_groups",
-                            "action": "read"
-                        },
+                        "icon": "fa fa-none",
                         "state": {
                             "name": "main.modules.list",
                             "parameters": {
                                 "module": "mitre_groups"
                             }
                         },
-                        "icon": "fa fa-none",
-                        "editMode": false
+                        "title": "Groups",
+                        "require": {
+                            "action": "read",
+                            "module": "mitre_groups"
+                        },
+                        "editMode": false,
+                        "open": false,
+                        "isEnabled": false,
+                        "openStatus": false
                     },
                     {
-                        "title": "Mitigations",
+                        "title": "Hunts",
                         "require": {
-                            "module": "mitre_mitigations",
+                            "module": "hunt",
                             "action": "read"
                         },
+                        "state": {
+                            "name": "main.modules.list",
+                            "parameters": {
+                                "module": "hunt"
+                            }
+                        },
+                        "icon": "fa fa-none",
+                        "editMode": false,
+                        "open": false,
+                        "isEnabled": false,
+                        "openStatus": false
+                    },
+                    {
+                        "icon": "fa fa-none",
                         "state": {
                             "name": "main.modules.list",
                             "parameters": {
                                 "module": "mitre_mitigations"
                             }
                         },
-                        "icon": "fa fa-none",
-                        "editMode": false
+                        "title": "Mitigations",
+                        "require": {
+                            "action": "read",
+                            "module": "mitre_mitigations"
+                        },
+                        "editMode": false,
+                        "open": false,
+                        "isEnabled": false,
+                        "openStatus": false
                     },
                     {
-                        "title": "Software",
-                        "require": {
-                            "module": "mitre_software",
-                            "action": "read"
-                        },
+                        "icon": "fa fa-none",
                         "state": {
                             "name": "main.modules.list",
                             "parameters": {
                                 "module": "mitre_software"
                             }
                         },
-                        "icon": "fa fa-none",
-                        "editMode": false
+                        "title": "Software",
+                        "require": {
+                            "action": "read",
+                            "module": "mitre_software"
+                        },
+                        "editMode": false,
+                        "open": false,
+                        "isEnabled": false,
+                        "openStatus": false
                     },
                     {
-                        "title": "Sub-techniques",
-                        "require": {
-                            "module": "mitre_sub_techniques",
-                            "action": "read"
-                        },
+                        "icon": "fa fa-none",
                         "state": {
                             "name": "main.modules.list",
                             "parameters": {
                                 "module": "mitre_sub_techniques"
                             }
                         },
-                        "icon": "fa fa-none",
-                        "editMode": false
+                        "title": "Sub-techniques",
+                        "require": {
+                            "action": "read",
+                            "module": "mitre_sub_techniques"
+                        },
+                        "editMode": false,
+                        "open": false,
+                        "isEnabled": false,
+                        "openStatus": false
                     },
                     {
-                        "title": "Techniques",
-                        "require": {
-                            "module": "mitre_techniques",
-                            "action": "read"
-                        },
+                        "icon": "fa fa-none",
                         "state": {
                             "name": "main.modules.list",
                             "parameters": {
                                 "module": "mitre_techniques"
                             }
                         },
-                        "icon": "fa fa-none",
-                        "editMode": false
+                        "title": "Techniques",
+                        "require": {
+                            "action": "read",
+                            "module": "mitre_techniques"
+                        },
+                        "editMode": false,
+                        "open": false,
+                        "isEnabled": false,
+                        "openStatus": false
                     }
                 ],
-                "editMode": false
+                "title": "MITRE ATT&CK",
+                "editMode": false,
+                "open": false,
+                "isEnabled": false,
+                "openStatus": false
             }
         ]
     },
