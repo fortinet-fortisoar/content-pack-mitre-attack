@@ -6,9 +6,11 @@
     "label": "MITRE ATTACK Enrichment Framework",
     "dependencies": [
         {
-            "name": "fortiSOAREssentials",
+            "name": "sOARFramework",
             "type": "solutionpack",
-            "label": "FortiSOAR Essentials"
+            "label": "SOAR Framework",
+            "version": "1.0.0",
+            "minVersion": null
         }
     ],
     "prerequisite": [],
