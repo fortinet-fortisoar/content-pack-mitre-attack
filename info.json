@@ -15,6 +15,7 @@
     ],
     "prerequisite": [],
     "category": [],
+    "certified": "true",
     "publisher": "Fortinet",
     "supportInfo": "support@fortinet.com",
     "help": "https://github.com/fortinet-fortisoar/solution-pack-mitre-attack/blob/develop/README.md",
