@@ -730,7 +730,11 @@
                                                                                                     "campaigns",
                                                                                                     "mitrelink",
                                                                                                     "communications",
-                                                                                                    "warrooms"
+                                                                                                    "warrooms",
+                                                                                                    "mitre_sub_techniques",
+                                                                                                    "mitre_techniques",
+                                                                                                    "mitremitigations",
+                                                                                                    "mitresoftware"
                                                                                                 ],
                                                                                                 "expandableCol": {
                                                                                                     "indicators": {
