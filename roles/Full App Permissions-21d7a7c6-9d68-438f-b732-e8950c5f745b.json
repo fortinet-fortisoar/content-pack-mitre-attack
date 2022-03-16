@@ -4,21 +4,9 @@
     "@type": "Role",
     "description": "Essentially the root user, use carefully",
     "name": "Full App Permissions",
-    "modulePermissions": [
-        {
-            "@id": "\/api\/3\/module_permissions\/a5f79510-0571-488c-9e7e-bca37a333271",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": true,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "campaigns",
-            "uuid": "a5f79510-0571-488c-9e7e-bca37a333271"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/60435220-1b40-4004-afd2-2c8ff01c1c66",
+    "modulePermissions": {
+        "6": {
+            "@id": "\/api\/3\/module_permissions\/c537a4c3-b43a-4e22-ba7a-9a108f65c11a",
             "@type": "ModulePermission",
             "canCreate": true,
             "canExecute": true,
@@ -27,502 +15,10 @@
             "canDelete": true,
             "fieldPermissions": [],
             "module": "hunt",
-            "uuid": "60435220-1b40-4004-afd2-2c8ff01c1c66"
+            "uuid": "c537a4c3-b43a-4e22-ba7a-9a108f65c11a"
         },
-        {
-            "@id": "\/api\/3\/module_permissions\/576b775e-fb90-422a-ac83-9538a02ed93c",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": true,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "users",
-            "uuid": "576b775e-fb90-422a-ac83-9538a02ed93c"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/1f3c2ea3-4756-4ea9-bd2a-9e3daa563ca3",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": true,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "employeewatchlist",
-            "uuid": "1f3c2ea3-4756-4ea9-bd2a-9e3daa563ca3"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/4287bd52-e58d-4e85-9f32-31a2f77ae06f",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": true,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "sensitivefile",
-            "uuid": "4287bd52-e58d-4e85-9f32-31a2f77ae06f"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/5cd48768-6b6b-42c3-b8e2-1fa7852ea7e6",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": true,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "communication",
-            "uuid": "5cd48768-6b6b-42c3-b8e2-1fa7852ea7e6"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/ac2bb05d-0647-4263-98e1-6e1c10661661",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": true,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "knowledge_base",
-            "uuid": "ac2bb05d-0647-4263-98e1-6e1c10661661"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/c92873cf-33ea-4363-9301-f2d83e338486",
-            "@type": "ModulePermission",
-            "canCreate": false,
-            "canExecute": false,
-            "canRead": true,
-            "canUpdate": false,
-            "canDelete": false,
-            "fieldPermissions": [],
-            "module": "security",
-            "uuid": "c92873cf-33ea-4363-9301-f2d83e338486"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/02f90d99-0f4f-425f-91ee-4a2a127a6c25",
-            "@type": "ModulePermission",
-            "canCreate": false,
-            "canExecute": false,
-            "canRead": true,
-            "canUpdate": false,
-            "canDelete": false,
-            "fieldPermissions": [],
-            "module": "application",
-            "uuid": "02f90d99-0f4f-425f-91ee-4a2a127a6c25"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/64354224-4b6e-4b41-ae05-bf7643c998be",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": true,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "workflows",
-            "uuid": "64354224-4b6e-4b41-ae05-bf7643c998be"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/d6d5cb15-91e5-4c23-b267-5efdbcc2e683",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": false,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "rules",
-            "uuid": "d6d5cb15-91e5-4c23-b267-5efdbcc2e683"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/a169f9ab-e573-4446-ab43-0451a288c612",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": false,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "files",
-            "uuid": "a169f9ab-e573-4446-ab43-0451a288c612"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/5fb4b1fd-7e54-424e-927b-48fc4b86f68a",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": false,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": false,
-            "fieldPermissions": [],
-            "module": "activities",
-            "uuid": "5fb4b1fd-7e54-424e-927b-48fc4b86f68a"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/c159a65a-44df-4b62-8504-027c9fe73c6a",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": false,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "reporting",
-            "uuid": "c159a65a-44df-4b62-8504-027c9fe73c6a"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/bb37380d-e824-4b56-90c1-1ed7743e494f",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": false,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "dashboard",
-            "uuid": "bb37380d-e824-4b56-90c1-1ed7743e494f"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/1ac721f2-eb3f-49cc-a3b9-13e752cf0f5d",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": true,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "connectors",
-            "uuid": "1ac721f2-eb3f-49cc-a3b9-13e752cf0f5d"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/def8b3b2-907c-4211-a8a2-a5175850007f",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": false,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "alerts",
-            "uuid": "def8b3b2-907c-4211-a8a2-a5175850007f"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/57894d3e-d4f2-489e-93f3-899b425a12b9",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": false,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "appliances",
-            "uuid": "57894d3e-d4f2-489e-93f3-899b425a12b9"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/72454e59-4958-415a-bb50-0845b723c258",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": false,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "assets",
-            "uuid": "72454e59-4958-415a-bb50-0845b723c258"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/ba3dec6f-cc4e-4a39-8ec4-49e7c969f1d9",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": false,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "attachments",
-            "uuid": "ba3dec6f-cc4e-4a39-8ec4-49e7c969f1d9"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/3f661466-46bc-4360-855b-04b4ede53e01",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": false,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "comments",
-            "uuid": "3f661466-46bc-4360-855b-04b4ede53e01"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/9c2d27a2-7a5c-41b4-9a35-e626b75c3f1c",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": false,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "companies",
-            "uuid": "9c2d27a2-7a5c-41b4-9a35-e626b75c3f1c"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/a424b2d9-437c-4374-af8a-55a2ca23a7f5",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": false,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "events",
-            "uuid": "a424b2d9-437c-4374-af8a-55a2ca23a7f5"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/a543375d-bb70-4311-8117-3e6fdfd93830",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": false,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "incidents",
-            "uuid": "a543375d-bb70-4311-8117-3e6fdfd93830"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/0d96c6f6-dd39-40fd-a79f-38c4a64993e7",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": false,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "indicators",
-            "uuid": "0d96c6f6-dd39-40fd-a79f-38c4a64993e7"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/2ef38cbd-a8af-4076-8472-d2d90084d023",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": false,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "notes",
-            "uuid": "2ef38cbd-a8af-4076-8472-d2d90084d023"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/1096292a-d586-4cda-b844-83b7a8083cca",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": false,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "people",
-            "uuid": "1096292a-d586-4cda-b844-83b7a8083cca"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/4cc064d1-5f3b-46c4-903b-3090f4730a25",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": false,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "scans",
-            "uuid": "4cc064d1-5f3b-46c4-903b-3090f4730a25"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/14a80e44-f508-4f7f-acc8-2435337327f0",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": false,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "system_assigned_queues",
-            "uuid": "14a80e44-f508-4f7f-acc8-2435337327f0"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/b408f056-b321-430f-a99b-5713139c58ff",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": false,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "tasks",
-            "uuid": "b408f056-b321-430f-a99b-5713139c58ff"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/6b94d8f4-9adb-47ba-8a1b-9c8e87e6cf3b",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": false,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "vulnerabilities",
-            "uuid": "6b94d8f4-9adb-47ba-8a1b-9c8e87e6cf3b"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/2448c7ee-ff6a-4a9e-b9ed-abd61eeb6d77",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": false,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "emails",
-            "uuid": "2448c7ee-ff6a-4a9e-b9ed-abd61eeb6d77"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/2c703a9b-65c1-4eab-a6fd-ec139018adcc",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": false,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "schedules",
-            "uuid": "2c703a9b-65c1-4eab-a6fd-ec139018adcc"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/d29bc4df-0f9a-45fa-801d-f16c7ee2f010",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": false,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "approvals",
-            "uuid": "d29bc4df-0f9a-45fa-801d-f16c7ee2f010"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/f005a2c1-c8c7-41e8-b65b-5999f86d33dc",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": false,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "routers",
-            "uuid": "f005a2c1-c8c7-41e8-b65b-5999f86d33dc"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/b8f00f30-afec-4596-9002-fab0a6268caa",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": false,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "tenants",
-            "uuid": "b8f00f30-afec-4596-9002-fab0a6268caa"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/5785b409-8f41-40d8-bcbd-095d200484ce",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": false,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "agents",
-            "uuid": "5785b409-8f41-40d8-bcbd-095d200484ce"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/9b59b221-595d-474e-9bde-ca0e6d935b57",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": false,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "sla_template",
-            "uuid": "9b59b221-595d-474e-9bde-ca0e6d935b57"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/0041f386-0d1e-4a4e-bd25-ea7868ac267a",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": false,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "saved_reports",
-            "uuid": "0041f386-0d1e-4a4e-bd25-ea7868ac267a"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/ee514ec9-8496-4df6-ba14-21a659213f28",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": true,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "widgets",
-            "uuid": "ee514ec9-8496-4df6-ba14-21a659213f28"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/aa8d285d-5e62-451d-b18f-b6b1d1437512",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": false,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "email_templates",
-            "uuid": "aa8d285d-5e62-451d-b18f-b6b1d1437512"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/8b065f5b-f940-47b0-b63e-c46709758919",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": true,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "announcements",
-            "uuid": "8b065f5b-f940-47b0-b63e-c46709758919"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/8b8393d3-303c-4e2e-9745-a520a9cb5d6b",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": true,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "warrooms",
-            "uuid": "8b8393d3-303c-4e2e-9745-a520a9cb5d6b"
-        },
-        {
-            "@id": "\/api\/3\/module_permissions\/fd30518f-d195-494f-8f78-62f56b9ee0ea",
+        "39": {
+            "@id": "\/api\/3\/module_permissions\/032a5a83-bea4-4980-927d-9d5891c13072",
             "@type": "ModulePermission",
             "canCreate": true,
             "canExecute": true,
@@ -531,10 +27,10 @@
             "canDelete": true,
             "fieldPermissions": [],
             "module": "mitre_groups",
-            "uuid": "fd30518f-d195-494f-8f78-62f56b9ee0ea"
+            "uuid": "032a5a83-bea4-4980-927d-9d5891c13072"
         },
-        {
-            "@id": "\/api\/3\/module_permissions\/41b53a89-7d35-467f-b105-b31ea690d342",
+        "40": {
+            "@id": "\/api\/3\/module_permissions\/b607e808-aa85-4494-b577-eb3af0e44050",
             "@type": "ModulePermission",
             "canCreate": true,
             "canExecute": true,
@@ -543,10 +39,10 @@
             "canDelete": true,
             "fieldPermissions": [],
             "module": "mitre_mitigations",
-            "uuid": "41b53a89-7d35-467f-b105-b31ea690d342"
+            "uuid": "b607e808-aa85-4494-b577-eb3af0e44050"
         },
-        {
-            "@id": "\/api\/3\/module_permissions\/4b8ee0c0-0f95-4a81-b31c-9725ea213ad9",
+        "41": {
+            "@id": "\/api\/3\/module_permissions\/75f6da35-63f3-4afe-8401-8e6f9c9d0dd4",
             "@type": "ModulePermission",
             "canCreate": true,
             "canExecute": true,
@@ -555,10 +51,10 @@
             "canDelete": true,
             "fieldPermissions": [],
             "module": "mitre_software",
-            "uuid": "4b8ee0c0-0f95-4a81-b31c-9725ea213ad9"
+            "uuid": "75f6da35-63f3-4afe-8401-8e6f9c9d0dd4"
         },
-        {
-            "@id": "\/api\/3\/module_permissions\/5f3362fa-83a7-4c48-bd8f-d0cf9dc2771f",
+        "42": {
+            "@id": "\/api\/3\/module_permissions\/60776271-1ea6-4f01-808c-2030a11d9d0d",
             "@type": "ModulePermission",
             "canCreate": true,
             "canExecute": true,
@@ -567,10 +63,10 @@
             "canDelete": true,
             "fieldPermissions": [],
             "module": "mitre_sub_techniques",
-            "uuid": "5f3362fa-83a7-4c48-bd8f-d0cf9dc2771f"
+            "uuid": "60776271-1ea6-4f01-808c-2030a11d9d0d"
         },
-        {
-            "@id": "\/api\/3\/module_permissions\/87673040-ecba-488f-af96-50f57a905bb9",
+        "43": {
+            "@id": "\/api\/3\/module_permissions\/ff269456-7c80-42d7-b103-1f2eb4f5e728",
             "@type": "ModulePermission",
             "canCreate": true,
             "canExecute": true,
@@ -579,10 +75,10 @@
             "canDelete": true,
             "fieldPermissions": [],
             "module": "mitre_tactics",
-            "uuid": "87673040-ecba-488f-af96-50f57a905bb9"
+            "uuid": "ff269456-7c80-42d7-b103-1f2eb4f5e728"
         },
-        {
-            "@id": "\/api\/3\/module_permissions\/4264698e-ae90-4bb9-a09f-c021f2cb71e5",
+        "44": {
+            "@id": "\/api\/3\/module_permissions\/8674d4f6-54ff-4ac2-b01f-eef8999ae9b2",
             "@type": "ModulePermission",
             "canCreate": true,
             "canExecute": true,
@@ -591,8 +87,8 @@
             "canDelete": true,
             "fieldPermissions": [],
             "module": "mitre_techniques",
-            "uuid": "4264698e-ae90-4bb9-a09f-c021f2cb71e5"
+            "uuid": "8674d4f6-54ff-4ac2-b01f-eef8999ae9b2"
         }
-    ],
+    },
     "uuid": "21d7a7c6-9d68-438f-b732-e8950c5f745b"
 }

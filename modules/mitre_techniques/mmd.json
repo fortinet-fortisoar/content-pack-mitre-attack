@@ -1,12 +1,13 @@
 {
     "@context": "\/api\/3\/contexts\/StagingModelMetadata",
-    "@id": "\/api\/3\/staging_model_metadatas\/8f29896d-c952-4721-9f51-f03017ce3b85",
+    "@id": "\/api\/3\/staging_model_metadatas\/c9157339-e120-4a4d-b317-61d862d34aa3",
     "@type": "StagingModelMetadata",
     "type": "mitre_techniques",
     "parentType": null,
     "tableName": "mitre_techniques",
     "ownable": false,
     "userOwnable": false,
+    "queueable": false,
     "trackable": false,
     "taggable": true,
     "peerReplicable": false,
@@ -59,7 +60,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/8f29896d-c952-4721-9f51-f03017ce3b85",
             "uuid": "66093914-ff3a-450a-9cc7-f5face9de777",
             "displayName": "{{ incidents }}",
             "descriptions": {
@@ -105,7 +105,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/8f29896d-c952-4721-9f51-f03017ce3b85",
             "uuid": "5f211e49-42d2-4559-bd6d-98c1d8ab53fa",
             "displayName": "{{ lastModified }}",
             "descriptions": {
@@ -148,7 +147,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/8f29896d-c952-4721-9f51-f03017ce3b85",
             "uuid": "c064bd2d-246b-4136-95c6-c621d78ec935",
             "displayName": "{{ mitigations }}",
             "descriptions": {
@@ -191,7 +189,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/8f29896d-c952-4721-9f51-f03017ce3b85",
             "uuid": "a9e354ff-e21a-4369-aa4f-909bbd3af74f",
             "displayName": "{{ alerts }}",
             "descriptions": {
@@ -237,7 +234,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/8f29896d-c952-4721-9f51-f03017ce3b85",
             "uuid": "2aa2f492-d7ef-4909-8789-82d816da1cb3",
             "displayName": "{{ created }}",
             "descriptions": {
@@ -284,7 +280,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/8f29896d-c952-4721-9f51-f03017ce3b85",
             "uuid": "c007f905-c988-445b-ba55-b4c62610a796",
             "displayName": "{{ notes }}",
             "descriptions": {
@@ -328,7 +323,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/8f29896d-c952-4721-9f51-f03017ce3b85",
             "uuid": "ef202791-a24f-47fb-86a1-263da61c6d0f",
             "displayName": "{{ groups }}",
             "descriptions": {
@@ -374,7 +368,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/8f29896d-c952-4721-9f51-f03017ce3b85",
             "uuid": "e3e31367-1560-4b49-85a6-09feb9ae9457",
             "displayName": "{{ version }}",
             "descriptions": {
@@ -420,7 +413,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/8f29896d-c952-4721-9f51-f03017ce3b85",
             "uuid": "cfcbc2ff-288a-4b56-8598-980c82742785",
             "displayName": "{{ platforms }}",
             "descriptions": {
@@ -466,7 +458,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/8f29896d-c952-4721-9f51-f03017ce3b85",
             "uuid": "c55d5459-0832-4940-b65a-9732015ed892",
             "displayName": "{{ detection }}",
             "descriptions": {
@@ -512,7 +503,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/8f29896d-c952-4721-9f51-f03017ce3b85",
             "uuid": "dd3d31cd-b5ae-47c9-8256-0815c971af73",
             "displayName": "{{ permissionsRequired }}",
             "descriptions": {
@@ -558,7 +548,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/8f29896d-c952-4721-9f51-f03017ce3b85",
             "uuid": "88f33e48-380d-46a3-93b3-684460053885",
             "displayName": "{{ dataSources }}",
             "descriptions": {
@@ -605,7 +594,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/8f29896d-c952-4721-9f51-f03017ce3b85",
             "uuid": "18ddae1d-07c3-4ee5-a56e-b656930f3f3d",
             "displayName": "{{ mitreId }}",
             "descriptions": {
@@ -652,7 +640,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/8f29896d-c952-4721-9f51-f03017ce3b85",
             "uuid": "9eb3abfc-87e8-4825-b51e-28d0406496c9",
             "displayName": "{{ description }}",
             "descriptions": {
@@ -699,7 +686,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/8f29896d-c952-4721-9f51-f03017ce3b85",
             "uuid": "f79dc1e0-2c91-4670-8711-f8dade89b729",
             "displayName": "{{ name }}",
             "descriptions": {
@@ -743,7 +729,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/8f29896d-c952-4721-9f51-f03017ce3b85",
             "uuid": "1808482b-6033-42f2-965c-44ace394f78a",
             "displayName": "{{ techniques }}",
             "descriptions": {
@@ -786,7 +771,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/8f29896d-c952-4721-9f51-f03017ce3b85",
             "uuid": "3e6ed9f4-8c60-43b9-b2d7-f915f3103a6e",
             "displayName": "{{ software }}",
             "descriptions": {
@@ -829,7 +813,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/8f29896d-c952-4721-9f51-f03017ce3b85",
             "uuid": "47ed753a-57d8-48df-ad78-03ec0596946d",
             "displayName": "{{ tactics }}",
             "descriptions": {
@@ -875,7 +858,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/8f29896d-c952-4721-9f51-f03017ce3b85",
             "uuid": "97e0e43b-20e5-4bea-b8e8-53c350ad3c79",
             "displayName": "{{ capecId }}",
             "descriptions": {
@@ -885,7 +867,16 @@
     ],
     "system": false,
     "module": "mitre_techniques",
-    "uuid": "8f29896d-c952-4721-9f51-f03017ce3b85",
+    "softDeleteable": false,
+    "archivable": false,
+    "paused": false,
+    "partitionBy": "modifyDate",
+    "archivalCriteria": {
+        "keep_primary_data_for": 24,
+        "delete_primary_data_after": 60
+    },
+    "archivalFilters": [],
+    "uuid": "c9157339-e120-4a4d-b317-61d862d34aa3",
     "displayName": "{{ name }}",
     "descriptions": {
         "singular": "Technique",

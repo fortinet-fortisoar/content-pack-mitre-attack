@@ -8,7 +8,7 @@
                 "icon": "fa fa-tasks",
                 "items": [
                     {
-                        "icon": "fa fa-none",
+                        "icon": "icon icon-groups",
                         "state": {
                             "name": "main.modules.list",
                             "parameters": {
@@ -37,14 +37,14 @@
                                 "module": "hunt"
                             }
                         },
-                        "icon": "fa fa-none",
+                        "icon": "fa fa-fighter-jet",
                         "editMode": false,
                         "open": false,
                         "isEnabled": false,
                         "openStatus": false
                     },
                     {
-                        "icon": "fa fa-none",
+                        "icon": "fa fa-shield",
                         "state": {
                             "name": "main.modules.list",
                             "parameters": {
@@ -62,7 +62,7 @@
                         "openStatus": false
                     },
                     {
-                        "icon": "fa fa-none",
+                        "icon": "icon icon-software",
                         "state": {
                             "name": "main.modules.list",
                             "parameters": {
@@ -80,7 +80,7 @@
                         "openStatus": false
                     },
                     {
-                        "icon": "fa fa-none",
+                        "icon": "icon icon-sub-techniques",
                         "state": {
                             "name": "main.modules.list",
                             "parameters": {
@@ -98,7 +98,7 @@
                         "openStatus": false
                     },
                     {
-                        "icon": "fa fa-none",
+                        "icon": "icon icon-techniques",
                         "state": {
                             "name": "main.modules.list",
                             "parameters": {
@@ -114,6 +114,21 @@
                         "open": false,
                         "isEnabled": false,
                         "openStatus": false
+                    },
+                    {
+                        "title": "Tactics",
+                        "require": {
+                            "module": "mitre_tactics",
+                            "action": "read"
+                        },
+                        "state": {
+                            "name": "main.modules.list",
+                            "parameters": {
+                                "module": "mitre_tactics"
+                            }
+                        },
+                        "icon": "icon icon-tactics",
+                        "editMode": false
                     }
                 ],
                 "title": "MITRE ATT&CK",

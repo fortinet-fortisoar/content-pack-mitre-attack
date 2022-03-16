@@ -1,12 +1,13 @@
 {
     "@context": "\/api\/3\/contexts\/StagingModelMetadata",
-    "@id": "\/api\/3\/staging_model_metadatas\/db0400e1-a27d-4bf1-9ed3-dd37ae3d686a",
+    "@id": "\/api\/3\/staging_model_metadatas\/c2dbccf3-4136-4b7e-a1da-7b54d8d60517",
     "@type": "StagingModelMetadata",
     "type": "mitre_sub_techniques",
     "parentType": null,
     "tableName": "mitre_sub_techniques",
     "ownable": false,
     "userOwnable": false,
+    "queueable": false,
     "trackable": false,
     "taggable": true,
     "peerReplicable": false,
@@ -59,7 +60,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/db0400e1-a27d-4bf1-9ed3-dd37ae3d686a",
             "uuid": "32370f17-69f1-497e-8c47-92451a2b57ac",
             "displayName": "{{ alerts }}",
             "descriptions": {
@@ -102,7 +102,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/db0400e1-a27d-4bf1-9ed3-dd37ae3d686a",
             "uuid": "418c04c3-1e59-458a-b0d3-91a4460ecc56",
             "displayName": "{{ incidents }}",
             "descriptions": {
@@ -149,7 +148,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/db0400e1-a27d-4bf1-9ed3-dd37ae3d686a",
             "uuid": "229a83ba-767b-435c-8ee6-087a7eeea70a",
             "displayName": "{{ detection }}",
             "descriptions": {
@@ -195,7 +193,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/db0400e1-a27d-4bf1-9ed3-dd37ae3d686a",
             "uuid": "f6cfefa1-4666-4e8e-b2bf-aff36c94ccb3",
             "displayName": "{{ version }}",
             "descriptions": {
@@ -242,7 +239,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/db0400e1-a27d-4bf1-9ed3-dd37ae3d686a",
             "uuid": "a929bb67-ff30-4fd9-9636-99645ad52187",
             "displayName": "{{ mitreId }}",
             "descriptions": {
@@ -291,7 +287,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/db0400e1-a27d-4bf1-9ed3-dd37ae3d686a",
             "uuid": "9a776336-fa92-4227-9b36-7443f65af736",
             "displayName": "{{ parentTechnique }}",
             "descriptions": {
@@ -338,7 +333,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/db0400e1-a27d-4bf1-9ed3-dd37ae3d686a",
             "uuid": "fc2da2fb-ad28-4063-bf12-9d6bc7545bc8",
             "displayName": "{{ name }}",
             "descriptions": {
@@ -385,7 +379,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/db0400e1-a27d-4bf1-9ed3-dd37ae3d686a",
             "uuid": "8e9e4526-4bb2-4035-aa2e-e5e4c50bbb6d",
             "displayName": "{{ description }}",
             "descriptions": {
@@ -431,7 +424,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/db0400e1-a27d-4bf1-9ed3-dd37ae3d686a",
             "uuid": "44439211-b0e4-4e08-9aab-d41d2bd65254",
             "displayName": "{{ myNotes }}",
             "descriptions": {
@@ -474,7 +466,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/db0400e1-a27d-4bf1-9ed3-dd37ae3d686a",
             "uuid": "e9792aac-eeb9-41c2-80ed-cb14dc418c2e",
             "displayName": "{{ software }}",
             "descriptions": {
@@ -520,7 +511,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/db0400e1-a27d-4bf1-9ed3-dd37ae3d686a",
             "uuid": "2f2161c6-3cd9-468e-9f6f-8718184a86c1",
             "displayName": "{{ lastModified }}",
             "descriptions": {
@@ -566,7 +556,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/db0400e1-a27d-4bf1-9ed3-dd37ae3d686a",
             "uuid": "5ba4c0df-1bbc-4179-a476-36404b382730",
             "displayName": "{{ created }}",
             "descriptions": {
@@ -612,7 +601,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/db0400e1-a27d-4bf1-9ed3-dd37ae3d686a",
             "uuid": "37ee75c4-eea6-4cd1-b2be-ca01f01eaa91",
             "displayName": "{{ platforms }}",
             "descriptions": {
@@ -658,7 +646,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/db0400e1-a27d-4bf1-9ed3-dd37ae3d686a",
             "uuid": "9d10b194-843c-44e0-9209-f1ce5b84d87c",
             "displayName": "{{ permissionsRequired }}",
             "descriptions": {
@@ -704,7 +691,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/db0400e1-a27d-4bf1-9ed3-dd37ae3d686a",
             "uuid": "bb7d4213-7b7a-4af7-a0ed-2544fef194c6",
             "displayName": "{{ capecId }}",
             "descriptions": {
@@ -750,7 +736,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/db0400e1-a27d-4bf1-9ed3-dd37ae3d686a",
             "uuid": "ea9ea659-6610-427b-830e-f7bc03b75443",
             "displayName": "{{ dataSources }}",
             "descriptions": {
@@ -760,7 +745,16 @@
     ],
     "system": false,
     "module": "mitre_sub_techniques",
-    "uuid": "db0400e1-a27d-4bf1-9ed3-dd37ae3d686a",
+    "softDeleteable": false,
+    "archivable": false,
+    "paused": false,
+    "partitionBy": "modifyDate",
+    "archivalCriteria": {
+        "keep_primary_data_for": 24,
+        "delete_primary_data_after": 60
+    },
+    "archivalFilters": [],
+    "uuid": "c2dbccf3-4136-4b7e-a1da-7b54d8d60517",
     "displayName": "{{ name }}",
     "descriptions": {
         "singular": "Sub-technique",
