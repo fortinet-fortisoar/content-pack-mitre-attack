@@ -2,7 +2,7 @@
     "name": "mITREATT&CKEnrichmentFramework",
     "version": "2.0.2",
     "type": "solutionpack",
-    "local": false,
+    "local": true,
     "label": "MITRE ATT&CK Enrichment Framework",
     "dependencies": [
         {
@@ -20,11 +20,10 @@
     "supportInfo": "support@fortinet.com",
     "help": "https://github.com/fortinet-fortisoar/solution-pack-mitre-attack/blob/develop/README.md",
     "description": "Solution Pack for leveraging the MITRE ATT&CK Knowledge Base in FortiSOAR",
-    "summary": null,
     "iconLarge": null,
     "fsrMinCompatibility": "7.2.0",
-    "date": "2022-02-16T10:38:06+00:00",
-    "exported_from": "tenant.fortisoar.com",
+    "date": "2022-03-16T19:12:37+00:00",
+    "exported_from": "master.fortisoar.com",
     "exported_by": "CS Admin",
     "contents": {
         "picklistNames": [
@@ -74,17 +73,7 @@
             }
         },
         "viewTemplates": {
-            "alerts": [
-                "list",
-                "detail",
-                "form"
-            ],
             "hunt": [
-                "list",
-                "detail",
-                "form"
-            ],
-            "incidents": [
                 "list",
                 "detail",
                 "form"
@@ -92,7 +81,8 @@
             "mitre_groups": [
                 "list",
                 "detail",
-                "form"
+                "form",
+                "settings"
             ],
             "mitre_mitigations": [
                 "list",
@@ -100,21 +90,25 @@
             ],
             "mitre_software": [
                 "list",
-                "detail"
+                "detail",
+                "settings"
             ],
             "mitre_sub_techniques": [
                 "list",
-                "detail"
+                "detail",
+                "settings"
             ],
             "mitre_tactics": [
                 "list",
                 "detail",
-                "form"
+                "form",
+                "settings"
             ],
             "mitre_techniques": [
                 "list",
                 "detail",
-                "form"
+                "form",
+                "settings"
             ]
         },
         "views": {
