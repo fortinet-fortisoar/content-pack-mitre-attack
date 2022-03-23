@@ -5,7 +5,7 @@
     "config": {
         "correlationConfig": {
             "$type": "image",
-            "color": "#b91616",
+            "color": "",
             "picklist": "",
             "display_field": "name",
             "relationships": [
