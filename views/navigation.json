@@ -26,24 +26,6 @@
                         "openStatus": false
                     },
                     {
-                        "title": "Hunts",
-                        "require": {
-                            "module": "hunt",
-                            "action": "read"
-                        },
-                        "state": {
-                            "name": "main.modules.list",
-                            "parameters": {
-                                "module": "hunt"
-                            }
-                        },
-                        "icon": "fa fa-fighter-jet",
-                        "editMode": false,
-                        "open": false,
-                        "isEnabled": false,
-                        "openStatus": false
-                    },
-                    {
                         "icon": "fa fa-shield",
                         "state": {
                             "name": "main.modules.list",
