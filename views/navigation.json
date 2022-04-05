@@ -5,7 +5,7 @@
     "config": {
         "navigation": [
             {
-                "icon": "fa fa-tasks",
+                "icon": "icon icon-mitre-attack",
                 "items": [
                     {
                         "icon": "icon icon-groups",
