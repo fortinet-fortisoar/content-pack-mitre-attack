@@ -17,12 +17,12 @@
     "category": [],
     "certified": "true",
     "publisher": "Fortinet",
-    "supportInfo": "support@fortinet.com",
+    "supportInfo": "Fortinet Customer Support",
     "help": "https://github.com/fortinet-fortisoar/solution-pack-mitre-attack/blob/develop/README.md",
-    "description": "Solution Pack for leveraging the MITRE ATT&CK Knowledge Base in FortiSOAR",
+    "description": "Solution Pack for leveraging the MITRE ATT&CK Knowledge Base in FortiSOAR.",
     "iconLarge": null,
     "fsrMinCompatibility": "7.2.0",
-    "date": "2022-03-16T19:12:37+00:00",
+    "date": "2022-04-11T06:42:12+00:00",
     "contents": {
         "picklistNames": [
             {
@@ -67,38 +67,62 @@
             }
         },
         "viewTemplates": {
-            "mitre_groups": [
-                "list",
-                "detail",
-                "form",
-                "settings"
-            ],
-            "mitre_mitigations": [
-                "list",
-                "detail"
-            ],
-            "mitre_software": [
-                "list",
-                "detail",
-                "settings"
-            ],
-            "mitre_sub_techniques": [
-                "list",
-                "detail",
-                "settings"
-            ],
-            "mitre_tactics": [
-                "list",
-                "detail",
-                "form",
-                "settings"
-            ],
-            "mitre_techniques": [
-                "list",
-                "detail",
-                "form",
-                "settings"
-            ]
+            "mitre_groups": {
+                "name": "Groups",
+                "apiName": "mitre_groups",
+                "views": [
+                    "list",
+                    "detail",
+                    "form",
+                    "settings"
+                ]
+            },
+            "mitre_mitigations": {
+                "name": "Mitigations",
+                "apiName": "mitre_mitigations",
+                "views": [
+                    "list",
+                    "detail"
+                ]
+            },
+            "mitre_software": {
+                "name": "Software",
+                "apiName": "mitre_software",
+                "views": [
+                    "list",
+                    "detail",
+                    "settings"
+                ]
+            },
+            "mitre_sub_techniques": {
+                "name": "Sub-techniques",
+                "apiName": "mitre_sub_techniques",
+                "views": [
+                    "list",
+                    "detail",
+                    "settings"
+                ]
+            },
+            "mitre_tactics": {
+                "name": "Tactics",
+                "apiName": "mitre_tactics",
+                "views": [
+                    "list",
+                    "detail",
+                    "form",
+                    "settings"
+                ]
+            },
+            "mitre_techniques": {
+                "name": "Techniques",
+                "apiName": "mitre_techniques",
+                "views": [
+                    "list",
+                    "detail",
+                    "form",
+                    "settings"
+                ]
+            }
         },
         "views": {
             "navigation": [
