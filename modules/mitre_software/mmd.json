@@ -1,12 +1,13 @@
 {
     "@context": "\/api\/3\/contexts\/StagingModelMetadata",
-    "@id": "\/api\/3\/staging_model_metadatas\/2a9663a6-a7bc-4716-aacf-ffcfad165846",
+    "@id": "\/api\/3\/staging_model_metadatas\/f9629719-0731-4f1f-96e9-23cec8cb70c2",
     "@type": "StagingModelMetadata",
     "type": "mitre_software",
     "parentType": null,
     "tableName": "mitre_software",
     "ownable": false,
     "userOwnable": false,
+    "queueable": false,
     "trackable": false,
     "taggable": true,
     "peerReplicable": false,
@@ -51,7 +52,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/2a9663a6-a7bc-4716-aacf-ffcfad165846",
             "uuid": "434e646d-928d-486c-9bf5-2813579310a9",
             "displayName": "{{ incidents }}",
             "descriptions": {
@@ -94,7 +94,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/2a9663a6-a7bc-4716-aacf-ffcfad165846",
             "uuid": "35b7ca45-3fa1-4d98-9092-7f635b912166",
             "displayName": "{{ alerts }}",
             "descriptions": {
@@ -140,7 +139,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/2a9663a6-a7bc-4716-aacf-ffcfad165846",
             "uuid": "b82ae406-1643-4936-9fc3-abb1829e998d",
             "displayName": "{{ mitreId }}",
             "descriptions": {
@@ -214,7 +212,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/2a9663a6-a7bc-4716-aacf-ffcfad165846",
             "uuid": "800880cd-e0c7-4f4b-b443-822e1bd38072",
             "displayName": "{{ type }}",
             "descriptions": {
@@ -260,7 +257,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/2a9663a6-a7bc-4716-aacf-ffcfad165846",
             "uuid": "b13a0fd8-1694-4acc-94e4-08f70296d327",
             "displayName": "{{ myNotes }}",
             "descriptions": {
@@ -306,7 +302,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/2a9663a6-a7bc-4716-aacf-ffcfad165846",
             "uuid": "ba8fefaf-8fde-44aa-ba8f-39b2ba031460",
             "displayName": "{{ aliases }}",
             "descriptions": {
@@ -352,7 +347,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/2a9663a6-a7bc-4716-aacf-ffcfad165846",
             "uuid": "31acf124-ec09-4ea4-96d5-147efbbd56f0",
             "displayName": "{{ name }}",
             "descriptions": {
@@ -398,7 +392,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/2a9663a6-a7bc-4716-aacf-ffcfad165846",
             "uuid": "32fb1df8-cf02-44a5-b01f-1cf6e502f70a",
             "displayName": "{{ platform }}",
             "descriptions": {
@@ -444,7 +437,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/2a9663a6-a7bc-4716-aacf-ffcfad165846",
             "uuid": "82252319-1b36-43bf-8bc7-72940b1a96fb",
             "displayName": "{{ contributors }}",
             "descriptions": {
@@ -490,7 +482,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/2a9663a6-a7bc-4716-aacf-ffcfad165846",
             "uuid": "95f7032c-6ff9-4a00-81de-3bf44e564b5a",
             "displayName": "{{ version }}",
             "descriptions": {
@@ -534,7 +525,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/2a9663a6-a7bc-4716-aacf-ffcfad165846",
             "uuid": "4d8b1812-3b78-4b75-8686-a0feee1f8bc9",
             "displayName": "{{ groups }}",
             "descriptions": {
@@ -578,7 +568,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/2a9663a6-a7bc-4716-aacf-ffcfad165846",
             "uuid": "99b885db-5eb4-4ea1-837d-ec4438ea37be",
             "displayName": "{{ techniques }}",
             "descriptions": {
@@ -625,7 +614,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/2a9663a6-a7bc-4716-aacf-ffcfad165846",
             "uuid": "32e73d68-fa86-47e8-9e31-b64238297167",
             "displayName": "{{ description }}",
             "descriptions": {
@@ -669,7 +657,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/2a9663a6-a7bc-4716-aacf-ffcfad165846",
             "uuid": "cbe169b4-cc47-47e3-a514-a0e9a8811352",
             "displayName": "{{ subtechniques }}",
             "descriptions": {
@@ -715,7 +702,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/2a9663a6-a7bc-4716-aacf-ffcfad165846",
             "uuid": "05ccbac6-b7ff-4c7b-8365-354965e53df0",
             "displayName": "{{ created }}",
             "descriptions": {
@@ -761,7 +747,6 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "sattrib": "\/api\/3\/staging_model_metadatas\/2a9663a6-a7bc-4716-aacf-ffcfad165846",
             "uuid": "e4d0394b-359b-4509-a779-74d98be06d3c",
             "displayName": "{{ lastModified }}",
             "descriptions": {
@@ -771,7 +756,16 @@
     ],
     "system": false,
     "module": "mitre_software",
-    "uuid": "2a9663a6-a7bc-4716-aacf-ffcfad165846",
+    "softDeleteable": false,
+    "archivable": false,
+    "paused": false,
+    "partitionBy": "modifyDate",
+    "archivalCriteria": {
+        "keep_primary_data_for": 24,
+        "delete_primary_data_after": 60
+    },
+    "archivalFilters": [],
+    "uuid": "f9629719-0731-4f1f-96e9-23cec8cb70c2",
     "displayName": "{{ name }}",
     "descriptions": {
         "singular": "Software",

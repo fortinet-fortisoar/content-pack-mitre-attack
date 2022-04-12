@@ -1,31 +1,14 @@
 {
-    "@context": "\/api\/3\/contexts\/StagingModelMetadata",
-    "@id": "\/api\/3\/staging_model_metadatas\/653c7757-1486-4f07-a1ef-d8d30926d650",
-    "@type": "StagingModelMetadata",
+    "@id": "\/api\/3\/staging_model_metadatas\/1c0fe33b-f59e-4c8c-8019-cf6d2d792b09",
+    "uuid": "1c0fe33b-f59e-4c8c-8019-cf6d2d792b09",
+    "descriptions": {
+        "plural": "Alerts",
+        "singular": "Alert"
+    },
     "type": "alerts",
-    "parentType": null,
-    "tableName": "alerts",
-    "ownable": true,
-    "userOwnable": true,
-    "queueable": true,
-    "trackable": true,
-    "taggable": true,
-    "peerReplicable": true,
-    "defaultSort": [],
-    "uniqueConstraint": [
-        {
-            "alerts_unique": {
-                "columns": [
-                    "sourceId"
-                ]
-            }
-        }
-    ],
-    "indexable": true,
-    "writable": true,
     "attributes": [
         {
-            "@id": "\/api\/3\/attribute_metadatas\/c956dbeb-02e9-4579-a3c2-19048fb32e16",
+            "@id": "\/api\/3\/attribute_metadatas\/d515debb-0164-48ae-a0ef-b485b0145bfa",
             "@type": "AttributeMetadata",
             "type": "mitre_mitigations",
             "name": "mitremitigations",
@@ -61,14 +44,14 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "uuid": "c956dbeb-02e9-4579-a3c2-19048fb32e16",
+            "uuid": "d515debb-0164-48ae-a0ef-b485b0145bfa",
             "displayName": "{{ mitremitigations }}",
             "descriptions": {
                 "singular": "Mitigations"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/afa49159-e13e-412e-ad6e-7c8e29e211de",
+            "@id": "\/api\/3\/attribute_metadatas\/c060fb7e-f36a-481e-b59c-2b31d6c647a0",
             "@type": "AttributeMetadata",
             "type": "mitre_tactics",
             "name": "mitretactics",
@@ -108,14 +91,14 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "uuid": "afa49159-e13e-412e-ad6e-7c8e29e211de",
+            "uuid": "c060fb7e-f36a-481e-b59c-2b31d6c647a0",
             "displayName": "{{ mitretactics }}",
             "descriptions": {
                 "singular": "Tactics"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/a9321679-43b6-4631-b24d-f2374bb7526d",
+            "@id": "\/api\/3\/attribute_metadatas\/181fe180-5b1c-48d2-9f40-aded39999d72",
             "@type": "AttributeMetadata",
             "type": "mitre_groups",
             "name": "mitregroups",
@@ -155,14 +138,14 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "uuid": "a9321679-43b6-4631-b24d-f2374bb7526d",
+            "uuid": "181fe180-5b1c-48d2-9f40-aded39999d72",
             "displayName": "{{ mitregroups }}",
             "descriptions": {
                 "singular": "Groups"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/f8b1ad02-9164-4793-81a1-d92622220446",
+            "@id": "\/api\/3\/attribute_metadatas\/c7b1bfe2-8652-445c-82cd-722848c1ba55",
             "@type": "AttributeMetadata",
             "type": "mitre_software",
             "name": "mitresoftware",
@@ -198,14 +181,14 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "uuid": "f8b1ad02-9164-4793-81a1-d92622220446",
+            "uuid": "c7b1bfe2-8652-445c-82cd-722848c1ba55",
             "displayName": "{{ mitresoftware }}",
             "descriptions": {
                 "singular": "Software"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/bd99c6d2-d7e1-4edb-85df-f2eda60be155",
+            "@id": "\/api\/3\/attribute_metadatas\/d78f8ba6-e9a5-4dd2-921f-6fb82664655b",
             "@type": "AttributeMetadata",
             "type": "mitre_techniques",
             "name": "mitre_techniques",
@@ -236,14 +219,14 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "uuid": "bd99c6d2-d7e1-4edb-85df-f2eda60be155",
+            "uuid": "d78f8ba6-e9a5-4dd2-921f-6fb82664655b",
             "displayName": "{{ mitre_techniques }}",
             "descriptions": {
                 "singular": "Technique"
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/51909dd6-bce6-4091-9070-a3bdc1d61b06",
+            "@id": "\/api\/3\/attribute_metadatas\/e9df4cf4-3646-4f61-9834-97c6222e3400",
             "@type": "AttributeMetadata",
             "type": "mitre_sub_techniques",
             "name": "mitre_sub_techniques",
@@ -274,28 +257,13 @@
             "identifier": null,
             "unique": false,
             "recommend": false,
-            "uuid": "51909dd6-bce6-4091-9070-a3bdc1d61b06",
+            "uuid": "e9df4cf4-3646-4f61-9834-97c6222e3400",
             "displayName": "{{Sub-technique}}",
             "descriptions": {
                 "singular": "Sub-technique"
             }
         }
     ],
-    "system": false,
-    "module": "alerts",
-    "softDeleteable": false,
-    "archivable": false,
-    "paused": false,
-    "partitionBy": "modifyDate",
-    "archivalCriteria": {
-        "keep_primary_data_for": 24,
-        "delete_primary_data_after": 60
-    },
-    "archivalFilters": [],
-    "uuid": "653c7757-1486-4f07-a1ef-d8d30926d650",
-    "displayName": "{{ name }}",
-    "descriptions": {
-        "plural": "Alerts",
-        "singular": "Alert"
-    }
+    "tableName": "alerts",
+    "displayName": "{{ name }}"
 }
