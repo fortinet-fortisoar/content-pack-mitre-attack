@@ -37,8 +37,8 @@
 
 You can use the MITRE ATT&CK Enrichment Framework Solution Pack to map alerts, incidents, and indicators to MITRE Tactics and Threat Actors; and also hunt for specific tactics in your environment using pre-configured playbooks. You can setup the MITRE ATT&CK Enrichment Framework Solution Pack as follows:
 
-1. Ensure that you have deployed the SOAR Framework Solution Pack ([solution-pack-soar-framework](https://github.com/fortinet-fortisoar/solution-pack-soar-framework)). The steps for deploying a solution pack are mentioned in the [Deploying a Solution Pack](https://github.com/fortinet-fortisoar/how-tos/blob/main/deploying/deployingASolutionPack.md) article.
-2. Setup data ingestion for the MITRE database using the MITRE ATT&CK Connector.
+- Ensure that SOAR Framework solution pack is deployed.
+- Setup data ingestion for the MITRE database using the MITRE ATT&CK Connector.
 
 ## Setting up Data Ingestion
 
