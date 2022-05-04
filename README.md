@@ -1,5 +1,3 @@
-# MITRE ATT&CK Enrichment Framework Solution Pack
-
 ## Release Information
 
 - Solution Pack Version: 2.0.2
@@ -11,7 +9,7 @@
 
 ### Introduction
 
-*MITRE ATT&CK Enrichment Framework Solution Pack* enables users to use the information and knowledge base that’s provided by the MITRE ATT&CK Framework to its full extent.
+**MITRE ATT&CK Enrichment Framework Solution Pack** enables users to use the information and knowledge base provided by the MITRE ATT&CK Framework to its full extent.
 
 MITRE ATT&CK Framework is a globally-accessible knowledge base of adversary tactics and techniques based on real-world observations. The MITRE ATT&CK knowledge base is used as a foundation for the development of specific threat models and methodologies in the private sector, in government, and in the cybersecurity product and service community.
 
@@ -31,7 +29,7 @@ More information about the MITRE ATT&CK Enrichment Framework Solution Pack can b
 
     - MITRE ATT&CK
 
-        **Warning:** After deployment, this Solution Pack will install or upgrade the connector to the latest version.
+        **Warning:** After deployment, this Solution Pack installs or upgrades the connector to the latest version.
 
 2. Module(s)
 
