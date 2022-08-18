@@ -1,6 +1,6 @@
 {
     "@context": "\/api\/3\/contexts\/StagingModelMetadata",
-    "@id": "\/api\/3\/staging_model_metadatas\/d7cbdce7-bd78-45d5-8ac8-e34c8b0fadda",
+    "@id": "\/api\/3\/staging_model_metadatas\/d0fa0c2a-d53f-4bf4-8902-f6b5b50eb8af",
     "@type": "StagingModelMetadata",
     "type": "mitre_mitigations",
     "parentType": null,
@@ -16,6 +16,52 @@
     "indexable": true,
     "writable": true,
     "attributes": [
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/53c36ae3-7253-48fe-bcc5-25c3a015ca83",
+            "@type": "AttributeMetadata",
+            "type": "integer",
+            "name": "lastModified",
+            "length": null,
+            "orderIndex": 6,
+            "formType": "datetime",
+            "dataSource": null,
+            "searchable": true,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": null,
+            "visibility": true,
+            "htmlEscape": null,
+            "orphanRemoval": null,
+            "readable": null,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "53c36ae3-7253-48fe-bcc5-25c3a015ca83",
+            "displayName": "{{ lastModified }}",
+            "descriptions": {
+                "singular": "Last Modified"
+            }
+        },
         {
             "@id": "\/api\/3\/attribute_metadatas\/eb1fb7d4-3b36-4dc8-baea-111d035c7953",
             "@type": "AttributeMetadata",
@@ -326,51 +372,6 @@
             }
         },
         {
-            "@id": "\/api\/3\/attribute_metadatas\/53c36ae3-7253-48fe-bcc5-25c3a015ca83",
-            "@type": "AttributeMetadata",
-            "type": "integer",
-            "name": "lastModified",
-            "length": null,
-            "orderIndex": 6,
-            "formType": "datetime",
-            "dataSource": null,
-            "searchable": true,
-            "peerReplicable": true,
-            "system": false,
-            "encrypted": false,
-            "gridColumn": false,
-            "collection": false,
-            "inversedField": null,
-            "ownsRelationship": false,
-            "validation": {
-                "required": false,
-                "minlength": 0,
-                "maxlength": 10485761
-            },
-            "bulkAction": {
-                "allow": false,
-                "buttonText": "",
-                "buttonIcon": "",
-                "buttonClass": "btn btn-default btn-sm"
-            },
-            "dataSourceFilters": null,
-            "defaultValue": null,
-            "tooltip": null,
-            "visibility": true,
-            "htmlEscape": null,
-            "orphanRemoval": null,
-            "readable": null,
-            "writeable": true,
-            "identifier": null,
-            "unique": false,
-            "recommend": false,
-            "uuid": "53c36ae3-7253-48fe-bcc5-25c3a015ca83",
-            "displayName": "{{ lastModified }}",
-            "descriptions": {
-                "singular": "last Modified"
-            }
-        },
-        {
             "@id": "\/api\/3\/attribute_metadatas\/7e5a8c6c-02dc-4419-958e-a5bba051b0cc",
             "@type": "AttributeMetadata",
             "type": "mitre_techniques",
@@ -425,7 +426,7 @@
         "delete_primary_data_after": 60
     },
     "archivalFilters": [],
-    "uuid": "d7cbdce7-bd78-45d5-8ac8-e34c8b0fadda",
+    "uuid": "d0fa0c2a-d53f-4bf4-8902-f6b5b50eb8af",
     "displayName": "{{ name }}",
     "descriptions": {
         "singular": "Mitigation",
