@@ -1,10 +1,10 @@
 # Release Information
 
-- **Version**:  2.0.2 
-- **Certified**: Yes 
-- **Publisher**: Fortinet 
+- **Version**:  2.0.3
+- **Certified**: Yes
+- **Publisher**: Fortinet
 - **Compatible Version**: FortiSOAR v7.2.0 and later
-- [Release notes](./release_notes.md)
+- [Release notes](https://github.com/fortinet-fortisoar/solution-pack-mitre-attack-enrichment-framework/blob/release/2.0.3/release_notes.md)
 
 # Overview
 
@@ -14,5 +14,5 @@ MITRE ATT&CK&reg; Framework is a globally-accessible knowledge base of adversary
 
 # Next Steps 
  
-| [Installation](./docs/setup.md#installation) | [Configuration](./docs/setup.md#configuration) | [Usage](./docs/usage.md) | [Contents](./docs/contents.md) |
+| [Installation](https://github.com/fortinet-fortisoar/solution-pack-mitre-attack-enrichment-framework/blob/release/2.0.3/docs/setup.md#installation) | [Configuration](https://github.com/fortinet-fortisoar/solution-pack-mitre-attack-enrichment-framework/blob/release/2.0.3/docs/setup.md#configuration) | [Usage](https://github.com/fortinet-fortisoar/solution-pack-mitre-attack-enrichment-framework/blob/release/2.0.3/docs/usage.md) | [Contents](https://github.com/fortinet-fortisoar/solution-pack-mitre-attack-enrichment-framework/blob/release/2.0.3/docs/contents.md) |
 |--------------------------------------------|----------------------------------------------|------------------------|------------------------------|

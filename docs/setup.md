@@ -1,5 +1,5 @@
-| [Home](../README.md) | 
-|----------------------|
+| [Home](https://github.com/fortinet-fortisoar/solution-pack-mitre-attack-enrichment-framework/blob/release/2.0.3/README.md) |
+|----------------------------------------------------------------------------------------------------------------------------|
 
 # Installation 
 1. To install a solution pack, click **Content Hub** > **Discover**.    

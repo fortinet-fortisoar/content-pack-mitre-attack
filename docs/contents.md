@@ -1,12 +1,12 @@
-| [Home](../README.md) | 
-|----------------------|
+| [Home](https://github.com/fortinet-fortisoar/solution-pack-mitre-attack-enrichment-framework/blob/release/2.0.3/README.md) |
+|----------------------------------------------------------------------------------------------------------------------------|
 
 # Contents
 
 ## Connector
 
-| Name         | Description                                                                                                                                         |
-|:-------------|:----------------------------------------------------------------------------------------------------------------------------------------------------|
+| Name              | Description                                                                                                                                              |
+|:------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|
 | MITRE ATT&CK&reg; | Helps replicate knowledge base of adversary tactics and techniques based on real-world observations as described in the MITRE ATT&CK&reg; knowledge base |
 
 >**Warning:** After deployment, this Solution Pack installs or upgrades the connector to the latest version.
@@ -27,7 +27,7 @@
 | Role                 | Description                                                                       |
 |:---------------------|:----------------------------------------------------------------------------------|
 | Full App Permissions | Create, Read, Update and Delete permissions for Scans and Vulnerabilities modules |
-| Mitre Admin          | Create, Read, Update and Delete permissions for MITRE ATT&CK&reg; modules              |
+| Mitre Admin          | Create, Read, Update and Delete permissions for MITRE ATT&CK&reg; modules         |
 
 ## View Template
 
@@ -38,9 +38,9 @@
 | 10 - SP - MITRE ATT&CK&reg; Enrichment Framework<sup>NEW</sup> |
 |:----------------------------------------------------------|
 
-| Playbook Name                                               | Description                                                                                         |
-|:------------------------------------------------------------|:----------------------------------------------------------------------------------------------------|
-| Link ATT&CK Technique to Alert (On Create)<sup>NEW</sup>    | Links MITRE technique or sub-technique to an alert, when a MITRE ATT&CK&reg; ID is added                 |
-| Link ATT&CK Technique to Alert (On Update)<sup>NEW</sup>    | Links MITRE technique or sub-technique to an alert, when a MITRE ATT&CK&reg; ID is updated or changed    |
-| Link ATT&CK Technique to Incident (On Create)<sup>NEW</sup> | Links MITRE technique or sub-technique to an incident, when a MITRE ATT&CK&reg; ID is added              |
-| Link ATT&CK Technique to Incident (On Update)<sup>NEW</sup> | Links MITRE technique or sub-technique to an incident, when a MITRE ATT&CK&reg; ID is updated or changed |
+| Playbook Name                                               | Description                                                                                              |
+|:------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------|
+| Link ATT&CK Technique to Alert (On Create)<sup>NEW</sup>    | Links MITRE technique or sub-technique to an alert, when a Technique ID is added                 |
+| Link ATT&CK Technique to Alert (On Update)<sup>NEW</sup>    | Links MITRE technique or sub-technique to an alert, when a Technique ID is updated or changed    |
+| Link ATT&CK Technique to Incident (On Create)<sup>NEW</sup> | Links MITRE technique or sub-technique to an incident, when a Technique ID is added              |
+| Link ATT&CK Technique to Incident (On Update)<sup>NEW</sup> | Links MITRE technique or sub-technique to an incident, when a Technique ID is updated or changed |
