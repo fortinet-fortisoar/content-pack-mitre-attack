@@ -40,7 +40,7 @@
 
 | Playbook Name                                               | Description                                                                                              |
 |:------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------|
-| Link ATT&CK Technique to Alert (On Create)<sup>NEW</sup>    | Links MITRE technique or sub-technique to an alert, when a MITRE ATT&CK&reg; ID is added                 |
-| Link ATT&CK Technique to Alert (On Update)<sup>NEW</sup>    | Links MITRE technique or sub-technique to an alert, when a MITRE ATT&CK&reg; ID is updated or changed    |
-| Link ATT&CK Technique to Incident (On Create)<sup>NEW</sup> | Links MITRE technique or sub-technique to an incident, when a MITRE ATT&CK&reg; ID is added              |
-| Link ATT&CK Technique to Incident (On Update)<sup>NEW</sup> | Links MITRE technique or sub-technique to an incident, when a MITRE ATT&CK&reg; ID is updated or changed |
+| Link ATT&CK Technique to Alert (On Create)<sup>NEW</sup>    | Links MITRE technique or sub-technique to an alert, when a Technique ID is added                 |
+| Link ATT&CK Technique to Alert (On Update)<sup>NEW</sup>    | Links MITRE technique or sub-technique to an alert, when a Technique ID is updated or changed    |
+| Link ATT&CK Technique to Incident (On Create)<sup>NEW</sup> | Links MITRE technique or sub-technique to an incident, when a Technique ID is added              |
+| Link ATT&CK Technique to Incident (On Update)<sup>NEW</sup> | Links MITRE technique or sub-technique to an incident, when a Technique ID is updated or changed |
