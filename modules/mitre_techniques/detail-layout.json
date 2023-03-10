@@ -154,16 +154,7 @@
                                                 "type": "relationship.subtab",
                                                 "config": {
                                                     "wid": "e871a2bc-62d9-495e-ab9e-35d41c83be04",
-                                                    "excludes": [
-                                                        "notes",
-                                                        "comments",
-                                                        "userOwners",
-                                                        "attachments",
-                                                        "groups",
-                                                        "software",
-                                                        "tactics",
-                                                        "mitigations"
-                                                    ],
+                                                    "excludes": [],
                                                     "expandableCol": {
                                                         "subTechniques": {
                                                             "columns": [],
@@ -173,7 +164,12 @@
                                                             "columns": [],
                                                             "checkBox": false
                                                         }
-                                                    }
+                                                    },
+                                                    "selectionType": "include",
+                                                    "enableHorizontalScroll": [],
+                                                    "includes": [
+                                                        "techniques"
+                                                    ]
                                                 }
                                             },
                                             "icon": "fa fa-th-list",
@@ -225,27 +221,19 @@
                                             "widget": {
                                                 "type": "relationship.subtab",
                                                 "config": {
-                                                    "excludes": [
-                                                        "notes",
-                                                        "comments",
-                                                        "userOwners",
-                                                        "attachments",
-                                                        "tactics",
-                                                        "mitigations",
-                                                        "subTechniques",
-                                                        "techniques"
-                                                    ],
+                                                    "excludes": [],
                                                     "wid": "98cb6200-4ad0-4579-911b-4eb16ead087f",
                                                     "expandableCol": {
                                                         "software": {
                                                             "columns": [],
                                                             "checkBox": false
-                                                        },
-                                                        "groups": {
-                                                            "columns": [],
-                                                            "checkBox": false
                                                         }
-                                                    }
+                                                    },
+                                                    "selectionType": "include",
+                                                    "enableHorizontalScroll": [],
+                                                    "includes": [
+                                                        "software"
+                                                    ]
                                                 }
                                             },
                                             "show": true,
@@ -258,18 +246,13 @@
                                                 "type": "relationship.subtab",
                                                 "config": {
                                                     "wid": "0312d7bd-0e01-42a1-9b15-8bd27c1ae14d",
-                                                    "excludes": [
-                                                        "notes",
-                                                        "comments",
-                                                        "userOwners",
-                                                        "attachments",
-                                                        "groups",
-                                                        "software",
-                                                        "subTechniques",
-                                                        "tactics",
-                                                        "techniques"
-                                                    ],
-                                                    "expandableCol": []
+                                                    "excludes": [],
+                                                    "expandableCol": [],
+                                                    "selectionType": "include",
+                                                    "enableHorizontalScroll": [],
+                                                    "includes": [
+                                                        "mitigations"
+                                                    ]
                                                 }
                                             },
                                             "icon": "fa fa-check",
