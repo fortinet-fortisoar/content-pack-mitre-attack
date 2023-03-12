@@ -143,13 +143,16 @@
                                             "widget": {
                                                 "type": "relationship.subtab",
                                                 "config": {
-                                                    "excludes": [
-                                                        "notes",
-                                                        "comments",
-                                                        "userOwners",
-                                                        "attachments"
-                                                    ],
-                                                    "wid": "6bd9b1f4-4bc1-48c4-bad8-116d9d773166"
+                                                    "excludes": [],
+                                                    "wid": "6bd9b1f4-4bc1-48c4-bad8-116d9d773166",
+                                                    "selectionType": "include",
+                                                    "expandableCol": [],
+                                                    "enableHorizontalScroll": [],
+                                                    "includes": [
+                                                        "groups",
+                                                        "techniques",
+                                                        "subtechniques"
+                                                    ]
                                                 }
                                             },
                                             "show": true,
