@@ -1,4 +1,4 @@
-| [Home](https://github.com/fortinet-fortisoar/solution-pack-mitre-attack-enrichment-framework/blob/release/2.0.3/README.md) |
+| [Home](../README.md) |
 |----------------------------------------------------------------------------------------------------------------------------|
 
 # Contents

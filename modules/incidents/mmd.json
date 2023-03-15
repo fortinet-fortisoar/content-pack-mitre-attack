@@ -1,0 +1,279 @@
+{
+    "@id": "\/api\/3\/staging_model_metadatas\/74604caa-3991-40f2-90cf-5e357761499a",
+    "uuid": "74604caa-3991-40f2-90cf-5e357761499a",
+    "descriptions": {
+        "plural": "Incidents",
+        "singular": "Incident"
+    },
+    "type": "incidents",
+    "attributes": [
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/10850bbf-77ab-41d3-8300-4056fb5a65a0",
+            "@type": "AttributeMetadata",
+            "type": "mitre_techniques",
+            "name": "mitretechniques",
+            "length": null,
+            "orderIndex": 3,
+            "formType": "manyToMany",
+            "dataSource": {
+                "model": "mitre_techniques"
+            },
+            "searchable": false,
+            "peerReplicable": false,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": true,
+            "inversedField": "incidents",
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": [],
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": null,
+            "visibility": true,
+            "htmlEscape": null,
+            "orphanRemoval": null,
+            "readable": null,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "10850bbf-77ab-41d3-8300-4056fb5a65a0",
+            "displayName": "{{ mitretechniques }}",
+            "descriptions": {
+                "singular": "Techniques"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/fade67e7-e9cc-4962-b6a9-90cb59d40fe9",
+            "@type": "AttributeMetadata",
+            "type": "mitre_sub_techniques",
+            "name": "mitresubtechniques",
+            "length": null,
+            "orderIndex": 4,
+            "formType": "manyToMany",
+            "dataSource": {
+                "model": "mitre_sub_techniques"
+            },
+            "searchable": false,
+            "peerReplicable": false,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": true,
+            "inversedField": "incidents",
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": [],
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": null,
+            "visibility": true,
+            "htmlEscape": null,
+            "orphanRemoval": null,
+            "readable": null,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "fade67e7-e9cc-4962-b6a9-90cb59d40fe9",
+            "displayName": "{{ mitresubtechniques }}",
+            "descriptions": {
+                "singular": "Sub-techniques"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/5af83df9-973c-47e2-9825-eb8f69eae12f",
+            "@type": "AttributeMetadata",
+            "type": "mitre_mitigations",
+            "name": "mitremitigations",
+            "length": null,
+            "orderIndex": 2,
+            "formType": "manyToMany",
+            "dataSource": {
+                "model": "mitre_mitigations"
+            },
+            "searchable": false,
+            "peerReplicable": false,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": true,
+            "inversedField": "incidents",
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": [],
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": null,
+            "visibility": true,
+            "htmlEscape": null,
+            "orphanRemoval": null,
+            "readable": null,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "5af83df9-973c-47e2-9825-eb8f69eae12f",
+            "displayName": "{{ mitremitigations }}",
+            "descriptions": {
+                "singular": "Mitigations"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/d66dfcf1-66bf-4c0e-be60-63412462464b",
+            "@type": "AttributeMetadata",
+            "type": "mitre_groups",
+            "name": "mitregroups",
+            "length": null,
+            "orderIndex": 1,
+            "formType": "lookup",
+            "dataSource": {
+                "model": "mitre_groups"
+            },
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": null,
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "d66dfcf1-66bf-4c0e-be60-63412462464b",
+            "displayName": "{{ mitregroups }}",
+            "descriptions": {
+                "singular": "Groups"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/18075b7f-6666-4091-bbb8-97e0139d8969",
+            "@type": "AttributeMetadata",
+            "type": "mitre_tactics",
+            "name": "mitretactics",
+            "length": null,
+            "orderIndex": 2,
+            "formType": "lookup",
+            "dataSource": {
+                "model": "mitre_tactics"
+            },
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": false,
+            "inversedField": null,
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761
+            },
+            "bulkAction": {
+                "allow": false,
+                "buttonText": "",
+                "buttonIcon": "",
+                "buttonClass": "btn btn-default btn-sm"
+            },
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": null,
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "18075b7f-6666-4091-bbb8-97e0139d8969",
+            "displayName": "{{ mitretactics }}",
+            "descriptions": {
+                "singular": "Tactics"
+            }
+        },
+        {
+            "@id": "\/api\/3\/attribute_metadatas\/bdaeaca2-4b36-49c3-a2eb-f3e70a15becf",
+            "@type": "AttributeMetadata",
+            "type": "mitre_software",
+            "name": "mitresoftware",
+            "length": null,
+            "orderIndex": 1,
+            "formType": "manyToMany",
+            "dataSource": {
+                "model": "mitre_software"
+            },
+            "searchable": false,
+            "peerReplicable": false,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": true,
+            "inversedField": "incidents",
+            "ownsRelationship": false,
+            "validation": {
+                "required": false,
+                "minlength": 0,
+                "maxlength": 10485761,
+                "_enableRange": false
+            },
+            "bulkAction": [],
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": null,
+            "visibility": true,
+            "htmlEscape": null,
+            "orphanRemoval": null,
+            "readable": null,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "uuid": "bdaeaca2-4b36-49c3-a2eb-f3e70a15becf",
+            "displayName": "{{ mitresoftware }}",
+            "descriptions": {
+                "singular": "Software"
+            }
+        }
+    ],
+    "tableName": "incidents",
+    "displayName": "{{name}}"
+}
