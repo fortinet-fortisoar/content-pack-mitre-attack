@@ -12,7 +12,7 @@ The **MITRE ATT&CK&reg; Enrichment Framework** solution pack depends on the foll
 
 | Solution Pack Name | Version  | Purpose                                |
 |:-------------------|:---------|:---------------------------------------|
-| SOAR Framework     |  v2.1.0  | Required for Incident Response modules |
+| SOAR Framework     |  v1.1.0  | Required for Incident Response modules |
  
 # Configuration
 
