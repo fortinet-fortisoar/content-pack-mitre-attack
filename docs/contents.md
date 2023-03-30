@@ -1,4 +1,4 @@
-| [Home](https://github.com/fortinet-fortisoar/solution-pack-mitre-attack-enrichment-framework/blob/release/2.0.3/README.md) |
+| [Home](../README.md) |
 |----------------------------------------------------------------------------------------------------------------------------|
 
 # Contents
@@ -9,7 +9,7 @@
 |:------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------|
 | MITRE ATT&CK&reg; | Helps replicate knowledge base of adversary tactics and techniques based on real-world observations as described in the MITRE ATT&CK&reg; knowledge base |
 
->**Warning:** After deployment, this Solution Pack installs or upgrades the connector to the latest version.
+>**WARNING:** After deployment, this solution pack installs or upgrades the connector to the latest version.
 
 ## Modules
 
@@ -33,14 +33,14 @@
 
 - MITRE ATT&CK
 
-## Playbook Collection<sup>NEW</sup>
+## Playbook Collection
 
-| 10 - SP - MITRE ATT&CK&reg; Enrichment Framework<sup>NEW</sup> |
+| 10 - SP - MITRE ATT&CK&reg; Enrichment Framework |
 |:----------------------------------------------------------|
 
-| Playbook Name                                               | Description                                                                                              |
-|:------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------|
-| Link ATT&CK Technique to Alert (On Create)<sup>NEW</sup>    | Links MITRE technique or sub-technique to an alert, when a Technique ID is added                 |
-| Link ATT&CK Technique to Alert (On Update)<sup>NEW</sup>    | Links MITRE technique or sub-technique to an alert, when a Technique ID is updated or changed    |
-| Link ATT&CK Technique to Incident (On Create)<sup>NEW</sup> | Links MITRE technique or sub-technique to an incident, when a Technique ID is added              |
-| Link ATT&CK Technique to Incident (On Update)<sup>NEW</sup> | Links MITRE technique or sub-technique to an incident, when a Technique ID is updated or changed |
+| Playbook Name                                 | Description                                                                                      |
+|:----------------------------------------------|:---------------------------------------------------------------------------------------------------------|
+| Link ATT&CK Technique to Alert (On Create)    | Links MITRE technique or sub-technique to an alert, when a Technique ID is added                 |
+| Link ATT&CK Technique to Alert (On Update)    | Links MITRE technique or sub-technique to an alert, when a Technique ID is updated or changed    |
+| Link ATT&CK Technique to Incident (On Create) | Links MITRE technique or sub-technique to an incident, when a Technique ID is added              |
+| Link ATT&CK Technique to Incident (On Update) | Links MITRE technique or sub-technique to an incident, when a Technique ID is updated or changed |

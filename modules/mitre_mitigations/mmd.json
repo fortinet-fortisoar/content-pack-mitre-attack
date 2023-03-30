@@ -147,7 +147,8 @@
             "displayName": "{{ incidents }}",
             "descriptions": {
                 "singular": "Incidents"
-            }
+            },
+            "skipSerialization": true
         },
         {
             "@id": "\/api\/3\/attribute_metadatas\/8f086fe6-d639-45a2-bfb5-70cde4a64c8a",
@@ -189,7 +190,8 @@
             "displayName": "{{ alerts }}",
             "descriptions": {
                 "singular": "Alerts"
-            }
+            },
+            "skipSerialization": true
         },
         {
             "@id": "\/api\/3\/attribute_metadatas\/d077d104-c573-4ccd-bf8b-e70e152333bd",

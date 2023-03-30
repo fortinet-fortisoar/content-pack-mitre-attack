@@ -1,4 +1,4 @@
-| [Home](https://github.com/fortinet-fortisoar/solution-pack-mitre-attack-enrichment-framework/blob/release/2.0.3/README.md) |
+| [Home](../README.md) |
 |----------------------------------------------------------------------------------------------------------------------------|
 
 # Installation 
@@ -10,9 +10,9 @@
 ## Prerequisites 
 The **MITRE ATT&CK&reg; Enrichment Framework** solution pack depends on the following solution packs.
 
-| Solution Pack Name | Purpose                                |
-|:-------------------|:---------------------------------------|
-| SOAR Framework     | Required for Incident Response modules |
+| Solution Pack Name | Version  | Purpose                                |
+|:-------------------|:---------|:---------------------------------------|
+| SOAR Framework     |  v1.1.0  | Required for Incident Response modules |
  
 # Configuration
 
