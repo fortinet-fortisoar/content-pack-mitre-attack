@@ -34,18 +34,24 @@
                         }
                     ],
                     "__selectFields": [
-                        "mitreId"
+                        "mitreId",
+                        "groups",
+                        "software",
+                        "mitigations"
                     ]
                 },
-                "module": "mitre_techniques?$limit=30",
+                "module": "mitre_techniques?$limit=30&$relationships=true&$fsr_max_relation_count=100",
                 "checkboxFields": true,
                 "step_variables": {
-                    "techniqueIRI": "{% if vars.result | length > 0 %}{{vars.result[0]['@id']}}{% endif %}"
+                    "groupIRI": "{{vars.steps.Find_Parent_Technique[0].groups | json_query('[*][\"@id\"][]')}}",
+                    "softwareIRI": "{{vars.steps.Find_Parent_Technique[0].software | json_query('[*][\"@id\"][]')}}",
+                    "techniqueIRI": "{% if vars.result | length > 0 %}{{vars.result[0]['@id']}}{% endif %}",
+                    "mitigationIRI": "{{vars.steps.Find_Parent_Technique[0].mitigations | json_query('[*][\"@id\"][]')}}"
                 }
             },
             "status": null,
             "top": "435",
-            "left": "475",
+            "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
             "group": null,
             "uuid": "0414ab32-3102-4d44-b71c-5f5320b2732a"
@@ -59,7 +65,7 @@
                     "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
                     "alerts": "{{vars.input.records[0]['@id']}}",
                     "people": [],
-                    "content": "<p>Record for MITRE ATT&amp;CK Technique {{vars.input.records[0].mitreattackid}} - {{vars.input.records[0].mitreTechnique}} is not available.<\/p>",
+                    "content": "<p>The record for MITRE ATT&amp;CK Technique ID <span class=\"badge badge-pill badge-danger\" style=\"background: #ba6204; color: #fff;\">{{vars.input.records[0].mitreattackid}}<\/span> is not available. Update the MITRE data.<\/p>",
                     "__replace": "",
                     "isImportant": false,
                     "peopleUpdated": false
@@ -74,7 +80,7 @@
             },
             "status": null,
             "top": "705",
-            "left": "475",
+            "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/2597053c-e718-44b4-8394-4d40fe26d357",
             "group": null,
             "uuid": "12ebf8a9-0b8d-432d-86c5-a5d56d8b912c"
@@ -99,19 +105,26 @@
                     ],
                     "__selectFields": [
                         "mitreId",
-                        "name"
+                        "name",
+                        "techniques",
+                        "mitigations",
+                        "software",
+                        "groups"
                     ]
                 },
-                "module": "mitre_techniques?$limit=30",
+                "module": "mitre_techniques?$limit=30&$relationships=true&$fsr_max_relation_count=100",
                 "checkboxFields": true,
                 "step_variables": {
+                    "groupIRI": "{{vars.steps.Find_Technique[0].groups | json_query('[*][\"@id\"][]')}}",
+                    "softwareIRI": "{{vars.steps.Find_Technique[0].software  | json_query('[*][\"@id\"][]')}}",
                     "techniqueIRI": "{% if vars.result | length > 0 %}{{vars.result[0]['@id']}}{% endif %}",
+                    "mitigationIRI": "{{vars.steps.Find_Technique[0].mitigations | json_query('[*][\"@id\"][]')}}",
                     "techniqueName": "{% if vars.result | length > 0 %}{{vars.result[0].name}}{% endif %}"
                 }
             },
             "status": null,
             "top": "435",
-            "left": "125",
+            "left": "475",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
             "group": null,
             "uuid": "1cc06470-395f-4f58-9e55-b7e7222bc920"
@@ -243,7 +256,7 @@
             },
             "status": null,
             "top": "300",
-            "left": "475",
+            "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
             "group": null,
             "uuid": "b4c2e914-5d9d-414b-a583-67d189fdf536"
@@ -253,9 +266,19 @@
             "name": "Link Technique to Alert",
             "description": null,
             "arguments": {
+                "message": {
+                    "tags": [],
+                    "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                    "tenant": "",
+                    "thread": false,
+                    "content": "<p>Correlated <span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Techniques<\/span> {% if vars.subTechniqueIRI %}<span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Sub Techniques<\/span>{% endif %} {% if vars.mitigationIRI %}<span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Mitigations<\/span>{% endif %} {% if vars.softwareIRI %}<span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Software<\/span>{% endif %} based on MITRE ATT&amp;CK Technique ID.<\/p>",
+                    "records": "{{vars.input.records[0]['@id']}}"
+                },
                 "resource": {
+                    "mitresoftware": "{{vars.softwareIRI}}",
                     "mitreTechnique": "{{vars.techniqueName}}",
                     "mitre_techniques": "{{vars.techniqueIRI}}",
+                    "mitremitigations": "{{vars.mitigationIRI}}",
                     "mitre_sub_techniques": "{{vars.subTechniqueIRI}}"
                 },
                 "_showJson": false,
@@ -270,7 +293,7 @@
             },
             "status": null,
             "top": "705",
-            "left": "125",
+            "left": "475",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
             "group": null,
             "uuid": "bb053ad5-ee09-450b-85fb-34529df04b4e"
@@ -279,30 +302,13 @@
     "routes": [
         {
             "@type": "WorkflowRoute",
-            "name": "Is Technique Record Available -> Link Technique to Alert",
-            "targetStep": "\/api\/3\/workflow_steps\/bb053ad5-ee09-450b-85fb-34529df04b4e",
+            "name": "Is Technique Record Available -> Add Comment",
+            "targetStep": "\/api\/3\/workflow_steps\/12ebf8a9-0b8d-432d-86c5-a5d56d8b912c",
             "sourceStep": "\/api\/3\/workflow_steps\/4c711433-adb8-45fa-a9b9-382b8a685d86",
-            "label": "Available",
+            "label": "Not Available",
             "isExecuted": false,
-            "uuid": "1f27ec6c-e25f-49ce-ae05-2df05c8bd00f"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "Is Technique or Sub Technique -> Find Technique",
-            "targetStep": "\/api\/3\/workflow_steps\/1cc06470-395f-4f58-9e55-b7e7222bc920",
-            "sourceStep": "\/api\/3\/workflow_steps\/9c895686-d4dd-4269-a091-8b1ffef6728c",
-            "label": "Technique",
-            "isExecuted": false,
-            "uuid": "3d3ae188-ae75-4405-871c-165e5e65c23e"
-        },
-        {
-            "@type": "WorkflowRoute",
-            "name": "Find Sub Technique -> Find Parenet Technique",
-            "targetStep": "\/api\/3\/workflow_steps\/0414ab32-3102-4d44-b71c-5f5320b2732a",
-            "sourceStep": "\/api\/3\/workflow_steps\/b4c2e914-5d9d-414b-a583-67d189fdf536",
-            "label": null,
-            "isExecuted": false,
-            "uuid": "4ac4788b-bdaa-49b5-b8b4-1c510eb4afbc"
+            "group": null,
+            "uuid": "a52361ec-5a88-49e0-be2e-831f733ba254"
         },
         {
             "@type": "WorkflowRoute",
@@ -311,16 +317,38 @@
             "sourceStep": "\/api\/3\/workflow_steps\/9c895686-d4dd-4269-a091-8b1ffef6728c",
             "label": "Sub Technique",
             "isExecuted": false,
+            "group": null,
             "uuid": "9b28861d-5448-452b-b807-d5b617d88ef1"
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Is Technique Record Available -> Add Comment",
-            "targetStep": "\/api\/3\/workflow_steps\/12ebf8a9-0b8d-432d-86c5-a5d56d8b912c",
-            "sourceStep": "\/api\/3\/workflow_steps\/4c711433-adb8-45fa-a9b9-382b8a685d86",
-            "label": "Not Available",
+            "name": "Find Sub Technique -> Find Parenet Technique",
+            "targetStep": "\/api\/3\/workflow_steps\/0414ab32-3102-4d44-b71c-5f5320b2732a",
+            "sourceStep": "\/api\/3\/workflow_steps\/b4c2e914-5d9d-414b-a583-67d189fdf536",
+            "label": null,
             "isExecuted": false,
-            "uuid": "a52361ec-5a88-49e0-be2e-831f733ba254"
+            "group": null,
+            "uuid": "4ac4788b-bdaa-49b5-b8b4-1c510eb4afbc"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Find Parenet Technique -> Is Technique Record Available",
+            "targetStep": "\/api\/3\/workflow_steps\/4c711433-adb8-45fa-a9b9-382b8a685d86",
+            "sourceStep": "\/api\/3\/workflow_steps\/0414ab32-3102-4d44-b71c-5f5320b2732a",
+            "label": null,
+            "isExecuted": false,
+            "group": null,
+            "uuid": "c6636071-9898-4336-85d6-04b3289c6c88"
+        },
+        {
+            "@type": "WorkflowRoute",
+            "name": "Is Technique or Sub Technique -> Find Technique",
+            "targetStep": "\/api\/3\/workflow_steps\/1cc06470-395f-4f58-9e55-b7e7222bc920",
+            "sourceStep": "\/api\/3\/workflow_steps\/9c895686-d4dd-4269-a091-8b1ffef6728c",
+            "label": "Technique",
+            "isExecuted": false,
+            "group": null,
+            "uuid": "3d3ae188-ae75-4405-871c-165e5e65c23e"
         },
         {
             "@type": "WorkflowRoute",
@@ -329,6 +357,7 @@
             "sourceStep": "\/api\/3\/workflow_steps\/67cf33e8-bea8-47cd-9e38-bca922d7f0fa",
             "label": null,
             "isExecuted": false,
+            "group": null,
             "uuid": "aaed1a89-ab73-4796-b0da-6ae9ee0a6c86"
         },
         {
@@ -338,16 +367,18 @@
             "sourceStep": "\/api\/3\/workflow_steps\/1cc06470-395f-4f58-9e55-b7e7222bc920",
             "label": null,
             "isExecuted": false,
+            "group": null,
             "uuid": "b37fe099-3aee-44f4-bc2f-117310522d58"
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Find Parenet Technique -> Is Technique Record Available",
-            "targetStep": "\/api\/3\/workflow_steps\/4c711433-adb8-45fa-a9b9-382b8a685d86",
-            "sourceStep": "\/api\/3\/workflow_steps\/0414ab32-3102-4d44-b71c-5f5320b2732a",
-            "label": null,
+            "name": "Is Technique Record Available -> Link Technique to Alert",
+            "targetStep": "\/api\/3\/workflow_steps\/bb053ad5-ee09-450b-85fb-34529df04b4e",
+            "sourceStep": "\/api\/3\/workflow_steps\/4c711433-adb8-45fa-a9b9-382b8a685d86",
+            "label": "Available",
             "isExecuted": false,
-            "uuid": "c6636071-9898-4336-85d6-04b3289c6c88"
+            "group": null,
+            "uuid": "1f27ec6c-e25f-49ce-ae05-2df05c8bd00f"
         }
     ],
     "groups": [],
@@ -357,6 +388,7 @@
     "isPrivate": false,
     "deletedAt": null,
     "recordTags": [
+        "Alert",
         "PostCreate"
     ]
 }
