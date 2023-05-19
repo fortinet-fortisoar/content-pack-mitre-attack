@@ -1,4 +1,6 @@
 [
+    "Alert",
+    "Incident",
     "PostCreate",
     "PostUpdate"
 ]

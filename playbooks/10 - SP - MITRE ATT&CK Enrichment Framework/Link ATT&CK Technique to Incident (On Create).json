@@ -101,19 +101,24 @@
                     ],
                     "__selectFields": [
                         "mitreId",
-                        "name"
+                        "name",
+                        "mitigations",
+                        "software",
+                        "groups"
                     ]
                 },
-                "module": "mitre_techniques?$limit=30",
+                "module": "mitre_techniques?$limit=30&$relationships=true&$fsr_max_relation_count=100",
                 "checkboxFields": true,
                 "step_variables": {
+                    "groupIRI": "{{vars.steps.Find_Technique[0].groups | json_query('[*][\"@id\"][]')}}",
+                    "softwareIRI": "{{vars.steps.Find_Technique[0].software  | json_query('[*][\"@id\"][]')}}",
                     "techniqueIRI": "{% if vars.result | length > 0 %}{{vars.result[0]['@id']}}{% endif %}",
-                    "techniqueName": "{% if vars.result | length > 0 %}{{vars.result[0].name}}{% endif %}"
+                    "mitigationIRI": "{{vars.steps.Find_Technique[0].mitigations | json_query('[*][\"@id\"][]')}}"
                 }
             },
             "status": null,
             "top": "435",
-            "left": "125",
+            "left": "475",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
             "group": null,
             "uuid": "43e0f1c2-c8f5-43b9-951e-0d563b5bc47f"
@@ -142,17 +147,16 @@
                         "name"
                     ]
                 },
-                "module": "mitre_sub_techniques?$limit=30&$relationships=true",
+                "module": "mitre_sub_techniques?$limit=30&$relationships=true&$fsr_max_relation_count=100",
                 "checkboxFields": true,
                 "step_variables": {
                     "techniqueID": "{% if vars.result | length > 0 %}{{vars.result[0].mitreId.split('.')[0]}}{% endif %}",
-                    "techniqueName": "{{vars.result[0].name}}",
                     "subTechniqueIRI": "{% if vars.result | length > 0 %}{{vars.result[0]['@id']}}{% endif %}"
                 }
             },
             "status": null,
             "top": "300",
-            "left": "475",
+            "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
             "group": null,
             "uuid": "62be5141-ad8b-4d0d-a63f-528053658f9a"
@@ -176,18 +180,24 @@
                         }
                     ],
                     "__selectFields": [
-                        "mitreId"
+                        "mitreId",
+                        "mitigations",
+                        "software",
+                        "groups"
                     ]
                 },
-                "module": "mitre_techniques?$limit=30",
+                "module": "mitre_techniques?$limit=30&$relationships=true&$fsr_max_relation_count=100",
                 "checkboxFields": true,
                 "step_variables": {
-                    "techniqueIRI": "{% if vars.result | length > 0 %}{{vars.result[0]['@id']}}{% endif %}"
+                    "groupIRI": "{{vars.steps.Find_Parent_Technique[0].groups | json_query('[*][\"@id\"][]')}}",
+                    "softwareIRI": "{{vars.steps.Find_Parent_Technique[0].software | json_query('[*][\"@id\"][]')}}",
+                    "techniqueIRI": "{% if vars.result | length > 0 %}{{vars.result[0]['@id']}}{% endif %}",
+                    "mitigationIRI": "{{vars.steps.Find_Parent_Technique[0].mitigations | json_query('[*][\"@id\"][]')}}"
                 }
             },
             "status": null,
             "top": "435",
-            "left": "475",
+            "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
             "group": null,
             "uuid": "6f3d3a7e-0e57-4d6c-9573-e255de17226e"
@@ -197,8 +207,18 @@
             "name": "Link Technique to Incident",
             "description": null,
             "arguments": {
+                "message": {
+                    "tags": [],
+                    "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                    "tenant": "",
+                    "thread": false,
+                    "content": "<p>Correlated <span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Techniques<\/span> {% if vars.subTechniqueIRI %}<span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Sub Techniques<\/span>{% endif %} {% if vars.mitigationIRI %}<span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Mitigations<\/span>{% endif %} {% if vars.softwareIRI %}<span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Software<\/span>{% endif %} based on MITRE ATT&amp;CK Technique ID.<\/p>",
+                    "records": "{{vars.input.records[0]['@id']}}"
+                },
                 "resource": {
+                    "mitresoftware": "{{vars.softwareIRI}}",
                     "mitretechniques": "{{vars.techniqueIRI}}",
+                    "mitremitigations": "{{vars.mitigationIRI}}",
                     "mitresubtechniques": "{{vars.subTechniqueIRI}}"
                 },
                 "_showJson": false,
@@ -252,10 +272,10 @@
             "arguments": {
                 "resource": {
                     "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
-                    "alerts": "{{vars.input.records[0]['@id']}}",
                     "people": [],
-                    "content": "<p>Record for MITRE ATT&amp;CK Technique {{vars.input.records[0].mitreattackid}} - {{vars.input.records[0].mitreTechnique}} is not available.<\/p>",
+                    "content": "<p>The record for MITRE ATT&amp;CK Technique ID <span class=\"badge badge-pill badge-danger\" style=\"background: #ba6204; color: #fff;\">{{vars.input.records[0].mitreattackid}}<\/span> is not available. Update the MITRE data.<\/p>",
                     "__replace": "",
+                    "incidents": "{{vars.input.records[0]['@id']}}",
                     "isImportant": false,
                     "peopleUpdated": false
                 },
@@ -268,8 +288,8 @@
                 "step_variables": []
             },
             "status": null,
-            "top": "705",
-            "left": "125",
+            "top": "700",
+            "left": "120",
             "stepType": "\/api\/3\/workflow_step_types\/2597053c-e718-44b4-8394-4d40fe26d357",
             "group": null,
             "uuid": "e1f01b49-733c-4004-8800-5e4264a34d83"
@@ -283,6 +303,7 @@
             "sourceStep": "\/api\/3\/workflow_steps\/62be5141-ad8b-4d0d-a63f-528053658f9a",
             "label": null,
             "isExecuted": false,
+            "group": null,
             "uuid": "16cd26f4-0495-4393-aca6-3aae06f787ec"
         },
         {
@@ -290,8 +311,9 @@
             "name": "Is Technique or Sub Technique -> Find Technique",
             "targetStep": "\/api\/3\/workflow_steps\/43e0f1c2-c8f5-43b9-951e-0d563b5bc47f",
             "sourceStep": "\/api\/3\/workflow_steps\/0f8d291b-693e-4f21-88df-087f0a99f528",
-            "label": null,
+            "label": "Technique",
             "isExecuted": false,
+            "group": null,
             "uuid": "20828867-c639-4f92-92eb-22fc1320368f"
         },
         {
@@ -299,8 +321,9 @@
             "name": "Is Technique Record Available -> Add Comment",
             "targetStep": "\/api\/3\/workflow_steps\/e1f01b49-733c-4004-8800-5e4264a34d83",
             "sourceStep": "\/api\/3\/workflow_steps\/af3ae5ce-35c8-4b75-b1ab-db5dc029200e",
-            "label": null,
+            "label": "Not Available",
             "isExecuted": false,
+            "group": null,
             "uuid": "243b0793-6462-4b0d-9b26-920b557f13b0"
         },
         {
@@ -310,6 +333,7 @@
             "sourceStep": "\/api\/3\/workflow_steps\/43e0f1c2-c8f5-43b9-951e-0d563b5bc47f",
             "label": null,
             "isExecuted": false,
+            "group": null,
             "uuid": "56e261e9-6228-46db-b777-9808187b30fa"
         },
         {
@@ -317,8 +341,9 @@
             "name": "Is Technique Record Available -> Link Technique to Incident",
             "targetStep": "\/api\/3\/workflow_steps\/81280cb6-acc3-4f85-beb7-4d8d7e746eed",
             "sourceStep": "\/api\/3\/workflow_steps\/af3ae5ce-35c8-4b75-b1ab-db5dc029200e",
-            "label": null,
+            "label": "Available",
             "isExecuted": false,
+            "group": null,
             "uuid": "71326f94-4640-48c8-bc59-da6a8529d7c6"
         },
         {
@@ -328,6 +353,7 @@
             "sourceStep": "\/api\/3\/workflow_steps\/263d4b5e-199d-4e72-9d17-1ed93d7677af",
             "label": null,
             "isExecuted": false,
+            "group": null,
             "uuid": "9a11baf8-b2ed-4814-94b3-6e691ca10b09"
         },
         {
@@ -335,8 +361,9 @@
             "name": "Is Technique or Sub Technique -> Find Sub Technique",
             "targetStep": "\/api\/3\/workflow_steps\/62be5141-ad8b-4d0d-a63f-528053658f9a",
             "sourceStep": "\/api\/3\/workflow_steps\/0f8d291b-693e-4f21-88df-087f0a99f528",
-            "label": null,
+            "label": "Sub Technique",
             "isExecuted": false,
+            "group": null,
             "uuid": "b4080fc5-273c-4916-b9f0-7db3b3173480"
         },
         {
@@ -346,6 +373,7 @@
             "sourceStep": "\/api\/3\/workflow_steps\/6f3d3a7e-0e57-4d6c-9573-e255de17226e",
             "label": null,
             "isExecuted": false,
+            "group": null,
             "uuid": "e58ff902-b599-4b9a-8f58-319c5f0c875d"
         }
     ],
@@ -356,6 +384,7 @@
     "isPrivate": false,
     "deletedAt": null,
     "recordTags": [
+        "Incident",
         "PostCreate"
     ]
 }
