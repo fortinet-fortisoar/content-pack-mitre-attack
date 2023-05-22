@@ -101,6 +101,7 @@
             "unique": false,
             "recommend": false,
             "uuid": "c81739f4-16b3-4e46-9703-b68f1722e0d6",
+            "skipSerialization": false,
             "displayName": "{{ name }}",
             "descriptions": {
                 "singular": "Name"
@@ -147,6 +148,7 @@
             "unique": false,
             "recommend": false,
             "uuid": "53462c9c-3b04-4c11-a70f-e3b3ee98a3c1",
+            "skipSerialization": false,
             "displayName": "{{ description }}",
             "descriptions": {
                 "singular": "Description"
@@ -193,6 +195,7 @@
             "unique": false,
             "recommend": false,
             "uuid": "44ffe201-9d54-4d6d-a617-1586a5da5944",
+            "skipSerialization": false,
             "displayName": "{{ notes }}",
             "descriptions": {
                 "singular": "My Notes"
@@ -239,6 +242,7 @@
             "unique": false,
             "recommend": false,
             "uuid": "cfdbc2b6-88bf-43a1-b858-88b0b33e3b5d",
+            "skipSerialization": false,
             "displayName": "{{ version }}",
             "descriptions": {
                 "singular": "Version"
@@ -284,6 +288,7 @@
             "unique": false,
             "recommend": false,
             "uuid": "f7e5cd5d-d6ed-41b1-9917-e79adc8a1830",
+            "skipSerialization": false,
             "displayName": "{{ contributors }}",
             "descriptions": {
                 "singular": "Contributors"
@@ -329,6 +334,7 @@
             "unique": false,
             "recommend": false,
             "uuid": "c7c21d24-f282-4164-bdde-bf73569cc2a5",
+            "skipSerialization": false,
             "displayName": "{{ url }}",
             "descriptions": {
                 "singular": "URL"
@@ -371,6 +377,7 @@
             "unique": false,
             "recommend": false,
             "uuid": "76f3f1d5-f49d-4db2-8d77-b49b05a8968a",
+            "skipSerialization": false,
             "displayName": "{{ techniques }}",
             "descriptions": {
                 "singular": "Techniques"
@@ -413,6 +420,7 @@
             "unique": false,
             "recommend": false,
             "uuid": "7e4e41d9-d1dd-4d96-bfcf-5e8cad79b1b3",
+            "skipSerialization": false,
             "displayName": "{{ software }}",
             "descriptions": {
                 "singular": "Software"
@@ -458,6 +466,7 @@
             "unique": false,
             "recommend": false,
             "uuid": "0a0508cc-f1e4-4aa8-a36f-6ce403e00081",
+            "skipSerialization": false,
             "displayName": "{{ lastModified }}",
             "descriptions": {
                 "singular": "Last Modified"
@@ -503,6 +512,7 @@
             "unique": false,
             "recommend": false,
             "uuid": "a5b8e7b3-9a47-487f-a104-45c927a98a36",
+            "skipSerialization": false,
             "displayName": "{{ created }}",
             "descriptions": {
                 "singular": "Created"
@@ -549,9 +559,84 @@
             "unique": false,
             "recommend": false,
             "uuid": "eaa8a943-13d7-45ed-b1fb-bca9ebac4dc7",
+            "skipSerialization": false,
             "displayName": "{{ aliases }}",
             "descriptions": {
                 "singular": "Associated Groups"
+            }
+        },
+        {
+            "@type": "AttributeMetadata",
+            "type": "alerts",
+            "name": "alerts",
+            "length": null,
+            "orderIndex": 12,
+            "formType": "manyToMany",
+            "dataSource": {
+                "model": "alerts"
+            },
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": true,
+            "inversedField": "mitregroups",
+            "ownsRelationship": false,
+            "validation": null,
+            "bulkAction": null,
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": null,
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "skipSerialization": false,
+            "displayName": "{{Alerts}}",
+            "descriptions": {
+                "singular": "Alerts"
+            }
+        },
+        {
+            "@type": "AttributeMetadata",
+            "type": "incidents",
+            "name": "incidents",
+            "length": null,
+            "orderIndex": 13,
+            "formType": "manyToMany",
+            "dataSource": {
+                "model": "incidents"
+            },
+            "searchable": false,
+            "peerReplicable": true,
+            "system": false,
+            "encrypted": false,
+            "gridColumn": false,
+            "collection": true,
+            "inversedField": "mitregroups",
+            "ownsRelationship": false,
+            "validation": null,
+            "bulkAction": null,
+            "dataSourceFilters": null,
+            "defaultValue": null,
+            "tooltip": null,
+            "visibility": true,
+            "htmlEscape": false,
+            "orphanRemoval": null,
+            "readable": true,
+            "writeable": true,
+            "identifier": null,
+            "unique": false,
+            "recommend": false,
+            "skipSerialization": false,
+            "displayName": "{{Incidents}}",
+            "descriptions": {
+                "singular": "Incidents"
             }
         }
     ],

@@ -57,7 +57,7 @@
             "name": "mitretactics",
             "length": null,
             "orderIndex": 1,
-            "formType": "lookup",
+            "formType": "manyToMany",
             "dataSource": {
                 "model": "mitre_tactics"
             },
@@ -66,20 +66,16 @@
             "system": false,
             "encrypted": false,
             "gridColumn": false,
-            "collection": false,
-            "inversedField": null,
-            "ownsRelationship": false,
+            "collection": true,
+            "inversedField": "alerts",
+            "ownsRelationship": true,
             "validation": {
                 "required": false,
                 "minlength": 0,
-                "maxlength": 10485761
+                "maxlength": 10485761,
+                "_enableRange": false
             },
-            "bulkAction": {
-                "allow": false,
-                "buttonText": "",
-                "buttonIcon": "",
-                "buttonClass": "btn btn-default btn-sm"
-            },
+            "bulkAction": [],
             "dataSourceFilters": null,
             "defaultValue": null,
             "tooltip": null,
@@ -92,6 +88,7 @@
             "unique": false,
             "recommend": false,
             "uuid": "c060fb7e-f36a-481e-b59c-2b31d6c647a0",
+            "skipSerialization": false,
             "displayName": "{{ mitretactics }}",
             "descriptions": {
                 "singular": "Tactics"
@@ -104,7 +101,7 @@
             "name": "mitregroups",
             "length": null,
             "orderIndex": 2,
-            "formType": "lookup",
+            "formType": "manyToMany",
             "dataSource": {
                 "model": "mitre_groups"
             },
@@ -113,20 +110,16 @@
             "system": false,
             "encrypted": false,
             "gridColumn": false,
-            "collection": false,
-            "inversedField": null,
-            "ownsRelationship": false,
+            "collection": true,
+            "inversedField": "alerts",
+            "ownsRelationship": true,
             "validation": {
                 "required": false,
                 "minlength": 0,
-                "maxlength": 10485761
+                "maxlength": 10485761,
+                "_enableRange": false
             },
-            "bulkAction": {
-                "allow": false,
-                "buttonText": "",
-                "buttonIcon": "",
-                "buttonClass": "btn btn-default btn-sm"
-            },
+            "bulkAction": [],
             "dataSourceFilters": null,
             "defaultValue": null,
             "tooltip": null,
@@ -139,6 +132,7 @@
             "unique": false,
             "recommend": false,
             "uuid": "181fe180-5b1c-48d2-9f40-aded39999d72",
+            "skipSerialization": false,
             "displayName": "{{ mitregroups }}",
             "descriptions": {
                 "singular": "Groups"
@@ -182,6 +176,7 @@
             "unique": false,
             "recommend": false,
             "uuid": "c7b1bfe2-8652-445c-82cd-722848c1ba55",
+            "skipSerialization": false,
             "displayName": "{{ mitresoftware }}",
             "descriptions": {
                 "singular": "Software"
@@ -220,6 +215,7 @@
             "unique": false,
             "recommend": false,
             "uuid": "d78f8ba6-e9a5-4dd2-921f-6fb82664655b",
+            "skipSerialization": false,
             "displayName": "{{ mitre_techniques }}",
             "descriptions": {
                 "singular": "Technique"
@@ -258,6 +254,7 @@
             "unique": false,
             "recommend": false,
             "uuid": "e9df4cf4-3646-4f61-9834-97c6222e3400",
+            "skipSerialization": false,
             "displayName": "{{Sub-technique}}",
             "descriptions": {
                 "singular": "Sub-technique"
