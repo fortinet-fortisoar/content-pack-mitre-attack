@@ -5,18 +5,6 @@
     "description": "Essentially the root user, use carefully",
     "name": "Full App Permissions",
     "modulePermissions": {
-        "6": {
-            "@id": "\/api\/3\/module_permissions\/c537a4c3-b43a-4e22-ba7a-9a108f65c11a",
-            "@type": "ModulePermission",
-            "canCreate": true,
-            "canExecute": true,
-            "canRead": true,
-            "canUpdate": true,
-            "canDelete": true,
-            "fieldPermissions": [],
-            "module": "hunt",
-            "uuid": "c537a4c3-b43a-4e22-ba7a-9a108f65c11a"
-        },
         "39": {
             "@id": "\/api\/3\/module_permissions\/032a5a83-bea4-4980-927d-9d5891c13072",
             "@type": "ModulePermission",
