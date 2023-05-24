@@ -130,9 +130,6 @@
         },
         "roles": [
             {
-                "name": "Mitre Admin"
-            },
-            {
                 "name": "Full App Permissions"
             }
         ],

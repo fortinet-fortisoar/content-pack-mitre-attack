@@ -1,6 +1,6 @@
 {
-    "@id": "\/api\/3\/staging_model_metadatas\/74604caa-3991-40f2-90cf-5e357761499a",
-    "uuid": "74604caa-3991-40f2-90cf-5e357761499a",
+    "@id": "\/api\/3\/staging_model_metadatas\/5374993e-e747-47fc-b5ee-08ce75e47dc0",
+    "uuid": "5374993e-e747-47fc-b5ee-08ce75e47dc0",
     "descriptions": {
         "plural": "Incidents",
         "singular": "Incident"
@@ -45,6 +45,7 @@
             "unique": false,
             "recommend": false,
             "uuid": "10850bbf-77ab-41d3-8300-4056fb5a65a0",
+            "skipSerialization": false,
             "displayName": "{{ mitretechniques }}",
             "descriptions": {
                 "singular": "Techniques"
@@ -88,6 +89,7 @@
             "unique": false,
             "recommend": false,
             "uuid": "fade67e7-e9cc-4962-b6a9-90cb59d40fe9",
+            "skipSerialization": false,
             "displayName": "{{ mitresubtechniques }}",
             "descriptions": {
                 "singular": "Sub-techniques"
@@ -131,6 +133,7 @@
             "unique": false,
             "recommend": false,
             "uuid": "5af83df9-973c-47e2-9825-eb8f69eae12f",
+            "skipSerialization": false,
             "displayName": "{{ mitremitigations }}",
             "descriptions": {
                 "singular": "Mitigations"
@@ -143,7 +146,7 @@
             "name": "mitregroups",
             "length": null,
             "orderIndex": 1,
-            "formType": "lookup",
+            "formType": "manyToMany",
             "dataSource": {
                 "model": "mitre_groups"
             },
@@ -152,20 +155,16 @@
             "system": false,
             "encrypted": false,
             "gridColumn": false,
-            "collection": false,
-            "inversedField": null,
-            "ownsRelationship": false,
+            "collection": true,
+            "inversedField": "incidents",
+            "ownsRelationship": true,
             "validation": {
                 "required": false,
                 "minlength": 0,
-                "maxlength": 10485761
+                "maxlength": 10485761,
+                "_enableRange": false
             },
-            "bulkAction": {
-                "allow": false,
-                "buttonText": "",
-                "buttonIcon": "",
-                "buttonClass": "btn btn-default btn-sm"
-            },
+            "bulkAction": [],
             "dataSourceFilters": null,
             "defaultValue": null,
             "tooltip": null,
@@ -178,6 +177,7 @@
             "unique": false,
             "recommend": false,
             "uuid": "d66dfcf1-66bf-4c0e-be60-63412462464b",
+            "skipSerialization": false,
             "displayName": "{{ mitregroups }}",
             "descriptions": {
                 "singular": "Groups"
@@ -190,7 +190,7 @@
             "name": "mitretactics",
             "length": null,
             "orderIndex": 2,
-            "formType": "lookup",
+            "formType": "manyToMany",
             "dataSource": {
                 "model": "mitre_tactics"
             },
@@ -199,20 +199,16 @@
             "system": false,
             "encrypted": false,
             "gridColumn": false,
-            "collection": false,
-            "inversedField": null,
-            "ownsRelationship": false,
+            "collection": true,
+            "inversedField": "incidents",
+            "ownsRelationship": true,
             "validation": {
                 "required": false,
                 "minlength": 0,
-                "maxlength": 10485761
+                "maxlength": 10485761,
+                "_enableRange": false
             },
-            "bulkAction": {
-                "allow": false,
-                "buttonText": "",
-                "buttonIcon": "",
-                "buttonClass": "btn btn-default btn-sm"
-            },
+            "bulkAction": [],
             "dataSourceFilters": null,
             "defaultValue": null,
             "tooltip": null,
@@ -225,6 +221,7 @@
             "unique": false,
             "recommend": false,
             "uuid": "18075b7f-6666-4091-bbb8-97e0139d8969",
+            "skipSerialization": false,
             "displayName": "{{ mitretactics }}",
             "descriptions": {
                 "singular": "Tactics"
@@ -268,6 +265,7 @@
             "unique": false,
             "recommend": false,
             "uuid": "bdaeaca2-4b36-49c3-a2eb-f3e70a15becf",
+            "skipSerialization": false,
             "displayName": "{{ mitresoftware }}",
             "descriptions": {
                 "singular": "Software"
@@ -275,5 +273,5 @@
         }
     ],
     "tableName": "incidents",
-    "displayName": "{{name}}"
+    "displayName": "{{ name }}"
 }

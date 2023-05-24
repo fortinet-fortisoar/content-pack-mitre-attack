@@ -37,13 +37,15 @@
                         "mitreId",
                         "mitigations",
                         "software",
-                        "groups"
+                        "groups",
+                        "tactics"
                     ]
                 },
                 "module": "mitre_techniques?$limit=30&$relationships=true&$fsr_max_relation_count=100",
                 "checkboxFields": true,
                 "step_variables": {
                     "groupIRI": "{{vars.steps.Find_Parent_Technique[0].groups | json_query('[*][\"@id\"][]')}}",
+                    "tacticIRI": "{{vars.steps.Find_Parent_Technique[0].tactics | json_query('[*][\"@id\"][]')}}",
                     "softwareIRI": "{{vars.steps.Find_Parent_Technique[0].software | json_query('[*][\"@id\"][]')}}",
                     "techniqueIRI": "{% if vars.result | length > 0 %}{{vars.result[0]['@id']}}{% endif %}",
                     "mitigationIRI": "{{vars.steps.Find_Parent_Technique[0].mitigations | json_query('[*][\"@id\"][]')}}"
@@ -219,13 +221,15 @@
                         "name",
                         "mitigations",
                         "groups",
-                        "software"
+                        "software",
+                        "tactics"
                     ]
                 },
                 "module": "mitre_techniques?$limit=30&$relationships=true&$fsr_max_relation_count=100",
                 "checkboxFields": true,
                 "step_variables": {
                     "groupIRI": "{{vars.steps.Find_Technique[0].groups | json_query('[*][\"@id\"][]')}}",
+                    "tacticIRI": "{{vars.steps.Find_Technique[0].tactics | json_query('[*][\"@id\"][]')}}",
                     "softwareIRI": "{{vars.steps.Find_Technique[0].software  | json_query('[*][\"@id\"][]')}}",
                     "techniqueIRI": "{% if vars.result | length > 0 %}{{vars.result[0]['@id']}}{% endif %}",
                     "mitigationIRI": "{{vars.steps.Find_Technique[0].mitigations | json_query('[*][\"@id\"][]')}}"
@@ -248,10 +252,12 @@
                     "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
                     "tenant": "",
                     "thread": false,
-                    "content": "<p>Correlated <span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Techniques<\/span> {% if vars.subTechniqueIRI %}<span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Sub Techniques<\/span>{% endif %} {% if vars.mitigationIRI %}<span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Mitigations<\/span>{% endif %} {% if vars.softwareIRI %}<span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Software<\/span>{% endif %} based on MITRE ATT&amp;CK Technique ID.<\/p>",
+                    "content": "<p>Correlated {% if vars.groupIRI %}<span style=\"background: #009d00; color: #fff;\" class=\"badge badge-pill badge-danger\">Groups<\/span>{% endif %} {% if vars.tacticIRI %}<span style=\"background: #009d00; color: #fff;\" class=\"badge badge-pill badge-danger\">Tactics<\/span>{% endif %} <span style=\"background: #009d00; color: #fff;\" class=\"badge badge-pill badge-danger\">Techniques<\/span> {% if vars.subTechniqueIRI %}<span style=\"background: #009d00; color: #fff;\" class=\"badge badge-pill badge-danger\">Sub Techniques<\/span>{% endif %} {% if vars.softwareIRI %}<span style=\"background: #009d00; color: #fff;\" class=\"badge badge-pill badge-danger\">Software<\/span>{% endif %} {% if vars.mitigationIRI %}<span style=\"background: #009d00; color: #fff;\" class=\"badge badge-pill badge-danger\">Mitigations<\/span>{% endif %} based on MITRE ATT&amp;CK Technique ID.<\/p>",
                     "records": "{{vars.input.records[0]['@id']}}"
                 },
                 "resource": {
+                    "mitregroups": "{{vars.groupIRI}}",
+                    "mitretactics": "{{vars.tacticIRI}}",
                     "mitresoftware": "{{vars.softwareIRI}}",
                     "mitretechniques": "{{vars.techniqueIRI}}",
                     "mitremitigations": "{{vars.mitigationIRI}}",
