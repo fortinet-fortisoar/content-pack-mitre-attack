@@ -29,6 +29,18 @@
 | Full App Permissions | Create, Read, Update and Delete permissions for Scans and Vulnerabilities modules |
 | Mitre Admin          | Create, Read, Update and Delete permissions for MITRE ATT&CK&reg; modules         |
 
+## Dashbaord
+
+| Name | Description |
+|:----------------------|:-----------------------|
+| MITRE ATT&CK Matrices | Display MITRE Matrices |
+
+## Widget
+
+| Name | Description |
+|:-----------------------------------|:---------------------------------------------------------------------------|
+| MITRE ATT&CK Alert Incident Spread | Detailed table view of Alerts and Incidents linked to MITRE ATT&CK records |
+
 ## View Template
 
 - MITRE ATT&CK

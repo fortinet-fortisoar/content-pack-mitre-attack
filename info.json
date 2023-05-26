@@ -148,6 +148,12 @@
                 "name": "MITRE ATT&CK",
                 "apiName": "mitre-attack"
             }
+        ],
+        "widgets": [
+            {
+                "apiName": "mitreAttackSpread",
+                "name": "MITRE ATT&CK Alert Incident Spread"
+            }
         ]
     }
 }
