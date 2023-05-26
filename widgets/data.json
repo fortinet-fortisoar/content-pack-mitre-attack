@@ -1,0 +1,7 @@
+[
+    {
+        "name": "mitreAttackSpread",
+        "title": "MITRE ATT&CK Alert Incident Spread",
+        "install_mode": "rpm"
+    }
+]
