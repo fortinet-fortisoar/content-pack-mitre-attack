@@ -139,7 +139,7 @@
                 "resource": {
                     "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
                     "people": [],
-                    "content": "<p>The record for provided MITRE ATT&amp;CK Technique ID <span class=\"badge badge-pill badge-danger\" style=\"background: #DA393D; color: #fff;\">{{vars.input.records[0].mitreattackid}}<\/span> is either incorrect or not ingested.<\/p>",
+                    "content": "<p><span class=\"badge badge-pill badge-danger\" style=\"background: #DA393D; color: #fff;\">Error<\/span> Failed to correlate MITRE ATT&amp;CK Technique.<br \/><em>Reason<\/em>: The MITRE ATT&amp;CK Technique {{vars.input.records[0].mitreattackid}} is either incorrect or not present.<\/p>",
                     "__replace": "",
                     "incidents": "{{vars.input.records[0]['@id']}}",
                     "isImportant": false,

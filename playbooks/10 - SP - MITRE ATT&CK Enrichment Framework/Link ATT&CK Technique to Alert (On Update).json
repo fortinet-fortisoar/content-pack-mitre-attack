@@ -245,7 +245,7 @@
                     "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
                     "alerts": "{{vars.input.records[0]['@id']}}",
                     "people": [],
-                    "content": "<p>The record for provided MITRE ATT&amp;CK Technique ID <span class=\"badge badge-pill badge-danger\" style=\"background: #DA393D; color: #fff;\">{{vars.input.records[0].mitreattackid}}<\/span> is either incorrect or not ingested.{{vars.steps.Unlink_Technique_to_Alert.mitreTechnique}}<\/p>",
+                    "content": "<p><span class=\"badge badge-pill badge-danger\" style=\"background: #DA393D; color: #fff;\">Error<\/span> Failed to correlate MITRE ATT&amp;CK Technique.<br \/><em>Reason<\/em>: The MITRE ATT&amp;CK Technique {{vars.input.records[0].mitreattackid}} is either incorrect or not present.<\/p>",
                     "__replace": "",
                     "isImportant": false,
                     "peopleUpdated": false
@@ -310,9 +310,6 @@
             "group": null,
             "uuid": "fe7136f1-8ff3-4b47-9a37-645bed1c5adc"
         }
-        
-                
-        
     ],
     "routes": [
         {
@@ -395,12 +392,6 @@
             "group": null,
             "uuid": "a1a25817-a808-4172-aaa8-ecaa91a6622d"
         }
-        
-        
-        
-        
-        
-        
     ],
     "groups": [],
     "priority": null,
