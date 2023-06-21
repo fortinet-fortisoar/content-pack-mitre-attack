@@ -47,7 +47,7 @@
                     "groupIRI": "{{vars.steps.Find_Parent_Technique[0].groups | json_query('[*][\"@id\"][]')}}",
                     "tacticIRI": "{{vars.steps.Find_Parent_Technique[0].tactics | json_query('[*][\"@id\"][]')}}",
                     "softwareIRI": "{{vars.steps.Find_Parent_Technique[0].software | json_query('[*][\"@id\"][]')}}",
-                    "techniqueIRI": "{% if vars.result | length > 0 %}{{vars.result[0]['@id']}}{% endif %}",
+                    "techniqueIRI": "{% if vars.result | length > 0 %}{% set _data = [] %}{% set _ = _data.append(vars.result[0]['@id']) %}{{_data}}{% endif %}",
                     "mitigationIRI": "{{vars.steps.Find_Parent_Technique[0].mitigations | json_query('[*][\"@id\"][]')}}"
                 }
             },
@@ -67,7 +67,7 @@
                     "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
                     "alerts": "{{vars.input.records[0]['@id']}}",
                     "people": [],
-                    "content": "<p>The record for MITRE ATT&amp;CK Technique ID <span class=\"badge badge-pill badge-danger\" style=\"background: #ba6204; color: #fff;\">{{vars.input.records[0].mitreattackid}}<\/span> is not available. Update the MITRE data.<\/p>",
+                    "content": "<p>The record for MITRE ATT&amp;CK Technique ID <span class=\"badge badge-pill badge-danger\" style=\"background: #ba6204; color: #fff;\">{{vars.input.records[0].mitreattackid}}<\/span> is not available. Update the MITRE data and enrich using manual playbook <strong>Get MITRE ATT&amp;CK Data<\/strong>.<\/p>",
                     "__replace": "",
                     "isImportant": false,
                     "peopleUpdated": false
@@ -121,7 +121,7 @@
                     "groupIRI": "{{vars.steps.Find_Technique[0].groups | json_query('[*][\"@id\"][]')}}",
                     "tacticIRI": "{{vars.steps.Find_Technique[0].tactics  | json_query('[*][\"@id\"][]')}}",
                     "softwareIRI": "{{vars.steps.Find_Technique[0].software  | json_query('[*][\"@id\"][]')}}",
-                    "techniqueIRI": "{% if vars.result | length > 0 %}{{vars.result[0]['@id']}}{% endif %}",
+                    "techniqueIRI": "{% if vars.result | length > 0 %}{% set _data = [] %}{% set _ = _data.append(vars.result[0]['@id']) %}{{_data}}{% endif %}",
                     "mitigationIRI": "{{vars.steps.Find_Technique[0].mitigations | json_query('[*][\"@id\"][]')}}",
                     "techniqueName": "{% if vars.result | length > 0 %}{{vars.result[0].name}}{% endif %}"
                 }
@@ -275,7 +275,7 @@
                     "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
                     "tenant": "",
                     "thread": false,
-                    "content": "<p>Correlated {% if vars.groupIRI %}<span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Groups<\/span>{% endif %} {% if vars.tacticIRI %}<span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Tactics<\/span>{% endif %} <span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Techniques<\/span> {% if vars.subTechniqueIRI %}<span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Sub Techniques<\/span>{% endif %} {% if vars.softwareIRI %}<span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Software<\/span>{% endif %} {% if vars.mitigationIRI %}<span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Mitigations<\/span>{% endif %} based on MITRE ATT&amp;CK Technique ID.<\/p>",
+                    "content": "<p>Correlated {% if vars.groupIRI %}<span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Groups<\/span>{% endif %} {% if vars.tacticIRI %}<span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Tactics<\/span>{% endif %} <span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Techniques<\/span> {% if vars.subTechniqueIRI %}<span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Sub Techniques<\/span>{% endif %} {% if vars.softwareIRI %}<span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Software<\/span>{% endif %} {% if vars.mitigationIRI %}<span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Mitigations<\/span>{% endif %} based on MITRE ATT&amp;CK Technique ID <strong><em>{{vars.input.records[0].mitreattackid}}<\/em><\/strong>.<\/p>",
                     "records": "{{vars.input.records[0]['@id']}}"
                 },
                 "resource": {
@@ -288,7 +288,7 @@
                     "mitre_sub_techniques": "{{vars.subTechniqueIRI}}"
                 },
                 "_showJson": false,
-                "operation": "Overwrite",
+                "operation": "Append",
                 "collection": "{{vars.input.records[0]['@id']}}",
                 "__recommend": [],
                 "collectionType": "\/api\/3\/alerts",
