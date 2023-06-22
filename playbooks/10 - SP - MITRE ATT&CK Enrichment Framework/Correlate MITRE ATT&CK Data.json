@@ -1,7 +1,7 @@
 {
     "@type": "Workflow",
     "triggerLimit": null,
-    "name": "Get MITRE ATT&CK Data",
+    "name": "Correlate MITRE ATT&CK Data",
     "aliasName": null,
     "tag": null,
     "description": "Link MITRE ATT&CK data on the basis of Technique ID",
@@ -103,13 +103,29 @@
                         "sort": [],
                         "limit": 30,
                         "logic": "AND",
-                        "filters": []
+                        "filters": [
+                            {
+                                "type": "primitive",
+                                "field": "mitreattackid",
+                                "value": "false",
+                                "operator": "isnull",
+                                "_operator": "isnull"
+                            }
+                        ]
                     },
                     "incidents": {
                         "sort": [],
                         "limit": 30,
                         "logic": "AND",
-                        "filters": []
+                        "filters": [
+                            {
+                                "type": "primitive",
+                                "field": "mitreattackid",
+                                "value": "false",
+                                "operator": "isnull",
+                                "_operator": "isnull"
+                            }
+                        ]
                     }
                 },
                 "executeButtonText": "Execute",
@@ -131,7 +147,7 @@
     "routes": [
         {
             "@type": "WorkflowRoute",
-            "name": "Check Record Type -> Get Incident MITRE Data",
+            "name": "Check Record Type -> Copy of Get Alert MITRE Data",
             "targetStep": "\/api\/3\/workflow_steps\/fc81e6ce-9c2c-4fa3-8644-8d6ecd755e2b",
             "sourceStep": "\/api\/3\/workflow_steps\/c91c1b49-3f1c-4644-ba92-9a107e3b44eb",
             "label": "Incident",

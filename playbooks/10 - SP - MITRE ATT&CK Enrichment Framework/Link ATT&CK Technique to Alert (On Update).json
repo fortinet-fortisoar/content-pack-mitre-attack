@@ -225,7 +225,7 @@
                     "groupIRI": "{{vars.steps.Find_Parent_Technique[0].groups | json_query('[*][\"@id\"][]')}}",
                     "tacticIRI": "{{vars.steps.Find_Parent_Technique[0].tactics | json_query('[*][\"@id\"][]')}}",
                     "softwareIRI": "{{vars.steps.Find_Parent_Technique[0].software | json_query('[*][\"@id\"][]')}}",
-                    "techniqueIRI": "{% if vars.result | length > 0 %}{% set _data = [] %}{% set _ = _data.append(vars.result[0]['@id']) %}{{_data}}{% endif %}",
+                    "techniqueIRI": "{% if vars.result | length > 0 %}{% set iriList = [] %}{% set _ = iriList.append(vars.result[0]['@id']) %}{{iriList}}{% endif %}",
                     "mitigationIRI": "{{vars.steps.Find_Parent_Technique[0].mitigations | json_query('[*][\"@id\"][]')}}"
                 }
             },
@@ -298,7 +298,7 @@
                     "groupIRI": "{{vars.steps.Find_Technique[0].groups | json_query('[*][\"@id\"][]')}}",
                     "tacticIRI": "{{vars.steps.Find_Technique[0].tactics | json_query('[*][\"@id\"][]')}}",
                     "softwareIRI": "{{vars.steps.Find_Technique[0].software  | json_query('[*][\"@id\"][]')}}",
-                    "techniqueIRI": "{% if vars.result | length > 0 %}{% set _data = [] %}{% set _ = _data.append(vars.result[0]['@id']) %}{{_data}}{% endif %}",
+                    "techniqueIRI": "{% if vars.result | length > 0 %}{% set iriList = [] %}{% set _ = iriList.append(vars.result[0]['@id']) %}{{iriList}}{% endif %}",
                     "mitigationIRI": "{{vars.steps.Find_Technique[0].mitigations | json_query('[*][\"@id\"][]')}}",
                     "techniqueName": "{% if vars.result | length > 0 %}{{vars.result[0].name}}{% endif %}"
                 }
