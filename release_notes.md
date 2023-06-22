@@ -15,4 +15,4 @@
 - Removed **MITRE Admin** role as **Full App Permission** contains required permission for MITRE modules. On upgrade, it will not remove the existing **MITRE Admin** role.
 - Removed *Hunt* module permission from **Full App Permission** as **SOAR Framework** minimum version `v1.1.0` solution pack contains required permission for *Hunt* module. On upgrade, it will not remove the existing permission from **Full App Permission**.
 
-> **Note**: On updating `Technique ID` in Alert or Incident, existing MITRE data didn't get replace. 
+> **Note**: On updating `Technique ID` in Alert or Incident, new MITRE data will be appended in correlations. 
