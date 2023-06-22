@@ -24,10 +24,9 @@
 
 ## Role
 
-| Role                 | Description                                                                       |
-| :------------------- | :-------------------------------------------------------------------------------- |
-| Full App Permissions | Create, Read, Update and Delete permissions for Scans and Vulnerabilities modules |
-| Mitre Admin          | Create, Read, Update and Delete permissions for MITRE ATT&CK&reg; modules         |
+| Role                 | Description                                                    |
+| :------------------- | :------------------------------------------------------------- |
+| Full App Permissions | Create, Read, Update and Delete permissions for MITRE modules. |
 
 ## Dashbaord
 
@@ -52,7 +51,7 @@
 
 | Playbook Name                                 | Description                                                                                      |
 | :-------------------------------------------- | :----------------------------------------------------------------------------------------------- |
-| Correlate MITRE ATT&CK Data<sup>New<sup>      | Link MITRE ATT&CK data on the basis of Technique ID                                              |
+| Correlate MITRE ATT&CK Data<sup>New<sup>      | Link MITRE ATT&CK data with Alert or Incident on the basis of Technique ID                       |
 | Link ATT&CK Technique to Alert (On Create)    | Links MITRE technique or sub-technique to an alert, when a Technique ID is added                 |
 | Link ATT&CK Technique to Alert (On Update)    | Links MITRE technique or sub-technique to an alert, when a Technique ID is updated or changed    |
 | Link ATT&CK Technique to Incident (On Create) | Links MITRE technique or sub-technique to an incident, when a Technique ID is added              |
