@@ -274,7 +274,6 @@
                     "tags": [],
                     "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
                     "tenant": "",
-                    "thread": false,
                     "content": "<p>Correlated {% if vars.groupIRI %}<span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Groups<\/span>{% endif %} {% if vars.tacticIRI %}<span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Tactics<\/span>{% endif %} <span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Techniques<\/span> {% if vars.subTechniqueIRI %}<span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Sub Techniques<\/span>{% endif %} {% if vars.softwareIRI %}<span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Software<\/span>{% endif %} {% if vars.mitigationIRI %}<span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Mitigations<\/span>{% endif %} based on MITRE ATT&amp;CK Technique ID <strong><em>{{vars.input.records[0].mitreattackid}}<\/em><\/strong>.<\/p>",
                     "records": "{{vars.input.records[0]['@id']}}"
                 },
@@ -313,7 +312,6 @@
             "sourceStep": "\/api\/3\/workflow_steps\/4c711433-adb8-45fa-a9b9-382b8a685d86",
             "label": "Not Available",
             "isExecuted": false,
-            "group": null,
             "uuid": "a52361ec-5a88-49e0-be2e-831f733ba254"
         },
         {
@@ -323,7 +321,6 @@
             "sourceStep": "\/api\/3\/workflow_steps\/9c895686-d4dd-4269-a091-8b1ffef6728c",
             "label": "Sub Technique",
             "isExecuted": false,
-            "group": null,
             "uuid": "9b28861d-5448-452b-b807-d5b617d88ef1"
         },
         {
@@ -333,7 +330,6 @@
             "sourceStep": "\/api\/3\/workflow_steps\/b4c2e914-5d9d-414b-a583-67d189fdf536",
             "label": null,
             "isExecuted": false,
-            "group": null,
             "uuid": "4ac4788b-bdaa-49b5-b8b4-1c510eb4afbc"
         },
         {
@@ -343,7 +339,6 @@
             "sourceStep": "\/api\/3\/workflow_steps\/0414ab32-3102-4d44-b71c-5f5320b2732a",
             "label": null,
             "isExecuted": false,
-            "group": null,
             "uuid": "c6636071-9898-4336-85d6-04b3289c6c88"
         },
         {
@@ -353,7 +348,6 @@
             "sourceStep": "\/api\/3\/workflow_steps\/9c895686-d4dd-4269-a091-8b1ffef6728c",
             "label": "Technique",
             "isExecuted": false,
-            "group": null,
             "uuid": "3d3ae188-ae75-4405-871c-165e5e65c23e"
         },
         {
@@ -363,7 +357,6 @@
             "sourceStep": "\/api\/3\/workflow_steps\/67cf33e8-bea8-47cd-9e38-bca922d7f0fa",
             "label": null,
             "isExecuted": false,
-            "group": null,
             "uuid": "aaed1a89-ab73-4796-b0da-6ae9ee0a6c86"
         },
         {
@@ -373,7 +366,6 @@
             "sourceStep": "\/api\/3\/workflow_steps\/1cc06470-395f-4f58-9e55-b7e7222bc920",
             "label": null,
             "isExecuted": false,
-            "group": null,
             "uuid": "b37fe099-3aee-44f4-bc2f-117310522d58"
         },
         {
@@ -383,7 +375,6 @@
             "sourceStep": "\/api\/3\/workflow_steps\/4c711433-adb8-45fa-a9b9-382b8a685d86",
             "label": "Available",
             "isExecuted": false,
-            "group": null,
             "uuid": "1f27ec6c-e25f-49ce-ae05-2df05c8bd00f"
         }
     ],

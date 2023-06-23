@@ -24,7 +24,6 @@
                     "tags": [],
                     "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
                     "tenant": "",
-                    "thread": false,
                     "content": "<p>Correlated {% if vars.groupIRI %}<span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Groups<\/span>{% endif %} {% if vars.tacticIRI %}<span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Tactics<\/span>{% endif %} <span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Techniques<\/span> {% if vars.subTechniqueIRI %}<span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Sub Techniques<\/span>{% endif %} {% if vars.softwareIRI %}<span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Software<\/span>{% endif %} {% if vars.mitigationIRI %}<span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Mitigations<\/span>{% endif %} based on MITRE ATT&amp;CK Technique ID <strong><em>{{vars.input.records[0].mitreattackid}}<\/em><\/strong>.<\/p>",
                     "records": "{{vars.input.records[0]['@id']}}"
                 },
@@ -259,8 +258,8 @@
                 "step_variables": []
             },
             "status": null,
-            "top": "700",
-            "left": "120",
+            "top": "705",
+            "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/2597053c-e718-44b4-8394-4d40fe26d357",
             "group": null,
             "uuid": "eb14f128-4aac-407a-a006-a3c73b4c95ab"
@@ -319,7 +318,6 @@
             "sourceStep": "\/api\/3\/workflow_steps\/269c5f53-c33d-44e1-904b-2a5daa3caa9c",
             "label": null,
             "isExecuted": false,
-            "group": null,
             "uuid": "77731449-8677-432f-bda4-2d5901554df7"
         },
         {
@@ -329,7 +327,6 @@
             "sourceStep": "\/api\/3\/workflow_steps\/bec5b6ab-a2d3-49ee-997b-74630f6be786",
             "label": null,
             "isExecuted": false,
-            "group": null,
             "uuid": "077cb80e-d0ae-46d3-ad42-a3c232ff9489"
         },
         {
@@ -339,7 +336,6 @@
             "sourceStep": "\/api\/3\/workflow_steps\/976be7a1-2fcb-44e1-95aa-4af27efbdf79",
             "label": null,
             "isExecuted": false,
-            "group": null,
             "uuid": "20067b8d-ad1d-4c03-a9f7-d965427532c0"
         },
         {
@@ -349,7 +345,6 @@
             "sourceStep": "\/api\/3\/workflow_steps\/fe7136f1-8ff3-4b47-9a37-645bed1c5adc",
             "label": null,
             "isExecuted": false,
-            "group": null,
             "uuid": "20ae7c3a-d9a4-4d54-8c6a-da4924616e56"
         },
         {
@@ -359,7 +354,6 @@
             "sourceStep": "\/api\/3\/workflow_steps\/976be7a1-2fcb-44e1-95aa-4af27efbdf79",
             "label": null,
             "isExecuted": false,
-            "group": null,
             "uuid": "2b6cd870-8982-48b8-8278-80b38d2c85b5"
         },
         {
@@ -369,7 +363,6 @@
             "sourceStep": "\/api\/3\/workflow_steps\/271a0b9a-bf04-4a0f-a898-3b400cfc2cd0",
             "label": "Not Available",
             "isExecuted": false,
-            "group": null,
             "uuid": "6110cee2-9d30-4cac-83b0-7a2fbd900edc"
         },
         {
@@ -379,7 +372,6 @@
             "sourceStep": "\/api\/3\/workflow_steps\/271a0b9a-bf04-4a0f-a898-3b400cfc2cd0",
             "label": "Available",
             "isExecuted": false,
-            "group": null,
             "uuid": "943f5dbf-8192-40fc-aff0-e17328500539"
         },
         {
@@ -389,7 +381,6 @@
             "sourceStep": "\/api\/3\/workflow_steps\/acacec68-1a90-46c5-9718-ec1120112f1f",
             "label": null,
             "isExecuted": false,
-            "group": null,
             "uuid": "a1a25817-a808-4172-aaa8-ecaa91a6622d"
         }
     ],

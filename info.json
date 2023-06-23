@@ -21,7 +21,7 @@
     "supportInfo": "Fortinet Customer Support",
     "iconLarge": null,
     "fsrMinCompatibility": "7.2.0",
-    "date": "2022-04-11T06:42:12+00:00",
+    "date": "2023-06-23T06:01:13+00:00",
     "contents": {
         "picklistNames": [
             {
@@ -138,6 +138,7 @@
                 "name": "10 - SP - MITRE ATT&CK Enrichment Framework"
             }
         ],
+        "globalVariables": [],
         "dashboards": [
             {
                 "name": "MITRE ATT&CK Matrices"
@@ -152,7 +153,8 @@
         "widgets": [
             {
                 "apiName": "mitreAttackSpread",
-                "name": "MITRE ATT&CK Alert Incident Spread"
+                "name": "MITRE ATT&CK Alert Incident Spread",
+                "version": "1.0.0"
             }
         ]
     }

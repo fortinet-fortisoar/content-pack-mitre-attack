@@ -7,7 +7,6 @@
     "templateType": "dashboard",
     "roles": [
         "\/api\/3\/roles\/21d7a7c6-9d68-438f-b732-e8950c5f745b",
-        "\/api\/3\/roles\/035fe251-fc8d-412d-88ca-8815e03c21cb",
         "\/api\/3\/roles\/17562d60-b841-4ed7-912b-1ebaf063c8c9",
         "\/api\/3\/roles\/7b56d139-7ee6-455e-8658-35727e202b8a",
         "\/api\/3\/roles\/09346f6b-c52e-49c0-9ea5-eb5df2b0fa88"

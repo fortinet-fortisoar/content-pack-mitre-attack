@@ -164,7 +164,6 @@
             "sourceStep": "\/api\/3\/workflow_steps\/c91c1b49-3f1c-4644-ba92-9a107e3b44eb",
             "label": "Incident",
             "isExecuted": false,
-            "group": null,
             "uuid": "5ed4305a-bba9-4763-95a7-8b74ab85c4c1"
         },
         {
@@ -174,7 +173,6 @@
             "sourceStep": "\/api\/3\/workflow_steps\/c91c1b49-3f1c-4644-ba92-9a107e3b44eb",
             "label": "Alert",
             "isExecuted": false,
-            "group": null,
             "uuid": "44918f50-50d2-499b-be8a-43bcf0c02c3e"
         },
         {
@@ -184,7 +182,6 @@
             "sourceStep": "\/api\/3\/workflow_steps\/8021921b-1946-43e5-a2c0-f7cf3546f030",
             "label": null,
             "isExecuted": false,
-            "group": null,
             "uuid": "5a7d8b50-8ea8-4663-ab00-9566349f339f"
         },
         {
@@ -194,7 +191,6 @@
             "sourceStep": "\/api\/3\/workflow_steps\/1c1ff3ed-db9b-44b3-acc0-4c285ae034b6",
             "label": null,
             "isExecuted": false,
-            "group": null,
             "uuid": "e5d4d5d7-c191-4c4a-ae61-f74a2e168a17"
         }
     ],
