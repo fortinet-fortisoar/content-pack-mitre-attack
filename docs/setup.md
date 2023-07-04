@@ -1,5 +1,5 @@
 | [Home](../README.md) |
-|----------------------------------------------------------------------------------------------------------------------------|
+|----------------------|
 
 # Installation 
 1. To install a solution pack, click **Content Hub** > **Discover**.    
@@ -10,9 +10,9 @@
 ## Prerequisites 
 The **MITRE ATT&CK&reg; Enrichment Framework** solution pack depends on the following solution packs.
 
-| Solution Pack Name | Version  | Purpose                                |
-|:-------------------|:---------|:---------------------------------------|
-| SOAR Framework     |  v1.1.0  | Required for Incident Response modules |
+| Solution Pack Name | Version           | Purpose                                |
+|:-------------------|:------------------|:---------------------------------------|
+| SOAR Framework     |  v1.1.0 and later | Required for Incident Response modules |
  
 # Configuration
 
@@ -27,3 +27,6 @@ The MITRE ATT&CK&reg; Connector leverages the ingestion wizard for seamless inge
 For more information on setting up data ingestion, see the [Configuring MITRE ATT&CK&reg; Connector](https://docs.fortinet.com/document/fortisoar/2.0.1/mitre-att-ck/197/mitre-att-amp-ck-v2-0-1).
 
 >**IMPORTANT**: By default, data ingestion for MITRE is configured with sample data. To get complete MITRE data, please open the connector step from the data ingestion playbook and change the action from "Get MITRE Sample Data" to "Get MITRE Data".
+
+| [Usage](./usage.md) | [Contents](./contents.md) |
+|---------------------|---------------------------|
