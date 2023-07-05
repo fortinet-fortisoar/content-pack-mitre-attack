@@ -386,6 +386,7 @@
     "deletedAt": null,
     "recordTags": [
         "Alert",
-        "PostCreate"
+        "PostCreate",
+        "Enrichment"
     ]
 }
