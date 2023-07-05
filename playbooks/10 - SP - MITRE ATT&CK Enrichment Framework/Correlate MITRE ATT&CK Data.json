@@ -25,13 +25,13 @@
                         "option": "Alert",
                         "step_iri": "\/api\/3\/workflow_steps\/1c0de63d-6eea-454c-aaef-6ea42060daf8",
                         "condition": "{{ vars.input.records[0]['@type'] == 'Alert' }}",
-                        "step_name": "Get Alert MITRE Data"
+                        "step_name": "Correlate Alerts with MITRE Data"
                     },
                     {
                         "option": "Incident",
                         "step_iri": "\/api\/3\/workflow_steps\/fc81e6ce-9c2c-4fa3-8644-8d6ecd755e2b",
                         "condition": "{{ vars.input.records[0]['@type'] == 'Incident' }}",
-                        "step_name": "Get Incidnet MITRE Data"
+                        "step_name": "Correlate Incidents with MITRE Data"
                     }
                 ],
                 "step_variables": []
@@ -159,7 +159,7 @@
     "routes": [
         {
             "@type": "WorkflowRoute",
-            "name": "Check Record Type -> Copy of Get Alert MITRE Data",
+            "name": "Check Record Type -> Correlate Incidents with MITRE Data",
             "targetStep": "\/api\/3\/workflow_steps\/fc81e6ce-9c2c-4fa3-8644-8d6ecd755e2b",
             "sourceStep": "\/api\/3\/workflow_steps\/c91c1b49-3f1c-4644-ba92-9a107e3b44eb",
             "label": "Incident",
@@ -168,7 +168,7 @@
         },
         {
             "@type": "WorkflowRoute",
-            "name": "Check Record Type -> Get Alert MITRE Data",
+            "name": "Check Record Type -> Correlate Alerts with MITRE Data",
             "targetStep": "\/api\/3\/workflow_steps\/1c0de63d-6eea-454c-aaef-6ea42060daf8",
             "sourceStep": "\/api\/3\/workflow_steps\/c91c1b49-3f1c-4644-ba92-9a107e3b44eb",
             "label": "Alert",
@@ -203,6 +203,7 @@
     "recordTags": [
         "Alert",
         "Incident",
-        "Manual"
+        "Manual",
+        "Enrichment"
     ]
 }

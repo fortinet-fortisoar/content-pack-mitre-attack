@@ -3,5 +3,6 @@
     "Incident",
     "Manual",
     "PostCreate",
-    "PostUpdate"
+    "PostUpdate",
+    "Enrichment"
 ]
