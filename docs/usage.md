@@ -3,6 +3,8 @@
 
 # Usage
 
+> **NOTE**: After an upgrade, existing permissions in the **MITRE Admin** and **Full App Permission** roles remain unaffected.
+
 With MITRE ATT&CK&reg; Enrichment Framework, you can configure and schedule data ingestion using the MITRE ATT&CK&reg; connector. This connector fetches latest information about groups, mitigation, software, techniques and other information and places them in the appropriate modules.
 
 1. Navigate to **MITRE ATT&CK** > **Groups** to view an exhaustive list of threat groups.
@@ -38,4 +40,12 @@ With MITRE ATT&CK&reg; Enrichment Framework, you can configure and schedule data
     - Click a *Tactic* to view more information about it
     - Under the tab **Techniques** you can check the techniques that the selected tactic uses
 
+7. Open an alert or an incident containing a technique ID
+    - Under **Correlations** check correlated *Tactics*, *Technique*, *sub-techniques*, and other information
+        - For SOAR Framework `v2.1.1` and earlier, check the mitigation actions in the *Mitigations* tab
+        - For SOAR Framework `v2.2.0` and later, check the mitigation actions in the *Recommended ATT&CK Mitigations* tab
+
 A scheduled data ingestion periodically fetches the latest information from the MITRE ATT&CK&reg; database.
+
+| [Installation](./setup.md#installation) | [Configuration](./setup.md#configuration) | [Contents](./contents.md) |
+|-----------------------------------------|-------------------------------------------|---------------------------|

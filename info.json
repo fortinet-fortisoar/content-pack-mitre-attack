@@ -1,6 +1,6 @@
 {
     "name": "mITREATT&CKEnrichmentFramework",
-    "version": "2.1.0",
+    "version": "2.2.0",
     "type": "solutionpack",
     "local": true,
     "label": "MITRE ATT&CK Enrichment Framework",
@@ -16,12 +16,12 @@
     "certified": "true",
     "publisher": "Fortinet",
     "description": "Solution Pack for leveraging the MITRE ATT&CK Knowledge Base in FortiSOAR.",
-    "help": "https://github.com/fortinet-fortisoar/solution-pack-mitre-attack-enrichment-framework/blob/release/2.1.0/README.md",
+    "help": "https://github.com/fortinet-fortisoar/solution-pack-mitre-attack-enrichment-framework/blob/release/2.2.0/README.md",
     "category": [],
     "supportInfo": "Fortinet Customer Support",
     "iconLarge": null,
     "fsrMinCompatibility": "7.2.0",
-    "date": "2022-04-11T06:42:12+00:00",
+    "date": "2023-06-23T06:01:13+00:00",
     "contents": {
         "picklistNames": [
             {
@@ -130,9 +130,6 @@
         },
         "roles": [
             {
-                "name": "Mitre Admin"
-            },
-            {
                 "name": "Full App Permissions"
             }
         ],
@@ -142,10 +139,22 @@
             }
         ],
         "globalVariables": [],
+        "dashboards": [
+            {
+                "name": "MITRE ATT&CK Matrices"
+            }
+        ],
         "connectors": [
             {
                 "name": "MITRE ATT&CK",
                 "apiName": "mitre-attack"
+            }
+        ],
+        "widgets": [
+            {
+                "apiName": "mitreAttackSpread",
+                "name": "MITRE ATT&CK Alert Incident Spread",
+                "version": "1.0.0"
             }
         ]
     }

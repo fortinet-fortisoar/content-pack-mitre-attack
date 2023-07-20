@@ -5,10 +5,7 @@
         "category": "Information",
         "description": "The MITRE ATT&CK knowledge base is used as a foundation for the development of specific threat models and methodologies. Connector helps to replicate knowledge base of adversary tactics and techniques based on real-world observations",
         "publisher": null,
-        "operation_roles": {
-            "get_mitre_data": [],
-            "get_mitre_data_sample": []
-        },
+        "operation_roles": [],
         "configurations": [],
         "dataImports": [],
         "install_mode": "rpm"

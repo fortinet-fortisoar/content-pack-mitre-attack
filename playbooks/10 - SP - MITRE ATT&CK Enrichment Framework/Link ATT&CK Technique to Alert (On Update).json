@@ -20,13 +20,24 @@
             "name": "Link Technique to Alert",
             "description": null,
             "arguments": {
+                "message": {
+                    "tags": [],
+                    "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
+                    "tenant": "",
+                    "content": "<p>Correlated {% if vars.groupIRI %}<span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Groups<\/span>{% endif %} {% if vars.tacticIRI %}<span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Tactics<\/span>{% endif %} <span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Techniques<\/span> {% if vars.subTechniqueIRI %}<span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Sub Techniques<\/span>{% endif %} {% if vars.softwareIRI %}<span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Software<\/span>{% endif %} {% if vars.mitigationIRI %}<span class=\"badge badge-pill badge-danger\" style=\"background: #009d00; color: #fff;\">Mitigations<\/span>{% endif %} based on MITRE ATT&amp;CK Technique ID <strong><em>{{vars.input.records[0].mitreattackid}}<\/em><\/strong>.<\/p>",
+                    "records": "{{vars.input.records[0]['@id']}}"
+                },
                 "resource": {
+                    "mitregroups": "{{vars.groupIRI}}",
+                    "mitretactics": "{{vars.tacticIRI}}",
+                    "mitresoftware": "{{vars.softwareIRI}}",
                     "mitreTechnique": "{{vars.techniqueName}}",
                     "mitre_techniques": "{{vars.techniqueIRI}}",
+                    "mitremitigations": "{{vars.mitigationIRI}}",
                     "mitre_sub_techniques": "{{vars.subTechniqueIRI}}"
                 },
                 "_showJson": false,
-                "operation": "Overwrite",
+                "operation": "Append",
                 "collection": "{{vars.input.records[0]['@id']}}",
                 "__recommend": [],
                 "collectionType": "\/api\/3\/alerts",
@@ -37,7 +48,7 @@
             },
             "status": null,
             "top": "705",
-            "left": "125",
+            "left": "475",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928722",
             "group": null,
             "uuid": "05b61670-c6be-4044-ba0c-eacbaf5daa71"
@@ -176,7 +187,7 @@
             },
             "status": null,
             "top": "300",
-            "left": "475",
+            "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
             "group": null,
             "uuid": "acacec68-1a90-46c5-9718-ec1120112f1f"
@@ -200,18 +211,26 @@
                         }
                     ],
                     "__selectFields": [
-                        "mitreId"
+                        "mitreId",
+                        "software",
+                        "mitigations",
+                        "groups",
+                        "tactics"
                     ]
                 },
-                "module": "mitre_techniques?$limit=30",
+                "module": "mitre_techniques?$limit=30&$relationships=true&$fsr_max_relation_count=100",
                 "checkboxFields": true,
                 "step_variables": {
-                    "techniqueIRI": "{% if vars.result | length > 0 %}{{vars.result[0]['@id']}}{% endif %}"
+                    "groupIRI": "{{vars.steps.Find_Parent_Technique[0].groups | json_query('[*][\"@id\"][]')}}",
+                    "tacticIRI": "{{vars.steps.Find_Parent_Technique[0].tactics | json_query('[*][\"@id\"][]')}}",
+                    "softwareIRI": "{{vars.steps.Find_Parent_Technique[0].software | json_query('[*][\"@id\"][]')}}",
+                    "techniqueIRI": "{% if vars.result | length > 0 %}{% set iriList = [] %}{% set _ = iriList.append(vars.result[0]['@id']) %}{{iriList}}{% endif %}",
+                    "mitigationIRI": "{{vars.steps.Find_Parent_Technique[0].mitigations | json_query('[*][\"@id\"][]')}}"
                 }
             },
             "status": null,
             "top": "435",
-            "left": "475",
+            "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
             "group": null,
             "uuid": "bec5b6ab-a2d3-49ee-997b-74630f6be786"
@@ -225,7 +244,7 @@
                     "type": "\/api\/3\/picklists\/ff599189-3eeb-4c86-acb0-a7915e85ac3b",
                     "alerts": "{{vars.input.records[0]['@id']}}",
                     "people": [],
-                    "content": "<p>Record for MITRE ATT&amp;CK Technique {{vars.input.records[0].mitreattackid}} - {{vars.input.records[0].mitreTechnique}} is not available.<\/p>",
+                    "content": "<p><span class=\"badge badge-pill badge-danger\" style=\"background: #DA393D; color: #fff;\">Error<\/span> Failed to correlate MITRE ATT&amp;CK Technique.<br \/><em>Reason<\/em>: The MITRE ATT&amp;CK Technique ID <strong><em>{{vars.input.records[0].mitreattackid}}<\/em><\/strong> is either incorrect or not present.<\/p>",
                     "__replace": "",
                     "isImportant": false,
                     "peopleUpdated": false
@@ -240,7 +259,7 @@
             },
             "status": null,
             "top": "705",
-            "left": "475",
+            "left": "125",
             "stepType": "\/api\/3\/workflow_step_types\/2597053c-e718-44b4-8394-4d40fe26d357",
             "group": null,
             "uuid": "eb14f128-4aac-407a-a006-a3c73b4c95ab"
@@ -265,19 +284,27 @@
                     ],
                     "__selectFields": [
                         "mitreId",
-                        "name"
+                        "name",
+                        "software",
+                        "groups",
+                        "mitigations",
+                        "tactics"
                     ]
                 },
-                "module": "mitre_techniques?$limit=30",
+                "module": "mitre_techniques?$limit=30&$relationships=true&$fsr_max_relation_count=100",
                 "checkboxFields": true,
                 "step_variables": {
-                    "techniqueIRI": "{% if vars.result | length > 0 %}{{vars.result[0]['@id']}}{% endif %}",
+                    "groupIRI": "{{vars.steps.Find_Technique[0].groups | json_query('[*][\"@id\"][]')}}",
+                    "tacticIRI": "{{vars.steps.Find_Technique[0].tactics | json_query('[*][\"@id\"][]')}}",
+                    "softwareIRI": "{{vars.steps.Find_Technique[0].software  | json_query('[*][\"@id\"][]')}}",
+                    "techniqueIRI": "{% if vars.result | length > 0 %}{% set iriList = [] %}{% set _ = iriList.append(vars.result[0]['@id']) %}{{iriList}}{% endif %}",
+                    "mitigationIRI": "{{vars.steps.Find_Technique[0].mitigations | json_query('[*][\"@id\"][]')}}",
                     "techniqueName": "{% if vars.result | length > 0 %}{{vars.result[0].name}}{% endif %}"
                 }
             },
             "status": null,
             "top": "435",
-            "left": "125",
+            "left": "475",
             "stepType": "\/api\/3\/workflow_step_types\/b593663d-7d13-40ce-a3a3-96dece928770",
             "group": null,
             "uuid": "fe7136f1-8ff3-4b47-9a37-645bed1c5adc"
@@ -291,7 +318,7 @@
             "sourceStep": "\/api\/3\/workflow_steps\/269c5f53-c33d-44e1-904b-2a5daa3caa9c",
             "label": null,
             "isExecuted": false,
-            "uuid": "03036a3a-83e6-40a2-9cb0-62e85ead4f86"
+            "uuid": "77731449-8677-432f-bda4-2d5901554df7"
         },
         {
             "@type": "WorkflowRoute",
@@ -334,16 +361,16 @@
             "name": "Is Technique Record Available -> Add Comment",
             "targetStep": "\/api\/3\/workflow_steps\/eb14f128-4aac-407a-a006-a3c73b4c95ab",
             "sourceStep": "\/api\/3\/workflow_steps\/271a0b9a-bf04-4a0f-a898-3b400cfc2cd0",
-            "label": null,
+            "label": "Not Available",
             "isExecuted": false,
-            "uuid": "5c88a877-a18d-4e12-a16d-ae897e8508c5"
+            "uuid": "6110cee2-9d30-4cac-83b0-7a2fbd900edc"
         },
         {
             "@type": "WorkflowRoute",
             "name": "Is Technique Record Available -> Link Technique to Alert",
             "targetStep": "\/api\/3\/workflow_steps\/05b61670-c6be-4044-ba0c-eacbaf5daa71",
             "sourceStep": "\/api\/3\/workflow_steps\/271a0b9a-bf04-4a0f-a898-3b400cfc2cd0",
-            "label": null,
+            "label": "Available",
             "isExecuted": false,
             "uuid": "943f5dbf-8192-40fc-aff0-e17328500539"
         },
@@ -364,6 +391,8 @@
     "isPrivate": false,
     "deletedAt": null,
     "recordTags": [
-        "PostUpdate"
+        "Alert",
+        "PostUpdate",
+        "Enrichment"
     ]
 }

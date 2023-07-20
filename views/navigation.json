@@ -26,35 +26,32 @@
                         "openStatus": false
                     },
                     {
-                        "icon": "fa fa-shield",
+                        "title": "Tactics",
+                        "require": {
+                            "module": "mitre_tactics",
+                            "action": "read"
+                        },
                         "state": {
                             "name": "main.modules.list",
                             "parameters": {
-                                "module": "mitre_mitigations"
+                                "module": "mitre_tactics"
                             }
                         },
-                        "title": "Mitigations",
-                        "require": {
-                            "action": "read",
-                            "module": "mitre_mitigations"
-                        },
-                        "editMode": false,
-                        "open": false,
-                        "isEnabled": false,
-                        "openStatus": false
+                        "icon": "icon icon-tactics",
+                        "editMode": false
                     },
                     {
-                        "icon": "icon icon-software",
+                        "icon": "icon icon-techniques",
                         "state": {
                             "name": "main.modules.list",
                             "parameters": {
-                                "module": "mitre_software"
+                                "module": "mitre_techniques"
                             }
                         },
-                        "title": "Software",
+                        "title": "Techniques",
                         "require": {
                             "action": "read",
-                            "module": "mitre_software"
+                            "module": "mitre_techniques"
                         },
                         "editMode": false,
                         "open": false,
@@ -80,17 +77,17 @@
                         "openStatus": false
                     },
                     {
-                        "icon": "icon icon-techniques",
+                        "icon": "icon icon-software",
                         "state": {
                             "name": "main.modules.list",
                             "parameters": {
-                                "module": "mitre_techniques"
+                                "module": "mitre_software"
                             }
                         },
-                        "title": "Techniques",
+                        "title": "Software",
                         "require": {
                             "action": "read",
-                            "module": "mitre_techniques"
+                            "module": "mitre_software"
                         },
                         "editMode": false,
                         "open": false,
@@ -98,19 +95,22 @@
                         "openStatus": false
                     },
                     {
-                        "title": "Tactics",
-                        "require": {
-                            "module": "mitre_tactics",
-                            "action": "read"
-                        },
+                        "icon": "fa fa-shield",
                         "state": {
                             "name": "main.modules.list",
                             "parameters": {
-                                "module": "mitre_tactics"
+                                "module": "mitre_mitigations"
                             }
                         },
-                        "icon": "icon icon-tactics",
-                        "editMode": false
+                        "title": "Mitigations",
+                        "require": {
+                            "action": "read",
+                            "module": "mitre_mitigations"
+                        },
+                        "editMode": false,
+                        "open": false,
+                        "isEnabled": false,
+                        "openStatus": false
                     }
                 ],
                 "title": "MITRE ATT&CK",
